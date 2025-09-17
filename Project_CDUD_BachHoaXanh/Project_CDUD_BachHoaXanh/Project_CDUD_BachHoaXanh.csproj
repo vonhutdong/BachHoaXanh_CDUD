@@ -212,6 +212,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -228,7 +229,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Image\" />
+    <None Include="Image\z7022770699791_3661019023169e61fcd4a11c91f893eb.jpg" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BUS\BUS.csproj">
@@ -243,6 +244,15 @@
       <Project>{01f2869a-2d25-44bc-832a-31369115b924}</Project>
       <Name>DTO</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\f71b9db8-d59c-48bd-ac6e-033f11c5b1b6.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\z7022822675090_39a357202d04bece2f13b115782590c9.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\z7022826337913_da3ef0c62bf5c8c6f738e6b06eccf27c.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
