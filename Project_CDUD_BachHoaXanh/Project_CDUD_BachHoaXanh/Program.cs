@@ -17,7 +17,7 @@ namespace Project_CDUD_BachHoaXanh
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Frm_ChiNhanh());
+            Application.Run(new Frm_LoaiHang());
         }
     }
 }

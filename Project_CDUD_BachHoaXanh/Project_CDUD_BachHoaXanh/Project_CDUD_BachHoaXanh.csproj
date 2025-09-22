@@ -223,6 +223,18 @@
     <EmbeddedResource Include="TrongDev\Frm_KhachHang.resx">
       <DependentUpon>Frm_KhachHang.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="TrongDev\Frm_KhoHang.resx">
+      <DependentUpon>Frm_KhoHang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TrongDev\Frm_LoaiHang.resx">
+      <DependentUpon>Frm_LoaiHang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TrongDev\Frm_NhaCungCap.resx">
+      <DependentUpon>Frm_NhaCungCap.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TrongDev\Frm_TaiKhoang.resx">
+      <DependentUpon>Frm_TaiKhoang.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
