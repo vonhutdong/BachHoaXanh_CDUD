@@ -16,5 +16,7 @@ namespace Project_CDUD_BachHoaXanh.TrongDev
         {
             InitializeComponent();
         }
+
+        
     }
 }
