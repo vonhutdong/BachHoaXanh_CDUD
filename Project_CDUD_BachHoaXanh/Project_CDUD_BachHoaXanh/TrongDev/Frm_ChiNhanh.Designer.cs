@@ -35,6 +35,10 @@
             this.guna2GroupBox1 = new Guna.UI2.WinForms.Guna2GroupBox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.txtSDT = new Guna.UI2.WinForms.Guna2TextBox();
+            this.txtDiaChi = new Guna.UI2.WinForms.Guna2TextBox();
+            this.txtTenChiNhanh = new Guna.UI2.WinForms.Guna2TextBox();
+            this.txtMaChiNhanh = new Guna.UI2.WinForms.Guna2TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -43,15 +47,11 @@
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.guna2GroupBox2 = new Guna.UI2.WinForms.Guna2GroupBox();
             this.dgvChiNhanh = new Guna.UI2.WinForms.Guna2DataGridView();
-            this.txtMaChiNhanh = new Guna.UI2.WinForms.Guna2TextBox();
-            this.txtTenChiNhanh = new Guna.UI2.WinForms.Guna2TextBox();
-            this.txtDiaChi = new Guna.UI2.WinForms.Guna2TextBox();
-            this.txtSDT = new Guna.UI2.WinForms.Guna2TextBox();
-            this.btnThoát = new Guna.UI2.WinForms.Guna2Button();
+            this.btnThoat = new Guna.UI2.WinForms.Guna2Button();
             this.btnLamMoi = new Guna.UI2.WinForms.Guna2Button();
             this.btnSua = new Guna.UI2.WinForms.Guna2Button();
-            this.btnThem = new Guna.UI2.WinForms.Guna2Button();
             this.btnXoa = new Guna.UI2.WinForms.Guna2Button();
+            this.btnThem = new Guna.UI2.WinForms.Guna2Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.guna2GroupBox1.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -101,7 +101,7 @@
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.28572F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.28572F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel3.Controls.Add(this.btnThoát, 5, 0);
+            this.tableLayoutPanel3.Controls.Add(this.btnThoat, 5, 0);
             this.tableLayoutPanel3.Controls.Add(this.btnLamMoi, 4, 0);
             this.tableLayoutPanel3.Controls.Add(this.btnSua, 3, 0);
             this.tableLayoutPanel3.Controls.Add(this.btnXoa, 2, 0);
@@ -141,6 +141,102 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(1109, 126);
             this.tableLayoutPanel2.TabIndex = 0;
+            // 
+            // txtSDT
+            // 
+            this.txtSDT.BorderColor = System.Drawing.Color.DarkSeaGreen;
+            this.txtSDT.BorderRadius = 2;
+            this.txtSDT.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtSDT.DefaultText = "";
+            this.txtSDT.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtSDT.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtSDT.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtSDT.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtSDT.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.txtSDT.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtSDT.Font = new System.Drawing.Font("Times New Roman", 15.75F);
+            this.txtSDT.ForeColor = System.Drawing.Color.Black;
+            this.txtSDT.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtSDT.Location = new System.Drawing.Point(750, 67);
+            this.txtSDT.Margin = new System.Windows.Forms.Padding(4);
+            this.txtSDT.Name = "txtSDT";
+            this.txtSDT.PlaceholderText = "";
+            this.txtSDT.SelectedText = "";
+            this.txtSDT.Size = new System.Drawing.Size(246, 55);
+            this.txtSDT.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
+            this.txtSDT.TabIndex = 13;
+            // 
+            // txtDiaChi
+            // 
+            this.txtDiaChi.BorderColor = System.Drawing.Color.DarkSeaGreen;
+            this.txtDiaChi.BorderRadius = 2;
+            this.txtDiaChi.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtDiaChi.DefaultText = "";
+            this.txtDiaChi.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtDiaChi.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtDiaChi.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtDiaChi.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtDiaChi.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.txtDiaChi.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtDiaChi.Font = new System.Drawing.Font("Times New Roman", 15.75F);
+            this.txtDiaChi.ForeColor = System.Drawing.Color.Black;
+            this.txtDiaChi.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtDiaChi.Location = new System.Drawing.Point(245, 67);
+            this.txtDiaChi.Margin = new System.Windows.Forms.Padding(4);
+            this.txtDiaChi.Name = "txtDiaChi";
+            this.txtDiaChi.PlaceholderText = "";
+            this.txtDiaChi.SelectedText = "";
+            this.txtDiaChi.Size = new System.Drawing.Size(247, 55);
+            this.txtDiaChi.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
+            this.txtDiaChi.TabIndex = 11;
+            // 
+            // txtTenChiNhanh
+            // 
+            this.txtTenChiNhanh.BorderColor = System.Drawing.Color.DarkSeaGreen;
+            this.txtTenChiNhanh.BorderRadius = 2;
+            this.txtTenChiNhanh.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtTenChiNhanh.DefaultText = "";
+            this.txtTenChiNhanh.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtTenChiNhanh.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtTenChiNhanh.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtTenChiNhanh.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtTenChiNhanh.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.txtTenChiNhanh.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtTenChiNhanh.Font = new System.Drawing.Font("Times New Roman", 15.75F);
+            this.txtTenChiNhanh.ForeColor = System.Drawing.Color.Black;
+            this.txtTenChiNhanh.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtTenChiNhanh.Location = new System.Drawing.Point(750, 4);
+            this.txtTenChiNhanh.Margin = new System.Windows.Forms.Padding(4);
+            this.txtTenChiNhanh.Name = "txtTenChiNhanh";
+            this.txtTenChiNhanh.PlaceholderText = "";
+            this.txtTenChiNhanh.SelectedText = "";
+            this.txtTenChiNhanh.Size = new System.Drawing.Size(246, 55);
+            this.txtTenChiNhanh.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
+            this.txtTenChiNhanh.TabIndex = 8;
+            // 
+            // txtMaChiNhanh
+            // 
+            this.txtMaChiNhanh.BorderColor = System.Drawing.Color.DarkSeaGreen;
+            this.txtMaChiNhanh.BorderRadius = 2;
+            this.txtMaChiNhanh.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtMaChiNhanh.DefaultText = "";
+            this.txtMaChiNhanh.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtMaChiNhanh.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtMaChiNhanh.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtMaChiNhanh.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtMaChiNhanh.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.txtMaChiNhanh.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtMaChiNhanh.Font = new System.Drawing.Font("Times New Roman", 15.75F);
+            this.txtMaChiNhanh.ForeColor = System.Drawing.Color.Black;
+            this.txtMaChiNhanh.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtMaChiNhanh.Location = new System.Drawing.Point(245, 4);
+            this.txtMaChiNhanh.Margin = new System.Windows.Forms.Padding(4);
+            this.txtMaChiNhanh.Name = "txtMaChiNhanh";
+            this.txtMaChiNhanh.PlaceholderText = "";
+            this.txtMaChiNhanh.SelectedText = "";
+            this.txtMaChiNhanh.Size = new System.Drawing.Size(247, 55);
+            this.txtMaChiNhanh.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
+            this.txtMaChiNhanh.TabIndex = 6;
             // 
             // label1
             // 
@@ -271,119 +367,23 @@
             this.dgvChiNhanh.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvChiNhanh.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             // 
-            // txtMaChiNhanh
+            // btnThoat
             // 
-            this.txtMaChiNhanh.BorderColor = System.Drawing.Color.DarkSeaGreen;
-            this.txtMaChiNhanh.BorderRadius = 2;
-            this.txtMaChiNhanh.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtMaChiNhanh.DefaultText = "";
-            this.txtMaChiNhanh.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtMaChiNhanh.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtMaChiNhanh.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtMaChiNhanh.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtMaChiNhanh.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.txtMaChiNhanh.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtMaChiNhanh.Font = new System.Drawing.Font("Times New Roman", 15.75F);
-            this.txtMaChiNhanh.ForeColor = System.Drawing.Color.Black;
-            this.txtMaChiNhanh.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtMaChiNhanh.Location = new System.Drawing.Point(245, 4);
-            this.txtMaChiNhanh.Margin = new System.Windows.Forms.Padding(4);
-            this.txtMaChiNhanh.Name = "txtMaChiNhanh";
-            this.txtMaChiNhanh.PlaceholderText = "";
-            this.txtMaChiNhanh.SelectedText = "";
-            this.txtMaChiNhanh.Size = new System.Drawing.Size(247, 55);
-            this.txtMaChiNhanh.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
-            this.txtMaChiNhanh.TabIndex = 6;
-            // 
-            // txtTenChiNhanh
-            // 
-            this.txtTenChiNhanh.BorderColor = System.Drawing.Color.DarkSeaGreen;
-            this.txtTenChiNhanh.BorderRadius = 2;
-            this.txtTenChiNhanh.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtTenChiNhanh.DefaultText = "";
-            this.txtTenChiNhanh.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtTenChiNhanh.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtTenChiNhanh.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtTenChiNhanh.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtTenChiNhanh.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.txtTenChiNhanh.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtTenChiNhanh.Font = new System.Drawing.Font("Times New Roman", 15.75F);
-            this.txtTenChiNhanh.ForeColor = System.Drawing.Color.Black;
-            this.txtTenChiNhanh.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtTenChiNhanh.Location = new System.Drawing.Point(750, 4);
-            this.txtTenChiNhanh.Margin = new System.Windows.Forms.Padding(4);
-            this.txtTenChiNhanh.Name = "txtTenChiNhanh";
-            this.txtTenChiNhanh.PlaceholderText = "";
-            this.txtTenChiNhanh.SelectedText = "";
-            this.txtTenChiNhanh.Size = new System.Drawing.Size(246, 55);
-            this.txtTenChiNhanh.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
-            this.txtTenChiNhanh.TabIndex = 8;
-            // 
-            // txtDiaChi
-            // 
-            this.txtDiaChi.BorderColor = System.Drawing.Color.DarkSeaGreen;
-            this.txtDiaChi.BorderRadius = 2;
-            this.txtDiaChi.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtDiaChi.DefaultText = "";
-            this.txtDiaChi.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtDiaChi.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtDiaChi.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtDiaChi.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtDiaChi.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.txtDiaChi.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtDiaChi.Font = new System.Drawing.Font("Times New Roman", 15.75F);
-            this.txtDiaChi.ForeColor = System.Drawing.Color.Black;
-            this.txtDiaChi.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtDiaChi.Location = new System.Drawing.Point(245, 67);
-            this.txtDiaChi.Margin = new System.Windows.Forms.Padding(4);
-            this.txtDiaChi.Name = "txtDiaChi";
-            this.txtDiaChi.PlaceholderText = "";
-            this.txtDiaChi.SelectedText = "";
-            this.txtDiaChi.Size = new System.Drawing.Size(247, 55);
-            this.txtDiaChi.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
-            this.txtDiaChi.TabIndex = 11;
-            // 
-            // txtSDT
-            // 
-            this.txtSDT.BorderColor = System.Drawing.Color.DarkSeaGreen;
-            this.txtSDT.BorderRadius = 2;
-            this.txtSDT.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtSDT.DefaultText = "";
-            this.txtSDT.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtSDT.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtSDT.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtSDT.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtSDT.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.txtSDT.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtSDT.Font = new System.Drawing.Font("Times New Roman", 15.75F);
-            this.txtSDT.ForeColor = System.Drawing.Color.Black;
-            this.txtSDT.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtSDT.Location = new System.Drawing.Point(750, 67);
-            this.txtSDT.Margin = new System.Windows.Forms.Padding(4);
-            this.txtSDT.Name = "txtSDT";
-            this.txtSDT.PlaceholderText = "";
-            this.txtSDT.SelectedText = "";
-            this.txtSDT.Size = new System.Drawing.Size(246, 55);
-            this.txtSDT.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
-            this.txtSDT.TabIndex = 13;
-            // 
-            // btnThoát
-            // 
-            this.btnThoát.BorderRadius = 20;
-            this.btnThoát.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnThoát.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnThoát.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnThoát.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnThoát.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.btnThoát.Font = new System.Drawing.Font("Times New Roman", 18F);
-            this.btnThoát.ForeColor = System.Drawing.Color.White;
-            this.btnThoát.Image = global::Project_CDUD_BachHoaXanh.Properties.Resources.logout;
-            this.btnThoát.ImageSize = new System.Drawing.Size(30, 30);
-            this.btnThoát.Location = new System.Drawing.Point(793, 3);
-            this.btnThoát.Name = "btnThoát";
-            this.btnThoát.Size = new System.Drawing.Size(152, 54);
-            this.btnThoát.TabIndex = 27;
-            this.btnThoát.Text = "Thoát";
+            this.btnThoat.BorderRadius = 20;
+            this.btnThoat.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnThoat.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnThoat.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnThoat.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnThoat.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.btnThoat.Font = new System.Drawing.Font("Times New Roman", 18F);
+            this.btnThoat.ForeColor = System.Drawing.Color.White;
+            this.btnThoat.Image = global::Project_CDUD_BachHoaXanh.Properties.Resources.logout;
+            this.btnThoat.ImageSize = new System.Drawing.Size(30, 30);
+            this.btnThoat.Location = new System.Drawing.Point(793, 3);
+            this.btnThoat.Name = "btnThoat";
+            this.btnThoat.Size = new System.Drawing.Size(152, 54);
+            this.btnThoat.TabIndex = 27;
+            this.btnThoat.Text = "Thoát";
             // 
             // btnLamMoi
             // 
@@ -421,24 +421,6 @@
             this.btnSua.TabIndex = 25;
             this.btnSua.Text = "Sửa";
             // 
-            // btnThem
-            // 
-            this.btnThem.BorderRadius = 20;
-            this.btnThem.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnThem.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnThem.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnThem.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnThem.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.btnThem.Font = new System.Drawing.Font("Times New Roman", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnThem.ForeColor = System.Drawing.Color.White;
-            this.btnThem.Image = global::Project_CDUD_BachHoaXanh.Properties.Resources.plus;
-            this.btnThem.ImageSize = new System.Drawing.Size(30, 30);
-            this.btnThem.Location = new System.Drawing.Point(161, 3);
-            this.btnThem.Name = "btnThem";
-            this.btnThem.Size = new System.Drawing.Size(152, 54);
-            this.btnThem.TabIndex = 19;
-            this.btnThem.Text = "Thêm";
-            // 
             // btnXoa
             // 
             this.btnXoa.BorderRadius = 20;
@@ -456,6 +438,24 @@
             this.btnXoa.Size = new System.Drawing.Size(152, 54);
             this.btnXoa.TabIndex = 23;
             this.btnXoa.Text = "Xóa";
+            // 
+            // btnThem
+            // 
+            this.btnThem.BorderRadius = 20;
+            this.btnThem.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnThem.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnThem.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnThem.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnThem.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.btnThem.Font = new System.Drawing.Font("Times New Roman", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnThem.ForeColor = System.Drawing.Color.White;
+            this.btnThem.Image = global::Project_CDUD_BachHoaXanh.Properties.Resources.plus;
+            this.btnThem.ImageSize = new System.Drawing.Size(30, 30);
+            this.btnThem.Location = new System.Drawing.Point(161, 3);
+            this.btnThem.Name = "btnThem";
+            this.btnThem.Size = new System.Drawing.Size(152, 54);
+            this.btnThem.TabIndex = 19;
+            this.btnThem.Text = "Thêm";
             // 
             // Frm_ChiNhanh
             // 
@@ -494,7 +494,7 @@
         private System.Windows.Forms.Label label4;
         private Guna.UI2.WinForms.Guna2Button btnXoa;
         private Guna.UI2.WinForms.Guna2Button btnThem;
-        private Guna.UI2.WinForms.Guna2Button btnThoát;
+        private Guna.UI2.WinForms.Guna2Button btnThoat;
         private Guna.UI2.WinForms.Guna2Button btnLamMoi;
         private Guna.UI2.WinForms.Guna2Button btnSua;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;

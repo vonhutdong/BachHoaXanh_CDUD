@@ -38,18 +38,18 @@
             this.guna2GroupBox2 = new Guna.UI2.WinForms.Guna2GroupBox();
             this.dgvTaiKhoan = new Guna.UI2.WinForms.Guna2DataGridView();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.cboQuyen = new Guna.UI2.WinForms.Guna2ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.guna2GroupBox1 = new Guna.UI2.WinForms.Guna2GroupBox();
             this.guna2HtmlLabel3 = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.cboQuyen = new Guna.UI2.WinForms.Guna2ComboBox();
-            this.btnThoát = new Guna.UI2.WinForms.Guna2Button();
             this.btnLamMoi = new Guna.UI2.WinForms.Guna2Button();
             this.btnSua = new Guna.UI2.WinForms.Guna2Button();
             this.btnThem = new Guna.UI2.WinForms.Guna2Button();
             this.btnXoa = new Guna.UI2.WinForms.Guna2Button();
+            this.btnThoat = new Guna.UI2.WinForms.Guna2Button();
             this.guna2GroupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTaiKhoan)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
@@ -219,6 +219,26 @@
             this.tableLayoutPanel2.Size = new System.Drawing.Size(1230, 155);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
+            // cboQuyen
+            // 
+            this.cboQuyen.BackColor = System.Drawing.Color.Transparent;
+            this.cboQuyen.BorderColor = System.Drawing.Color.DarkSeaGreen;
+            this.cboQuyen.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.cboQuyen.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cboQuyen.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboQuyen.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cboQuyen.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cboQuyen.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboQuyen.ForeColor = System.Drawing.Color.Black;
+            this.cboQuyen.ItemHeight = 30;
+            this.cboQuyen.Items.AddRange(new object[] {
+            "User"});
+            this.cboQuyen.Location = new System.Drawing.Point(345, 116);
+            this.cboQuyen.Name = "cboQuyen";
+            this.cboQuyen.Size = new System.Drawing.Size(715, 36);
+            this.cboQuyen.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
+            this.cboQuyen.TabIndex = 40;
+            // 
             // label5
             // 
             this.label5.AutoSize = true;
@@ -267,7 +287,7 @@
             this.tableLayoutPanel3.Controls.Add(this.btnSua, 3, 0);
             this.tableLayoutPanel3.Controls.Add(this.btnThem, 1, 0);
             this.tableLayoutPanel3.Controls.Add(this.btnXoa, 2, 0);
-            this.tableLayoutPanel3.Controls.Add(this.btnThoát, 5, 0);
+            this.tableLayoutPanel3.Controls.Add(this.btnThoat, 5, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 236);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
@@ -313,44 +333,6 @@
             this.guna2HtmlLabel3.Size = new System.Drawing.Size(3, 2);
             this.guna2HtmlLabel3.TabIndex = 12;
             this.guna2HtmlLabel3.Text = " ";
-            // 
-            // cboQuyen
-            // 
-            this.cboQuyen.BackColor = System.Drawing.Color.Transparent;
-            this.cboQuyen.BorderColor = System.Drawing.Color.DarkSeaGreen;
-            this.cboQuyen.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.cboQuyen.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cboQuyen.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboQuyen.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.cboQuyen.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.cboQuyen.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cboQuyen.ForeColor = System.Drawing.Color.Black;
-            this.cboQuyen.ItemHeight = 30;
-            this.cboQuyen.Items.AddRange(new object[] {
-            "User"});
-            this.cboQuyen.Location = new System.Drawing.Point(345, 116);
-            this.cboQuyen.Name = "cboQuyen";
-            this.cboQuyen.Size = new System.Drawing.Size(715, 36);
-            this.cboQuyen.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
-            this.cboQuyen.TabIndex = 40;
-            // 
-            // btnThoát
-            // 
-            this.btnThoát.BorderRadius = 20;
-            this.btnThoát.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnThoát.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnThoát.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnThoát.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnThoát.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.btnThoát.Font = new System.Drawing.Font("Times New Roman", 18F);
-            this.btnThoát.ForeColor = System.Drawing.Color.White;
-            this.btnThoát.Image = global::Project_CDUD_BachHoaXanh.Properties.Resources.logout;
-            this.btnThoát.ImageSize = new System.Drawing.Size(30, 30);
-            this.btnThoát.Location = new System.Drawing.Point(878, 3);
-            this.btnThoát.Name = "btnThoát";
-            this.btnThoát.Size = new System.Drawing.Size(169, 55);
-            this.btnThoát.TabIndex = 27;
-            this.btnThoát.Text = "Thoát";
             // 
             // btnLamMoi
             // 
@@ -424,6 +406,24 @@
             this.btnXoa.TabIndex = 23;
             this.btnXoa.Text = "Xóa";
             // 
+            // btnThoat
+            // 
+            this.btnThoat.BorderRadius = 20;
+            this.btnThoat.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnThoat.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnThoat.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnThoat.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnThoat.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.btnThoat.Font = new System.Drawing.Font("Times New Roman", 18F);
+            this.btnThoat.ForeColor = System.Drawing.Color.White;
+            this.btnThoat.Image = global::Project_CDUD_BachHoaXanh.Properties.Resources.logout;
+            this.btnThoat.ImageSize = new System.Drawing.Size(30, 30);
+            this.btnThoat.Location = new System.Drawing.Point(878, 3);
+            this.btnThoat.Name = "btnThoat";
+            this.btnThoat.Size = new System.Drawing.Size(169, 55);
+            this.btnThoat.TabIndex = 27;
+            this.btnThoat.Text = "Thoát";
+            // 
             // Frm_TaiKhoang
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -460,7 +460,7 @@
         private Guna.UI2.WinForms.Guna2ComboBox cboQuyen;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
-        private Guna.UI2.WinForms.Guna2Button btnThoát;
+        private Guna.UI2.WinForms.Guna2Button btnThoat;
         private Guna.UI2.WinForms.Guna2Button btnLamMoi;
         private Guna.UI2.WinForms.Guna2Button btnSua;
         private Guna.UI2.WinForms.Guna2Button btnThem;

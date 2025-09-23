@@ -1,6 +1,6 @@
 ﻿namespace Project_CDUD_BachHoaXanh.TrongDev
 {
-    partial class Frm_ThongKeTheoMaPhieuNhap
+    partial class Frm_ThongKeSanPhamTonKho
     {
         /// <summary>
         /// Required designer variable.
@@ -28,36 +28,34 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.InThongKeTheoMaPhieuNhap1 = new Project_CDUD_BachHoaXanh.TrongDev.InThongKeTheoMaPhieuNhap();
             this.crystalReportViewer1 = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
             this.SuspendLayout();
             // 
             // crystalReportViewer1
             // 
-            this.crystalReportViewer1.ActiveViewIndex = 0;
+            this.crystalReportViewer1.ActiveViewIndex = -1;
             this.crystalReportViewer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.crystalReportViewer1.Cursor = System.Windows.Forms.Cursors.Default;
             this.crystalReportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.crystalReportViewer1.Location = new System.Drawing.Point(0, 0);
             this.crystalReportViewer1.Name = "crystalReportViewer1";
-            this.crystalReportViewer1.ReportSource = this.InThongKeTheoMaPhieuNhap1;
-            this.crystalReportViewer1.Size = new System.Drawing.Size(1187, 619);
+            this.crystalReportViewer1.Size = new System.Drawing.Size(819, 536);
             this.crystalReportViewer1.TabIndex = 0;
             // 
-            // Frm_ThongKeTheoMaPhieuNhap
+            // Frm_ThongKeSanPhamTonKho
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1187, 619);
+            this.ClientSize = new System.Drawing.Size(819, 536);
             this.Controls.Add(this.crystalReportViewer1);
-            this.Name = "Frm_ThongKeTheoMaPhieuNhap";
-            this.Text = "Frm_ThongKeTheoMaPhieuNhap";
+            this.Name = "Frm_ThongKeSanPhamTonKho";
+            this.Text = "Frm_ThongKeSanPhamTonKho";
             this.ResumeLayout(false);
 
         }
 
         #endregion
-        private InThongKeTheoMaPhieuNhap InThongKeTheoMaPhieuNhap1;
+
         private CrystalDecisions.Windows.Forms.CrystalReportViewer crystalReportViewer1;
     }
 }

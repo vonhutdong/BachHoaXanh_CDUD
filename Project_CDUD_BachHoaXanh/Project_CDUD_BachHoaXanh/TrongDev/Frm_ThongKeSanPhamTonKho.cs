@@ -10,16 +10,11 @@ using System.Windows.Forms;
 
 namespace Project_CDUD_BachHoaXanh.TrongDev
 {
-    public partial class Frm_PhieuNhap : Form
+    public partial class Frm_ThongKeSanPhamTonKho : Form
     {
-        public Frm_PhieuNhap()
+        public Frm_ThongKeSanPhamTonKho()
         {
             InitializeComponent();
-        }
-
-        private void tableLayoutPanel2_Paint(object sender, PaintEventArgs e)
-        {
-
         }
     }
 }
