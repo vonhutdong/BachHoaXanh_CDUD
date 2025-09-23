@@ -18,10 +18,27 @@ namespace Project_CDUD_BachHoaXanh
             InitializeComponent();
         }
 
-        private void guna2Button1_Click(object sender, EventArgs e)
+        private void guna2TabControl1_Click(object sender, EventArgs e)
         {
-            Frm_BanHang frm_BanHang = new Frm_BanHang();
-            frm_BanHang.Show(); 
+            //Frm_NhanViencs f = new Frm_NhanViencs();
+            //f.TopLevel = false;
+            //f.FormBorderStyle = FormBorderStyle.None;
+            //f.Dock = DockStyle.Fill;
+            //tabQuanLy.Controls.Clear();
+            //tabQuanLy.Controls.Add(f);
+            //f.Show();
+
+        }
+
+        private void guna2TabControl3_Selected(object sender, TabControlEventArgs e)
+        {
+            Frm_HoaDon f = new Frm_HoaDon();
+            f.TopLevel = false;
+            f.FormBorderStyle = FormBorderStyle.None;
+            f.Dock = DockStyle.Fill;
+            tabHoaDon.Controls.Clear();
+            tabHoaDon.Controls.Add(f);
+            f.Show();
         }
     }
 }

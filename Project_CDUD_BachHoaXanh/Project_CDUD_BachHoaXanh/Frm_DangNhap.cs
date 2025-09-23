@@ -22,5 +22,11 @@ namespace Project_CDUD_BachHoaXanh
             Frm_TrangChu frm_TrangChu = new Frm_TrangChu();
             frm_TrangChu.Show();
         }
+
+        private void btnDangNhap_Click(object sender, EventArgs e)
+        {
+            Frm_TrangChu fr = new Frm_TrangChu();
+            fr.Show();
+        }
     }
 }

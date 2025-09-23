@@ -54,6 +54,7 @@
             this.btnDangNhap.Size = new System.Drawing.Size(134, 44);
             this.btnDangNhap.TabIndex = 3;
             this.btnDangNhap.Text = "Đăng nhập";
+            this.btnDangNhap.Click += new System.EventHandler(this.btnDangNhap_Click);
             // 
             // radioButton1
             // 

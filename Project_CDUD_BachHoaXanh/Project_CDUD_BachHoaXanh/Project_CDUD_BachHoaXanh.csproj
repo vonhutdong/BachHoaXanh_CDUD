@@ -198,6 +198,27 @@
     <Compile Include="TrongDev\Frm_ThongKeTheoMaPhieuNhap.Designer.cs">
       <DependentUpon>Frm_ThongKeTheoMaPhieuNhap.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="DongDev\Frm_CaLam.resx">
+      <DependentUpon>Frm_CaLam.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DongDev\Frm_ChiTieHoaDon.resx">
+      <DependentUpon>Frm_ChiTieHoaDon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DongDev\Frm_HoaDon.resx">
+      <DependentUpon>Frm_HoaDon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DongDev\Frm_LichLam.resx">
+      <DependentUpon>Frm_LichLam.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DongDev\Frm_LoaiNhanVien.resx">
+      <DependentUpon>Frm_LoaiNhanVien.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DongDev\Frm_NhanViencs.resx">
+      <DependentUpon>Frm_NhanViencs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DongDev\Frm_SanPham.resx">
+      <DependentUpon>Frm_SanPham.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Frm_DangNhap.resx">
       <DependentUpon>Frm_DangNhap.cs</DependentUpon>
     </EmbeddedResource>

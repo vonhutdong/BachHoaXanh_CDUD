@@ -16,5 +16,10 @@ namespace Project_CDUD_BachHoaXanh.DongDev
         {
             InitializeComponent();
         }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
