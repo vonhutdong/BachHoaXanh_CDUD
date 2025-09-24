@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Frm_ChiTieHoaDon));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Frm_ChiTieHoaDon));
             this.panel1 = new System.Windows.Forms.Panel();
             this.guna2GroupBox1 = new Guna.UI2.WinForms.Guna2GroupBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -39,9 +39,9 @@
             this.txtTenLoaiNhanVien = new Guna.UI2.WinForms.Guna2TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.dgvChiTietHoaDon = new Guna.UI2.WinForms.Guna2DataGridView();
             this.btnInHoaDon = new Guna.UI2.WinForms.Guna2Button();
             this.btnXoaHoaDon = new Guna.UI2.WinForms.Guna2Button();
-            this.dgvChiTietHoaDon = new Guna.UI2.WinForms.Guna2DataGridView();
             this.panel1.SuspendLayout();
             this.guna2GroupBox1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -76,7 +76,7 @@
             this.tableLayoutPanel1.ColumnCount = 3;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 35.05025F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 64.94975F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 121F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 126F));
             this.tableLayoutPanel1.Controls.Add(this.guna2TextBox1, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.txtTenLoaiNhanVien, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
@@ -107,12 +107,12 @@
             this.guna2TextBox1.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2TextBox1.ForeColor = System.Drawing.Color.Black;
             this.guna2TextBox1.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2TextBox1.Location = new System.Drawing.Point(320, 52);
+            this.guna2TextBox1.Location = new System.Drawing.Point(318, 52);
             this.guna2TextBox1.Margin = new System.Windows.Forms.Padding(4);
             this.guna2TextBox1.Name = "guna2TextBox1";
             this.guna2TextBox1.PlaceholderText = "";
             this.guna2TextBox1.SelectedText = "";
-            this.guna2TextBox1.Size = new System.Drawing.Size(578, 40);
+            this.guna2TextBox1.Size = new System.Drawing.Size(575, 40);
             this.guna2TextBox1.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
             this.guna2TextBox1.TabIndex = 7;
             // 
@@ -131,12 +131,12 @@
             this.txtTenLoaiNhanVien.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTenLoaiNhanVien.ForeColor = System.Drawing.Color.Black;
             this.txtTenLoaiNhanVien.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtTenLoaiNhanVien.Location = new System.Drawing.Point(320, 4);
+            this.txtTenLoaiNhanVien.Location = new System.Drawing.Point(318, 4);
             this.txtTenLoaiNhanVien.Margin = new System.Windows.Forms.Padding(4);
             this.txtTenLoaiNhanVien.Name = "txtTenLoaiNhanVien";
             this.txtTenLoaiNhanVien.PlaceholderText = "";
             this.txtTenLoaiNhanVien.SelectedText = "";
-            this.txtTenLoaiNhanVien.Size = new System.Drawing.Size(578, 40);
+            this.txtTenLoaiNhanVien.Size = new System.Drawing.Size(575, 40);
             this.txtTenLoaiNhanVien.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
             this.txtTenLoaiNhanVien.TabIndex = 6;
             // 
@@ -147,7 +147,7 @@
             this.label1.Font = new System.Drawing.Font("Times New Roman", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(3, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(310, 48);
+            this.label1.Size = new System.Drawing.Size(308, 48);
             this.label1.TabIndex = 0;
             this.label1.Text = "Mã hoá đơn";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -159,46 +159,11 @@
             this.label2.Font = new System.Drawing.Font("Times New Roman", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(3, 48);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(310, 48);
+            this.label2.Size = new System.Drawing.Size(308, 48);
             this.label2.TabIndex = 1;
             this.label2.Text = "Nhân viên";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.label2.Click += new System.EventHandler(this.label2_Click);
-            // 
-            // btnInHoaDon
-            // 
-            this.btnInHoaDon.BorderRadius = 20;
-            this.btnInHoaDon.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnInHoaDon.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnInHoaDon.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnInHoaDon.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnInHoaDon.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnInHoaDon.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btnInHoaDon.ForeColor = System.Drawing.Color.White;
-            this.btnInHoaDon.Image = ((System.Drawing.Image)(resources.GetObject("btnInHoaDon.Image")));
-            this.btnInHoaDon.Location = new System.Drawing.Point(905, 3);
-            this.btnInHoaDon.Name = "btnInHoaDon";
-            this.btnInHoaDon.Size = new System.Drawing.Size(116, 42);
-            this.btnInHoaDon.TabIndex = 4;
-            this.btnInHoaDon.Text = "In hoá đơn";
-            // 
-            // btnXoaHoaDon
-            // 
-            this.btnXoaHoaDon.BorderRadius = 20;
-            this.btnXoaHoaDon.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnXoaHoaDon.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnXoaHoaDon.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnXoaHoaDon.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnXoaHoaDon.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnXoaHoaDon.FillColor = System.Drawing.Color.Red;
-            this.btnXoaHoaDon.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btnXoaHoaDon.ForeColor = System.Drawing.Color.White;
-            this.btnXoaHoaDon.Image = ((System.Drawing.Image)(resources.GetObject("btnXoaHoaDon.Image")));
-            this.btnXoaHoaDon.Location = new System.Drawing.Point(905, 51);
-            this.btnXoaHoaDon.Name = "btnXoaHoaDon";
-            this.btnXoaHoaDon.Size = new System.Drawing.Size(116, 42);
-            this.btnXoaHoaDon.TabIndex = 5;
-            this.btnXoaHoaDon.Text = "Xoá";
             // 
             // dgvChiTietHoaDon
             // 
@@ -253,6 +218,41 @@
             this.dgvChiTietHoaDon.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvChiTietHoaDon.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             // 
+            // btnInHoaDon
+            // 
+            this.btnInHoaDon.BorderRadius = 20;
+            this.btnInHoaDon.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnInHoaDon.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnInHoaDon.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnInHoaDon.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnInHoaDon.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnInHoaDon.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnInHoaDon.ForeColor = System.Drawing.Color.White;
+            this.btnInHoaDon.Image = ((System.Drawing.Image)(resources.GetObject("btnInHoaDon.Image")));
+            this.btnInHoaDon.Location = new System.Drawing.Point(900, 3);
+            this.btnInHoaDon.Name = "btnInHoaDon";
+            this.btnInHoaDon.Size = new System.Drawing.Size(121, 42);
+            this.btnInHoaDon.TabIndex = 4;
+            this.btnInHoaDon.Text = "In hoá đơn";
+            // 
+            // btnXoaHoaDon
+            // 
+            this.btnXoaHoaDon.BorderRadius = 20;
+            this.btnXoaHoaDon.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnXoaHoaDon.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnXoaHoaDon.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnXoaHoaDon.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnXoaHoaDon.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnXoaHoaDon.FillColor = System.Drawing.Color.Red;
+            this.btnXoaHoaDon.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnXoaHoaDon.ForeColor = System.Drawing.Color.White;
+            this.btnXoaHoaDon.Image = ((System.Drawing.Image)(resources.GetObject("btnXoaHoaDon.Image")));
+            this.btnXoaHoaDon.Location = new System.Drawing.Point(900, 51);
+            this.btnXoaHoaDon.Name = "btnXoaHoaDon";
+            this.btnXoaHoaDon.Size = new System.Drawing.Size(121, 42);
+            this.btnXoaHoaDon.TabIndex = 5;
+            this.btnXoaHoaDon.Text = "Xoá";
+            // 
             // Frm_ChiTieHoaDon
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -261,7 +261,7 @@
             this.Controls.Add(this.dgvChiTietHoaDon);
             this.Controls.Add(this.panel1);
             this.Name = "Frm_ChiTieHoaDon";
-            this.Text = "Frm_ChiTieHoaDon";
+            this.Text = "Hoá đơn chi tiết";
             this.panel1.ResumeLayout(false);
             this.guna2GroupBox1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);

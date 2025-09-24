@@ -16,5 +16,29 @@ namespace Project_CDUD_BachHoaXanh.DongDev
         {
             InitializeComponent();
         }
+
+        private void tableLayoutPanel4_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void tableLayoutPanel3_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void tableLayoutPanel10_Paint(object sender, PaintEventArgs e)
+        {
+                    }
+
+        private void guna2GroupBox4_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
