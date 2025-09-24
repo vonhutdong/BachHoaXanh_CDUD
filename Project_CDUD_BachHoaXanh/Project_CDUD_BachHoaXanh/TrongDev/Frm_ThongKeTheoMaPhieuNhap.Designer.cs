@@ -28,12 +28,36 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.InThongKeTheoMaPhieuNhap1 = new Project_CDUD_BachHoaXanh.TrongDev.InThongKeTheoMaPhieuNhap();
+            this.crystalReportViewer1 = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
+            this.SuspendLayout();
+            // 
+            // crystalReportViewer1
+            // 
+            this.crystalReportViewer1.ActiveViewIndex = 0;
+            this.crystalReportViewer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.crystalReportViewer1.Cursor = System.Windows.Forms.Cursors.Default;
+            this.crystalReportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.crystalReportViewer1.Location = new System.Drawing.Point(0, 0);
+            this.crystalReportViewer1.Name = "crystalReportViewer1";
+            this.crystalReportViewer1.ReportSource = this.InThongKeTheoMaPhieuNhap1;
+            this.crystalReportViewer1.Size = new System.Drawing.Size(1187, 619);
+            this.crystalReportViewer1.TabIndex = 0;
+            // 
+            // Frm_ThongKeTheoMaPhieuNhap
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "Frm_ThongKeTheoMaPhieuNhap";
+            this.ClientSize = new System.Drawing.Size(1187, 619);
+            this.Controls.Add(this.crystalReportViewer1);
+            this.Name = "Frm_ThongKeTheoMaPhieuNhap";
+            this.Text = "IN THỐNG KÊ THEO MÃ PHIẾU NHẬP";
+            this.ResumeLayout(false);
+
         }
 
         #endregion
+        private InThongKeTheoMaPhieuNhap InThongKeTheoMaPhieuNhap1;
+        private CrystalDecisions.Windows.Forms.CrystalReportViewer crystalReportViewer1;
     }
 }

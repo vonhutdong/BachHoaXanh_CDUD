@@ -1,6 +1,6 @@
 ﻿namespace Project_CDUD_BachHoaXanh.TrongDev
 {
-    partial class Frm_DanhSachPhieuNhap
+    partial class Frm_ThongKeSanPhamTonKho
     {
         /// <summary>
         /// Required designer variable.
@@ -39,17 +39,17 @@
             this.crystalReportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.crystalReportViewer1.Location = new System.Drawing.Point(0, 0);
             this.crystalReportViewer1.Name = "crystalReportViewer1";
-            this.crystalReportViewer1.Size = new System.Drawing.Size(1130, 635);
+            this.crystalReportViewer1.Size = new System.Drawing.Size(819, 536);
             this.crystalReportViewer1.TabIndex = 0;
             // 
-            // Frm_DanhSachPhieuNhap
+            // Frm_ThongKeSanPhamTonKho
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1130, 635);
+            this.ClientSize = new System.Drawing.Size(819, 536);
             this.Controls.Add(this.crystalReportViewer1);
-            this.Name = "Frm_DanhSachPhieuNhap";
-            this.Text = "IN DANH SÁCH PHIẾU NHẬP";
+            this.Name = "Frm_ThongKeSanPhamTonKho";
+            this.Text = "IN THỐNG KÊ SẢN PHẨM TỒN KHO";
             this.ResumeLayout(false);
 
         }

@@ -16,5 +16,10 @@ namespace Project_CDUD_BachHoaXanh.TrongDev
         {
             InitializeComponent();
         }
+
+        private void tableLayoutPanel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

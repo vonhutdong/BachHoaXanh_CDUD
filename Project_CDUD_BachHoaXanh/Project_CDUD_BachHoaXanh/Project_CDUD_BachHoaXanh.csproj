@@ -33,6 +33,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="Guna.UI2, Version=2.0.4.7, Culture=neutral, PublicKeyToken=8b9d14aa5142e261, processorArchitecture=MSIL">
       <HintPath>..\packages\Guna.UI2.WinForms.2.0.4.7\lib\net472\Guna.UI2.dll</HintPath>
     </Reference>
@@ -41,6 +45,7 @@
     <Reference Include="System.Design" />
     <Reference Include="System.Management" />
     <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -198,6 +203,12 @@
     <Compile Include="TrongDev\Frm_TaiKhoang.Designer.cs">
       <DependentUpon>Frm_TaiKhoang.cs</DependentUpon>
     </Compile>
+    <Compile Include="TrongDev\Frm_ThongKeSanPhamTonKho.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TrongDev\Frm_ThongKeSanPhamTonKho.Designer.cs">
+      <DependentUpon>Frm_ThongKeSanPhamTonKho.cs</DependentUpon>
+    </Compile>
     <Compile Include="TrongDev\Frm_ThongKeTheoMaPhieuNhap.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -240,6 +251,12 @@
     <EmbeddedResource Include="DongDev\Frm_SanPham.resx">
       <DependentUpon>Frm_SanPham.cs</DependentUpon>
     </EmbeddedResource>
+    <Compile Include="TrongDev\InThongKeTheoMaPhieuNhap.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>InThongKeTheoMaPhieuNhap.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <EmbeddedResource Include="Frm_DangNhap.resx">
       <DependentUpon>Frm_DangNhap.cs</DependentUpon>
     </EmbeddedResource>
@@ -256,6 +273,46 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="TrongDev\Frm_ApDungMaKhuyenMai.resx">
+      <DependentUpon>Frm_ApDungMaKhuyenMai.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TrongDev\Frm_ChiNhanh.resx">
+      <DependentUpon>Frm_ChiNhanh.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TrongDev\Frm_DanhSachPhieuNhap.resx">
+      <DependentUpon>Frm_DanhSachPhieuNhap.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TrongDev\Frm_KhachHang.resx">
+      <DependentUpon>Frm_KhachHang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TrongDev\Frm_KhoHang.resx">
+      <DependentUpon>Frm_KhoHang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TrongDev\Frm_KhuyenMai.resx">
+      <DependentUpon>Frm_KhuyenMai.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TrongDev\Frm_LoaiHang.resx">
+      <DependentUpon>Frm_LoaiHang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TrongDev\Frm_NhaCungCap.resx">
+      <DependentUpon>Frm_NhaCungCap.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TrongDev\Frm_PhieuNhap.resx">
+      <DependentUpon>Frm_PhieuNhap.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TrongDev\Frm_TaiKhoang.resx">
+      <DependentUpon>Frm_TaiKhoang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TrongDev\Frm_ThongKeSanPhamTonKho.resx">
+      <DependentUpon>Frm_ThongKeSanPhamTonKho.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TrongDev\Frm_ThongKeTheoMaPhieuNhap.resx">
+      <DependentUpon>Frm_ThongKeTheoMaPhieuNhap.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TrongDev\InThongKeTheoMaPhieuNhap.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>InThongKeTheoMaPhieuNhap.cs</LastGenOutput>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -295,6 +352,27 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Image\z7022826337913_da3ef0c62bf5c8c6f738e6b06eccf27c.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\plus.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\bin.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\loop.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\reset.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\logout.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\printer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
