@@ -55,15 +55,14 @@
             // 
             this.guna2GroupBox1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.guna2GroupBox1.Controls.Add(this.dgvLoaiNV);
-            this.guna2GroupBox1.CustomBorderColor = System.Drawing.Color.MediumSeaGreen;
+            this.guna2GroupBox1.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(146)))), ((int)(((byte)(247)))), ((int)(((byte)(127)))));
             this.guna2GroupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.guna2GroupBox1.FillColor = System.Drawing.Color.Transparent;
             this.guna2GroupBox1.Font = new System.Drawing.Font("Times New Roman", 16.2F, System.Drawing.FontStyle.Bold);
             this.guna2GroupBox1.ForeColor = System.Drawing.Color.Black;
-            this.guna2GroupBox1.Location = new System.Drawing.Point(0, 185);
-            this.guna2GroupBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.guna2GroupBox1.Location = new System.Drawing.Point(0, 151);
             this.guna2GroupBox1.Name = "guna2GroupBox1";
-            this.guna2GroupBox1.Size = new System.Drawing.Size(1057, 511);
+            this.guna2GroupBox1.Size = new System.Drawing.Size(793, 415);
             this.guna2GroupBox1.TabIndex = 26;
             this.guna2GroupBox1.Text = "Danh sách loại nhân viên";
             this.guna2GroupBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -99,6 +98,7 @@
             this.dgvLoaiNV.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvLoaiNV.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvLoaiNV.Location = new System.Drawing.Point(0, 40);
+            this.dgvLoaiNV.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dgvLoaiNV.MultiSelect = false;
             this.dgvLoaiNV.Name = "dgvLoaiNV";
             this.dgvLoaiNV.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
@@ -106,7 +106,7 @@
             this.dgvLoaiNV.RowHeadersWidth = 51;
             this.dgvLoaiNV.RowTemplate.Height = 50;
             this.dgvLoaiNV.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvLoaiNV.Size = new System.Drawing.Size(1057, 471);
+            this.dgvLoaiNV.Size = new System.Drawing.Size(793, 375);
             this.dgvLoaiNV.TabIndex = 0;
             this.dgvLoaiNV.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.dgvLoaiNV.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -134,15 +134,14 @@
             // 
             this.guna2GroupBox3.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.guna2GroupBox3.Controls.Add(this.tableFields);
-            this.guna2GroupBox3.CustomBorderColor = System.Drawing.Color.MediumSeaGreen;
+            this.guna2GroupBox3.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(146)))), ((int)(((byte)(247)))), ((int)(((byte)(127)))));
             this.guna2GroupBox3.Dock = System.Windows.Forms.DockStyle.Top;
             this.guna2GroupBox3.FillColor = System.Drawing.Color.Transparent;
             this.guna2GroupBox3.Font = new System.Drawing.Font("Times New Roman", 16.2F, System.Drawing.FontStyle.Bold);
             this.guna2GroupBox3.ForeColor = System.Drawing.Color.Black;
-            this.guna2GroupBox3.Location = new System.Drawing.Point(0, 34);
-            this.guna2GroupBox3.Margin = new System.Windows.Forms.Padding(4);
+            this.guna2GroupBox3.Location = new System.Drawing.Point(0, 28);
             this.guna2GroupBox3.Name = "guna2GroupBox3";
-            this.guna2GroupBox3.Size = new System.Drawing.Size(1057, 151);
+            this.guna2GroupBox3.Size = new System.Drawing.Size(793, 123);
             this.guna2GroupBox3.TabIndex = 25;
             this.guna2GroupBox3.Text = "Quản lí loại nhân viên";
             this.guna2GroupBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -156,11 +155,12 @@
             this.tableFields.Controls.Add(this.label1, 0, 0);
             this.tableFields.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableFields.Location = new System.Drawing.Point(0, 40);
+            this.tableFields.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tableFields.Name = "tableFields";
             this.tableFields.RowCount = 1;
             this.tableFields.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableFields.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 111F));
-            this.tableFields.Size = new System.Drawing.Size(1057, 111);
+            this.tableFields.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 90F));
+            this.tableFields.Size = new System.Drawing.Size(793, 83);
             this.tableFields.TabIndex = 14;
             // 
             // txtTenLoaiNhanVien
@@ -178,12 +178,11 @@
             this.txtTenLoaiNhanVien.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTenLoaiNhanVien.ForeColor = System.Drawing.Color.Black;
             this.txtTenLoaiNhanVien.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtTenLoaiNhanVien.Location = new System.Drawing.Point(532, 4);
-            this.txtTenLoaiNhanVien.Margin = new System.Windows.Forms.Padding(4);
+            this.txtTenLoaiNhanVien.Location = new System.Drawing.Point(399, 3);
             this.txtTenLoaiNhanVien.Name = "txtTenLoaiNhanVien";
             this.txtTenLoaiNhanVien.PlaceholderText = "";
             this.txtTenLoaiNhanVien.SelectedText = "";
-            this.txtTenLoaiNhanVien.Size = new System.Drawing.Size(521, 103);
+            this.txtTenLoaiNhanVien.Size = new System.Drawing.Size(391, 77);
             this.txtTenLoaiNhanVien.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
             this.txtTenLoaiNhanVien.TabIndex = 1;
             // 
@@ -193,9 +192,10 @@
             this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label1.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Bold);
             this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(3, 0);
+            this.label1.Location = new System.Drawing.Point(2, 0);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(522, 111);
+            this.label1.Size = new System.Drawing.Size(392, 83);
             this.label1.TabIndex = 1;
             this.label1.Text = "Tên loại nhân viên";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -211,7 +211,7 @@
             this.btnThoat});
             this.menuToolStrip.Location = new System.Drawing.Point(0, 0);
             this.menuToolStrip.Name = "menuToolStrip";
-            this.menuToolStrip.Size = new System.Drawing.Size(1057, 34);
+            this.menuToolStrip.Size = new System.Drawing.Size(793, 28);
             this.menuToolStrip.TabIndex = 24;
             this.menuToolStrip.Text = "toolStrip1";
             // 
@@ -221,7 +221,7 @@
             this.btnThem.Image = ((System.Drawing.Image)(resources.GetObject("btnThem.Image")));
             this.btnThem.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnThem.Name = "btnThem";
-            this.btnThem.Size = new System.Drawing.Size(91, 31);
+            this.btnThem.Size = new System.Drawing.Size(77, 25);
             this.btnThem.Text = "Thêm";
             // 
             // btnXoa
@@ -230,7 +230,7 @@
             this.btnXoa.Image = ((System.Drawing.Image)(resources.GetObject("btnXoa.Image")));
             this.btnXoa.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnXoa.Name = "btnXoa";
-            this.btnXoa.Size = new System.Drawing.Size(76, 31);
+            this.btnXoa.Size = new System.Drawing.Size(65, 25);
             this.btnXoa.Text = "Xóa";
             // 
             // btnSua
@@ -239,7 +239,7 @@
             this.btnSua.Image = ((System.Drawing.Image)(resources.GetObject("btnSua.Image")));
             this.btnSua.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnSua.Name = "btnSua";
-            this.btnSua.Size = new System.Drawing.Size(72, 31);
+            this.btnSua.Size = new System.Drawing.Size(63, 25);
             this.btnSua.Text = "Sửa";
             // 
             // btnLamMoi
@@ -248,7 +248,7 @@
             this.btnLamMoi.Image = ((System.Drawing.Image)(resources.GetObject("btnLamMoi.Image")));
             this.btnLamMoi.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnLamMoi.Name = "btnLamMoi";
-            this.btnLamMoi.Size = new System.Drawing.Size(123, 31);
+            this.btnLamMoi.Size = new System.Drawing.Size(100, 25);
             this.btnLamMoi.Text = "Làm mới";
             // 
             // btnThoat
@@ -257,17 +257,18 @@
             this.btnThoat.Image = ((System.Drawing.Image)(resources.GetObject("btnThoat.Image")));
             this.btnThoat.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnThoat.Name = "btnThoat";
-            this.btnThoat.Size = new System.Drawing.Size(92, 31);
+            this.btnThoat.Size = new System.Drawing.Size(78, 25);
             this.btnThoat.Text = "Thoát";
             // 
             // Frm_LoaiNhanVien
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1057, 696);
+            this.ClientSize = new System.Drawing.Size(793, 566);
             this.Controls.Add(this.guna2GroupBox1);
             this.Controls.Add(this.guna2GroupBox3);
             this.Controls.Add(this.menuToolStrip);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "Frm_LoaiNhanVien";
             this.Text = "Quản lý loại nhân viên";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;

@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Project_CDUD_BachHoaXanh.TrongDev;
+
 
 namespace Project_CDUD_BachHoaXanh.DongDev
 {
@@ -39,6 +41,12 @@ namespace Project_CDUD_BachHoaXanh.DongDev
         private void guna2GroupBox4_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnThanhToan_Click(object sender, EventArgs e)
+        {
+            Frm_ApDungMaKhuyenMai frm = new Frm_ApDungMaKhuyenMai();
+            frm.Show();
         }
     }
 }

@@ -21,5 +21,10 @@ namespace Project_CDUD_BachHoaXanh.DongDev
         {
 
         }
+
+        private void dgvChiTietHoaDon_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
