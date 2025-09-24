@@ -49,7 +49,7 @@
             this.ClientSize = new System.Drawing.Size(1130, 635);
             this.Controls.Add(this.crystalReportViewer1);
             this.Name = "Frm_DanhSachPhieuNhap";
-            this.Text = "Frm_DanhSachPhieuNhap";
+            this.Text = "IN DANH SÁCH PHIẾU NHẬP";
             this.ResumeLayout(false);
 
         }
