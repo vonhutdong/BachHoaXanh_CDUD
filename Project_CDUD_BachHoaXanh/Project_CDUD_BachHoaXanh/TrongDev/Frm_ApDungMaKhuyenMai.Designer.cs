@@ -31,15 +31,15 @@
             this.guna2GroupBox1 = new Guna.UI2.WinForms.Guna2GroupBox();
             this.btnDong = new Guna.UI2.WinForms.Guna2Button();
             this.btnThem = new Guna.UI2.WinForms.Guna2Button();
-            this.txtMaChiNhanh = new Guna.UI2.WinForms.Guna2TextBox();
+            this.cbTenSP = new Guna.UI2.WinForms.Guna2ComboBox();
             this.guna2GroupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // guna2GroupBox1
             // 
+            this.guna2GroupBox1.Controls.Add(this.cbTenSP);
             this.guna2GroupBox1.Controls.Add(this.btnDong);
             this.guna2GroupBox1.Controls.Add(this.btnThem);
-            this.guna2GroupBox1.Controls.Add(this.txtMaChiNhanh);
             this.guna2GroupBox1.CustomBorderColor = System.Drawing.Color.LimeGreen;
             this.guna2GroupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.guna2GroupBox1.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -87,37 +87,34 @@
             this.btnThem.TabIndex = 20;
             this.btnThem.Text = "Áp dụng";
             // 
-            // txtMaChiNhanh
+            // cbTenSP
             // 
-            this.txtMaChiNhanh.BorderColor = System.Drawing.Color.DarkSeaGreen;
-            this.txtMaChiNhanh.BorderRadius = 2;
-            this.txtMaChiNhanh.BorderThickness = 2;
-            this.txtMaChiNhanh.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtMaChiNhanh.DefaultText = "";
-            this.txtMaChiNhanh.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtMaChiNhanh.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtMaChiNhanh.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtMaChiNhanh.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtMaChiNhanh.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtMaChiNhanh.Font = new System.Drawing.Font("Times New Roman", 15.75F);
-            this.txtMaChiNhanh.ForeColor = System.Drawing.Color.Black;
-            this.txtMaChiNhanh.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtMaChiNhanh.Location = new System.Drawing.Point(73, 54);
-            this.txtMaChiNhanh.Margin = new System.Windows.Forms.Padding(4);
-            this.txtMaChiNhanh.Name = "txtMaChiNhanh";
-            this.txtMaChiNhanh.PlaceholderText = "";
-            this.txtMaChiNhanh.SelectedText = "";
-            this.txtMaChiNhanh.Size = new System.Drawing.Size(247, 41);
-            this.txtMaChiNhanh.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
-            this.txtMaChiNhanh.TabIndex = 7;
+            this.cbTenSP.BackColor = System.Drawing.Color.Transparent;
+            this.cbTenSP.BorderColor = System.Drawing.Color.DarkSeaGreen;
+            this.cbTenSP.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cbTenSP.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbTenSP.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cbTenSP.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cbTenSP.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbTenSP.ForeColor = System.Drawing.Color.Black;
+            this.cbTenSP.ItemHeight = 30;
+            this.cbTenSP.Items.AddRange(new object[] {
+            "User"});
+            this.cbTenSP.Location = new System.Drawing.Point(73, 65);
+            this.cbTenSP.Name = "cbTenSP";
+            this.cbTenSP.Size = new System.Drawing.Size(247, 36);
+            this.cbTenSP.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
+            this.cbTenSP.TabIndex = 43;
             // 
             // Frm_ApDungMaKhuyenMai
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(398, 219);
+            this.ControlBox = false;
             this.Controls.Add(this.guna2GroupBox1);
             this.Name = "Frm_ApDungMaKhuyenMai";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Áp dụng khuyến mãi";
             this.guna2GroupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -127,8 +124,8 @@
         #endregion
 
         private Guna.UI2.WinForms.Guna2GroupBox guna2GroupBox1;
-        private Guna.UI2.WinForms.Guna2TextBox txtMaChiNhanh;
         private Guna.UI2.WinForms.Guna2Button btnDong;
         private Guna.UI2.WinForms.Guna2Button btnThem;
+        private Guna.UI2.WinForms.Guna2ComboBox cbTenSP;
     }
 }
