@@ -8,18 +8,19 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Project_CDUD_BachHoaXanh.TrongDev
+namespace Project_CDUD_BachHoaXanh.DongDev
 {
-    public partial class Frm_ApDungMaKhuyenMai : Form
+    public partial class KhachHangVIP : Form
     {
-        public Frm_ApDungMaKhuyenMai()
+        public KhachHangVIP()
         {
             InitializeComponent();
         }
 
-        private void btnDong_Click(object sender, EventArgs e)
+        private void guna2Button4_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Frm_NapVip fr = new Frm_NapVip();
+            fr.Show();
         }
     }
 }

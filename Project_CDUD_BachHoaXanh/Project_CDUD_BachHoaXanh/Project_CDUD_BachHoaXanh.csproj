@@ -117,6 +117,12 @@
     <Compile Include="DongDev\Frm_LoaiNhanVien.Designer.cs">
       <DependentUpon>Frm_LoaiNhanVien.cs</DependentUpon>
     </Compile>
+    <Compile Include="DongDev\Frm_NapVip.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DongDev\Frm_NapVip.Designer.cs">
+      <DependentUpon>Frm_NapVip.cs</DependentUpon>
+    </Compile>
     <Compile Include="DongDev\Frm_NhanViencs.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -128,6 +134,12 @@
     </Compile>
     <Compile Include="DongDev\Frm_SanPham.Designer.cs">
       <DependentUpon>Frm_SanPham.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DongDev\KhachHangVIP.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DongDev\KhachHangVIP.Designer.cs">
+      <DependentUpon>KhachHangVIP.cs</DependentUpon>
     </Compile>
     <Compile Include="Frm_DangNhap.cs">
       <SubType>Form</SubType>
@@ -245,6 +257,9 @@
     <EmbeddedResource Include="DongDev\Frm_LoaiNhanVien.resx">
       <DependentUpon>Frm_LoaiNhanVien.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="DongDev\Frm_NapVip.resx">
+      <DependentUpon>Frm_NapVip.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DongDev\Frm_NhanViencs.resx">
       <DependentUpon>Frm_NhanViencs.cs</DependentUpon>
     </EmbeddedResource>
@@ -257,6 +272,9 @@
       <DependentUpon>InThongKeTheoMaPhieuNhap.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <EmbeddedResource Include="DongDev\KhachHangVIP.resx">
+      <DependentUpon>KhachHangVIP.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Frm_DangNhap.resx">
       <DependentUpon>Frm_DangNhap.cs</DependentUpon>
     </EmbeddedResource>

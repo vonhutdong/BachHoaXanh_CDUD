@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Project_CDUD_BachHoaXanh.TrongDev
+namespace Project_CDUD_BachHoaXanh.DongDev
 {
-    public partial class Frm_ApDungMaKhuyenMai : Form
+    public partial class Frm_NapVip : Form
     {
-        public Frm_ApDungMaKhuyenMai()
+        public Frm_NapVip()
         {
             InitializeComponent();
         }
