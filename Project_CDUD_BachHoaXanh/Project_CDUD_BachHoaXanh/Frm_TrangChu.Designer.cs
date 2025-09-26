@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Frm_TrangChu));
             this.tabControlQuanLy = new Guna.UI2.WinForms.Guna2TabControl();
             this.tabHeThong = new System.Windows.Forms.TabPage();
             this.tabBanHang = new System.Windows.Forms.TabPage();
@@ -78,6 +79,7 @@
             this.tabControlQuanLy.ItemSize = new System.Drawing.Size(180, 80);
             this.tabControlQuanLy.Location = new System.Drawing.Point(0, 0);
             this.tabControlQuanLy.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tabControlQuanLy.Margin = new System.Windows.Forms.Padding(2);
             this.tabControlQuanLy.Name = "tabControlQuanLy";
             this.tabControlQuanLy.SelectedIndex = 0;
             this.tabControlQuanLy.Size = new System.Drawing.Size(1149, 671);
@@ -111,6 +113,10 @@
             this.tabHeThong.Name = "tabHeThong";
             this.tabHeThong.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabHeThong.Size = new System.Drawing.Size(1141, 583);
+            this.tabHeThong.Margin = new System.Windows.Forms.Padding(2);
+            this.tabHeThong.Name = "tabHeThong";
+            this.tabHeThong.Padding = new System.Windows.Forms.Padding(2);
+            this.tabHeThong.Size = new System.Drawing.Size(854, 457);
             this.tabHeThong.TabIndex = 0;
             this.tabHeThong.Text = "Hệ thống";
             this.tabHeThong.UseVisualStyleBackColor = true;
@@ -123,6 +129,10 @@
             this.tabBanHang.Name = "tabBanHang";
             this.tabBanHang.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabBanHang.Size = new System.Drawing.Size(1141, 583);
+            this.tabBanHang.Margin = new System.Windows.Forms.Padding(2);
+            this.tabBanHang.Name = "tabBanHang";
+            this.tabBanHang.Padding = new System.Windows.Forms.Padding(2);
+            this.tabBanHang.Size = new System.Drawing.Size(854, 457);
             this.tabBanHang.TabIndex = 1;
             this.tabBanHang.Text = "Bán hàng";
             this.tabBanHang.UseVisualStyleBackColor = true;
@@ -134,6 +144,7 @@
             this.tabQuanLy.Controls.Add(this.tableLayoutPanel1);
             this.tabQuanLy.Location = new System.Drawing.Point(4, 84);
             this.tabQuanLy.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tabQuanLy.Margin = new System.Windows.Forms.Padding(2);
             this.tabQuanLy.Name = "tabQuanLy";
             this.tabQuanLy.Size = new System.Drawing.Size(1141, 583);
             this.tabQuanLy.TabIndex = 2;
@@ -146,6 +157,8 @@
             this.panelMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelMain.Location = new System.Drawing.Point(212, 0);
             this.panelMain.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panelMain.Location = new System.Drawing.Point(159, 0);
+            this.panelMain.Margin = new System.Windows.Forms.Padding(2);
             this.panelMain.Name = "panelMain";
             this.panelMain.Size = new System.Drawing.Size(925, 579);
             this.panelMain.TabIndex = 1;
@@ -173,6 +186,7 @@
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 15;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6.666667F));
@@ -205,6 +219,8 @@
             this.btnPhieuNhap.ForeColor = System.Drawing.Color.White;
             this.btnPhieuNhap.Location = new System.Drawing.Point(3, 534);
             this.btnPhieuNhap.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnPhieuNhap.Location = new System.Drawing.Point(2, 418);
+            this.btnPhieuNhap.Margin = new System.Windows.Forms.Padding(2);
             this.btnPhieuNhap.Name = "btnPhieuNhap";
             this.btnPhieuNhap.Size = new System.Drawing.Size(206, 43);
             this.btnPhieuNhap.TabIndex = 16;
@@ -223,6 +239,8 @@
             this.btnChiNhanh.ForeColor = System.Drawing.Color.White;
             this.btnChiNhanh.Location = new System.Drawing.Point(3, 458);
             this.btnChiNhanh.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnChiNhanh.Location = new System.Drawing.Point(2, 386);
+            this.btnChiNhanh.Margin = new System.Windows.Forms.Padding(2);
             this.btnChiNhanh.Name = "btnChiNhanh";
             this.btnChiNhanh.Size = new System.Drawing.Size(206, 34);
             this.btnChiNhanh.TabIndex = 15;
@@ -241,6 +259,8 @@
             this.btnLoaiHang.ForeColor = System.Drawing.Color.White;
             this.btnLoaiHang.Location = new System.Drawing.Point(3, 230);
             this.btnLoaiHang.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnLoaiHang.Location = new System.Drawing.Point(2, 194);
+            this.btnLoaiHang.Margin = new System.Windows.Forms.Padding(2);
             this.btnLoaiHang.Name = "btnLoaiHang";
             this.btnLoaiHang.Size = new System.Drawing.Size(206, 34);
             this.btnLoaiHang.TabIndex = 14;
@@ -259,6 +279,8 @@
             this.btnKhachHang.ForeColor = System.Drawing.Color.White;
             this.btnKhachHang.Location = new System.Drawing.Point(3, 382);
             this.btnKhachHang.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnKhachHang.Location = new System.Drawing.Point(2, 322);
+            this.btnKhachHang.Margin = new System.Windows.Forms.Padding(2);
             this.btnKhachHang.Name = "btnKhachHang";
             this.btnKhachHang.Size = new System.Drawing.Size(206, 34);
             this.btnKhachHang.TabIndex = 13;
@@ -277,6 +299,8 @@
             this.btnTaiKhoan.ForeColor = System.Drawing.Color.White;
             this.btnTaiKhoan.Location = new System.Drawing.Point(3, 420);
             this.btnTaiKhoan.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnTaiKhoan.Location = new System.Drawing.Point(2, 354);
+            this.btnTaiKhoan.Margin = new System.Windows.Forms.Padding(2);
             this.btnTaiKhoan.Name = "btnTaiKhoan";
             this.btnTaiKhoan.Size = new System.Drawing.Size(206, 34);
             this.btnTaiKhoan.TabIndex = 11;
@@ -295,6 +319,8 @@
             this.btnNhaCC.ForeColor = System.Drawing.Color.White;
             this.btnNhaCC.Location = new System.Drawing.Point(3, 344);
             this.btnNhaCC.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnNhaCC.Location = new System.Drawing.Point(2, 290);
+            this.btnNhaCC.Margin = new System.Windows.Forms.Padding(2);
             this.btnNhaCC.Name = "btnNhaCC";
             this.btnNhaCC.Size = new System.Drawing.Size(206, 34);
             this.btnNhaCC.TabIndex = 9;
@@ -313,6 +339,8 @@
             this.btnKhuyenMai.ForeColor = System.Drawing.Color.White;
             this.btnKhuyenMai.Location = new System.Drawing.Point(3, 306);
             this.btnKhuyenMai.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnKhuyenMai.Location = new System.Drawing.Point(2, 258);
+            this.btnKhuyenMai.Margin = new System.Windows.Forms.Padding(2);
             this.btnKhuyenMai.Name = "btnKhuyenMai";
             this.btnKhuyenMai.Size = new System.Drawing.Size(206, 34);
             this.btnKhuyenMai.TabIndex = 8;
@@ -331,6 +359,8 @@
             this.btnSanPham.ForeColor = System.Drawing.Color.White;
             this.btnSanPham.Location = new System.Drawing.Point(3, 268);
             this.btnSanPham.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnSanPham.Location = new System.Drawing.Point(2, 226);
+            this.btnSanPham.Margin = new System.Windows.Forms.Padding(2);
             this.btnSanPham.Name = "btnSanPham";
             this.btnSanPham.Size = new System.Drawing.Size(206, 34);
             this.btnSanPham.TabIndex = 7;
@@ -349,6 +379,8 @@
             this.btnkhoHang.ForeColor = System.Drawing.Color.White;
             this.btnkhoHang.Location = new System.Drawing.Point(3, 192);
             this.btnkhoHang.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnkhoHang.Location = new System.Drawing.Point(2, 162);
+            this.btnkhoHang.Margin = new System.Windows.Forms.Padding(2);
             this.btnkhoHang.Name = "btnkhoHang";
             this.btnkhoHang.Size = new System.Drawing.Size(206, 34);
             this.btnkhoHang.TabIndex = 5;
@@ -367,6 +399,8 @@
             this.btnBangLuong.ForeColor = System.Drawing.Color.White;
             this.btnBangLuong.Location = new System.Drawing.Point(3, 154);
             this.btnBangLuong.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnBangLuong.Location = new System.Drawing.Point(2, 130);
+            this.btnBangLuong.Margin = new System.Windows.Forms.Padding(2);
             this.btnBangLuong.Name = "btnBangLuong";
             this.btnBangLuong.Size = new System.Drawing.Size(206, 34);
             this.btnBangLuong.TabIndex = 4;
@@ -385,6 +419,8 @@
             this.btnLichLam.ForeColor = System.Drawing.Color.White;
             this.btnLichLam.Location = new System.Drawing.Point(3, 116);
             this.btnLichLam.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnLichLam.Location = new System.Drawing.Point(2, 98);
+            this.btnLichLam.Margin = new System.Windows.Forms.Padding(2);
             this.btnLichLam.Name = "btnLichLam";
             this.btnLichLam.Size = new System.Drawing.Size(206, 34);
             this.btnLichLam.TabIndex = 3;
@@ -403,6 +439,8 @@
             this.btnCaLam.ForeColor = System.Drawing.Color.White;
             this.btnCaLam.Location = new System.Drawing.Point(3, 78);
             this.btnCaLam.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnCaLam.Location = new System.Drawing.Point(2, 66);
+            this.btnCaLam.Margin = new System.Windows.Forms.Padding(2);
             this.btnCaLam.Name = "btnCaLam";
             this.btnCaLam.Size = new System.Drawing.Size(206, 34);
             this.btnCaLam.TabIndex = 2;
@@ -421,6 +459,8 @@
             this.btnLoaiNV.ForeColor = System.Drawing.Color.White;
             this.btnLoaiNV.Location = new System.Drawing.Point(3, 40);
             this.btnLoaiNV.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnLoaiNV.Location = new System.Drawing.Point(2, 34);
+            this.btnLoaiNV.Margin = new System.Windows.Forms.Padding(2);
             this.btnLoaiNV.Name = "btnLoaiNV";
             this.btnLoaiNV.Size = new System.Drawing.Size(206, 34);
             this.btnLoaiNV.TabIndex = 1;
@@ -440,6 +480,8 @@
             this.btnNhanVien.ForeColor = System.Drawing.Color.White;
             this.btnNhanVien.Location = new System.Drawing.Point(3, 2);
             this.btnNhanVien.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnNhanVien.Location = new System.Drawing.Point(2, 2);
+            this.btnNhanVien.Margin = new System.Windows.Forms.Padding(2);
             this.btnNhanVien.Name = "btnNhanVien";
             this.btnNhanVien.Size = new System.Drawing.Size(206, 34);
             this.btnNhanVien.TabIndex = 0;
@@ -452,6 +494,7 @@
             this.tabThongKe.Controls.Add(this.hetong);
             this.tabThongKe.Location = new System.Drawing.Point(4, 84);
             this.tabThongKe.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tabThongKe.Margin = new System.Windows.Forms.Padding(2);
             this.tabThongKe.Name = "tabThongKe";
             this.tabThongKe.Size = new System.Drawing.Size(1141, 583);
             this.tabThongKe.TabIndex = 3;
@@ -465,6 +508,7 @@
             this.hetong.Dock = System.Windows.Forms.DockStyle.Fill;
             this.hetong.Location = new System.Drawing.Point(0, 0);
             this.hetong.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.hetong.Margin = new System.Windows.Forms.Padding(2);
             this.hetong.Name = "hetong";
             this.hetong.Size = new System.Drawing.Size(1137, 579);
             this.hetong.TabIndex = 2;
@@ -475,6 +519,8 @@
             this.panelHeThong.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelHeThong.Location = new System.Drawing.Point(285, 0);
             this.panelHeThong.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panelHeThong.Location = new System.Drawing.Point(214, 0);
+            this.panelHeThong.Margin = new System.Windows.Forms.Padding(2);
             this.panelHeThong.Name = "panelHeThong";
             this.panelHeThong.Size = new System.Drawing.Size(852, 579);
             this.panelHeThong.TabIndex = 2;
@@ -493,6 +539,7 @@
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Left;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 6;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
@@ -516,6 +563,8 @@
             this.btnThongKeSPTonKho.ForeColor = System.Drawing.Color.White;
             this.btnThongKeSPTonKho.Location = new System.Drawing.Point(3, 482);
             this.btnThongKeSPTonKho.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnThongKeSPTonKho.Location = new System.Drawing.Point(2, 377);
+            this.btnThongKeSPTonKho.Margin = new System.Windows.Forms.Padding(2);
             this.btnThongKeSPTonKho.Name = "btnThongKeSPTonKho";
             this.btnThongKeSPTonKho.Size = new System.Drawing.Size(279, 95);
             this.btnThongKeSPTonKho.TabIndex = 7;
@@ -534,6 +583,8 @@
             this.btnThongKeDSPhieuNhap.ForeColor = System.Drawing.Color.White;
             this.btnThongKeDSPhieuNhap.Location = new System.Drawing.Point(3, 386);
             this.btnThongKeDSPhieuNhap.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnThongKeDSPhieuNhap.Location = new System.Drawing.Point(2, 302);
+            this.btnThongKeDSPhieuNhap.Margin = new System.Windows.Forms.Padding(2);
             this.btnThongKeDSPhieuNhap.Name = "btnThongKeDSPhieuNhap";
             this.btnThongKeDSPhieuNhap.Size = new System.Drawing.Size(279, 92);
             this.btnThongKeDSPhieuNhap.TabIndex = 6;
@@ -552,6 +603,8 @@
             this.btnThongKePhieuNhapTheoMa.ForeColor = System.Drawing.Color.White;
             this.btnThongKePhieuNhapTheoMa.Location = new System.Drawing.Point(3, 290);
             this.btnThongKePhieuNhapTheoMa.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnThongKePhieuNhapTheoMa.Location = new System.Drawing.Point(2, 227);
+            this.btnThongKePhieuNhapTheoMa.Margin = new System.Windows.Forms.Padding(2);
             this.btnThongKePhieuNhapTheoMa.Name = "btnThongKePhieuNhapTheoMa";
             this.btnThongKePhieuNhapTheoMa.Size = new System.Drawing.Size(279, 92);
             this.btnThongKePhieuNhapTheoMa.TabIndex = 5;
@@ -570,6 +623,8 @@
             this.btnBaoCaoBangLuong.ForeColor = System.Drawing.Color.White;
             this.btnBaoCaoBangLuong.Location = new System.Drawing.Point(3, 194);
             this.btnBaoCaoBangLuong.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnBaoCaoBangLuong.Location = new System.Drawing.Point(2, 152);
+            this.btnBaoCaoBangLuong.Margin = new System.Windows.Forms.Padding(2);
             this.btnBaoCaoBangLuong.Name = "btnBaoCaoBangLuong";
             this.btnBaoCaoBangLuong.Size = new System.Drawing.Size(279, 92);
             this.btnBaoCaoBangLuong.TabIndex = 4;
@@ -588,6 +643,8 @@
             this.btnChiTietHoaDon.ForeColor = System.Drawing.Color.White;
             this.btnChiTietHoaDon.Location = new System.Drawing.Point(3, 98);
             this.btnChiTietHoaDon.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnChiTietHoaDon.Location = new System.Drawing.Point(2, 77);
+            this.btnChiTietHoaDon.Margin = new System.Windows.Forms.Padding(2);
             this.btnChiTietHoaDon.Name = "btnChiTietHoaDon";
             this.btnChiTietHoaDon.Size = new System.Drawing.Size(279, 92);
             this.btnChiTietHoaDon.TabIndex = 1;
@@ -607,6 +664,8 @@
             this.btnHoaDon.ForeColor = System.Drawing.Color.White;
             this.btnHoaDon.Location = new System.Drawing.Point(3, 2);
             this.btnHoaDon.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnHoaDon.Location = new System.Drawing.Point(2, 2);
+            this.btnHoaDon.Margin = new System.Windows.Forms.Padding(2);
             this.btnHoaDon.Name = "btnHoaDon";
             this.btnHoaDon.Size = new System.Drawing.Size(279, 92);
             this.btnHoaDon.TabIndex = 0;
@@ -638,6 +697,8 @@
             this.ClientSize = new System.Drawing.Size(1149, 671);
             this.Controls.Add(this.tabControlQuanLy);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Frm_TrangChu";
             this.Text = "Màn hình chính";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;

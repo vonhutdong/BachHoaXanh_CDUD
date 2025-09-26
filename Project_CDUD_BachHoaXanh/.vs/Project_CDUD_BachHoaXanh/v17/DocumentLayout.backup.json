@@ -80,6 +80,23 @@
     },
     {
       "AbsoluteMoniker": "D:0:0:{0B03F3A0-8421-4D39-83FC-05E3F9A60CEF}|Project_CDUD_BachHoaXanh\\Project_CDUD_BachHoaXanh.csproj|C:\\Users\\OS\\OneDrive\\Desktop\\HocTap\\BachHoaXanh_CDUD.git\\Project_CDUD_BachHoaXanh\\project_cdud_bachhoaxanh\\dongdev\\frm_chitiethoadonfrm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{0B03F3A0-8421-4D39-83FC-05E3F9A60CEF}|Project_CDUD_BachHoaXanh\\Project_CDUD_BachHoaXanh.csproj|e:\\do_an_chuyen_de\\bachhoaxanh_cdud\\project_cdud_bachhoaxanh\\project_cdud_bachhoaxanh\\frm_trangchu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{0B03F3A0-8421-4D39-83FC-05E3F9A60CEF}|Project_CDUD_BachHoaXanh\\Project_CDUD_BachHoaXanh.csproj|solutionrelative:project_cdud_bachhoaxanh\\frm_trangchu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0B03F3A0-8421-4D39-83FC-05E3F9A60CEF}|Project_CDUD_BachHoaXanh\\Project_CDUD_BachHoaXanh.csproj|e:\\do_an_chuyen_de\\bachhoaxanh_cdud\\project_cdud_bachhoaxanh\\project_cdud_bachhoaxanh\\frm_dangnhap.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{0B03F3A0-8421-4D39-83FC-05E3F9A60CEF}|Project_CDUD_BachHoaXanh\\Project_CDUD_BachHoaXanh.csproj|solutionrelative:project_cdud_bachhoaxanh\\frm_dangnhap.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0B03F3A0-8421-4D39-83FC-05E3F9A60CEF}|Project_CDUD_BachHoaXanh\\Project_CDUD_BachHoaXanh.csproj|e:\\do_an_chuyen_de\\bachhoaxanh_cdud\\project_cdud_bachhoaxanh\\project_cdud_bachhoaxanh\\trongdev\\frm_khachhang.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{0B03F3A0-8421-4D39-83FC-05E3F9A60CEF}|Project_CDUD_BachHoaXanh\\Project_CDUD_BachHoaXanh.csproj|solutionrelative:project_cdud_bachhoaxanh\\trongdev\\frm_khachhang.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0B03F3A0-8421-4D39-83FC-05E3F9A60CEF}|Project_CDUD_BachHoaXanh\\Project_CDUD_BachHoaXanh.csproj|E:\\Do_An_CHuyen_De\\BachHoaXanh_CDUD\\Project_CDUD_BachHoaXanh\\project_cdud_bachhoaxanh\\trongdev\\frm_khohang.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{0B03F3A0-8421-4D39-83FC-05E3F9A60CEF}|Project_CDUD_BachHoaXanh\\Project_CDUD_BachHoaXanh.csproj|solutionrelative:project_cdud_bachhoaxanh\\trongdev\\frm_khohang.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0B03F3A0-8421-4D39-83FC-05E3F9A60CEF}|Project_CDUD_BachHoaXanh\\Project_CDUD_BachHoaXanh.csproj|E:\\Do_An_CHuyen_De\\BachHoaXanh_CDUD\\Project_CDUD_BachHoaXanh\\project_cdud_bachhoaxanh\\dongdev\\frm_chitiethoadonfrm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{0B03F3A0-8421-4D39-83FC-05E3F9A60CEF}|Project_CDUD_BachHoaXanh\\Project_CDUD_BachHoaXanh.csproj|solutionrelative:project_cdud_bachhoaxanh\\dongdev\\frm_chitiethoadonfrm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
@@ -335,6 +352,59 @@
               "DocumentMoniker": "C:\\Users\\OS\\OneDrive\\Desktop\\HocTap\\BachHoaXanh_CDUD.git\\Project_CDUD_BachHoaXanh\\Project_CDUD_BachHoaXanh\\DongDev\\Frm_ChiTietHoaDonFrm.cs",
               "RelativeDocumentMoniker": "Project_CDUD_BachHoaXanh\\DongDev\\Frm_ChiTietHoaDonFrm.cs",
               "ToolTip": "E:\\Do_An_CHuyen_De\\BachHoaXanh_CDUD\\Project_CDUD_BachHoaXanh\\Project_CDUD_BachHoaXanh\\DongDev\\Frm_ChiTietHoaDonFrm.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "Title": "Frm_TrangChu.cs [Design]",
+              "DocumentMoniker": "E:\\Do_An_CHuyen_De\\BachHoaXanh_CDUD\\Project_CDUD_BachHoaXanh\\Project_CDUD_BachHoaXanh\\Frm_TrangChu.cs",
+              "RelativeDocumentMoniker": "Project_CDUD_BachHoaXanh\\Frm_TrangChu.cs",
+              "ToolTip": "E:\\Do_An_CHuyen_De\\BachHoaXanh_CDUD\\Project_CDUD_BachHoaXanh\\Project_CDUD_BachHoaXanh\\Frm_TrangChu.cs [Design]",
+              "RelativeToolTip": "Project_CDUD_BachHoaXanh\\Frm_TrangChu.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-24T15:26:22.516Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Frm_DangNhap.cs [Design]",
+              "DocumentMoniker": "E:\\Do_An_CHuyen_De\\BachHoaXanh_CDUD\\Project_CDUD_BachHoaXanh\\Project_CDUD_BachHoaXanh\\Frm_DangNhap.cs",
+              "RelativeDocumentMoniker": "Project_CDUD_BachHoaXanh\\Frm_DangNhap.cs",
+              "ToolTip": "E:\\Do_An_CHuyen_De\\BachHoaXanh_CDUD\\Project_CDUD_BachHoaXanh\\Project_CDUD_BachHoaXanh\\Frm_DangNhap.cs [Design]",
+              "RelativeToolTip": "Project_CDUD_BachHoaXanh\\Frm_DangNhap.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-24T15:18:24.203Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Frm_KhachHang.cs [Design]",
+              "DocumentMoniker": "E:\\Do_An_CHuyen_De\\BachHoaXanh_CDUD\\Project_CDUD_BachHoaXanh\\Project_CDUD_BachHoaXanh\\TrongDev\\Frm_KhachHang.cs",
+              "RelativeDocumentMoniker": "Project_CDUD_BachHoaXanh\\TrongDev\\Frm_KhachHang.cs",
+              "ToolTip": "E:\\Do_An_CHuyen_De\\BachHoaXanh_CDUD\\Project_CDUD_BachHoaXanh\\Project_CDUD_BachHoaXanh\\TrongDev\\Frm_KhachHang.cs [Design]",
+              "RelativeToolTip": "Project_CDUD_BachHoaXanh\\TrongDev\\Frm_KhachHang.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-24T14:45:17.47Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Frm_KhoHang.cs [Design]",
+              "DocumentMoniker": "E:\\Do_An_CHuyen_De\\BachHoaXanh_CDUD\\Project_CDUD_BachHoaXanh\\Project_CDUD_BachHoaXanh\\TrongDev\\Frm_KhoHang.cs",
+              "RelativeDocumentMoniker": "Project_CDUD_BachHoaXanh\\TrongDev\\Frm_KhoHang.cs",
+              "ToolTip": "E:\\Do_An_CHuyen_De\\BachHoaXanh_CDUD\\Project_CDUD_BachHoaXanh\\Project_CDUD_BachHoaXanh\\TrongDev\\Frm_KhoHang.cs [Design]",
+              "RelativeToolTip": "Project_CDUD_BachHoaXanh\\TrongDev\\Frm_KhoHang.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-24T14:37:48.522Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Frm_ChiTietHoaDonFrm.cs [Design]",
+              "DocumentMoniker": "E:\\Do_An_CHuyen_De\\BachHoaXanh_CDUD\\Project_CDUD_BachHoaXanh\\Project_CDUD_BachHoaXanh\\DongDev\\Frm_ChiTietHoaDonFrm.cs",
+              "RelativeDocumentMoniker": "Project_CDUD_BachHoaXanh\\DongDev\\Frm_ChiTietHoaDonFrm.cs",
+              "ToolTip": "E:\\Do_An_CHuyen_De\\BachHoaXanh_CDUD\\Project_CDUD_BachHoaXanh\\Project_CDUD_BachHoaXanh\\DongDev\\Frm_ChiTietHoaDonFrm.cs [Design]",
+              "RelativeToolTip": "Project_CDUD_BachHoaXanh\\DongDev\\Frm_ChiTietHoaDonFrm.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-09-24T14:35:01.86Z"
             }
