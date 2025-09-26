@@ -184,5 +184,10 @@ namespace Project_CDUD_BachHoaXanh
         {
             tabBanHang.Focus();
         }
+
+        private void btnVip_Click(object sender, EventArgs e)
+        {
+            LoadForm(new KhachHangVIP());
+        }
     }
 }

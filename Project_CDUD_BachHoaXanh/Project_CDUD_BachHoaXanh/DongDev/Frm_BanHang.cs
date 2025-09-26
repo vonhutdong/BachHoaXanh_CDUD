@@ -48,5 +48,48 @@ namespace Project_CDUD_BachHoaXanh.DongDev
             Frm_ApDungMaKhuyenMai frm = new Frm_ApDungMaKhuyenMai();
             frm.Show();
         }
+
+        private void guna2Button5_Click(object sender, EventArgs e)
+        {
+                    }
+
+        private void guna2Button6_Click(object sender, EventArgs e)
+        {
+            Frm_ApDungMaKhuyenMai frm = new Frm_ApDungMaKhuyenMai();
+            frm.Show();
+        }
+
+        private void cboPhuongThucTT_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string selectedPT = cboPhuongThucTT.SelectedItem.ToString();
+
+            if (selectedPT == "Tiền mặt")
+            {
+                // Hiện textbox Tiền khách đưa + Tiền thừa
+                txtTienKhachDua.Visible = true;
+                lblTienKhachDua.Visible = true;
+
+                txtTienThua.Visible = true;
+                lblTienThua.Visible = true;
+            }
+            else
+            {
+                // Ẩn textbox khi không phải tiền mặt
+                txtTienKhachDua.Visible = false;
+                lblTienKhachDua.Visible = false;
+
+                txtTienThua.Visible = false;
+                lblTienThua.Visible = false;
+
+                // Reset giá trị
+                txtTienKhachDua.Text = "";
+                txtTienThua.Text = "";
+            }
+        }
+
+        private void Frm_BanHang_Load(object sender, EventArgs e)
+        {
+            cboPhuongThucTT.SelectedIndex = 0;
+        }
     }
 }
