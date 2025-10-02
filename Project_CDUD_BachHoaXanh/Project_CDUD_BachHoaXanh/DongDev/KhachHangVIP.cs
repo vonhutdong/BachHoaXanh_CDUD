@@ -22,5 +22,15 @@ namespace Project_CDUD_BachHoaXanh.DongDev
             Frm_NapVip fr = new Frm_NapVip();
             fr.Show();
         }
+
+        private void btnThem_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void tableLayoutPanel5_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
