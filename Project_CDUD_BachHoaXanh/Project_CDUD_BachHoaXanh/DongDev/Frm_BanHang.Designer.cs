@@ -28,14 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Frm_BanHang));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Frm_BanHang));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.guna2GroupBox5 = new Guna.UI2.WinForms.Guna2GroupBox();
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
+            this.label10 = new System.Windows.Forms.Label();
+            this.guna2Button6 = new Guna.UI2.WinForms.Guna2Button();
+            this.btnHuy = new Guna.UI2.WinForms.Guna2Button();
             this.lblTienThua = new System.Windows.Forms.Label();
             this.lblTienKhachDua = new System.Windows.Forms.Label();
             this.txtTienKhachDua = new Guna.UI2.WinForms.Guna2TextBox();
@@ -43,6 +46,7 @@
             this.btnThanhToan = new Guna.UI2.WinForms.Guna2Button();
             this.txtTienThua = new Guna.UI2.WinForms.Guna2TextBox();
             this.label6 = new System.Windows.Forms.Label();
+            this.cboPhuongThucTT = new Guna.UI2.WinForms.Guna2ComboBox();
             this.dgvThongTinHoaDon = new Guna.UI2.WinForms.Guna2DataGridView();
             this.TenSanPham = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DonGia = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -75,10 +79,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtSDT = new Guna.UI2.WinForms.Guna2TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnHuy = new Guna.UI2.WinForms.Guna2Button();
-            this.guna2Button6 = new Guna.UI2.WinForms.Guna2Button();
-            this.label10 = new System.Windows.Forms.Label();
-            this.cboPhuongThucTT = new Guna.UI2.WinForms.Guna2ComboBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.guna2GroupBox5.SuspendLayout();
             this.tableLayoutPanel7.SuspendLayout();
@@ -164,6 +164,61 @@
             this.tableLayoutPanel7.Size = new System.Drawing.Size(571, 155);
             this.tableLayoutPanel7.TabIndex = 1;
             // 
+            // label10
+            // 
+            this.label10.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label10.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.ForeColor = System.Drawing.Color.Black;
+            this.label10.Location = new System.Drawing.Point(383, 0);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(185, 38);
+            this.label10.TabIndex = 33;
+            this.label10.Text = "Phương thức thanh toán";
+            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // guna2Button6
+            // 
+            this.guna2Button6.BorderRadius = 3;
+            this.guna2Button6.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button6.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button6.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.guna2Button6.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.guna2Button6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.guna2Button6.FillColor = System.Drawing.Color.Green;
+            this.guna2Button6.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2Button6.ForeColor = System.Drawing.Color.White;
+            this.guna2Button6.Image = ((System.Drawing.Image)(resources.GetObject("guna2Button6.Image")));
+            this.guna2Button6.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.guna2Button6.ImageSize = new System.Drawing.Size(26, 26);
+            this.guna2Button6.Location = new System.Drawing.Point(193, 116);
+            this.guna2Button6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.guna2Button6.Name = "guna2Button6";
+            this.guna2Button6.Size = new System.Drawing.Size(184, 37);
+            this.guna2Button6.TabIndex = 32;
+            this.guna2Button6.Text = "Thanh toán VIP (F10)";
+            this.guna2Button6.Click += new System.EventHandler(this.guna2Button6_Click);
+            // 
+            // btnHuy
+            // 
+            this.btnHuy.BorderRadius = 3;
+            this.btnHuy.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnHuy.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnHuy.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnHuy.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnHuy.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnHuy.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.btnHuy.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold);
+            this.btnHuy.ForeColor = System.Drawing.Color.White;
+            this.btnHuy.Image = ((System.Drawing.Image)(resources.GetObject("btnHuy.Image")));
+            this.btnHuy.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnHuy.ImageSize = new System.Drawing.Size(26, 26);
+            this.btnHuy.Location = new System.Drawing.Point(383, 116);
+            this.btnHuy.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnHuy.Name = "btnHuy";
+            this.btnHuy.Size = new System.Drawing.Size(185, 37);
+            this.btnHuy.TabIndex = 28;
+            this.btnHuy.Text = "Hủy (F12)";
+            // 
             // lblTienThua
             // 
             this.lblTienThua.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -204,7 +259,7 @@
             this.txtTienKhachDua.ForeColor = System.Drawing.Color.Black;
             this.txtTienKhachDua.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtTienKhachDua.Location = new System.Drawing.Point(197, 45);
-            this.txtTienKhachDua.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
+            this.txtTienKhachDua.Margin = new System.Windows.Forms.Padding(7);
             this.txtTienKhachDua.Name = "txtTienKhachDua";
             this.txtTienKhachDua.PlaceholderText = "";
             this.txtTienKhachDua.SelectedText = "";
@@ -221,7 +276,7 @@
             this.lbThanhTien.Location = new System.Drawing.Point(193, 2);
             this.lbThanhTien.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.lbThanhTien.Name = "lbThanhTien";
-            this.lbThanhTien.Size = new System.Drawing.Size(125, 27);
+            this.lbThanhTien.Size = new System.Drawing.Size(184, 34);
             this.lbThanhTien.TabIndex = 2;
             this.lbThanhTien.Text = "30,000 VNĐ";
             this.lbThanhTien.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
@@ -284,6 +339,27 @@
             this.label6.TabIndex = 22;
             this.label6.Text = "Thành tiền:";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // cboPhuongThucTT
+            // 
+            this.cboPhuongThucTT.BackColor = System.Drawing.Color.Transparent;
+            this.cboPhuongThucTT.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cboPhuongThucTT.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cboPhuongThucTT.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboPhuongThucTT.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cboPhuongThucTT.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cboPhuongThucTT.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cboPhuongThucTT.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.cboPhuongThucTT.ItemHeight = 30;
+            this.cboPhuongThucTT.Items.AddRange(new object[] {
+            "Tiền mặt",
+            "Chuyển khoản",
+            "Thanh toán VIP"});
+            this.cboPhuongThucTT.Location = new System.Drawing.Point(383, 41);
+            this.cboPhuongThucTT.Name = "cboPhuongThucTT";
+            this.cboPhuongThucTT.Size = new System.Drawing.Size(185, 36);
+            this.cboPhuongThucTT.TabIndex = 34;
+            this.cboPhuongThucTT.SelectedIndexChanged += new System.EventHandler(this.cboPhuongThucTT_SelectedIndexChanged);
             // 
             // dgvThongTinHoaDon
             // 
@@ -852,82 +928,6 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Số điện thoại";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // btnHuy
-            // 
-            this.btnHuy.BorderRadius = 3;
-            this.btnHuy.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnHuy.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnHuy.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnHuy.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnHuy.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnHuy.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.btnHuy.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold);
-            this.btnHuy.ForeColor = System.Drawing.Color.White;
-            this.btnHuy.Image = ((System.Drawing.Image)(resources.GetObject("btnHuy.Image")));
-            this.btnHuy.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnHuy.ImageSize = new System.Drawing.Size(26, 26);
-            this.btnHuy.Location = new System.Drawing.Point(383, 116);
-            this.btnHuy.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnHuy.Name = "btnHuy";
-            this.btnHuy.Size = new System.Drawing.Size(185, 37);
-            this.btnHuy.TabIndex = 28;
-            this.btnHuy.Text = "Hủy (F12)";
-            // 
-            // guna2Button6
-            // 
-            this.guna2Button6.BorderRadius = 3;
-            this.guna2Button6.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button6.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button6.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.guna2Button6.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2Button6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.guna2Button6.FillColor = System.Drawing.Color.Green;
-            this.guna2Button6.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2Button6.ForeColor = System.Drawing.Color.White;
-            this.guna2Button6.Image = ((System.Drawing.Image)(resources.GetObject("guna2Button6.Image")));
-            this.guna2Button6.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.guna2Button6.ImageSize = new System.Drawing.Size(26, 26);
-            this.guna2Button6.Location = new System.Drawing.Point(193, 116);
-            this.guna2Button6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.guna2Button6.Name = "guna2Button6";
-            this.guna2Button6.Size = new System.Drawing.Size(184, 37);
-            this.guna2Button6.TabIndex = 32;
-            this.guna2Button6.Text = "Thanh toán VIP (F10)";
-            this.guna2Button6.Click += new System.EventHandler(this.guna2Button6_Click);
-            // 
-            // label10
-            // 
-            this.label10.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label10.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.ForeColor = System.Drawing.Color.Black;
-            this.label10.Location = new System.Drawing.Point(383, 0);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(185, 38);
-            this.label10.TabIndex = 33;
-            this.label10.Text = "Phương thức thanh toán";
-            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // cboPhuongThucTT
-            // 
-            this.cboPhuongThucTT.BackColor = System.Drawing.Color.Transparent;
-            this.cboPhuongThucTT.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cboPhuongThucTT.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cboPhuongThucTT.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboPhuongThucTT.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.cboPhuongThucTT.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.cboPhuongThucTT.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.cboPhuongThucTT.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.cboPhuongThucTT.ItemHeight = 30;
-            this.cboPhuongThucTT.Items.AddRange(new object[] {
-            "Tiền mặt",
-            "Chuyển khoản",
-            "Thanh toán VIP"});
-            this.cboPhuongThucTT.Location = new System.Drawing.Point(383, 41);
-            this.cboPhuongThucTT.Name = "cboPhuongThucTT";
-            this.cboPhuongThucTT.Size = new System.Drawing.Size(185, 36);
-            this.cboPhuongThucTT.TabIndex = 34;
-            this.cboPhuongThucTT.SelectedIndexChanged += new System.EventHandler(this.cboPhuongThucTT_SelectedIndexChanged);
             // 
             // Frm_BanHang
             // 
