@@ -21,5 +21,11 @@ namespace Project_CDUD_BachHoaXanh.DongDev
         {
 
         }
+
+        private void dgvHoaDon_Click(object sender, EventArgs e)
+        {
+            Frm_ChiTieHoaDon frm_ChiTieHoa = new Frm_ChiTieHoaDon();
+            frm_ChiTieHoa.Show();
+        }
     }
 }

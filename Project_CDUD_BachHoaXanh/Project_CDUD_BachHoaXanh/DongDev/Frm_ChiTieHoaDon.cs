@@ -26,5 +26,11 @@ namespace Project_CDUD_BachHoaXanh.DongDev
         {
 
         }
+
+        private void btnInHoaDon_Click(object sender, EventArgs e)
+        {
+            Frm_InHoaDon frm_InHoaDon = new Frm_InHoaDon();
+            frm_InHoaDon.Show();
+        }
     }
 }

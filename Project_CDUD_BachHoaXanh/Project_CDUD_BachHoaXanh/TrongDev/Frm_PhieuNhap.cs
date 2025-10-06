@@ -17,6 +17,16 @@ namespace Project_CDUD_BachHoaXanh.TrongDev
             InitializeComponent();
         }
 
-        
+        private void inThongKePhieuNhapToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Frm_ThongKeTheoMaPhieuNhap frm_ThongKeTheoMaPhieuNhap = new Frm_ThongKeTheoMaPhieuNhap();
+            frm_ThongKeTheoMaPhieuNhap.Show();
+        }
+
+        private void inDanhSachPhieuNhapToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Frm_DanhSachPhieuNhap frm_DanhSachPhieuNhap = new Frm_DanhSachPhieuNhap();
+            frm_DanhSachPhieuNhap.Show();
+        }
     }
 }
