@@ -30,12 +30,12 @@
         {
             this.InThongKeTheoMaPhieuNhap1 = new Project_CDUD_BachHoaXanh.TrongDev.InThongKeTheoMaPhieuNhap();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.crystalReportViewer1 = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
+            this.InThongKeTheoMaPhieuNhap2 = new Project_CDUD_BachHoaXanh.TrongDev.InThongKeTheoMaPhieuNhap();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.cboMaPhieuNhap = new System.Windows.Forms.ComboBox();
             this.btnTim = new System.Windows.Forms.Button();
-            this.crystalReportViewer1 = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
-            this.InThongKeTheoMaPhieuNhap2 = new Project_CDUD_BachHoaXanh.TrongDev.InThongKeTheoMaPhieuNhap();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -52,6 +52,18 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(1326, 658);
             this.tableLayoutPanel2.TabIndex = 4;
+            // 
+            // crystalReportViewer1
+            // 
+            this.crystalReportViewer1.ActiveViewIndex = 0;
+            this.crystalReportViewer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.crystalReportViewer1.Cursor = System.Windows.Forms.Cursors.Default;
+            this.crystalReportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.crystalReportViewer1.Location = new System.Drawing.Point(3, 3);
+            this.crystalReportViewer1.Name = "crystalReportViewer1";
+            this.crystalReportViewer1.ReportSource = this.InThongKeTheoMaPhieuNhap2;
+            this.crystalReportViewer1.Size = new System.Drawing.Size(1320, 652);
+            this.crystalReportViewer1.TabIndex = 0;
             // 
             // tableLayoutPanel1
             // 
@@ -101,18 +113,6 @@
             this.btnTim.TabIndex = 2;
             this.btnTim.Text = "Tìm";
             this.btnTim.UseVisualStyleBackColor = true;
-            // 
-            // crystalReportViewer1
-            // 
-            this.crystalReportViewer1.ActiveViewIndex = 0;
-            this.crystalReportViewer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.crystalReportViewer1.Cursor = System.Windows.Forms.Cursors.Default;
-            this.crystalReportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.crystalReportViewer1.Location = new System.Drawing.Point(3, 3);
-            this.crystalReportViewer1.Name = "crystalReportViewer1";
-            this.crystalReportViewer1.ReportSource = this.InThongKeTheoMaPhieuNhap2;
-            this.crystalReportViewer1.Size = new System.Drawing.Size(1320, 652);
-            this.crystalReportViewer1.TabIndex = 0;
             // 
             // Frm_ThongKeTheoMaPhieuNhap
             // 

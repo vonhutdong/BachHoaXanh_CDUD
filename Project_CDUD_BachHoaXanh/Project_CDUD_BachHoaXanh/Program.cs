@@ -1,9 +1,10 @@
-﻿using System;
+﻿using Project_CDUD_BachHoaXanh.DongDev;
+using Project_CDUD_BachHoaXanh.TrongDev;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Project_CDUD_BachHoaXanh.DongDev;
 
 namespace Project_CDUD_BachHoaXanh
 {
@@ -17,7 +18,7 @@ namespace Project_CDUD_BachHoaXanh
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Frm_DangNhap());
+            Application.Run(new Frm_TrangChu());
         }
     }
 }

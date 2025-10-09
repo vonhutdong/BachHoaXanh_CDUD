@@ -182,12 +182,25 @@ namespace Project_CDUD_BachHoaXanh
 
         private void Frm_TrangChu_Load(object sender, EventArgs e)
         {
-            tabBanHang.Focus();
+            //Frm_DangNhap f = new Frm_DangNhap();
+            //f.TopLevel = false;
+            //f.FormBorderStyle = FormBorderStyle.None;
+            //f.Dock = DockStyle.Top;
+            //tabHeThong.Controls.Clear();
+            //tabHeThong.Controls.Add(f);
+            //f.Show();
+            //tabHeThong.Focus();
+
         }
 
         private void btnVip_Click(object sender, EventArgs e)
         {
             LoadForm(new KhachHangVIP());
+        }
+
+        private void tabHeThong_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

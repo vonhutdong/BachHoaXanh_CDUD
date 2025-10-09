@@ -32,5 +32,16 @@ namespace Project_CDUD_BachHoaXanh.DongDev
             Frm_InHoaDon frm_InHoaDon = new Frm_InHoaDon();
             frm_InHoaDon.Show();
         }
+
+        private void tableLayoutPanel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void btnInHoaDon_Click_1(object sender, EventArgs e)
+        {
+            Frm_InHoaDon frm_InHoaDon = new Frm_InHoaDon();
+            frm_InHoaDon.Show();
+        }
     }
 }

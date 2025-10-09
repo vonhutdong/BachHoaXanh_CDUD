@@ -16,5 +16,11 @@ namespace Project_CDUD_BachHoaXanh.DongDev
         {
             InitializeComponent();
         }
+
+        private void btnIn_Click(object sender, EventArgs e)
+        {
+            Frm_BaoCaoBangLuong frm = new Frm_BaoCaoBangLuong();
+            frm.Show();
+        }
     }
 }
