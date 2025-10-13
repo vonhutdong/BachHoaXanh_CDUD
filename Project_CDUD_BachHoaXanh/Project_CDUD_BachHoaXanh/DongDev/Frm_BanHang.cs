@@ -43,21 +43,13 @@ namespace Project_CDUD_BachHoaXanh.DongDev
 
         }
 
-        private void btnThanhToan_Click(object sender, EventArgs e)
-        {
-            Frm_ApDungMaKhuyenMai frm = new Frm_ApDungMaKhuyenMai();
-            frm.Show();
-        }
+      
 
         private void guna2Button5_Click(object sender, EventArgs e)
         {
                     }
 
-        private void guna2Button6_Click(object sender, EventArgs e)
-        {
-            Frm_ApDungMaKhuyenMai frm = new Frm_ApDungMaKhuyenMai();
-            frm.Show();
-        }
+      
 
         private void cboPhuongThucTT_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -90,6 +82,17 @@ namespace Project_CDUD_BachHoaXanh.DongDev
         private void Frm_BanHang_Load(object sender, EventArgs e)
         {
             cboPhuongThucTT.SelectedIndex = 0;
+        }
+
+        private void guna2Button6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnThanhToan_Click(object sender, EventArgs e)
+        {
+            Frm_InHoaDon frm_InHoaDon = new Frm_InHoaDon();
+            frm_InHoaDon.Show();
         }
     }
 }

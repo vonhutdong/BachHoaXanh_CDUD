@@ -16,5 +16,11 @@ namespace Project_CDUD_BachHoaXanh.TrongDev
         {
             InitializeComponent();
         }
+
+        private void btnIn_Click(object sender, EventArgs e)
+        {
+            Frm_ThongKeSanPhamTonKho frm_ThongKeSanPhamTonKho = new Frm_ThongKeSanPhamTonKho();
+            frm_ThongKeSanPhamTonKho.Show();
+        }
     }
 }

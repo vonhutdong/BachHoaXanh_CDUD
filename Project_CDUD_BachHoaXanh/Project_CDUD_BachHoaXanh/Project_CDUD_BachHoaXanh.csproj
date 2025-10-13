@@ -135,6 +135,18 @@
     <Compile Include="DongDev\Frm_SanPham.Designer.cs">
       <DependentUpon>Frm_SanPham.cs</DependentUpon>
     </Compile>
+    <Compile Include="DongDev\InBaoCaoBangLuong.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>InBaoCaoBangLuong.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="DongDev\InHDTheoMa.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>InHDTheoMa.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="DongDev\KhachHangVIP.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -266,12 +278,32 @@
     <EmbeddedResource Include="DongDev\Frm_SanPham.resx">
       <DependentUpon>Frm_SanPham.cs</DependentUpon>
     </EmbeddedResource>
+    <Compile Include="TrongDev\InDanhSachPN.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>InDanhSachPN.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="TrongDev\InThongKeSanPhamTonKho.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>InThongKeSanPhamTonKho.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="TrongDev\InThongKeTheoMaPhieuNhap.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>InThongKeTheoMaPhieuNhap.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <EmbeddedResource Include="DongDev\InBaoCaoBangLuong.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>InBaoCaoBangLuong.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DongDev\InHDTheoMa.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>InHDTheoMa.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="DongDev\KhachHangVIP.resx">
       <DependentUpon>KhachHangVIP.cs</DependentUpon>
     </EmbeddedResource>
@@ -326,6 +358,14 @@
     </EmbeddedResource>
     <EmbeddedResource Include="TrongDev\Frm_ThongKeTheoMaPhieuNhap.resx">
       <DependentUpon>Frm_ThongKeTheoMaPhieuNhap.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TrongDev\InDanhSachPN.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>InDanhSachPN.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TrongDev\InThongKeSanPhamTonKho.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>InThongKeSanPhamTonKho.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="TrongDev\InThongKeTheoMaPhieuNhap.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
