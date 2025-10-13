@@ -28,14 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvKhuyenMai = new Guna.UI2.WinForms.Guna2DataGridView();
             this.label5 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.txtTenLoaiHang = new Guna.UI2.WinForms.Guna2TextBox();
-            this.txtMaLoaiHang = new Guna.UI2.WinForms.Guna2TextBox();
+            this.txtGiaTri = new Guna.UI2.WinForms.Guna2TextBox();
+            this.txtTenKhuyenMai = new Guna.UI2.WinForms.Guna2TextBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.guna2GroupBox2 = new Guna.UI2.WinForms.Guna2GroupBox();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
@@ -44,8 +44,8 @@
             this.guna2GroupBox1 = new Guna.UI2.WinForms.Guna2GroupBox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.btnLamMoi = new Guna.UI2.WinForms.Guna2Button();
-            this.guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
-            this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
+            this.btnXoa = new Guna.UI2.WinForms.Guna2Button();
+            this.btnSua = new Guna.UI2.WinForms.Guna2Button();
             this.btnThem = new Guna.UI2.WinForms.Guna2Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvKhuyenMai)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
@@ -57,26 +57,26 @@
             // 
             // dgvKhuyenMai
             // 
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.White;
-            this.dgvKhuyenMai.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvKhuyenMai.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            this.dgvKhuyenMai.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvKhuyenMai.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvKhuyenMai.ColumnHeadersHeight = 4;
             this.dgvKhuyenMai.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvKhuyenMai.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvKhuyenMai.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvKhuyenMai.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvKhuyenMai.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvKhuyenMai.Location = new System.Drawing.Point(0, 40);
@@ -106,6 +106,7 @@
             this.dgvKhuyenMai.ThemeStyle.RowsStyle.Height = 22;
             this.dgvKhuyenMai.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvKhuyenMai.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            this.dgvKhuyenMai.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvKhuyenMai_CellClick);
             // 
             // label5
             // 
@@ -129,53 +130,53 @@
             this.label2.Text = "Tên khuyến mãi:";
             this.label2.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
-            // txtTenLoaiHang
+            // txtGiaTri
             // 
-            this.txtTenLoaiHang.BorderColor = System.Drawing.Color.DarkSeaGreen;
-            this.txtTenLoaiHang.BorderRadius = 2;
-            this.txtTenLoaiHang.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtTenLoaiHang.DefaultText = "";
-            this.txtTenLoaiHang.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtTenLoaiHang.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtTenLoaiHang.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtTenLoaiHang.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtTenLoaiHang.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.txtTenLoaiHang.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtTenLoaiHang.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTenLoaiHang.ForeColor = System.Drawing.Color.Black;
-            this.txtTenLoaiHang.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtTenLoaiHang.Location = new System.Drawing.Point(312, 57);
-            this.txtTenLoaiHang.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.txtTenLoaiHang.Name = "txtTenLoaiHang";
-            this.txtTenLoaiHang.PlaceholderText = "";
-            this.txtTenLoaiHang.SelectedText = "";
-            this.txtTenLoaiHang.Size = new System.Drawing.Size(642, 46);
-            this.txtTenLoaiHang.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
-            this.txtTenLoaiHang.TabIndex = 9;
+            this.txtGiaTri.BorderColor = System.Drawing.Color.DarkSeaGreen;
+            this.txtGiaTri.BorderRadius = 2;
+            this.txtGiaTri.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtGiaTri.DefaultText = "";
+            this.txtGiaTri.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtGiaTri.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtGiaTri.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtGiaTri.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtGiaTri.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.txtGiaTri.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtGiaTri.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtGiaTri.ForeColor = System.Drawing.Color.Black;
+            this.txtGiaTri.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtGiaTri.Location = new System.Drawing.Point(312, 57);
+            this.txtGiaTri.Margin = new System.Windows.Forms.Padding(4);
+            this.txtGiaTri.Name = "txtGiaTri";
+            this.txtGiaTri.PlaceholderText = "";
+            this.txtGiaTri.SelectedText = "";
+            this.txtGiaTri.Size = new System.Drawing.Size(642, 46);
+            this.txtGiaTri.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
+            this.txtGiaTri.TabIndex = 9;
             // 
-            // txtMaLoaiHang
+            // txtTenKhuyenMai
             // 
-            this.txtMaLoaiHang.BorderColor = System.Drawing.Color.DarkSeaGreen;
-            this.txtMaLoaiHang.BorderRadius = 2;
-            this.txtMaLoaiHang.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtMaLoaiHang.DefaultText = "";
-            this.txtMaLoaiHang.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtMaLoaiHang.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtMaLoaiHang.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtMaLoaiHang.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtMaLoaiHang.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.txtMaLoaiHang.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtMaLoaiHang.Font = new System.Drawing.Font("Times New Roman", 15.75F);
-            this.txtMaLoaiHang.ForeColor = System.Drawing.Color.Black;
-            this.txtMaLoaiHang.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtMaLoaiHang.Location = new System.Drawing.Point(312, 6);
-            this.txtMaLoaiHang.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.txtMaLoaiHang.Name = "txtMaLoaiHang";
-            this.txtMaLoaiHang.PlaceholderText = "";
-            this.txtMaLoaiHang.SelectedText = "";
-            this.txtMaLoaiHang.Size = new System.Drawing.Size(642, 43);
-            this.txtMaLoaiHang.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
-            this.txtMaLoaiHang.TabIndex = 3;
+            this.txtTenKhuyenMai.BorderColor = System.Drawing.Color.DarkSeaGreen;
+            this.txtTenKhuyenMai.BorderRadius = 2;
+            this.txtTenKhuyenMai.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtTenKhuyenMai.DefaultText = "";
+            this.txtTenKhuyenMai.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtTenKhuyenMai.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtTenKhuyenMai.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtTenKhuyenMai.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtTenKhuyenMai.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.txtTenKhuyenMai.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtTenKhuyenMai.Font = new System.Drawing.Font("Times New Roman", 15.75F);
+            this.txtTenKhuyenMai.ForeColor = System.Drawing.Color.Black;
+            this.txtTenKhuyenMai.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtTenKhuyenMai.Location = new System.Drawing.Point(312, 6);
+            this.txtTenKhuyenMai.Margin = new System.Windows.Forms.Padding(4);
+            this.txtTenKhuyenMai.Name = "txtTenKhuyenMai";
+            this.txtTenKhuyenMai.PlaceholderText = "";
+            this.txtTenKhuyenMai.SelectedText = "";
+            this.txtTenKhuyenMai.Size = new System.Drawing.Size(642, 43);
+            this.txtTenKhuyenMai.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
+            this.txtTenKhuyenMai.TabIndex = 3;
             // 
             // tableLayoutPanel2
             // 
@@ -187,8 +188,8 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 13.47576F));
             this.tableLayoutPanel2.Controls.Add(this.label5, 1, 1);
             this.tableLayoutPanel2.Controls.Add(this.label2, 1, 0);
-            this.tableLayoutPanel2.Controls.Add(this.txtTenLoaiHang, 2, 1);
-            this.tableLayoutPanel2.Controls.Add(this.txtMaLoaiHang, 2, 0);
+            this.tableLayoutPanel2.Controls.Add(this.txtGiaTri, 2, 1);
+            this.tableLayoutPanel2.Controls.Add(this.txtTenKhuyenMai, 2, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 40);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
@@ -273,8 +274,8 @@
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 15F));
             this.tableLayoutPanel3.Controls.Add(this.btnLamMoi, 4, 0);
-            this.tableLayoutPanel3.Controls.Add(this.guna2Button2, 2, 0);
-            this.tableLayoutPanel3.Controls.Add(this.guna2Button1, 3, 0);
+            this.tableLayoutPanel3.Controls.Add(this.btnXoa, 2, 0);
+            this.tableLayoutPanel3.Controls.Add(this.btnSua, 3, 0);
             this.tableLayoutPanel3.Controls.Add(this.btnThem, 1, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 170);
@@ -300,40 +301,43 @@
             this.btnLamMoi.Size = new System.Drawing.Size(178, 42);
             this.btnLamMoi.TabIndex = 26;
             this.btnLamMoi.Text = "Làm mới";
+            this.btnLamMoi.Click += new System.EventHandler(this.btnLamMoi_Click);
             // 
-            // guna2Button2
+            // btnXoa
             // 
-            this.guna2Button2.BorderRadius = 22;
-            this.guna2Button2.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button2.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button2.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.guna2Button2.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2Button2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(172)))), ((int)(((byte)(46)))));
-            this.guna2Button2.Font = new System.Drawing.Font("Times New Roman", 12.75F);
-            this.guna2Button2.ForeColor = System.Drawing.Color.White;
-            this.guna2Button2.Image = global::Project_CDUD_BachHoaXanh.Properties.Resources.bin;
-            this.guna2Button2.Location = new System.Drawing.Point(371, 3);
-            this.guna2Button2.Name = "guna2Button2";
-            this.guna2Button2.Size = new System.Drawing.Size(178, 42);
-            this.guna2Button2.TabIndex = 28;
-            this.guna2Button2.Text = "Xóa";
+            this.btnXoa.BorderRadius = 22;
+            this.btnXoa.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnXoa.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnXoa.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnXoa.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnXoa.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(172)))), ((int)(((byte)(46)))));
+            this.btnXoa.Font = new System.Drawing.Font("Times New Roman", 12.75F);
+            this.btnXoa.ForeColor = System.Drawing.Color.White;
+            this.btnXoa.Image = global::Project_CDUD_BachHoaXanh.Properties.Resources.bin;
+            this.btnXoa.Location = new System.Drawing.Point(371, 3);
+            this.btnXoa.Name = "btnXoa";
+            this.btnXoa.Size = new System.Drawing.Size(178, 42);
+            this.btnXoa.TabIndex = 28;
+            this.btnXoa.Text = "Xóa";
+            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
             // 
-            // guna2Button1
+            // btnSua
             // 
-            this.guna2Button1.BorderRadius = 22;
-            this.guna2Button1.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.guna2Button1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2Button1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(172)))), ((int)(((byte)(46)))));
-            this.guna2Button1.Font = new System.Drawing.Font("Times New Roman", 12.75F);
-            this.guna2Button1.ForeColor = System.Drawing.Color.White;
-            this.guna2Button1.Image = global::Project_CDUD_BachHoaXanh.Properties.Resources.loop;
-            this.guna2Button1.Location = new System.Drawing.Point(555, 3);
-            this.guna2Button1.Name = "guna2Button1";
-            this.guna2Button1.Size = new System.Drawing.Size(178, 42);
-            this.guna2Button1.TabIndex = 29;
-            this.guna2Button1.Text = "Sửa";
+            this.btnSua.BorderRadius = 22;
+            this.btnSua.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnSua.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnSua.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnSua.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnSua.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(172)))), ((int)(((byte)(46)))));
+            this.btnSua.Font = new System.Drawing.Font("Times New Roman", 12.75F);
+            this.btnSua.ForeColor = System.Drawing.Color.White;
+            this.btnSua.Image = global::Project_CDUD_BachHoaXanh.Properties.Resources.loop;
+            this.btnSua.Location = new System.Drawing.Point(555, 3);
+            this.btnSua.Name = "btnSua";
+            this.btnSua.Size = new System.Drawing.Size(178, 42);
+            this.btnSua.TabIndex = 29;
+            this.btnSua.Text = "Sửa";
+            this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
             // 
             // btnThem
             // 
@@ -351,6 +355,7 @@
             this.btnThem.Size = new System.Drawing.Size(178, 42);
             this.btnThem.TabIndex = 27;
             this.btnThem.Text = "Thêm";
+            this.btnThem.Click += new System.EventHandler(this.btnThem_Click_1);
             // 
             // Frm_KhuyenMai
             // 
@@ -363,6 +368,7 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "Frm_KhuyenMai";
             this.Text = "QUẢN LÝ KHUYẾN MÃI";
+            this.Load += new System.EventHandler(this.Frm_KhuyenMai_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvKhuyenMai)).EndInit();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
@@ -380,8 +386,8 @@
         private Guna.UI2.WinForms.Guna2DataGridView dgvKhuyenMai;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label2;
-        private Guna.UI2.WinForms.Guna2TextBox txtTenLoaiHang;
-        private Guna.UI2.WinForms.Guna2TextBox txtMaLoaiHang;
+        private Guna.UI2.WinForms.Guna2TextBox txtGiaTri;
+        private Guna.UI2.WinForms.Guna2TextBox txtTenKhuyenMai;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private Guna.UI2.WinForms.Guna2GroupBox guna2GroupBox2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
@@ -390,8 +396,8 @@
         private Guna.UI2.WinForms.Guna2GroupBox guna2GroupBox1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private Guna.UI2.WinForms.Guna2Button btnLamMoi;
-        private Guna.UI2.WinForms.Guna2Button guna2Button2;
-        private Guna.UI2.WinForms.Guna2Button guna2Button1;
+        private Guna.UI2.WinForms.Guna2Button btnXoa;
+        private Guna.UI2.WinForms.Guna2Button btnSua;
         private Guna.UI2.WinForms.Guna2Button btnThem;
     }
 }
