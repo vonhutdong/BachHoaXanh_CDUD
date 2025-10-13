@@ -103,21 +103,15 @@ VALUES
 
 go
 
-INSERT INTO  KhachHang (maKhachHang, tenKhachHang, soDienThoai, diem, diaChi) VALUES
-('KH001', N'Nguyễn Thị Hương', '0971111111', 150, N'1 Lê Lợi, Q.1'),
-('KH002', N'Lê Văn Hùng', '0982222222', 120, N'2 Trần Hưng Đạo, Q.5'),
-('KH003', N'Phạm Thị Minh', '0993333333', 200, N'3 Nguyễn Trãi, Q.3'),
-('KH004', N'Trần Anh Tú', '0904444444', 80, N'4 Điện Biên Phủ, Q.Bình Thạnh'),
-('KH005', N'Hoàng Thị Loan', '0915555555', 300, N'5 Nguyễn Văn Cừ, Q.10');
+INSERT INTO  KhachHang (maKhachHang, tenKhachHang, soDienThoai, diem, diaChi,capBac) VALUES
+('KH001', N'Nguyễn Thị Hương', '0971111111', 0, N'1 Lê Lợi, Q.1',N'Đồng'),
+('KH002', N'Lê Văn Hùng', '0982222222', 0, N'2 Trần Hưng Đạo, Q.5',N'Đồng'),
+('KH003', N'Phạm Thị Minh', '0993333333',0, N'3 Nguyễn Trãi, Q.3',N'Đồng'),
+('KH004', N'Trần Anh Tú', '0904444444',0, N'4 Điện Biên Phủ, Q.Bình Thạnh',N'Đồng'),
+('KH005', N'Hoàng Thị Loan', '0915555555',0, N'5 Nguyễn Văn Cừ, Q.10',N'Đồng');
 
 go
 
-INSERT INTO VIP (maKhachHang, soThe, soDu, ngayKichHoat, trangThai)
-VALUES
-('KH001',  'VIP100001', 500000, GETDATE(), N'Hoạt động'),
-('KH002',  'VIP100002', 300000, GETDATE(), N'Khoá');
-
-go
 
 INSERT INTO HoaDon (maHD, ngayLapHD, gioLapHD, tongTien, thanhTien, maKhachHang,  maNhanVien, phuongThucThanhToan)
 VALUES
@@ -158,11 +152,11 @@ INSERT INTO ChiTietPhieuNhap (SoLuong, DonGia, maPhieuNhap, maSanPham) VALUES
 
 go
 
-INSERT INTO KhoHang (soLuong, maSanPham, idChiTietPhieuNhap) VALUES
-(100,'SP001', 2),
-(150,'SP002', 4),
-(123,'SP003', 3),
-(42,'SP004', 2);
+INSERT INTO KhoHang (soLuong, maSanPham, idChiTietPhieuNhap,maChiNhanh) VALUES
+(100,'SP001', 2,'CN001'),
+(150,'SP002', 4,'CN002'),
+(123,'SP003', 3,'CN003'),
+(42,'SP004', 2,'CN004');
 
 go
 select * from NhanVien

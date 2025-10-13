@@ -70,17 +70,8 @@ CREATE TABLE KhachHang (
     soDienThoai NVARCHAR(10),
     diaChi NVARCHAR(100),
     diem FLOAT,
+	capBac NVARCHAR(50),
     PRIMARY KEY(maKhachHang)
-);
-
-CREATE TABLE VIP (
-    maKhachHang VARCHAR(30) NOT NULL,   -- Tham chiếu theo maKhachHang
-    soThe NVARCHAR(20) UNIQUE NOT NULL,
-    soDu DECIMAL(18,2) DEFAULT 0,
-    ngayKichHoat DATE DEFAULT GETDATE(),
-    trangThai NVARCHAR(20) DEFAULT N'Hoạt động',
-    PRIMARY KEY(maKhachHang),
-    FOREIGN KEY (maKhachHang) REFERENCES KhachHang(maKhachHang) ON DELETE CASCADE
 );
 
 
@@ -109,8 +100,8 @@ CREATE TABLE NhanVien (
 CREATE TABLE CaLam (
 	maCaLam VARCHAR(30)NOT NULL,
 	tenCaLam NVARCHAR(100),
-	gioBatDau Time,
-	gioKetThuc Time,
+	gioBatDau VARCHAR(20),
+	gioKetThuc VARCHAR(20),
 	PRIMARY KEY(maCaLam)
 );
 
@@ -195,7 +186,9 @@ CREATE TABLE KhoHang (
 	soLuong INT,
 	maSanPham VARCHAR(30),
 	idChiTietPhieuNhap INT,
+	maChiNhanh VARCHAR(30),
 	PRIMARY KEY(id),
+	FOREIGN KEY (maChiNhanh) REFERENCES ChiNhanh(MaChiNhanh),
 	FOREIGN KEY (maSanPham) REFERENCES SanPham(maSanPham),
 	FOREIGN KEY (idChiTietPhieuNhap) REFERENCES ChiTietPhieuNhap(id)
 );

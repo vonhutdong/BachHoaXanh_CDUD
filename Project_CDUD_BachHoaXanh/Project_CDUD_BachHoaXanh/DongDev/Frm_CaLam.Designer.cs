@@ -323,6 +323,7 @@
             this.Name = "Frm_CaLam";
             this.Text = "Quản lý ca làm";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.Frm_CaLam_Load);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.guna2GroupBox1.ResumeLayout(false);
