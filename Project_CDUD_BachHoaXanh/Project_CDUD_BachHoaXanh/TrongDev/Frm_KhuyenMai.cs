@@ -57,10 +57,23 @@ namespace Project_CDUD_BachHoaXanh.TrongDev
             dgvKhuyenMai.Columns["MaKhuyenMai"].HeaderText = "Mã khuyến mãi";
             dgvKhuyenMai.Columns["TenKhuyenMai"].HeaderText = "Tên khuyến mãi";
             dgvKhuyenMai.Columns["GiaTri"].HeaderText = "Giá trị";
-            dgvKhuyenMai.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvKhuyenMai.ColumnHeadersHeight = 40; // hoặc cao hơn
+            // --- Thiết lập kích thước & hiển thị ---
+            dgvKhuyenMai.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing; // Không cho resize
+            dgvKhuyenMai.ColumnHeadersHeight = 40; // Chiều cao tiêu đề
 
-            // Thiết lập lại style để dữ liệu hiện rõ
+            dgvKhuyenMai.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill; // Cột tự giãn đều
+
+            // --- Tăng chiều cao hàng ---
+            dgvKhuyenMai.RowTemplate.Height = 35; // Tăng chiều cao từng hàng
+            dgvKhuyenMai.AllowUserToResizeRows = false; // Không cho resize hàng
+
+            // --- Không cho resize cột ---
+            foreach (DataGridViewColumn col in dgvKhuyenMai.Columns)
+            {
+                col.Resizable = DataGridViewTriState.False;
+            }
+
+            // --- Giao diện ---
             dgvKhuyenMai.DefaultCellStyle.BackColor = Color.White;
             dgvKhuyenMai.DefaultCellStyle.ForeColor = Color.Black;
             dgvKhuyenMai.DefaultCellStyle.SelectionBackColor = Color.LightBlue;
@@ -69,6 +82,11 @@ namespace Project_CDUD_BachHoaXanh.TrongDev
             dgvKhuyenMai.EnableHeadersVisualStyles = false;
             dgvKhuyenMai.ColumnHeadersDefaultCellStyle.BackColor = Color.LightGreen;
             dgvKhuyenMai.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black;
+            dgvKhuyenMai.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 11, FontStyle.Bold);
+            dgvKhuyenMai.DefaultCellStyle.Font = new Font("Segoe UI", 12, FontStyle.Bold);
+
+            // --- Cố định: không cho người dùng thay đổi độ rộng cột ---
+            dgvKhuyenMai.AllowUserToResizeColumns = false;
         }
 
         private void dgvKhuyenMai_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -120,9 +138,17 @@ namespace Project_CDUD_BachHoaXanh.TrongDev
                     return;
                 }
 
-                if (tenKhuyenMai.Length > 20)
+                if (tenKhuyenMai.Length > 30)
                 {
-                    MessageBox.Show("Tên khuyến mãi không được vượt quá 20 ký tự!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Tên khuyến mãi không được vượt quá 30 ký tự!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtTenKhuyenMai.Focus();
+                    return;
+                }
+                // Kiểm tra định dạng tên: cho phép chữ (có dấu), số và khoảng trắng đơn giữa các từ
+                if (!System.Text.RegularExpressions.Regex.IsMatch(tenKhuyenMai, @"^[A-Za-zÀ-ỹ0-9%]+(?:\s[A-Za-zÀ-ỹ0-9%]+)*$"))
+                {
+                    MessageBox.Show("Tên khuyến mãi không hợp lệ! Không được chứa ký tự đặc biệt hoặc nhiều khoảng trắng liên tiếp.",
+                        "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     txtTenKhuyenMai.Focus();
                     return;
                 }
@@ -144,7 +170,7 @@ namespace Project_CDUD_BachHoaXanh.TrongDev
 
                 if (!double.TryParse(giaTriText, out double giaTri))
                 {
-                    MessageBox.Show("Giá trị khuyến mãi phải là số!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Giá trị khuyến mãi không hợp lệ!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     txtGiaTri.Focus();
                     return;
                 }
@@ -191,9 +217,16 @@ namespace Project_CDUD_BachHoaXanh.TrongDev
                     txtTenKhuyenMai.Focus();
                     return;
                 }
-                if (tenKhuyenMai.Length > 20)
+                if (tenKhuyenMai.Length > 30)
                 {
-                    MessageBox.Show("Tên khuyến mãi không được vượt quá 20 ký tự!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Tên khuyến mãi không được vượt quá 30 ký tự!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtTenKhuyenMai.Focus();
+                    return;
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(tenKhuyenMai, @"^[A-Za-zÀ-ỹ0-9%]+(?:\s[A-Za-zÀ-ỹ0-9%]+)*$"))               
+                    {
+                    MessageBox.Show("Tên khuyến mãi không hợp lệ! Không được chứa ký tự đặc biệt hoặc nhiều khoảng trắng liên tiếp.",
+                        "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     txtTenKhuyenMai.Focus();
                     return;
                 }

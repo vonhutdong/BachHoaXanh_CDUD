@@ -51,10 +51,11 @@ namespace DAL
                     throw new Exception("Địa chỉ không được để trống!");
                 if (string.IsNullOrWhiteSpace(sdt))
                     throw new Exception("Số điện thoại không được để trống!");
-
+                if (!sdt.All(char.IsDigit))
+                    throw new Exception("Số điện thoại chỉ được chứa ký tự số!");
                 //  Kiểm tra độ dài
-                if (ma.Length > 15)
-                    throw new Exception("Mã chi nhánh không được vượt quá 15 ký tự!");
+                if (ma.Length > 10)
+                    throw new Exception("Mã chi nhánh không được vượt quá 10 ký tự!");
                 if (ten.Length > 20)
                     throw new Exception("Tên chi nhánh không được vượt quá 20 ký tự!");
                 if (diaChi.Length > 100)
@@ -65,8 +66,16 @@ namespace DAL
                     throw new Exception("Số điện thoại phải có 10 số");
 
                 //  Kiểm tra số điện thoại chỉ chứa số
-                if (!sdt.All(char.IsDigit))
-                    throw new Exception("Số điện thoại chỉ được chứa ký tự số!");
+               
+
+                if (!System.Text.RegularExpressions.Regex.IsMatch(ma, @"^[A-Z0-9_]+$"))
+                    throw new Exception("Mã không hợp lệ !!!");
+                if (!System.Text.RegularExpressions.Regex.IsMatch(ten, @"^[A-Za-zÀ-ỹ0-9]+(?:\s[A-Za-zÀ-ỹ0-9]+)*$"))
+                    throw new Exception("Tên không hợp lệ !!!");
+                if (!System.Text.RegularExpressions.Regex.IsMatch(diaChi, @"^[A-Za-zÀ-ỹ0-9/,]+(?:\s[A-Za-zÀ-ỹ0-9/,]+)*$"))
+                    throw new Exception("Địa chỉ không hợp lệ !!!");
+                if (!System.Text.RegularExpressions.Regex.IsMatch(sdt, @"^(0|\+84)[0-9]{9,10}$"))
+                    throw new Exception("Số điện thoại không hợp lệ! (VD: 0901234567 hoặc +84901234567)");
 
                 //  Kiểm tra trùng trong DB
                 if (da.Db.ChiNhanhs.Any(cn => cn.MaChiNhanh == ma))
@@ -91,7 +100,7 @@ namespace DAL
             }
             catch (Exception ex)
             {
-                throw new Exception("❌ Có lỗi khi thêm chi nhánh: " + ex.Message);
+                throw new Exception("Có lỗi khi thêm chi nhánh: " + ex.Message);
             }
         }
 
@@ -120,7 +129,7 @@ namespace DAL
 
             catch (Exception ex)
             {
-                throw new Exception("❌ Có lỗi khi xóa chi nhánh: " + ex.Message);
+                throw new Exception("Có lỗi khi xóa chi nhánh: " + ex.Message);
             }
         }
         public void suaChiNhanh(DTO_ChiNhanh chiNhanh)
@@ -149,7 +158,9 @@ namespace DAL
                     throw new Exception("Địa chỉ không được để trống!");
                 if (string.IsNullOrWhiteSpace(sdt))
                     throw new Exception("Số điện thoại không được để trống!");
-
+                // Kiểm tra chỉ chứa số
+                if (!sdt.All(char.IsDigit))
+                    throw new Exception("Số điện thoại chỉ được chứa ký tự số!");
                 // Kiểm tra độ dài
                 if (ma.Length > 15)
                     throw new Exception("Mã chi nhánh không được vượt quá 15 ký tự!");
@@ -157,33 +168,46 @@ namespace DAL
                     throw new Exception("Tên chi nhánh không quá 50 ký tự!");
                 if (diaChi.Length > 100)
                     throw new Exception("Địa chỉ không quá 100 ký tự!");
-                if (sdt.Length < 10 || sdt.Length > 11)
-                    throw new Exception("Số điện thoại phải có 10 hoặc 11 chữ số!");
-
-                // Kiểm tra chỉ chứa số
-                if (!sdt.All(char.IsDigit))
-                    throw new Exception("Số điện thoại chỉ được chứa ký tự số!");
-
-
-                var data = da.Db.ChiNhanhs.FirstOrDefault(dt => dt.MaChiNhanh == ma);
-                if (data == null)
-                {
-                    throw new Exception("Không tìm thấy chi nhánh cần sửa!");
-                }
-                // Kiểm tra trùng (ngoại trừ chính nó)
-                if (da.Db.ChiNhanhs.Any(cn => cn.DiaChi == diaChi))
-                    throw new Exception("Địa chỉ chi nhánh đã tồn tại!");
-
+                if (sdt.Length > 10)
+                    throw new Exception("Số điện thoại không được quá 10 số");
+                if (sdt.Length < 10)
+                    throw new Exception("Số điện thoại phải có 10 số");
 
                
-                data.TenChiNhanh = chiNhanh.TenChiNhanh;
-                data.SoDienThoai = chiNhanh.SoDienThoai;
-                data.DiaChi = chiNhanh.DiaChi;
+
+                if (!System.Text.RegularExpressions.Regex.IsMatch(ma, @"^[A-Z0-9_]+$"))
+                    throw new Exception("Mã chi nhánh không hợp lệ! (Chỉ gồm chữ in hoa, số và dấu gạch dưới)");
+
+                if (!System.Text.RegularExpressions.Regex.IsMatch(ten, @"^[A-Za-zÀ-ỹ0-9/,]+(?:\s[A-Za-zÀ-ỹ0-9/,]+)*$"))
+                    throw new Exception("Tên chi nhánh không hợp lệ! (Không chứa ký tự đặc biệt hoặc khoảng trắng thừa)");
+
+                if (!System.Text.RegularExpressions.Regex.IsMatch(diaChi, @"^[A-Za-zÀ-ỹ0-9/,]+(?:\s[A-Za-zÀ-ỹ0-9/,]+)*$"))
+                    throw new Exception("Địa chỉ không hợp lệ! (Không chứa ký tự đặc biệt hoặc khoảng trắng thừa)");
+
+                if (!System.Text.RegularExpressions.Regex.IsMatch(sdt, @"^(0|\+84)[0-9]{9,10}$"))
+                    throw new Exception("Số điện thoại không hợp lệ! (VD: 0901234567 hoặc +84901234567)");
+
+                // Tìm chi nhánh cần sửa
+                var data = da.Db.ChiNhanhs.FirstOrDefault(dt => dt.MaChiNhanh == ma);
+                if (data == null)
+                    throw new Exception("Không tìm thấy chi nhánh cần sửa!");
+
+                // Kiểm tra trùng (ngoại trừ chính nó)
+                if (da.Db.ChiNhanhs.Any(cn => cn.DiaChi == diaChi && cn.MaChiNhanh != ma))
+                    throw new Exception("Địa chỉ chi nhánh đã tồn tại!");
+                if (da.Db.ChiNhanhs.Any(cn => cn.SoDienThoai == sdt && cn.MaChiNhanh != ma))
+                    throw new Exception("Số điện thoại đã được sử dụng!");
+
+                // Cập nhật dữ liệu (đã làm sạch)
+                data.TenChiNhanh = ten;
+                data.DiaChi = diaChi;
+                data.SoDienThoai = sdt;
+
                 da.Db.SubmitChanges();
             }
             catch (Exception ex)
             {
-                throw new Exception("Có lỗi xảy ra: " + ex.Message);
+                throw new Exception("Có lỗi khi sửa chi nhánh: " + ex.Message);
             }
         }
     }

@@ -49,10 +49,23 @@ namespace Project_CDUD_BachHoaXanh.TrongDev
             dgvChiNhanh.Columns["DiaChi"].HeaderText = "Địa chỉ";
             dgvChiNhanh.Columns["SoDienThoai"].HeaderText = "Số điện thoại";
 
-            dgvChiNhanh.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvChiNhanh.ColumnHeadersHeight = 40; // hoặc cao hơn
+            // --- Thiết lập kích thước & hiển thị ---
+            dgvChiNhanh.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing; // Không cho resize
+            dgvChiNhanh.ColumnHeadersHeight = 40; // Chiều cao tiêu đề
 
-            // Thiết lập lại style để dữ liệu hiện rõ
+            dgvChiNhanh.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill; // Cột tự giãn đều
+
+            // --- Tăng chiều cao hàng ---
+            dgvChiNhanh.RowTemplate.Height = 35; // Tăng chiều cao từng hàng
+            dgvChiNhanh.AllowUserToResizeRows = false; // Không cho resize hàng
+
+            // --- Không cho resize cột ---
+            foreach (DataGridViewColumn col in dgvChiNhanh.Columns)
+            {
+                col.Resizable = DataGridViewTriState.False;
+            }
+
+            // --- Giao diện ---
             dgvChiNhanh.DefaultCellStyle.BackColor = Color.White;
             dgvChiNhanh.DefaultCellStyle.ForeColor = Color.Black;
             dgvChiNhanh.DefaultCellStyle.SelectionBackColor = Color.LightBlue;
@@ -61,6 +74,11 @@ namespace Project_CDUD_BachHoaXanh.TrongDev
             dgvChiNhanh.EnableHeadersVisualStyles = false;
             dgvChiNhanh.ColumnHeadersDefaultCellStyle.BackColor = Color.LightGreen;
             dgvChiNhanh.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black;
+            dgvChiNhanh.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 11, FontStyle.Bold);
+            dgvChiNhanh.DefaultCellStyle.Font = new Font("Segoe UI", 12, FontStyle.Bold);
+
+            // --- Cố định: không cho người dùng thay đổi độ rộng cột ---
+            dgvChiNhanh.AllowUserToResizeColumns = false;
         }
 
         private void Frm_ChiNhanh_Load(object sender, EventArgs e)
@@ -187,10 +205,8 @@ namespace Project_CDUD_BachHoaXanh.TrongDev
             }
             catch (Exception ex)
             {
-                MessageBox.Show("❌ Lỗi khi sửa chi nhánh: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Thông Báo: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-        
     }
 }

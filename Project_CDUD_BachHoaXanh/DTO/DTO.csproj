@@ -50,6 +50,8 @@
     <Compile Include="DTO_CaLam.cs" />
     <Compile Include="DTO_ChiNhanh.cs" />
     <Compile Include="DTO_KhuyenMai.cs" />
+    <Compile Include="DTO_LoaiHang.cs" />
+    <Compile Include="DTO_NhaCungCap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
