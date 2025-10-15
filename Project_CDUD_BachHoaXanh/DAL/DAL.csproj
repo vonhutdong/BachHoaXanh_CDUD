@@ -49,6 +49,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DAL_CaLam.cs" />
+    <Compile Include="DAL_ChucVu.cs" />
+    <Compile Include="DAL_LichLam.cs" />
+    <Compile Include="DAL_NhanVien.cs" />
     <Compile Include="DatabaseAccess.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">

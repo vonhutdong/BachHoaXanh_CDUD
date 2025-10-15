@@ -36,14 +36,13 @@
             this.dgvLoaiNV = new Guna.UI2.WinForms.Guna2DataGridView();
             this.guna2GroupBox3 = new Guna.UI2.WinForms.Guna2GroupBox();
             this.tableFields = new System.Windows.Forms.TableLayoutPanel();
-            this.txtTenLoaiNhanVien = new Guna.UI2.WinForms.Guna2TextBox();
+            this.txtTenChucVu = new Guna.UI2.WinForms.Guna2TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.menuToolStrip = new System.Windows.Forms.ToolStrip();
             this.btnThem = new System.Windows.Forms.ToolStripButton();
             this.btnXoa = new System.Windows.Forms.ToolStripButton();
             this.btnSua = new System.Windows.Forms.ToolStripButton();
             this.btnLamMoi = new System.Windows.Forms.ToolStripButton();
-            this.btnThoat = new System.Windows.Forms.ToolStripButton();
             this.guna2GroupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLoaiNV)).BeginInit();
             this.guna2GroupBox3.SuspendLayout();
@@ -61,7 +60,7 @@
             this.guna2GroupBox1.Font = new System.Drawing.Font("Times New Roman", 16.2F, System.Drawing.FontStyle.Bold);
             this.guna2GroupBox1.ForeColor = System.Drawing.Color.Black;
             this.guna2GroupBox1.Location = new System.Drawing.Point(0, 185);
-            this.guna2GroupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.guna2GroupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.guna2GroupBox1.Name = "guna2GroupBox1";
             this.guna2GroupBox1.Size = new System.Drawing.Size(1057, 512);
             this.guna2GroupBox1.TabIndex = 26;
@@ -130,6 +129,7 @@
             this.dgvLoaiNV.ThemeStyle.RowsStyle.Height = 50;
             this.dgvLoaiNV.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvLoaiNV.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            this.dgvLoaiNV.Click += new System.EventHandler(this.dgvLoaiNV_Click);
             // 
             // guna2GroupBox3
             // 
@@ -141,7 +141,7 @@
             this.guna2GroupBox3.Font = new System.Drawing.Font("Times New Roman", 16.2F, System.Drawing.FontStyle.Bold);
             this.guna2GroupBox3.ForeColor = System.Drawing.Color.Black;
             this.guna2GroupBox3.Location = new System.Drawing.Point(0, 34);
-            this.guna2GroupBox3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.guna2GroupBox3.Margin = new System.Windows.Forms.Padding(4);
             this.guna2GroupBox3.Name = "guna2GroupBox3";
             this.guna2GroupBox3.Size = new System.Drawing.Size(1057, 151);
             this.guna2GroupBox3.TabIndex = 25;
@@ -153,7 +153,7 @@
             this.tableFields.ColumnCount = 2;
             this.tableFields.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableFields.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableFields.Controls.Add(this.txtTenLoaiNhanVien, 1, 0);
+            this.tableFields.Controls.Add(this.txtTenChucVu, 1, 0);
             this.tableFields.Controls.Add(this.label1, 0, 0);
             this.tableFields.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableFields.Location = new System.Drawing.Point(0, 40);
@@ -161,33 +161,33 @@
             this.tableFields.Name = "tableFields";
             this.tableFields.RowCount = 1;
             this.tableFields.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableFields.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 102F));
+            this.tableFields.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 111F));
             this.tableFields.Size = new System.Drawing.Size(1057, 111);
             this.tableFields.TabIndex = 14;
             // 
-            // txtTenLoaiNhanVien
+            // txtTenChucVu
             // 
-            this.txtTenLoaiNhanVien.BorderColor = System.Drawing.Color.MediumAquamarine;
-            this.txtTenLoaiNhanVien.BorderRadius = 2;
-            this.txtTenLoaiNhanVien.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtTenLoaiNhanVien.DefaultText = "";
-            this.txtTenLoaiNhanVien.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtTenLoaiNhanVien.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtTenLoaiNhanVien.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtTenLoaiNhanVien.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtTenLoaiNhanVien.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtTenLoaiNhanVien.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtTenLoaiNhanVien.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTenLoaiNhanVien.ForeColor = System.Drawing.Color.Black;
-            this.txtTenLoaiNhanVien.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtTenLoaiNhanVien.Location = new System.Drawing.Point(535, 7);
-            this.txtTenLoaiNhanVien.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
-            this.txtTenLoaiNhanVien.Name = "txtTenLoaiNhanVien";
-            this.txtTenLoaiNhanVien.PlaceholderText = "";
-            this.txtTenLoaiNhanVien.SelectedText = "";
-            this.txtTenLoaiNhanVien.Size = new System.Drawing.Size(515, 97);
-            this.txtTenLoaiNhanVien.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
-            this.txtTenLoaiNhanVien.TabIndex = 1;
+            this.txtTenChucVu.BorderColor = System.Drawing.Color.MediumAquamarine;
+            this.txtTenChucVu.BorderRadius = 2;
+            this.txtTenChucVu.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtTenChucVu.DefaultText = "";
+            this.txtTenChucVu.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtTenChucVu.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtTenChucVu.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtTenChucVu.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtTenChucVu.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtTenChucVu.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtTenChucVu.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTenChucVu.ForeColor = System.Drawing.Color.Black;
+            this.txtTenChucVu.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtTenChucVu.Location = new System.Drawing.Point(535, 7);
+            this.txtTenChucVu.Margin = new System.Windows.Forms.Padding(7);
+            this.txtTenChucVu.Name = "txtTenChucVu";
+            this.txtTenChucVu.PlaceholderText = "";
+            this.txtTenChucVu.SelectedText = "";
+            this.txtTenChucVu.Size = new System.Drawing.Size(515, 97);
+            this.txtTenChucVu.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
+            this.txtTenChucVu.TabIndex = 1;
             // 
             // label1
             // 
@@ -209,8 +209,7 @@
             this.btnThem,
             this.btnXoa,
             this.btnSua,
-            this.btnLamMoi,
-            this.btnThoat});
+            this.btnLamMoi});
             this.menuToolStrip.Location = new System.Drawing.Point(0, 0);
             this.menuToolStrip.Name = "menuToolStrip";
             this.menuToolStrip.Size = new System.Drawing.Size(1057, 34);
@@ -225,6 +224,7 @@
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(91, 31);
             this.btnThem.Text = "Thêm";
+            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
             // btnXoa
             // 
@@ -234,6 +234,7 @@
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(76, 31);
             this.btnXoa.Text = "Xóa";
+            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
             // 
             // btnSua
             // 
@@ -243,6 +244,7 @@
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(72, 31);
             this.btnSua.Text = "Sửa";
+            this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
             // 
             // btnLamMoi
             // 
@@ -252,15 +254,7 @@
             this.btnLamMoi.Name = "btnLamMoi";
             this.btnLamMoi.Size = new System.Drawing.Size(123, 31);
             this.btnLamMoi.Text = "Làm mới";
-            // 
-            // btnThoat
-            // 
-            this.btnThoat.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnThoat.Image = ((System.Drawing.Image)(resources.GetObject("btnThoat.Image")));
-            this.btnThoat.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnThoat.Name = "btnThoat";
-            this.btnThoat.Size = new System.Drawing.Size(92, 31);
-            this.btnThoat.Text = "Thoát";
+            this.btnLamMoi.Click += new System.EventHandler(this.btnLamMoi_Click);
             // 
             // Frm_LoaiNhanVien
             // 
@@ -274,6 +268,7 @@
             this.Name = "Frm_LoaiNhanVien";
             this.Text = "Quản lý loại nhân viên";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.Frm_LoaiNhanVien_Load);
             this.guna2GroupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvLoaiNV)).EndInit();
             this.guna2GroupBox3.ResumeLayout(false);
@@ -292,13 +287,12 @@
         private Guna.UI2.WinForms.Guna2DataGridView dgvLoaiNV;
         private Guna.UI2.WinForms.Guna2GroupBox guna2GroupBox3;
         private System.Windows.Forms.TableLayoutPanel tableFields;
-        private Guna.UI2.WinForms.Guna2TextBox txtTenLoaiNhanVien;
+        private Guna.UI2.WinForms.Guna2TextBox txtTenChucVu;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ToolStrip menuToolStrip;
         private System.Windows.Forms.ToolStripButton btnThem;
         private System.Windows.Forms.ToolStripButton btnXoa;
         private System.Windows.Forms.ToolStripButton btnSua;
         private System.Windows.Forms.ToolStripButton btnLamMoi;
-        private System.Windows.Forms.ToolStripButton btnThoat;
     }
 }

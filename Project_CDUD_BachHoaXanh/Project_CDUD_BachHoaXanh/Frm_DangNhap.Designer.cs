@@ -44,10 +44,10 @@
             // 
             this.checkHienMK.AutoSize = true;
             this.checkHienMK.BackgroundImage = global::Project_CDUD_BachHoaXanh.Properties.Resources.z7022826337913_da3ef0c62bf5c8c6f738e6b06eccf27c;
-            this.checkHienMK.Location = new System.Drawing.Point(162, 310);
-            this.checkHienMK.Margin = new System.Windows.Forms.Padding(2);
+            this.checkHienMK.Location = new System.Drawing.Point(216, 382);
+            this.checkHienMK.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.checkHienMK.Name = "checkHienMK";
-            this.checkHienMK.Size = new System.Drawing.Size(109, 17);
+            this.checkHienMK.Size = new System.Drawing.Size(130, 20);
             this.checkHienMK.TabIndex = 16;
             this.checkHienMK.Text = "Hiển thị mật khẩu";
             this.checkHienMK.UseVisualStyleBackColor = true;
@@ -69,13 +69,13 @@
             this.guna2TextBox2.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.guna2TextBox2.ForeColor = System.Drawing.Color.Black;
             this.guna2TextBox2.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2TextBox2.Location = new System.Drawing.Point(162, 188);
-            this.guna2TextBox2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.guna2TextBox2.Location = new System.Drawing.Point(216, 231);
+            this.guna2TextBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.guna2TextBox2.Name = "guna2TextBox2";
             this.guna2TextBox2.PlaceholderForeColor = System.Drawing.Color.DimGray;
             this.guna2TextBox2.PlaceholderText = "Nhập tên tài khoản...";
             this.guna2TextBox2.SelectedText = "";
-            this.guna2TextBox2.Size = new System.Drawing.Size(154, 39);
+            this.guna2TextBox2.Size = new System.Drawing.Size(205, 48);
             this.guna2TextBox2.TabIndex = 15;
             // 
             // guna2TextBox1
@@ -95,14 +95,14 @@
             this.guna2TextBox1.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.guna2TextBox1.ForeColor = System.Drawing.Color.Black;
             this.guna2TextBox1.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2TextBox1.Location = new System.Drawing.Point(162, 251);
-            this.guna2TextBox1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.guna2TextBox1.Location = new System.Drawing.Point(216, 309);
+            this.guna2TextBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.guna2TextBox1.Name = "guna2TextBox1";
             this.guna2TextBox1.PasswordChar = '*';
             this.guna2TextBox1.PlaceholderForeColor = System.Drawing.Color.DimGray;
             this.guna2TextBox1.PlaceholderText = "Nhập mật khẩu...";
             this.guna2TextBox1.SelectedText = "";
-            this.guna2TextBox1.Size = new System.Drawing.Size(154, 39);
+            this.guna2TextBox1.Size = new System.Drawing.Size(205, 48);
             this.guna2TextBox1.TabIndex = 14;
             // 
             // btnDangNhap
@@ -117,12 +117,13 @@
             this.btnDangNhap.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.btnDangNhap.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnDangNhap.ForeColor = System.Drawing.Color.White;
-            this.btnDangNhap.Location = new System.Drawing.Point(189, 344);
-            this.btnDangNhap.Margin = new System.Windows.Forms.Padding(2);
+            this.btnDangNhap.Location = new System.Drawing.Point(252, 423);
+            this.btnDangNhap.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnDangNhap.Name = "btnDangNhap";
-            this.btnDangNhap.Size = new System.Drawing.Size(100, 36);
+            this.btnDangNhap.Size = new System.Drawing.Size(133, 44);
             this.btnDangNhap.TabIndex = 13;
             this.btnDangNhap.Text = "Đăng nhập";
+            this.btnDangNhap.Click += new System.EventHandler(this.btnDangNhap_Click);
             // 
             // guna2PictureBox1
             // 
@@ -132,25 +133,25 @@
             this.guna2PictureBox1.Image = global::Project_CDUD_BachHoaXanh.Properties.Resources.z7022822675090_39a357202d04bece2f13b115782590c9;
             this.guna2PictureBox1.ImageRotate = 0F;
             this.guna2PictureBox1.Location = new System.Drawing.Point(0, 0);
-            this.guna2PictureBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.guna2PictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.guna2PictureBox1.Name = "guna2PictureBox1";
-            this.guna2PictureBox1.Size = new System.Drawing.Size(452, 506);
+            this.guna2PictureBox1.Size = new System.Drawing.Size(603, 623);
             this.guna2PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.guna2PictureBox1.TabIndex = 12;
             this.guna2PictureBox1.TabStop = false;
             // 
             // Frm_DangNhap
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(452, 506);
+            this.ClientSize = new System.Drawing.Size(603, 623);
             this.Controls.Add(this.checkHienMK);
             this.Controls.Add(this.guna2TextBox2);
             this.Controls.Add(this.guna2TextBox1);
             this.Controls.Add(this.btnDangNhap);
             this.Controls.Add(this.guna2PictureBox1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Frm_DangNhap";

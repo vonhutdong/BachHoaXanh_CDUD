@@ -37,7 +37,6 @@
             this.btnXoa = new System.Windows.Forms.ToolStripButton();
             this.btnSua = new System.Windows.Forms.ToolStripButton();
             this.btnLamMoi = new System.Windows.Forms.ToolStripButton();
-            this.btnThoat = new System.Windows.Forms.ToolStripButton();
             this.guna2GroupBox1 = new Guna.UI2.WinForms.Guna2GroupBox();
             this.dgvCaLam = new Guna.UI2.WinForms.Guna2DataGridView();
             this.guna2GroupBox3 = new Guna.UI2.WinForms.Guna2GroupBox();
@@ -62,11 +61,10 @@
             this.btnThem,
             this.btnXoa,
             this.btnSua,
-            this.btnLamMoi,
-            this.btnThoat});
+            this.btnLamMoi});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1076, 27);
+            this.toolStrip1.Size = new System.Drawing.Size(860, 27);
             this.toolStrip1.TabIndex = 14;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -77,6 +75,7 @@
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(70, 24);
             this.btnThem.Text = "Thêm";
+            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
             // btnXoa
             // 
@@ -85,6 +84,7 @@
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(59, 24);
             this.btnXoa.Text = "Xóa";
+            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
             // 
             // btnSua
             // 
@@ -93,6 +93,7 @@
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(58, 24);
             this.btnSua.Text = "Sửa";
+            this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
             // 
             // btnLamMoi
             // 
@@ -101,14 +102,7 @@
             this.btnLamMoi.Name = "btnLamMoi";
             this.btnLamMoi.Size = new System.Drawing.Size(91, 24);
             this.btnLamMoi.Text = "Làm mới";
-            // 
-            // btnThoat
-            // 
-            this.btnThoat.Image = ((System.Drawing.Image)(resources.GetObject("btnThoat.Image")));
-            this.btnThoat.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnThoat.Name = "btnThoat";
-            this.btnThoat.Size = new System.Drawing.Size(71, 24);
-            this.btnThoat.Text = "Thoát";
+            this.btnLamMoi.Click += new System.EventHandler(this.btnLamMoi_Click);
             // 
             // guna2GroupBox1
             // 
@@ -118,10 +112,10 @@
             this.guna2GroupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.guna2GroupBox1.Font = new System.Drawing.Font("Times New Roman", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2GroupBox1.ForeColor = System.Drawing.Color.Black;
-            this.guna2GroupBox1.Location = new System.Drawing.Point(0, 244);
+            this.guna2GroupBox1.Location = new System.Drawing.Point(0, 366);
             this.guna2GroupBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.guna2GroupBox1.Name = "guna2GroupBox1";
-            this.guna2GroupBox1.Size = new System.Drawing.Size(1076, 401);
+            this.guna2GroupBox1.Size = new System.Drawing.Size(860, 150);
             this.guna2GroupBox1.TabIndex = 17;
             this.guna2GroupBox1.Text = "Danh sách ca làm";
             this.guna2GroupBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -156,7 +150,7 @@
             this.dgvCaLam.RowHeadersVisible = false;
             this.dgvCaLam.RowHeadersWidth = 51;
             this.dgvCaLam.RowTemplate.Height = 24;
-            this.dgvCaLam.Size = new System.Drawing.Size(1076, 361);
+            this.dgvCaLam.Size = new System.Drawing.Size(860, 110);
             this.dgvCaLam.TabIndex = 1;
             this.dgvCaLam.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.dgvCaLam.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -179,6 +173,8 @@
             this.dgvCaLam.ThemeStyle.RowsStyle.Height = 24;
             this.dgvCaLam.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvCaLam.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            this.dgvCaLam.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCaLam_CellContentClick);
+            this.dgvCaLam.Click += new System.EventHandler(this.dgvCaLam_Click);
             // 
             // guna2GroupBox3
             // 
@@ -192,7 +188,7 @@
             this.guna2GroupBox3.Location = new System.Drawing.Point(0, 27);
             this.guna2GroupBox3.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.guna2GroupBox3.Name = "guna2GroupBox3";
-            this.guna2GroupBox3.Size = new System.Drawing.Size(1076, 217);
+            this.guna2GroupBox3.Size = new System.Drawing.Size(860, 339);
             this.guna2GroupBox3.TabIndex = 16;
             this.guna2GroupBox3.Text = "Quản lí ca làm";
             this.guna2GroupBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -216,7 +212,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1076, 177);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(860, 299);
             this.tableLayoutPanel1.TabIndex = 22;
             // 
             // label1
@@ -227,7 +223,7 @@
             this.label1.ForeColor = System.Drawing.Color.Black;
             this.label1.Location = new System.Drawing.Point(3, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(532, 59);
+            this.label1.Size = new System.Drawing.Size(424, 99);
             this.label1.TabIndex = 17;
             this.label1.Text = "Tên ca làm";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -237,11 +233,11 @@
             this.txtGioKetThuc.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtGioKetThuc.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtGioKetThuc.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.txtGioKetThuc.Location = new System.Drawing.Point(541, 120);
+            this.txtGioKetThuc.Location = new System.Drawing.Point(433, 200);
             this.txtGioKetThuc.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtGioKetThuc.Mask = "90:00";
             this.txtGioKetThuc.Name = "txtGioKetThuc";
-            this.txtGioKetThuc.Size = new System.Drawing.Size(532, 34);
+            this.txtGioKetThuc.Size = new System.Drawing.Size(424, 34);
             this.txtGioKetThuc.TabIndex = 21;
             this.txtGioKetThuc.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtGioKetThuc.ValidatingType = typeof(System.DateTime);
@@ -262,14 +258,15 @@
             this.txtTenCaLam.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.txtTenCaLam.ForeColor = System.Drawing.Color.Black;
             this.txtTenCaLam.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtTenCaLam.Location = new System.Drawing.Point(543, 7);
+            this.txtTenCaLam.Location = new System.Drawing.Point(435, 7);
             this.txtTenCaLam.Margin = new System.Windows.Forms.Padding(5, 7, 5, 7);
             this.txtTenCaLam.Name = "txtTenCaLam";
             this.txtTenCaLam.PlaceholderText = "";
             this.txtTenCaLam.SelectedText = "";
-            this.txtTenCaLam.Size = new System.Drawing.Size(528, 45);
+            this.txtTenCaLam.Size = new System.Drawing.Size(420, 85);
             this.txtTenCaLam.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
             this.txtTenCaLam.TabIndex = 1;
+            this.txtTenCaLam.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label3
             // 
@@ -277,9 +274,9 @@
             this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label3.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
             this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(3, 118);
+            this.label3.Location = new System.Drawing.Point(3, 198);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(532, 59);
+            this.label3.Size = new System.Drawing.Size(424, 101);
             this.label3.TabIndex = 19;
             this.label3.Text = "Giờ kết thúc";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -289,11 +286,11 @@
             this.txtGioBatDau.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtGioBatDau.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtGioBatDau.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.txtGioBatDau.Location = new System.Drawing.Point(541, 61);
+            this.txtGioBatDau.Location = new System.Drawing.Point(433, 101);
             this.txtGioBatDau.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtGioBatDau.Mask = "90:00";
             this.txtGioBatDau.Name = "txtGioBatDau";
-            this.txtGioBatDau.Size = new System.Drawing.Size(532, 34);
+            this.txtGioBatDau.Size = new System.Drawing.Size(424, 34);
             this.txtGioBatDau.TabIndex = 20;
             this.txtGioBatDau.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtGioBatDau.ValidatingType = typeof(System.DateTime);
@@ -304,9 +301,9 @@
             this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
             this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(3, 59);
+            this.label2.Location = new System.Drawing.Point(3, 99);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(532, 59);
+            this.label2.Size = new System.Drawing.Size(424, 99);
             this.label2.TabIndex = 18;
             this.label2.Text = "Giờ bắt đầu";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -315,7 +312,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1076, 645);
+            this.ClientSize = new System.Drawing.Size(860, 516);
             this.Controls.Add(this.guna2GroupBox1);
             this.Controls.Add(this.guna2GroupBox3);
             this.Controls.Add(this.toolStrip1);
@@ -343,7 +340,6 @@
         private System.Windows.Forms.ToolStripButton btnXoa;
         private System.Windows.Forms.ToolStripButton btnSua;
         private System.Windows.Forms.ToolStripButton btnLamMoi;
-        private System.Windows.Forms.ToolStripButton btnThoat;
         private Guna.UI2.WinForms.Guna2GroupBox guna2GroupBox1;
         private Guna.UI2.WinForms.Guna2DataGridView dgvCaLam;
         private Guna.UI2.WinForms.Guna2GroupBox guna2GroupBox3;
