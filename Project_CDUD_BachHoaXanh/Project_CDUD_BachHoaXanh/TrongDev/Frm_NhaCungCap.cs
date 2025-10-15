@@ -153,9 +153,13 @@ namespace Project_CDUD_BachHoaXanh.TrongDev
                 }
                 string maNhaCungCap = dgvNCC.CurrentRow.Cells["MaNCC"].Value.ToString();
                 // Xác nhận xóa
-                var confirmResult = MessageBox.Show("Bạn có chắc chắn muốn xóa nhà cung cấp này?", "Xác nhận xóa",
-                                     MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (confirmResult == DialogResult.No)
+                DialogResult result = MessageBox.Show(
+                        $"Bạn có chắc muốn xóa nhà cung cấp {maNhaCungCap} không?",
+                        "Xác nhận",
+                        MessageBoxButtons.YesNo,
+                        MessageBoxIcon.Question
+                    );
+                if (result == DialogResult.No)
                     return;
                 // Gọi BUS để xóa khuyến mãi
                 bus_ncc.DeleteNCC(maNhaCungCap);
@@ -188,7 +192,15 @@ namespace Project_CDUD_BachHoaXanh.TrongDev
                         SoDienThoai = txtSDT.Text.Trim(),
                         DiaChi = txtDiaChi.Text.Trim()
                     };
+                    DialogResult confirm = MessageBox.Show(
+                    "Bạn có chắc chắn muốn sửa nhà cung cấp này không?",
+                    "Xác nhận sửa",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question
+                );
 
+                    if (confirm == DialogResult.No)
+                        return;
                     // Gọi BUS cập nhật
                     bus_ncc.SuaNCC(ncc);
 

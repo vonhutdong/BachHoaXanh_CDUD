@@ -92,6 +92,11 @@ namespace DAL
             da.Db.KhuyenMais.DeleteOnSubmit(km);
             da.Db.SubmitChanges();
         }
+        public bool KiemTraTenTonTai(string tenKhuyenMai, string maKhuyenMai)
+        {
+            // Giả sử có lớp DAL_KhuyenMai với Db.KhuyenMais
+            return da.Db.KhuyenMais.Any(km => km.TenKhuyenMai == tenKhuyenMai && km.MaKhuyenMai != maKhuyenMai);
+        }
     }
 }
     

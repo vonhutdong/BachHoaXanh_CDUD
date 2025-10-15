@@ -127,7 +127,7 @@ namespace Project_CDUD_BachHoaXanh.TrongDev
             if (!string.IsNullOrWhiteSpace(currentMaLH))
             {
                 DialogResult result = MessageBox.Show(
-                    "Bạn có chắc muốn xóa loại hàng này không?",
+                    $"Bạn có chắc muốn xóa loại hàng {currentMaLH} không?",
                     "Xác nhận",
                     MessageBoxButtons.YesNo,
                     MessageBoxIcon.Question
@@ -168,6 +168,15 @@ namespace Project_CDUD_BachHoaXanh.TrongDev
                     MessageBox.Show("Không được phép thay đổi MÃ loại hàng!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
+                DialogResult confirm = MessageBox.Show(
+                    "Bạn có chắc chắn muốn sửa loại hàng này không?",
+                    "Xác nhận sửa",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question
+                );
+
+                if (confirm == DialogResult.No)
+                    return;
 
                 //  Gửi dữ liệu qua BUS để xử lý
                 DTO_LoaiHang lh = new DTO_LoaiHang

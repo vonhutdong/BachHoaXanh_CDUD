@@ -1,4 +1,7 @@
-﻿using System;
+﻿using BUS;
+using DAL;
+using DTO;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,8 +10,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using BUS;
-using DTO;
 
 namespace Project_CDUD_BachHoaXanh.TrongDev
 {
@@ -147,7 +148,7 @@ namespace Project_CDUD_BachHoaXanh.TrongDev
                 // Kiểm tra định dạng tên: cho phép chữ (có dấu), số và khoảng trắng đơn giữa các từ
                 if (!System.Text.RegularExpressions.Regex.IsMatch(tenKhuyenMai, @"^[A-Za-zÀ-ỹ0-9%]+(?:\s[A-Za-zÀ-ỹ0-9%]+)*$"))
                 {
-                    MessageBox.Show("Tên khuyến mãi không hợp lệ! Không được chứa ký tự đặc biệt hoặc nhiều khoảng trắng liên tiếp.",
+                    MessageBox.Show("Tên khuyến mãi không hợp lệ!!!",
                         "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     txtTenKhuyenMai.Focus();
                     return;
@@ -210,6 +211,7 @@ namespace Project_CDUD_BachHoaXanh.TrongDev
                 // --- Lấy dữ liệu từ form ---
                 string tenKhuyenMai = txtTenKhuyenMai.Text.Trim();
                 string giaTriText = txtGiaTri.Text.Trim();
+
                 // --- Kiểm tra tên khuyến mãi ---
                 if (string.IsNullOrWhiteSpace(tenKhuyenMai))
                 {
@@ -223,13 +225,13 @@ namespace Project_CDUD_BachHoaXanh.TrongDev
                     txtTenKhuyenMai.Focus();
                     return;
                 }
-                if (!System.Text.RegularExpressions.Regex.IsMatch(tenKhuyenMai, @"^[A-Za-zÀ-ỹ0-9%]+(?:\s[A-Za-zÀ-ỹ0-9%]+)*$"))               
-                    {
-                    MessageBox.Show("Tên khuyến mãi không hợp lệ! Không được chứa ký tự đặc biệt hoặc nhiều khoảng trắng liên tiếp.",
-                        "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (!System.Text.RegularExpressions.Regex.IsMatch(tenKhuyenMai, @"^[A-Za-zÀ-ỹ0-9%]+(?:\s[A-Za-zÀ-ỹ0-9%]+)*$"))
+                {
+                    MessageBox.Show("Tên khuyến mãi không hợp lệ!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     txtTenKhuyenMai.Focus();
                     return;
                 }
+
                 // --- Kiểm tra giá trị khuyến mãi ---
                 if (string.IsNullOrWhiteSpace(giaTriText))
                 {
@@ -255,13 +257,26 @@ namespace Project_CDUD_BachHoaXanh.TrongDev
                     txtGiaTri.Focus();
                     return;
                 }
+
                 // --- Lấy mã khuyến mãi từ dòng đang chọn ---
                 if (dgvKhuyenMai.CurrentRow == null)
                 {
                     MessageBox.Show("Vui lòng chọn một khuyến mãi để sửa.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
+
                 string maKhuyenMai = dgvKhuyenMai.CurrentRow.Cells["MaKhuyenMai"].Value.ToString();
+
+                // --- Hỏi xác nhận người dùng ---
+                DialogResult confirm = MessageBox.Show(
+                    "Bạn có chắc chắn muốn sửa khuyến mãi này không?",
+                    "Xác nhận sửa",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question
+                );
+
+                if (confirm == DialogResult.No)
+                    return;
 
                 // --- Tạo đối tượng DTO ---
                 DTO_KhuyenMai km = new DTO_KhuyenMai
@@ -271,10 +286,12 @@ namespace Project_CDUD_BachHoaXanh.TrongDev
                     GiaTri = giaTri
                 };
 
+                // --- Gọi BUS xử lý cập nhật ---
                 bus_km.UpdateKhuyenMai(km);
 
                 MessageBox.Show("Cập nhật khuyến mãi thành công!", "Thông báo",
                          MessageBoxButtons.OK, MessageBoxIcon.Information);
+
                 LoadData();
                 reset();
             }
@@ -295,9 +312,13 @@ namespace Project_CDUD_BachHoaXanh.TrongDev
                 }
                 string maKhuyenMai = dgvKhuyenMai.CurrentRow.Cells["MaKhuyenMai"].Value.ToString();
                 // Xác nhận xóa
-                var confirmResult = MessageBox.Show("Bạn có chắc chắn muốn xóa khuyến mãi này?", "Xác nhận xóa",
-                                     MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (confirmResult == DialogResult.No)
+                DialogResult result = MessageBox.Show(
+                         $"Bạn có chắc muốn xóa khuyến mãi {maKhuyenMai} không?",
+                         "Xác nhận",
+                         MessageBoxButtons.YesNo,
+                         MessageBoxIcon.Question
+                     );
+                if (result == DialogResult.No)
                     return;
                 // Gọi BUS để xóa khuyến mãi
                 bus_km.DeleteKhuyenMai(maKhuyenMai);

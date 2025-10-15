@@ -58,12 +58,12 @@ namespace DAL
 
                
                 if (!System.Text.RegularExpressions.Regex.IsMatch(ten, @"^[A-Za-zÀ-ỹ0-9]+(?:\s[A-Za-zÀ-ỹ0-9]+)*$"))
-                    throw new Exception("Tên nhà cung cấp không hợp lệ! Không được chứa ký tự đặc biệt hoặc nhiều khoảng trắng liên tiếp.");
+                    throw new Exception("Tên nhà cung cấp không hợp lệ !!!");
                 if (!System.Text.RegularExpressions.Regex.IsMatch(diaChi, @"^[A-Za-zÀ-ỹ0-9/,]+(?:\s[A-Za-zÀ-ỹ0-9/,]+)*$"))
                     throw new Exception("Địa chỉ không hợp lệ !!!");
                 // --- Kiểm tra số điện thoại ---
                 if (!System.Text.RegularExpressions.Regex.IsMatch(sdt, @"^(0|\+84)[0-9]{9,10}$"))
-                    throw new Exception("Số điện thoại không hợp lệ! (VD: 0901234567 hoặc +84901234567)");
+                    throw new Exception("Số điện thoại không hợp lệ! (VD: 0949452421 hoặc +84949452421)");
 
                 // --- Kiểm tra trùng tên ---
                 var existed = da.Db.NhaCungCaps.FirstOrDefault(x =>
@@ -156,7 +156,7 @@ namespace DAL
                 // Kiểm tra chỉ chứa số
 
                 if (!System.Text.RegularExpressions.Regex.IsMatch(ten, @"^[A-Za-zÀ-ỹ0-9]+(?:\s[A-Za-zÀ-ỹ0-9]+)*$"))
-                    throw new Exception("Tên nhà cung cấp không hợp lệ! Không được chứa ký tự đặc biệt hoặc nhiều khoảng trắng liên tiếp.");
+                    throw new Exception("Tên nhà cung cấp không hợp lệ!!!");
 
                 // --- Kiểm tra địa chỉ ---
                 if (!System.Text.RegularExpressions.Regex.IsMatch(diaChi, @"^[A-Za-zÀ-ỹ0-9/,]+(?:\s[A-Za-zÀ-ỹ0-9/,]+)*$"))
@@ -164,7 +164,7 @@ namespace DAL
 
                 // --- Kiểm tra số điện thoại ---
                 if (!System.Text.RegularExpressions.Regex.IsMatch(sdt, @"^(0|\+84)[0-9]{9,10}$"))
-                    throw new Exception("Số điện thoại không hợp lệ! (VD: 0901234567 hoặc +84901234567)");
+                    throw new Exception("Số điện thoại không hợp lệ! (VD: 0949452421 hoặc +84949452421)");
                 var data = da.Db.NhaCungCaps.FirstOrDefault(x => x.MaNhaCungCap == ncc.MaNhaCungCap);
                 if (data == null)
                     throw new Exception("Không tìm thấy nhà cung cấp cần sửa!");

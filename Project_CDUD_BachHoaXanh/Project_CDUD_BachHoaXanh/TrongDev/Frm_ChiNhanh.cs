@@ -123,7 +123,7 @@ namespace Project_CDUD_BachHoaXanh.TrongDev
             if (!string.IsNullOrWhiteSpace(currentMaCN))
             {
                 DialogResult result = MessageBox.Show(
-                    "Bạn có chắc muốn xóa chi nhánh này không?",
+                    $"Bạn có chắc muốn xóa chi nhánh {currentMaCN} không?",
                     "Xác nhận",
                     MessageBoxButtons.YesNo,
                     MessageBoxIcon.Question
@@ -172,18 +172,26 @@ namespace Project_CDUD_BachHoaXanh.TrongDev
         {
             try
             {
-                //  Không cho sửa mã chi nhánh
-                if (!txtMaChiNhanh.Enabled)
-                {
-                    // Mã bị khóa (chỉ đọc) → không cần kiểm tra
-                }
-                else
+                // Không cho sửa mã chi nhánh
+                if (txtMaChiNhanh.Enabled)
                 {
                     MessageBox.Show("Không được phép thay đổi MÃ chi nhánh!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
-                //  Gửi dữ liệu qua BUS để xử lý
+                // Hỏi người dùng có muốn sửa hay không
+                DialogResult result = MessageBox.Show(
+                    "Bạn có chắc chắn muốn sửa thông tin chi nhánh này không?",
+                    "Xác nhận sửa",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question
+                );
+
+                // Nếu chọn No thì dừng
+                if (result == DialogResult.No)
+                    return;
+
+                // Gửi dữ liệu qua BUS để xử lý
                 DTO_ChiNhanh cn = new DTO_ChiNhanh
                 {
                     MaChiNhanh = txtMaChiNhanh.Text.Trim(),
@@ -195,17 +203,18 @@ namespace Project_CDUD_BachHoaXanh.TrongDev
                 // Gọi BUS (đã kiểm tra trong DAL)
                 bus_chinhanh.suaChinhNhanh(cn);
 
-                MessageBox.Show(" Sửa chi nhánh thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Sửa chi nhánh thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 // Làm mới danh sách
                 LoadDSChiNhanh();
                 Clear();
+
                 // Bật lại ô mã để thêm mới
                 txtMaChiNhanh.Enabled = true;
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Thông Báo: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Thông báo: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

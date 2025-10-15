@@ -52,6 +52,7 @@
     <Compile Include="DTO_KhuyenMai.cs" />
     <Compile Include="DTO_LoaiHang.cs" />
     <Compile Include="DTO_NhaCungCap.cs" />
+    <Compile Include="DTO_TaiKhoan.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

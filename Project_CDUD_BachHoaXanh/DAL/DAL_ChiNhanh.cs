@@ -75,7 +75,7 @@ namespace DAL
                 if (!System.Text.RegularExpressions.Regex.IsMatch(diaChi, @"^[A-Za-zÀ-ỹ0-9/,]+(?:\s[A-Za-zÀ-ỹ0-9/,]+)*$"))
                     throw new Exception("Địa chỉ không hợp lệ !!!");
                 if (!System.Text.RegularExpressions.Regex.IsMatch(sdt, @"^(0|\+84)[0-9]{9,10}$"))
-                    throw new Exception("Số điện thoại không hợp lệ! (VD: 0901234567 hoặc +84901234567)");
+                    throw new Exception("Số điện thoại không hợp lệ! (VD: 0949452421 hoặc +84949452421)");
 
                 //  Kiểm tra trùng trong DB
                 if (da.Db.ChiNhanhs.Any(cn => cn.MaChiNhanh == ma))
@@ -185,7 +185,7 @@ namespace DAL
                     throw new Exception("Địa chỉ không hợp lệ! (Không chứa ký tự đặc biệt hoặc khoảng trắng thừa)");
 
                 if (!System.Text.RegularExpressions.Regex.IsMatch(sdt, @"^(0|\+84)[0-9]{9,10}$"))
-                    throw new Exception("Số điện thoại không hợp lệ! (VD: 0901234567 hoặc +84901234567)");
+                    throw new Exception("Số điện thoại không hợp lệ! (VD: 0949452421 hoặc +84949452421)");
 
                 // Tìm chi nhánh cần sửa
                 var data = da.Db.ChiNhanhs.FirstOrDefault(dt => dt.MaChiNhanh == ma);
