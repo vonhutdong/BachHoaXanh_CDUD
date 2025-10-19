@@ -68,6 +68,7 @@ namespace Project_CDUD_BachHoaXanh.DongDev
             btnXoa.Enabled = false;
             btnSua.Enabled = false;
             loadDATA();
+            dgvCaLam.ContextMenuStrip = contextMenuStrip1;
         }
 
         private void btnThem_Click(object sender, EventArgs e)
@@ -236,6 +237,17 @@ namespace Project_CDUD_BachHoaXanh.DongDev
         private void dgvCaLam_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void dgvCaLam_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right && e.RowIndex >= 0)
+            {
+                // Chọn dòng được click chuột phải
+                dgvCaLam.ClearSelection();
+                dgvCaLam.Rows[e.RowIndex].Selected = true;
+                dgvCaLam.CurrentCell = dgvCaLam.Rows[e.RowIndex].Cells[0];
+            }
         }
     }
 }

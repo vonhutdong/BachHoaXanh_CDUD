@@ -38,6 +38,7 @@ namespace Project_CDUD_BachHoaXanh.DongDev
             dgvLichLam.Columns["TenNhanVien"].HeaderText = "Tên nhân viên";
             dgvLichLam.Columns["TenCaLam"].HeaderText = "Tên ca làm";
             dgvLichLam.Columns["MaNhanVien"].Visible = false;
+            dgvLichLam.Columns["Ten"].Visible = false;
 
             // Ca làm
             cbMaCaLam.DataSource = bus_cl.LayDSCaLam();
@@ -99,6 +100,7 @@ namespace Project_CDUD_BachHoaXanh.DongDev
             btnXoa.Enabled = false;
             btnSua.Enabled = false;
             loadDATA();
+            dgvLichLam.ContextMenuStrip = contextMenuStrip1;
         }
 
         private void btnThem_Click(object sender, EventArgs e)
@@ -311,9 +313,16 @@ namespace Project_CDUD_BachHoaXanh.DongDev
         }
 
 
-        private void cboTenNhanVien_SelectedIndexChanged(object sender, EventArgs e)
-        {
 
+        private void dgvLichLam_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right && e.RowIndex >= 0)
+            {
+                // Chọn dòng được click chuột phải
+                dgvLichLam.ClearSelection();
+                dgvLichLam.Rows[e.RowIndex].Selected = true;
+                dgvLichLam.CurrentCell = dgvLichLam.Rows[e.RowIndex].Cells[0];
+            }
         }
     }
 }

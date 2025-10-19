@@ -72,6 +72,8 @@ namespace Project_CDUD_BachHoaXanh.DongDev
         private void Frm_LoaiNhanVien_Load(object sender, EventArgs e)
         {
             loadDATA();
+            dgvLoaiNV.ContextMenuStrip = contextMenuStrip1;
+
         }
         public bool CheckData(string tenLNV)
         {
@@ -174,7 +176,7 @@ namespace Project_CDUD_BachHoaXanh.DongDev
                         bool query = bus_lnv.DelLNV(currentId);
                         if (query)
                         {
-                            MessageBox.Show($"Xóa loại nhân viên thành công!\n" +
+                            MessageBox.Show($"Xóa chức vụ thành công!\n" +
                                 $"Mã loại nhân viên: {currentId}\n" +
                                 $"Tên loại nhân viên: {txtTenChucVu.Text}",
                                 "Thông báo",
@@ -183,7 +185,7 @@ namespace Project_CDUD_BachHoaXanh.DongDev
                         }
                         else
                         {
-                            MessageBox.Show($"Xóa loại nhân viên không thành công!\n" +
+                            MessageBox.Show($"Không thể xoá chức vụ, Vui lòng sửa Chức Vụ nhân viên trước khi xoá !\n" +
                                 $"Mã loại nhân viên: {currentId}\n" +
                                 $"Tên loại nhân viên: {txtTenChucVu.Text}",
                                 "Thông báo",
@@ -296,6 +298,17 @@ namespace Project_CDUD_BachHoaXanh.DongDev
                 MessageBox.Show("Vui lòng chọn 1 dòng để xóa hoặc sửa thông tin!", "Thông báo",
                 MessageBoxButtons.OK,
                 MessageBoxIcon.Warning);
+            }
+        }
+
+        private void dgvLoaiNV_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right && e.RowIndex >= 0)
+            {
+                // Chọn dòng được click chuột phải
+                dgvLoaiNV.ClearSelection();
+                dgvLoaiNV.Rows[e.RowIndex].Selected = true;
+                dgvLoaiNV.CurrentCell = dgvLoaiNV.Rows[e.RowIndex].Cells[0];
             }
         }
     }

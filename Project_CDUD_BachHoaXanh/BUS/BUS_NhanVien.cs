@@ -59,5 +59,9 @@ namespace BUS
         {
             return dal_nv.LayDSChucVu();
         }
+        public bool KiemTraSoDienThoaiTrung(string sdt,string maNV)
+        {
+            return dal_nv.KiemTraSoDienThoaiTrung(sdt,maNV);
+        }
     }
 }

@@ -15,6 +15,9 @@ namespace DAL
         {
             IQueryable query = from nv in da.Db.NhanViens
                                join cv in da.Db.ChucVus on nv.maChucVu equals cv.maChucVu
+                               join cn in da.Db.ChiNhanhs on nv.maChiNhanh equals cn.MaChiNhanh
+                               join tk in da.Db.TaiKhoans on nv.maTaiKhoan equals tk.MaTaiKhoan
+
                                select new
                                {
                                    nv.maNhanVien,
@@ -23,8 +26,8 @@ namespace DAL
                                    nv.diaChi,
                                    nv.LoaiNhanVien,
                                    cv.tenChucVu,
-                                   nv.maChiNhanh,                                
-                                   nv.maTaiKhoan
+                                   cn.TenChiNhanh,                                
+                                   tk.TenTaiKhoan
                                };
             return query;
         }
@@ -140,6 +143,9 @@ namespace DAL
         public IQueryable SearchNvByMaNV(string maNV)
         {
             var query = from nv in da.Db.NhanViens
+                        join cv in da.Db.ChucVus on nv.maChucVu equals cv.maChucVu
+                        join cn in da.Db.ChiNhanhs on nv.maChiNhanh equals cn.MaChiNhanh
+                        join tk in da.Db.TaiKhoans on nv.maTaiKhoan equals tk.MaTaiKhoan
                         where nv.maNhanVien.ToLower().Contains(maNV.ToLower())
                         select new
                         {
@@ -148,9 +154,9 @@ namespace DAL
                             nv.soDienThoai,
                             nv.diaChi,
                             nv.LoaiNhanVien,
-                            nv.maChucVu,
-                            nv.maChiNhanh,
-                            nv.maTaiKhoan
+                            cv.tenChucVu,
+                            cn.TenChiNhanh,
+                            tk.TenTaiKhoan
                         };
 
             return query;
@@ -158,6 +164,9 @@ namespace DAL
         public IQueryable SearchNvBytenNV(string tenNV)
         {
             var query = from nv in da.Db.NhanViens
+                        join cv in da.Db.ChucVus on nv.maChucVu equals cv.maChucVu
+                        join cn in da.Db.ChiNhanhs on nv.maChiNhanh equals cn.MaChiNhanh
+                        join tk in da.Db.TaiKhoans on nv.maTaiKhoan equals tk.MaTaiKhoan
                         where nv.tenNhanVien.ToLower().Contains(tenNV.ToLower())
                         select new
                         {
@@ -166,9 +175,9 @@ namespace DAL
                             nv.soDienThoai,
                             nv.diaChi,
                             nv.LoaiNhanVien,
-                            nv.maChucVu,
-                            nv.maChiNhanh,
-                            nv.maTaiKhoan
+                            cv.tenChucVu,
+                            cn.TenChiNhanh,
+                            tk.TenTaiKhoan
                         };
 
             return query;
@@ -221,7 +230,15 @@ namespace DAL
                               };
             return temp;
         }
+        public bool KiemTraSoDienThoaiTrung(string sdt, string maNV)
+        {
+            // Nếu là thêm mới (maNV null hoặc rỗng)
+            if (string.IsNullOrEmpty(maNV))
+                return da.Db.NhanViens.Any(nv => nv.soDienThoai == sdt);
 
+            // Nếu là sửa: loại trừ chính nhân viên đang sửa
+            return da.Db.NhanViens.Any(nv => nv.soDienThoai == sdt && nv.maNhanVien != maNV);
+        }
         //public IQueryable<DTO_ChucVu> LayDSChucVu()
         //{
         //    var temp = from cn in da.Db.ChucVus

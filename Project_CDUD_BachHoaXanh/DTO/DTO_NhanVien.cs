@@ -30,7 +30,16 @@ namespace DTO
             this.MaChiNhanh = maChiNhanh;
             this.MaTaiKhoan = maTaiKhoan;
         }
-
+        public DTO_NhanVien( string tenNV, string soDT, string diaChi, string loaiNhanVien, string maChucVu, string maChiNhanh, string maTaiKhoan)
+        {
+            this.TenNV = tenNV;
+            this.SoDT1 = soDT;
+            this.DiaChi = diaChi;
+            this.LoaiNhanVien = loaiNhanVien;
+            this.MaChucVu = maChucVu;
+            this.MaChiNhanh = maChiNhanh;
+            this.MaTaiKhoan = maTaiKhoan;
+        }
         public string MaNV { get => maNV; set => maNV = value; }
         public string TenNV { get => tenNV; set => tenNV = value; }
         public string SoDT1 { get => SoDT; set => SoDT = value; }
