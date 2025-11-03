@@ -264,6 +264,7 @@ namespace Project_CDUD_BachHoaXanh.DongDev
 
     private void btnThem_Click(object sender, EventArgs e)
         {
+            
             string maNV = null;
             try
             {
