@@ -56,12 +56,6 @@
     <Compile Include="BUS_LichLam.cs" />
     <Compile Include="BUS_NhanVien.cs" />
     <Compile Include="BUS_PhieuNhap.cs" />
-    <Compile Include="BUS_ChiTietHoa.cs" />
-    <Compile Include="BUS_ChucVu.cs" />
-    <Compile Include="BUS_HoaDon.cs" />
-    <Compile Include="BUS_LichLam.cs" />
-    <Compile Include="BUS_NhanVien.cs" />
-    <Compile Include="BUS_SanPham.cs" />
     <Compile Include="DataValidation.cs" />
     <Compile Include="BUS_ChiNhanh.cs" />
     <Compile Include="BUS_KhuyenMai.cs" />

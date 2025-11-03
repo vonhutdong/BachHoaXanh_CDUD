@@ -34,16 +34,6 @@ namespace DAL
 
         public bool AddNV(DTO_NhanVien nhanVien)
         {
-            // 🔹 Kiểm tra tài khoản đã được gán cho nhân viên khác chưa
-            var existingNV = da.Db.NhanViens
-                .FirstOrDefault(nv => nv.maTaiKhoan == nhanVien.MaTaiKhoan.Trim());
-
-            if (existingNV != null)
-            {
-                // Nếu tài khoản đã tồn tại, không cho thêm
-                throw new Exception("Tài khoản này đã được gán cho nhân viên khác!");
-            }
-
 
             // 🔢 Sinh mã lịch làm mới
             var existingMaCLs = da.Db.NhanViens.Select(nv => nv.maNhanVien).ToList();
