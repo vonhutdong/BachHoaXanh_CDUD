@@ -50,13 +50,16 @@
     <Compile Include="DTO_BangLuong.cs" />
     <Compile Include="DTO_CaLam.cs" />
     <Compile Include="DTO_ChiTietBangLuong.cs" />
+    <Compile Include="DTO_ChiTietPhieuNhap.cs" />
     <Compile Include="DTO_ChucVu.cs" />
+    <Compile Include="DTO_KhoHang.cs" />
     <Compile Include="DTO_LichLam.cs" />
     <Compile Include="DTO_NhanVien.cs" />
     <Compile Include="DTO_ChiNhanh.cs" />
     <Compile Include="DTO_KhuyenMai.cs" />
     <Compile Include="DTO_LoaiHang.cs" />
     <Compile Include="DTO_NhaCungCap.cs" />
+    <Compile Include="DTO_PhieuNhap.cs" />
     <Compile Include="DTO_TaiKhoan.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

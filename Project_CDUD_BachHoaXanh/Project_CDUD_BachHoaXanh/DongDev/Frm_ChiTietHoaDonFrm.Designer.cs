@@ -46,6 +46,7 @@
             this.tableContainer = new System.Windows.Forms.TableLayoutPanel();
             this.guna2GroupBox1 = new Guna.UI2.WinForms.Guna2GroupBox();
             this.tableFields = new System.Windows.Forms.TableLayoutPanel();
+            this.guna2HtmlLabel6 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2HtmlLabel2 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2HtmlLabel3 = new Guna.UI2.WinForms.Guna2HtmlLabel();
@@ -65,7 +66,6 @@
             this.dgvCTHD = new Guna.UI2.WinForms.Guna2DataGridView();
             this.guna2GroupBox2 = new Guna.UI2.WinForms.Guna2GroupBox();
             this.dgvSP = new Guna.UI2.WinForms.Guna2DataGridView();
-            this.guna2HtmlLabel6 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.menuToolStrip.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tableContainer.SuspendLayout();
@@ -224,6 +224,21 @@
             this.tableFields.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
             this.tableFields.Size = new System.Drawing.Size(936, 213);
             this.tableFields.TabIndex = 2;
+            // 
+            // guna2HtmlLabel6
+            // 
+            this.guna2HtmlLabel6.AutoSize = false;
+            this.guna2HtmlLabel6.BackColor = System.Drawing.Color.Transparent;
+            this.guna2HtmlLabel6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.guna2HtmlLabel6.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2HtmlLabel6.ForeColor = System.Drawing.Color.Black;
+            this.guna2HtmlLabel6.Location = new System.Drawing.Point(2, 177);
+            this.guna2HtmlLabel6.Margin = new System.Windows.Forms.Padding(2, 2, 30, 2);
+            this.guna2HtmlLabel6.Name = "guna2HtmlLabel6";
+            this.guna2HtmlLabel6.Size = new System.Drawing.Size(280, 34);
+            this.guna2HtmlLabel6.TabIndex = 14;
+            this.guna2HtmlLabel6.Text = "Tìm kiếm theo mã  hóa đơn";
+            this.guna2HtmlLabel6.TextAlignment = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // guna2HtmlLabel1
             // 
@@ -660,21 +675,6 @@
             this.dgvSP.ThemeStyle.RowsStyle.Height = 50;
             this.dgvSP.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvSP.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            // 
-            // guna2HtmlLabel6
-            // 
-            this.guna2HtmlLabel6.AutoSize = false;
-            this.guna2HtmlLabel6.BackColor = System.Drawing.Color.Transparent;
-            this.guna2HtmlLabel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.guna2HtmlLabel6.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2HtmlLabel6.ForeColor = System.Drawing.Color.Black;
-            this.guna2HtmlLabel6.Location = new System.Drawing.Point(2, 177);
-            this.guna2HtmlLabel6.Margin = new System.Windows.Forms.Padding(2, 2, 30, 2);
-            this.guna2HtmlLabel6.Name = "guna2HtmlLabel6";
-            this.guna2HtmlLabel6.Size = new System.Drawing.Size(280, 34);
-            this.guna2HtmlLabel6.TabIndex = 14;
-            this.guna2HtmlLabel6.Text = "Tìm kiếm theo mã  hóa đơn";
-            this.guna2HtmlLabel6.TextAlignment = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // Frm_ChiTietHoaDonFrm
             // 

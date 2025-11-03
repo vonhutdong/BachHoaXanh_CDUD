@@ -51,13 +51,16 @@
     <Compile Include="DAL_BangLuong.cs" />
     <Compile Include="DAL_CaLam.cs" />
     <Compile Include="DAL_ChiTietBangLuong.cs" />
+    <Compile Include="DAL_ChiTietPhieuNhap.cs" />
     <Compile Include="DAL_ChucVu.cs" />
+    <Compile Include="DAL_KhoHang.cs" />
     <Compile Include="DAL_LichLam.cs" />
     <Compile Include="DAL_NhanVien.cs" />
     <Compile Include="DAL_ChiNhanh.cs" />
     <Compile Include="DAL_KhuyenMai.cs" />
     <Compile Include="DAL_LoaiHang.cs" />
     <Compile Include="DAL_NhaCungCap.cs" />
+    <Compile Include="DAL_PhieuNhap.cs" />
     <Compile Include="DAL_TaiKhoan.cs" />
     <Compile Include="DatabaseAccess.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
