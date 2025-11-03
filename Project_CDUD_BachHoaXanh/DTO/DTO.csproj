@@ -52,6 +52,7 @@
     <Compile Include="DTO_ChiTietBangLuong.cs" />
     <Compile Include="DTO_ChiTietPhieuNhap.cs" />
     <Compile Include="DTO_ChucVu.cs" />
+    <Compile Include="DTO_KhachHang.cs" />
     <Compile Include="DTO_KhoHang.cs" />
     <Compile Include="DTO_LichLam.cs" />
     <Compile Include="DTO_NhanVien.cs" />

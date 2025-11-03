@@ -52,6 +52,7 @@
     <Compile Include="BUS_ChiTietBangLuong.cs" />
     <Compile Include="BUS_ChiTietPhieuNhap.cs" />
     <Compile Include="BUS_ChucVu.cs" />
+    <Compile Include="BUS_KhachHang.cs" />
     <Compile Include="BUS_KhoHang.cs" />
     <Compile Include="BUS_LichLam.cs" />
     <Compile Include="BUS_NhanVien.cs" />

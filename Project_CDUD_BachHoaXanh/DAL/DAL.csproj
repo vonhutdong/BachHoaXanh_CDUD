@@ -53,6 +53,7 @@
     <Compile Include="DAL_ChiTietBangLuong.cs" />
     <Compile Include="DAL_ChiTietPhieuNhap.cs" />
     <Compile Include="DAL_ChucVu.cs" />
+    <Compile Include="DAL_KhachHang.cs" />
     <Compile Include="DAL_KhoHang.cs" />
     <Compile Include="DAL_LichLam.cs" />
     <Compile Include="DAL_NhanVien.cs" />
