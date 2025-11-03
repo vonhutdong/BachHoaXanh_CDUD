@@ -266,6 +266,7 @@
             this.menuToolStrip.Size = new System.Drawing.Size(1147, 39);
             this.menuToolStrip.TabIndex = 4;
             this.menuToolStrip.Text = "menuToolStrip";
+            this.menuToolStrip.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuToolStrip_ItemClicked);
             // 
             // btnXoa
             // 
@@ -306,6 +307,7 @@
             this.btnTimHD.Name = "btnTimHD";
             this.btnTimHD.Size = new System.Drawing.Size(89, 36);
             this.btnTimHD.Text = "Tìm";
+            this.btnTimHD.Click += new System.EventHandler(this.btnTimHD_Click);
             // 
             // txtTimHD
             // 

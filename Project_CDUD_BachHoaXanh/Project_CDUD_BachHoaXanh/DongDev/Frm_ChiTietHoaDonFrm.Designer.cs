@@ -368,7 +368,7 @@
             this.txtSoLuong.ForeColor = System.Drawing.Color.Black;
             this.txtSoLuong.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtSoLuong.Location = new System.Drawing.Point(420, 97);
-            this.txtSoLuong.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.txtSoLuong.Margin = new System.Windows.Forms.Padding(5);
             this.txtSoLuong.Name = "txtSoLuong";
             this.txtSoLuong.PlaceholderText = "";
             this.txtSoLuong.SelectedText = "";
@@ -391,7 +391,7 @@
             this.txtTongTien.ForeColor = System.Drawing.Color.Black;
             this.txtTongTien.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtTongTien.Location = new System.Drawing.Point(420, 143);
-            this.txtTongTien.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.txtTongTien.Margin = new System.Windows.Forms.Padding(5);
             this.txtTongTien.Name = "txtTongTien";
             this.txtTongTien.PlaceholderText = "";
             this.txtTongTien.SelectedText = "";
@@ -436,7 +436,7 @@
             this.txtTimKiemSp.ForeColor = System.Drawing.Color.Black;
             this.txtTimKiemSp.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtTimKiemSp.Location = new System.Drawing.Point(420, 189);
-            this.txtTimKiemSp.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.txtTimKiemSp.Margin = new System.Windows.Forms.Padding(5);
             this.txtTimKiemSp.Name = "txtTimKiemSp";
             this.txtTimKiemSp.PlaceholderText = "";
             this.txtTimKiemSp.SelectedText = "";
@@ -459,7 +459,7 @@
             this.txtTimKiemMaHd.ForeColor = System.Drawing.Color.Black;
             this.txtTimKiemMaHd.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtTimKiemMaHd.Location = new System.Drawing.Point(420, 235);
-            this.txtTimKiemMaHd.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.txtTimKiemMaHd.Margin = new System.Windows.Forms.Padding(5);
             this.txtTimKiemMaHd.Name = "txtTimKiemMaHd";
             this.txtTimKiemMaHd.PlaceholderText = "";
             this.txtTimKiemMaHd.SelectedText = "";

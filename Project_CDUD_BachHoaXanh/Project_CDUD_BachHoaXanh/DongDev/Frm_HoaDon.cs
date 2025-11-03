@@ -211,5 +211,26 @@ namespace Project_CDUD_BachHoaXanh.DongDev
                 MessageBox.Show("Vui lòng chọn 1 dòng để cập nhật!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+
+        private void menuToolStrip_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
+
+        private void btnTimHD_Click(object sender, EventArgs e)
+        {
+            string tuKhoa = txtTimHD.Text.Trim();
+
+            if (!string.IsNullOrEmpty(tuKhoa))
+            {
+                dgvHoaDon.DataSource = bus_hd.TimKiemHD(tuKhoa);
+            }
+            else
+            {
+                MessageBox.Show("Không tim thấy Hoa đơn!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                LoadData(); // nếu không nhập gì thì load lại toàn bộ
+            }
+        }
     }
 }
