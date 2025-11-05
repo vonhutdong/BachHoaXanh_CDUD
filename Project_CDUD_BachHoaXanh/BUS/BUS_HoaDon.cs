@@ -16,7 +16,10 @@ namespace BUS
         {
             return dal_hd.GetListHD();
         }
-
+        public IQueryable GetHoaDonByMa(string maHD)
+        {
+            return dal_hd.GetHoaDonByMa(maHD);
+        }
         public bool DelHD(string maHD)
         {
 
@@ -26,6 +29,14 @@ namespace BUS
         public bool updateHD(DTO_HoaDon dto_hd)
         {
             return dal_hd.UpdateHD(dto_hd);
+        }
+        public bool updateThanhTienHD(string maHD, double thanhTien)
+        {
+            return dal_hd.UpdateThanhTienHD(maHD, thanhTien);
+        }
+        public void CapNhatTongTien(string maHD, double tongTienMoi)
+        {
+            dal_hd.CapNhatTongTien(maHD, tongTienMoi);
         }
         public IQueryable TimKiemHD(string tuKhoa)
         {

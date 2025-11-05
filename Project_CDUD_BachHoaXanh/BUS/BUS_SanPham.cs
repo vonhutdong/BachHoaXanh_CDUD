@@ -74,6 +74,9 @@ namespace BUS
         {
             return dal_sp.KiemTraTrung(tenSP, donViTinh, donGia);
         }
-
+        public int LaySoLuongTonKho(string maSP)
+        {
+            return dal_sp.LaySoLuongTonKho(maSP);
+        }
     }
 }

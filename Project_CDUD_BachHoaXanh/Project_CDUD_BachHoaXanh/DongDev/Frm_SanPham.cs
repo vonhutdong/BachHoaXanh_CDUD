@@ -6,6 +6,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using BUS;
@@ -27,6 +28,7 @@ namespace Project_CDUD_BachHoaXanh.DongDev
         string currentID = "";
         //binary img data
         byte[] imageData = null;
+        string pattern = @"^[a-zA-Z0-9\s\-_À-ỹ]+$";
         public Frm_SanPham()
         {
             InitializeComponent();
@@ -255,6 +257,13 @@ namespace Project_CDUD_BachHoaXanh.DongDev
                                     "Thiếu hình ảnh", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
+                if (!Regex.IsMatch(txtTenSanPham.Text.Trim(), pattern))
+                {
+                    MessageBox.Show("Tên sản phẩm không được chứa ký tự đặc biệt!",
+                                    "Lỗi nhập liệu", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
 
                 // 🔹 Kiểm tra ngày sản xuất và hạn sử dụng
                 DateTime ngaySX = dtpNgaySanXuat.Value.Date;
@@ -387,6 +396,12 @@ namespace Project_CDUD_BachHoaXanh.DongDev
                 {
                     MessageBox.Show("Sản phẩm này đã tồn tại (trùng tên, đơn vị tính, đơn giá)!",
                                     "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+                if (!Regex.IsMatch(txtTenSanPham.Text.Trim(), pattern))
+                {
+                    MessageBox.Show("Tên sản phẩm không được chứa ký tự đặc biệt!",
+                                    "Lỗi nhập liệu", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
                 // 🟢 Kiểm tra định dạng đơn giá

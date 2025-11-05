@@ -29,6 +29,27 @@ namespace DAL
                        TenNhanVien = nv.tenNhanVien
                    };
         }
+        
+        public IQueryable GetHoaDonByMa(string maHD)
+        {
+            return (from hd in da.Db.HoaDons
+                    join kh in da.Db.KhachHangs on hd.maKhachHang equals kh.maKhachHang
+                    join nv in da.Db.NhanViens on hd.maNhanVien equals nv.maNhanVien
+                    where hd.maHD == maHD
+                    select new
+                    {
+                        MaHD = hd.maHD,
+                        NgayLapHD = hd.ngayLapHD,
+                        GioLapHD = hd.gioLapHD,
+                        TongTien = hd.tongTien,
+                        ThanhTien = hd.thanhTien,
+                        PhuongThucThanhToan = hd.phuongThucThanhToan,
+                        MaKhachHang = hd.maKhachHang,
+                        MaNhanVien = hd.maNhanVien,
+                        TenKhachHang = kh.tenKhachHang,
+                        TenNhanVien = nv.tenNhanVien
+                    });
+        }
 
         public bool DeleteHD(string maHD)
         {
@@ -80,6 +101,41 @@ namespace DAL
             {
                 return false;
             }
+        }
+        public void CapNhatTongTien(string maHD, double tongTienMoi)
+        {
+            try
+            {
+                var hd_update = da.Db.HoaDons.FirstOrDefault(hd => hd.maHD == maHD);
+                if (hd_update != null)
+                {
+                    hd_update.tongTien = tongTienMoi;
+                    da.Db.SubmitChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                return;
+            }
+        }
+        public bool UpdateThanhTienHD(string maHD, double thanhTienMoi)
+        {
+            try
+            {
+                HoaDon hd_update = da.Db.HoaDons.SingleOrDefault(hd => hd.maHD == maHD);
+                if (hd_update != null)
+                {
+                    hd_update.thanhTien = thanhTienMoi;
+                    da.Db.SubmitChanges();
+                    return true;
+                }
+            }
+            catch
+            {
+                // Xử lý lỗi nếu cần
+                return false;
+            }
+            return false;
         }
         public IQueryable TimKiemHD(string tuKhoa)
         {

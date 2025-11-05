@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -90,6 +91,7 @@ namespace Project_CDUD_BachHoaXanh.DongDev
             isLoading = true;
             LoadData();
             isLoading = false;
+            dgvHoaDon.ContextMenuStrip = contextMenuStrip1;
         }
 
         private void cboMaNV_SelectedIndexChanged(object sender, EventArgs e)
@@ -230,6 +232,63 @@ namespace Project_CDUD_BachHoaXanh.DongDev
                 MessageBox.Show("Không tim thấy Hoa đơn!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 LoadData(); // nếu không nhập gì thì load lại toàn bộ
+            }
+        }
+        private string RemoveDiacritics(string input)
+        {
+            if (string.IsNullOrEmpty(input)) return input;
+
+            var normalized = input.Normalize(NormalizationForm.FormD);
+            var sb = new StringBuilder();
+
+            foreach (char c in normalized)
+            {
+                if (CharUnicodeInfo.GetUnicodeCategory(c) != UnicodeCategory.NonSpacingMark)
+                    sb.Append(c);
+            }
+
+            return sb.ToString().Normalize(NormalizationForm.FormC);
+        }
+
+        private void OpenChiTietHDForm(string maHD)
+        {
+            Frm_ChiTietHoaDonFrm frm = new Frm_ChiTietHoaDonFrm(maHD);
+            frm.TopLevel = false;
+            frm.FormBorderStyle = FormBorderStyle.None;
+            frm.Dock = DockStyle.Fill;
+
+            this.Controls.Clear();
+            this.Controls.Add(frm);
+            frm.BringToFront();
+            frm.Show();
+        }
+
+
+
+
+        private void dgvHoaDon_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right && e.RowIndex >= 0)
+            {
+                // Chọn dòng được click chuột phải
+                dgvHoaDon.ClearSelection();
+                dgvHoaDon.Rows[e.RowIndex].Selected = true;
+                dgvHoaDon.CurrentCell = dgvHoaDon.Rows[e.RowIndex].Cells[0];
+            }
+        }
+        string maHD = "";
+        private void xoáToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (dgvHoaDon.CurrentRow != null)
+            {
+                maHD = dgvHoaDon.CurrentRow.Cells["maHD"].Value.ToString();
+
+                OpenChiTietHDForm(maHD);
+            }
+            else
+            {
+                MessageBox.Show("Vui lòng chọn hóa đơn để xem chi tiết!", "Thông báo",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
     }

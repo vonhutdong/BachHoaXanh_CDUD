@@ -292,6 +292,14 @@ namespace DAL
                                          && s.donGia == donGia);
             return sp != null; // true = đã tồn tại
         }
+        public int LaySoLuongTonKho(string maSP)
+        {
+            // Giả sử da.Db.KhoHangs là bảng kho hàng
+            var tongSoLuong = da.Db.KhoHangs
+                .Where(k => k.maSanPham == maSP)
+                .Sum(k => (int?)k.soLuong) ?? 0;
 
+            return tongSoLuong;
+        }
     }
 }
