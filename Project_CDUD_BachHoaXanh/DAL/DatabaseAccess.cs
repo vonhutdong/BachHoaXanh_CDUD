@@ -15,7 +15,7 @@ namespace DAL
         public DatabaseAccess()
         {
             Db = new QLBHXDataContext(Properties.Settings.Default.SieuThiBHX_V1ConnectionString);
-            Db = new QLBHXDataContext(Properties.Settings.Default.SieuThiBHX_V1ConnectionString1);
+            //Db = new QLBHXDataContext(Properties.Settings.Default.SieuThiBHX_V1ConnectionString1);
 
             //them o day
         }

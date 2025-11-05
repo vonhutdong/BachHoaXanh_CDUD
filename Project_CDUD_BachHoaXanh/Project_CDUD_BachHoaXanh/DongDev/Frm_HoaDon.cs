@@ -18,7 +18,7 @@ namespace Project_CDUD_BachHoaXanh.DongDev
         private bool isLoading = false;
         BUS_HoaDon BUS_HoaDon = new BUS_HoaDon();
         BUS_HoaDon bus_hd = new BUS_HoaDon();
-        //BUS_KhachHan bus_kh = new BUS_KhachHang();
+        BUS_KhachHang bus_kh = new BUS_KhachHang();
         BUS_NhanVien bus_nv = new BUS_NhanVien();
         public Frm_HoaDon()
         {
@@ -28,9 +28,13 @@ namespace Project_CDUD_BachHoaXanh.DongDev
         {
             dgvHoaDon.DataSource = BUS_HoaDon.GetListHD();
 
-            //cboMaKH.DataSource = bus_kh.LayDSKH();
-            //cboMaKH.DisplayMember = "TenKH";
-            //cboMaKH.ValueMember = "id";
+            cboMaKH.DataSource = bus_kh.LayDSKH();
+            cboMaKH.DisplayMember = "MaKH";
+            cboMaKH.ValueMember = "MaKH";
+
+            cboTenKH.DataSource = bus_kh.LayDSKH();
+            cboTenKH.DisplayMember = "TenKH";
+            cboTenKH.ValueMember = "MaKH";
 
             cboMaNV.DataSource = bus_nv.LayDSNhanVien();
             cboMaNV.DisplayMember = "MaNhanVien";
@@ -51,6 +55,9 @@ namespace Project_CDUD_BachHoaXanh.DongDev
             dgvHoaDon.Columns["MaNhanVien"].HeaderText = "Mã nhân viên";
             dgvHoaDon.Columns["TenKhachHang"].HeaderText = "Tên khách hàng";
             dgvHoaDon.Columns["TenNhanVien"].HeaderText = "Tên nhân viên";
+
+            dgvHoaDon.Columns["MaNhanVien"].Visible = false;
+            dgvHoaDon.Columns["MaKhachHang"].Visible = false;
 
             // Format ngày & giờ
             dgvHoaDon.Columns["NgayLapHD"].DefaultCellStyle.Format = "dd/MM/yyyy";
@@ -125,28 +132,44 @@ namespace Project_CDUD_BachHoaXanh.DongDev
 
         private void dgvHoaDon_Click(object sender, EventArgs e)
         {
-            if (dgvHoaDon.CurrentCell != null)
+            if (dgvHoaDon.CurrentCell == null)
             {
-                int n = dgvHoaDon.CurrentCell.RowIndex;
-
-                btnSua.Enabled = true;
-                btnXoa.Enabled = true;
-
-                // Chỉ đặt SelectedValue – KHÔNG đặt lại DataSource nữa
-                try
-                {
-                    //cboMaKH.SelectedValue = Convert.ToInt32(dgvHD.Rows[n].Cells[7].Value); // id khách hàng
-                    cboMaNV.SelectedValue = dgvHoaDon.Rows[n].Cells[7].Value; // id nhân viên
-                }
-                catch
-                {
-                    MessageBox.Show("Không tìm thấy dữ liệu tương ứng trong ComboBox.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
+                MessageBox.Show("Vui lòng chọn 1 dòng để sửa hoặc xóa!", "Thông báo",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
             }
-            else
+
+            int n = dgvHoaDon.CurrentRow.Index;
+            btnSua.Enabled = true;
+            btnXoa.Enabled = true;
+
+            try
             {
-                MessageBox.Show("Vui lòng chọn 1 dòng để xóa hoặc sửa!", "Thông báo",
-                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                // 🧠 Kiểm tra tồn tại cột trước khi lấy
+                var cellMaKH = dgvHoaDon.Rows[n].Cells["MaKhachHang"]?.Value;
+                var cellMaNV = dgvHoaDon.Rows[n].Cells["MaNhanVien"]?.Value;
+                var cellPTTT = dgvHoaDon.Rows[n].Cells[5]?.Value;
+
+                if (cellMaKH != null)
+                    cboMaKH.SelectedValue = cellMaKH.ToString().Trim();
+                else
+                    cboMaKH.SelectedIndex = -1;
+
+                if (cellMaNV != null)
+                    cboMaNV.SelectedValue = cellMaNV.ToString().Trim();
+                else
+                    cboMaNV.SelectedIndex = -1;
+
+                if (cellPTTT != null)
+                    cboPTTT.Text = cellPTTT.ToString().Trim();
+                else
+                    cboPTTT.SelectedIndex = -1;
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Không lấy được dữ liệu từ dòng được chọn.\nChi tiết lỗi: " + ex.Message,
+                    "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -193,9 +216,10 @@ namespace Project_CDUD_BachHoaXanh.DongDev
                 //string tenKH = cboTenKH.SelectedValue.ToString();
                 string maNV = cboMaNV.SelectedValue.ToString();
                 //string tenNV = cboTenNV.SelectedValue.ToString();
-
+                string pTTT = cboPTTT.Text;
+                MessageBox.Show(pTTT);
                 // Tạo DTO_HoaDon
-                DTO_HoaDon hd = new DTO_HoaDon(id, maKH, maNV);
+                DTO_HoaDon hd = new DTO_HoaDon(id, maKH, maNV,pTTT);
 
                 // Gọi BUS cập nhật
                 if (bus_hd.updateHD(hd))
@@ -289,6 +313,18 @@ namespace Project_CDUD_BachHoaXanh.DongDev
             {
                 MessageBox.Show("Vui lòng chọn hóa đơn để xem chi tiết!", "Thông báo",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void cboMaKH_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (isLoading) return; // Ngăn sự kiện khi đang load
+
+            if (cboMaKH.Items.Count == 0 || cboTenKH.Items.Count == 0) return;
+
+            if (cboMaKH.SelectedIndex >= 0 && cboMaKH.SelectedIndex < cboTenKH.Items.Count)
+            {
+                cboTenKH.SelectedIndex = cboMaKH.SelectedIndex;
             }
         }
     }

@@ -10,15 +10,6 @@
       <Association Name="NhanVien_BangLuong" Member="NhanVien" ThisKey="maNhanVien" OtherKey="maNhanVien" Type="NhanVien" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.TaiKhoan" Member="TaiKhoans">
-    <Type Name="TaiKhoan">
-      <Column Name="MaTaiKhoan" Type="System.String" DbType="VarChar(30) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="TenTaiKhoan" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
-      <Column Name="MatKhau" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
-      <Column Name="Quyen" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="TaiKhoan_NhanVien" Member="NhanViens" ThisKey="MaTaiKhoan" OtherKey="maTaiKhoan" Type="NhanVien" />
-    </Type>
-  </Table>
   <Table Name="dbo.CaLam" Member="CaLams">
     <Type Name="CaLam">
       <Column Name="maCaLam" Type="System.String" DbType="VarChar(30) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -201,6 +192,15 @@
       <Association Name="KhuyenMai_SanPham" Member="KhuyenMai" ThisKey="maKhuyenMai" OtherKey="MaKhuyenMai" Type="KhuyenMai" IsForeignKey="true" />
       <Association Name="LoaiHang_SanPham" Member="LoaiHang" ThisKey="maLoaiHang" OtherKey="maLoaiHang" Type="LoaiHang" IsForeignKey="true" />
       <Association Name="NhaCungCap_SanPham" Member="NhaCungCap" ThisKey="maNhaCungCap" OtherKey="MaNhaCungCap" Type="NhaCungCap" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TaiKhoan" Member="TaiKhoans">
+    <Type Name="TaiKhoan">
+      <Column Name="MaTaiKhoan" Type="System.String" DbType="VarChar(30) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="TenTaiKhoan" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="MatKhau" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Quyen" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="TaiKhoan_NhanVien" Member="NhanViens" ThisKey="MaTaiKhoan" OtherKey="maTaiKhoan" Type="NhanVien" />
     </Type>
   </Table>
 </Database>

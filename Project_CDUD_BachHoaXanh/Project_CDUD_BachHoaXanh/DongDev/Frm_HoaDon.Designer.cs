@@ -30,9 +30,9 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Frm_HoaDon));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             this.guna2GroupBox1 = new Guna.UI2.WinForms.Guna2GroupBox();
             this.tableFields = new System.Windows.Forms.TableLayoutPanel();
@@ -50,11 +50,14 @@
             this.btnLamMoi = new System.Windows.Forms.ToolStripButton();
             this.btnTimHD = new System.Windows.Forms.ToolStripButton();
             this.txtTimHD = new System.Windows.Forms.ToolStripTextBox();
+            this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
             this.guna2GroupBox2 = new Guna.UI2.WinForms.Guna2GroupBox();
             this.dgvHoaDon = new Guna.UI2.WinForms.Guna2DataGridView();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.xoáToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.guna2HtmlLabel3 = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.cboPTTT = new Guna.UI2.WinForms.Guna2ComboBox();
             this.guna2Panel1.SuspendLayout();
             this.guna2GroupBox1.SuspendLayout();
             this.tableFields.SuspendLayout();
@@ -97,6 +100,8 @@
             this.tableFields.ColumnCount = 2;
             this.tableFields.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableFields.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableFields.Controls.Add(this.cboPTTT, 1, 4);
+            this.tableFields.Controls.Add(this.guna2HtmlLabel3, 0, 4);
             this.tableFields.Controls.Add(this.cboTenNV, 1, 3);
             this.tableFields.Controls.Add(this.cboTenKH, 1, 1);
             this.tableFields.Controls.Add(this.guna2HtmlLabel5, 0, 3);
@@ -109,11 +114,12 @@
             this.tableFields.Location = new System.Drawing.Point(0, 40);
             this.tableFields.Margin = new System.Windows.Forms.Padding(2);
             this.tableFields.Name = "tableFields";
-            this.tableFields.RowCount = 4;
-            this.tableFields.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableFields.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableFields.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableFields.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableFields.RowCount = 5;
+            this.tableFields.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableFields.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableFields.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableFields.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableFields.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableFields.Size = new System.Drawing.Size(1147, 227);
             this.tableFields.TabIndex = 0;
             // 
@@ -124,12 +130,13 @@
             this.cboTenNV.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cboTenNV.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cboTenNV.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboTenNV.Enabled = false;
             this.cboTenNV.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cboTenNV.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cboTenNV.Font = new System.Drawing.Font("Times New Roman", 15.75F);
             this.cboTenNV.ForeColor = System.Drawing.Color.Black;
             this.cboTenNV.ItemHeight = 30;
-            this.cboTenNV.Location = new System.Drawing.Point(575, 170);
+            this.cboTenNV.Location = new System.Drawing.Point(575, 137);
             this.cboTenNV.Margin = new System.Windows.Forms.Padding(2);
             this.cboTenNV.Name = "cboTenNV";
             this.cboTenNV.Size = new System.Drawing.Size(570, 36);
@@ -143,12 +150,13 @@
             this.cboTenKH.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cboTenKH.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cboTenKH.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboTenKH.Enabled = false;
             this.cboTenKH.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cboTenKH.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cboTenKH.Font = new System.Drawing.Font("Times New Roman", 15.75F);
             this.cboTenKH.ForeColor = System.Drawing.Color.Black;
             this.cboTenKH.ItemHeight = 30;
-            this.cboTenKH.Location = new System.Drawing.Point(575, 58);
+            this.cboTenKH.Location = new System.Drawing.Point(575, 47);
             this.cboTenKH.Margin = new System.Windows.Forms.Padding(2);
             this.cboTenKH.Name = "cboTenKH";
             this.cboTenKH.Size = new System.Drawing.Size(570, 36);
@@ -162,10 +170,10 @@
             this.guna2HtmlLabel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.guna2HtmlLabel5.Font = new System.Drawing.Font("Times New Roman", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2HtmlLabel5.ForeColor = System.Drawing.Color.Black;
-            this.guna2HtmlLabel5.Location = new System.Drawing.Point(2, 170);
+            this.guna2HtmlLabel5.Location = new System.Drawing.Point(2, 137);
             this.guna2HtmlLabel5.Margin = new System.Windows.Forms.Padding(2);
             this.guna2HtmlLabel5.Name = "guna2HtmlLabel5";
-            this.guna2HtmlLabel5.Size = new System.Drawing.Size(569, 55);
+            this.guna2HtmlLabel5.Size = new System.Drawing.Size(569, 41);
             this.guna2HtmlLabel5.TabIndex = 19;
             this.guna2HtmlLabel5.Text = "Tên nhân viên";
             this.guna2HtmlLabel5.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
@@ -177,10 +185,10 @@
             this.guna2HtmlLabel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.guna2HtmlLabel1.Font = new System.Drawing.Font("Times New Roman", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2HtmlLabel1.ForeColor = System.Drawing.Color.Black;
-            this.guna2HtmlLabel1.Location = new System.Drawing.Point(2, 58);
+            this.guna2HtmlLabel1.Location = new System.Drawing.Point(2, 47);
             this.guna2HtmlLabel1.Margin = new System.Windows.Forms.Padding(2);
             this.guna2HtmlLabel1.Name = "guna2HtmlLabel1";
-            this.guna2HtmlLabel1.Size = new System.Drawing.Size(569, 52);
+            this.guna2HtmlLabel1.Size = new System.Drawing.Size(569, 41);
             this.guna2HtmlLabel1.TabIndex = 17;
             this.guna2HtmlLabel1.Text = "Tên khách hàng";
             this.guna2HtmlLabel1.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
@@ -197,7 +205,7 @@
             this.cboMaNV.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboMaNV.ForeColor = System.Drawing.Color.Black;
             this.cboMaNV.ItemHeight = 30;
-            this.cboMaNV.Location = new System.Drawing.Point(575, 114);
+            this.cboMaNV.Location = new System.Drawing.Point(575, 92);
             this.cboMaNV.Margin = new System.Windows.Forms.Padding(2);
             this.cboMaNV.Name = "cboMaNV";
             this.cboMaNV.Size = new System.Drawing.Size(570, 36);
@@ -215,7 +223,7 @@
             this.guna2HtmlLabel2.Location = new System.Drawing.Point(2, 2);
             this.guna2HtmlLabel2.Margin = new System.Windows.Forms.Padding(2);
             this.guna2HtmlLabel2.Name = "guna2HtmlLabel2";
-            this.guna2HtmlLabel2.Size = new System.Drawing.Size(569, 52);
+            this.guna2HtmlLabel2.Size = new System.Drawing.Size(569, 41);
             this.guna2HtmlLabel2.TabIndex = 14;
             this.guna2HtmlLabel2.Text = "Mã khách hàng";
             this.guna2HtmlLabel2.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
@@ -227,10 +235,10 @@
             this.guna2HtmlLabel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.guna2HtmlLabel4.Font = new System.Drawing.Font("Times New Roman", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2HtmlLabel4.ForeColor = System.Drawing.Color.Black;
-            this.guna2HtmlLabel4.Location = new System.Drawing.Point(2, 114);
+            this.guna2HtmlLabel4.Location = new System.Drawing.Point(2, 92);
             this.guna2HtmlLabel4.Margin = new System.Windows.Forms.Padding(2);
             this.guna2HtmlLabel4.Name = "guna2HtmlLabel4";
-            this.guna2HtmlLabel4.Size = new System.Drawing.Size(569, 52);
+            this.guna2HtmlLabel4.Size = new System.Drawing.Size(569, 41);
             this.guna2HtmlLabel4.TabIndex = 16;
             this.guna2HtmlLabel4.Text = "Mã nhân viên";
             this.guna2HtmlLabel4.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
@@ -253,6 +261,7 @@
             this.cboMaKH.Size = new System.Drawing.Size(570, 36);
             this.cboMaKH.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
             this.cboMaKH.TabIndex = 2;
+            this.cboMaKH.SelectedIndexChanged += new System.EventHandler(this.cboMaKH_SelectedIndexChanged);
             // 
             // menuToolStrip
             // 
@@ -263,7 +272,8 @@
             this.btnSua,
             this.btnLamMoi,
             this.btnTimHD,
-            this.txtTimHD});
+            this.txtTimHD,
+            this.toolStripLabel1});
             this.menuToolStrip.Location = new System.Drawing.Point(0, 0);
             this.menuToolStrip.Name = "menuToolStrip";
             this.menuToolStrip.Padding = new System.Windows.Forms.Padding(0, 0, 4, 0);
@@ -321,6 +331,14 @@
             this.txtTimHD.Name = "txtTimHD";
             this.txtTimHD.Size = new System.Drawing.Size(311, 39);
             // 
+            // toolStripLabel1
+            // 
+            this.toolStripLabel1.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolStripLabel1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toolStripLabel1.Name = "toolStripLabel1";
+            this.toolStripLabel1.Size = new System.Drawing.Size(194, 36);
+            this.toolStripLabel1.Text = "Tìm theo mã hoá đơn:";
+            // 
             // guna2Panel2
             // 
             this.guna2Panel2.Controls.Add(this.guna2GroupBox2);
@@ -350,26 +368,26 @@
             // 
             // dgvHoaDon
             // 
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            this.dgvHoaDon.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Times New Roman", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvHoaDon.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
+            this.dgvHoaDon.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Times New Roman", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvHoaDon.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dgvHoaDon.ColumnHeadersHeight = 4;
             this.dgvHoaDon.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Times New Roman", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvHoaDon.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Times New Roman", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvHoaDon.DefaultCellStyle = dataGridViewCellStyle6;
             this.dgvHoaDon.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvHoaDon.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvHoaDon.Location = new System.Drawing.Point(0, 40);
@@ -421,6 +439,43 @@
             this.xoáToolStripMenuItem.Text = "Xem Chi Tiết";
             this.xoáToolStripMenuItem.Click += new System.EventHandler(this.xoáToolStripMenuItem_Click);
             // 
+            // guna2HtmlLabel3
+            // 
+            this.guna2HtmlLabel3.AutoSize = false;
+            this.guna2HtmlLabel3.BackColor = System.Drawing.Color.White;
+            this.guna2HtmlLabel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.guna2HtmlLabel3.Font = new System.Drawing.Font("Times New Roman", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2HtmlLabel3.ForeColor = System.Drawing.Color.Black;
+            this.guna2HtmlLabel3.Location = new System.Drawing.Point(2, 182);
+            this.guna2HtmlLabel3.Margin = new System.Windows.Forms.Padding(2);
+            this.guna2HtmlLabel3.Name = "guna2HtmlLabel3";
+            this.guna2HtmlLabel3.Size = new System.Drawing.Size(569, 43);
+            this.guna2HtmlLabel3.TabIndex = 22;
+            this.guna2HtmlLabel3.Text = "Phương thức thanh toán";
+            this.guna2HtmlLabel3.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // cboPTTT
+            // 
+            this.cboPTTT.BackColor = System.Drawing.Color.Transparent;
+            this.cboPTTT.BorderColor = System.Drawing.Color.DeepSkyBlue;
+            this.cboPTTT.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cboPTTT.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cboPTTT.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboPTTT.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cboPTTT.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cboPTTT.Font = new System.Drawing.Font("Times New Roman", 15.75F);
+            this.cboPTTT.ForeColor = System.Drawing.Color.Black;
+            this.cboPTTT.ItemHeight = 30;
+            this.cboPTTT.Items.AddRange(new object[] {
+            "Tiền mặt",
+            "Chuyển khoản"});
+            this.cboPTTT.Location = new System.Drawing.Point(575, 182);
+            this.cboPTTT.Margin = new System.Windows.Forms.Padding(2);
+            this.cboPTTT.Name = "cboPTTT";
+            this.cboPTTT.Size = new System.Drawing.Size(570, 36);
+            this.cboPTTT.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
+            this.cboPTTT.TabIndex = 23;
+            // 
             // Frm_HoaDon
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -471,5 +526,8 @@
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel2;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem xoáToolStripMenuItem;
+        private System.Windows.Forms.ToolStripLabel toolStripLabel1;
+        private Guna.UI2.WinForms.Guna2ComboBox cboPTTT;
+        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel3;
     }
 }

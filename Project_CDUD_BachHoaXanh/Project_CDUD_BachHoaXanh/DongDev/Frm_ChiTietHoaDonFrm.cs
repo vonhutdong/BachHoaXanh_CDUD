@@ -122,7 +122,7 @@ namespace Project_CDUD_BachHoaXanh.DongDev
             cboMaKH.ValueMember = "MaHD";
 
             txtThanhTien.Text = bus_cthd.GetTotalCashByIdHd(maHD).ToString("N0");
-            
+
 
 
         }
@@ -222,9 +222,9 @@ namespace Project_CDUD_BachHoaXanh.DongDev
             dgvSP.DefaultCellStyle.Font = new Font("Segoe UI", 11, FontStyle.Bold);
         }
 
-        
 
-        
+
+
 
         private void btnCTHD_Click(object sender, EventArgs e)
         {
@@ -233,12 +233,12 @@ namespace Project_CDUD_BachHoaXanh.DongDev
 
         private void cboMaSP_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string maSP= "";
+            string maSP = "";
             donGia = 0;
             // Load số lượng từ CTHD vào txtSoLuong
             if (cboMaSP.SelectedValue != null && txtMaHD.Text != "")
             {
-                 maSP = cboMaSP.Text;
+                maSP = cboMaSP.Text;
                 int soLuong = bus_cthd.GetChiTietTheoMa(maHD, maSP);
                 if (soLuong != null)
                 {
@@ -249,7 +249,7 @@ namespace Project_CDUD_BachHoaXanh.DongDev
                     txtSoLuong.Text = ""; // nếu không có dữ liệu
                 }
             }
-            
+
 
             dgvSP.DataSource = bus_cthd.LayDSSanPhamTheoMaHD(maHD);
 
@@ -293,7 +293,7 @@ namespace Project_CDUD_BachHoaXanh.DongDev
             }
 
             // Nếu có kết quả → đổ dữ liệu ra DataGridView
-            if(txtTimKiemSp.Text != "")
+            if (txtTimKiemSp.Text != "")
             {
                 if (kqDgvSP != null && kqDgvCTHD != null)
                 {
@@ -310,7 +310,7 @@ namespace Project_CDUD_BachHoaXanh.DongDev
             {
                 dgvCTHD.DataSource = bus_cthd.GetListCTHDTheoMaHD(maHD);
                 cboMaSP.DataSource = bus_cthd.GetListCTHDTheoMaHD(maHD);
-            } 
+            }
         }
 
 
@@ -318,8 +318,8 @@ namespace Project_CDUD_BachHoaXanh.DongDev
         double thanhTien = 0;
         private void txtSoLuong_TextChanged(object sender, EventArgs e)
         {
-            
-            
+
+
 
         }
 
@@ -355,7 +355,7 @@ namespace Project_CDUD_BachHoaXanh.DongDev
                 double donGia = bus_cthd.LayDonGiaTheoMaSP(maSP);
                 double thanhTien = soLuong * donGia;
                 txtThanhTien.Text = thanhTien.ToString("N0");
-                MessageBox.Show($"Đơn giá: {donGia}, Thành tiền: {thanhTien} , số lượng: {soLuong}, mã hd: {maHD}");
+                //MessageBox.Show($"Đơn giá: {donGia}, Thành tiền: {thanhTien} , số lượng: {soLuong}, mã hd: {maHD}");
                 // Cập nhật chi tiết hoá đơn
                 bool isValid_CTHD = bus_cthd.UpdateCTHD(maHD, maSP, soLuong);
                 bool isValid_HD = bus_hd.updateThanhTienHD(maHD, thanhTien);
@@ -437,6 +437,6 @@ namespace Project_CDUD_BachHoaXanh.DongDev
             }
         }
 
-        
+
     }
 }
