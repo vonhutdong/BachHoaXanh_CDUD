@@ -12,23 +12,24 @@ namespace DTO
         private DateTime ngayNhap;
         private float thanhTien;
         private string maNhanVien;
+        private string maChiNhanh;
+        public DTO_PhieuNhap()
+        {
 
-        // Constructors
-        public DTO_PhieuNhap() { }
-
-
-        public DTO_PhieuNhap(string maPhieuNhap,DateTime ngayNhap, float thanhTien, string maNhanVien)
+        }
+        public DTO_PhieuNhap(string maPhieuNhap, DateTime ngayNhap, float thanhTien, string maNhanVien, string maChiNhanh)
         {
             this.maPhieuNhap = maPhieuNhap;
             this.ngayNhap = ngayNhap;
             this.thanhTien = thanhTien;
             this.maNhanVien = maNhanVien;
+            this.maChiNhanh = maChiNhanh;
         }
 
-        // Properties
         public string MaPhieuNhap { get => maPhieuNhap; set => maPhieuNhap = value; }
         public DateTime NgayNhap { get => ngayNhap; set => ngayNhap = value; }
         public float ThanhTien { get => thanhTien; set => thanhTien = value; }
         public string MaNhanVien { get => maNhanVien; set => maNhanVien = value; }
+        public string MaChiNhanh { get => maChiNhanh; set => maChiNhanh = value; }
     }
 }

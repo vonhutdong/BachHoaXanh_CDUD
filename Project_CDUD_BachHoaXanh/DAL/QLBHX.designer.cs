@@ -86,12 +86,6 @@ namespace DAL
     partial void DeleteSanPham(SanPham instance);
     #endregion
 		
-		public QLBHXDataContext() : 
-				base(global::DAL.Properties.Settings.Default.SieuThiBHX_V1ConnectionString, mappingSource)
-		{
-			OnCreated();
-		}
-		
 		public QLBHXDataContext(string connection) : 
 				base(connection, mappingSource)
 		{
@@ -830,6 +824,8 @@ namespace DAL
 		
 		private EntitySet<NhanVien> _NhanViens;
 		
+		private EntitySet<PhieuNhap> _PhieuNhaps;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -848,6 +844,7 @@ namespace DAL
 		{
 			this._KhoHangs = new EntitySet<KhoHang>(new Action<KhoHang>(this.attach_KhoHangs), new Action<KhoHang>(this.detach_KhoHangs));
 			this._NhanViens = new EntitySet<NhanVien>(new Action<NhanVien>(this.attach_NhanViens), new Action<NhanVien>(this.detach_NhanViens));
+			this._PhieuNhaps = new EntitySet<PhieuNhap>(new Action<PhieuNhap>(this.attach_PhieuNhaps), new Action<PhieuNhap>(this.detach_PhieuNhaps));
 			OnCreated();
 		}
 		
@@ -957,6 +954,19 @@ namespace DAL
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ChiNhanh_PhieuNhap", Storage="_PhieuNhaps", ThisKey="MaChiNhanh", OtherKey="MaChiNhanh")]
+		public EntitySet<PhieuNhap> PhieuNhaps
+		{
+			get
+			{
+				return this._PhieuNhaps;
+			}
+			set
+			{
+				this._PhieuNhaps.Assign(value);
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -996,6 +1006,18 @@ namespace DAL
 		}
 		
 		private void detach_NhanViens(NhanVien entity)
+		{
+			this.SendPropertyChanging();
+			entity.ChiNhanh = null;
+		}
+		
+		private void attach_PhieuNhaps(PhieuNhap entity)
+		{
+			this.SendPropertyChanging();
+			entity.ChiNhanh = this;
+		}
+		
+		private void detach_PhieuNhaps(PhieuNhap entity)
 		{
 			this.SendPropertyChanging();
 			entity.ChiNhanh = null;
@@ -3808,9 +3830,13 @@ namespace DAL
 		
 		private string _maNhanVien;
 		
+		private string _MaChiNhanh;
+		
 		private EntitySet<ChiTietPhieuNhap> _ChiTietPhieuNhaps;
 		
 		private EntityRef<NhanVien> _NhanVien;
+		
+		private EntityRef<ChiNhanh> _ChiNhanh;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -3824,12 +3850,15 @@ namespace DAL
     partial void OnThanhTienChanged();
     partial void OnmaNhanVienChanging(string value);
     partial void OnmaNhanVienChanged();
+    partial void OnMaChiNhanhChanging(string value);
+    partial void OnMaChiNhanhChanged();
     #endregion
 		
 		public PhieuNhap()
 		{
 			this._ChiTietPhieuNhaps = new EntitySet<ChiTietPhieuNhap>(new Action<ChiTietPhieuNhap>(this.attach_ChiTietPhieuNhaps), new Action<ChiTietPhieuNhap>(this.detach_ChiTietPhieuNhaps));
 			this._NhanVien = default(EntityRef<NhanVien>);
+			this._ChiNhanh = default(EntityRef<ChiNhanh>);
 			OnCreated();
 		}
 		
@@ -3917,6 +3946,30 @@ namespace DAL
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaChiNhanh", DbType="VarChar(30)")]
+		public string MaChiNhanh
+		{
+			get
+			{
+				return this._MaChiNhanh;
+			}
+			set
+			{
+				if ((this._MaChiNhanh != value))
+				{
+					if (this._ChiNhanh.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnMaChiNhanhChanging(value);
+					this.SendPropertyChanging();
+					this._MaChiNhanh = value;
+					this.SendPropertyChanged("MaChiNhanh");
+					this.OnMaChiNhanhChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PhieuNhap_ChiTietPhieuNhap", Storage="_ChiTietPhieuNhaps", ThisKey="MaPhieuNhap", OtherKey="maPhieuNhap")]
 		public EntitySet<ChiTietPhieuNhap> ChiTietPhieuNhaps
 		{
@@ -3960,6 +4013,40 @@ namespace DAL
 						this._maNhanVien = default(string);
 					}
 					this.SendPropertyChanged("NhanVien");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ChiNhanh_PhieuNhap", Storage="_ChiNhanh", ThisKey="MaChiNhanh", OtherKey="MaChiNhanh", IsForeignKey=true)]
+		public ChiNhanh ChiNhanh
+		{
+			get
+			{
+				return this._ChiNhanh.Entity;
+			}
+			set
+			{
+				ChiNhanh previousValue = this._ChiNhanh.Entity;
+				if (((previousValue != value) 
+							|| (this._ChiNhanh.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._ChiNhanh.Entity = null;
+						previousValue.PhieuNhaps.Remove(this);
+					}
+					this._ChiNhanh.Entity = value;
+					if ((value != null))
+					{
+						value.PhieuNhaps.Add(this);
+						this._MaChiNhanh = value.MaChiNhanh;
+					}
+					else
+					{
+						this._MaChiNhanh = default(string);
+					}
+					this.SendPropertyChanged("ChiNhanh");
 				}
 			}
 		}
@@ -4192,7 +4279,7 @@ namespace DAL
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_anhSanPham", DbType="VarBinary(MAX)", CanBeNull=true, UpdateCheck=UpdateCheck.Never)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_anhSanPham", DbType="VarBinary(MAX)", UpdateCheck=UpdateCheck.Never)]
 		public System.Data.Linq.Binary anhSanPham
 		{
 			get

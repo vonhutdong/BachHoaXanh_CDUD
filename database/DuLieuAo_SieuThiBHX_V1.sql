@@ -121,17 +121,27 @@ VALUES
 ('HD004', '2025-03-01', '08:00', 200000, 450000, 'KH004', 'NV002', N'Tiền mặt');
 
 go
-
-INSERT INTO PhieuNhap (MaPhieuNhap, NgayNhap, ThanhTien, maNhanVien) VALUES
-('PN001', '2024-03-01T10:00:00', 0, 'NV002'),
-('PN002', '2024-03-05T12:30:00', 0, 'NV003'),
-('PN003', '2024-03-10T15:45:00', 0, 'NV001'),
-('PN004', '2024-03-15T09:20:00', 0, 'NV003'),
-('PN005', '2024-03-20T14:10:00', 0, 'NV002'),
-('PN006', '2024-03-25T16:50:00', 0, 'NV003'),
-('PN007', '2024-03-30T18:30:00', 0, 'NV002');
+INSERT INTO KhoHang (soLuong, maSanPham, idChiTietPhieuNhap, maChiNhanh) VALUES
+(100,'SP001', 1043,'CN001'),
+(150,'SP002', 1044,'CN002'),
+(123,'SP003', 1045,'CN003')
 
 go
+
+INSERT INTO ChiTietPhieuNhap (maPhieuNhap, maSanPham, SoLuong, DonGia) VALUES
+('PN001', 'SP001', 100, 50000),  -- CN001
+('PN002', 'SP002', 150, 48000),  -- CN002
+('PN003', 'SP003', 123, 28500)  -- CN003
+
+go
+
+INSERT INTO PhieuNhap (MaPhieuNhap, NgayNhap, ThanhTien, maNhanVien, MaChiNhanh) VALUES
+('PN001', '2025-10-01', 5000000, 'NV001', 'CN001'),
+('PN002', '2025-10-03', 7200000, 'NV002', 'CN002'),
+('PN003', '2025-10-05', 3500000, 'NV003', 'CN003')
+
+go
+
 
 INSERT INTO SanPham (maSanPham, tenSanPham, donViTinh, donGia, ngaySanXuat, hanSuDung, anhSanPham, maLoaiHang, maNhaCungCap)
 VALUES
@@ -144,20 +154,9 @@ VALUES
 
 go
 
-INSERT INTO ChiTietPhieuNhap (SoLuong, DonGia, maPhieuNhap, maSanPham) VALUES
-(50, 25000, 'PN001', 'SP001'),   
-(30, 4000, 'PN002', 'SP002'),    
-(70, 10000, 'PN003', 'SP003'),  
-(20, 30000, 'PN004', 'SP004');  
+
+
 
 go
-
-INSERT INTO KhoHang (soLuong, maSanPham, idChiTietPhieuNhap,maChiNhanh) VALUES
-(100,'SP001', 2,'CN001'),
-(150,'SP002', 4,'CN002'),
-(123,'SP003', 3,'CN003'),
-(42,'SP004', 2,'CN004');
-
-go
-select * from NhanVien
+select * from KhoHang
 

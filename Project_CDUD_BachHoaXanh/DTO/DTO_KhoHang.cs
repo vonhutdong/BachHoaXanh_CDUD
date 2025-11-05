@@ -21,6 +21,14 @@ namespace DTO
             this.SoLuong = soLuong;
             this.maChiNhanh = maChiNhanh;
         }
+        public DTO_KhoHang(int id, string maSanPham, int soLuong, string maChiNhanh, int idChiTietPhieuNhap)
+        {
+            this.Id = id;
+            this.maSanPham = maSanPham;
+            this.SoLuong = soLuong;
+            this.maChiNhanh = maChiNhanh;
+            this.idChiTietPhieuNhap = idChiTietPhieuNhap;
+        }
 
         public int Id { get => id; set => id = value; }
         public string IdSanPham { get => maSanPham; set => maSanPham = value; }

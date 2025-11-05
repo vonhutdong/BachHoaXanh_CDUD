@@ -168,6 +168,12 @@ CREATE TABLE PhieuNhap (
 	PRIMARY KEY(MaPhieuNhap),
 	FOREIGN KEY (maNhanVien) REFERENCES NhanVien(maNhanVien)
 );
+ALTER TABLE PhieuNhap
+ADD MaChiNhanh VARCHAR(30);
+
+ALTER TABLE PhieuNhap
+ADD CONSTRAINT FK_PhieuNhap_ChiNhanh
+FOREIGN KEY (MaChiNhanh) REFERENCES ChiNhanh(MaChiNhanh);
 
 
 CREATE TABLE ChiTietPhieuNhap (

@@ -1,5 +1,4 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="SieuThiBHX_V1" Class="QLBHXDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=DESKTOP-L4303K8;Initial Catalog=SieuThiBHX_V1;Integrated Security=True;Encrypt=False" SettingsObjectName="DAL.Properties.Settings" SettingsPropertyName="SieuThiBHX_V1ConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="dbo.BangLuong" Member="BangLuongs">
     <Type Name="BangLuong">
       <Column Name="MaBangLuong" Type="System.String" DbType="VarChar(30) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -37,6 +36,7 @@
       <Column Name="SoDienThoai" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
       <Association Name="ChiNhanh_KhoHang" Member="KhoHangs" ThisKey="MaChiNhanh" OtherKey="maChiNhanh" Type="KhoHang" />
       <Association Name="ChiNhanh_NhanVien" Member="NhanViens" ThisKey="MaChiNhanh" OtherKey="maChiNhanh" Type="NhanVien" />
+      <Association Name="ChiNhanh_PhieuNhap" Member="PhieuNhaps" ThisKey="MaChiNhanh" OtherKey="MaChiNhanh" Type="PhieuNhap" />
     </Type>
   </Table>
   <Table Name="dbo.ChiTietBangLuong" Member="ChiTietBangLuongs">
@@ -177,8 +177,10 @@
       <Column Name="NgayNhap" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="ThanhTien" Type="System.Double" DbType="Float" CanBeNull="true" />
       <Column Name="maNhanVien" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="MaChiNhanh" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
       <Association Name="PhieuNhap_ChiTietPhieuNhap" Member="ChiTietPhieuNhaps" ThisKey="MaPhieuNhap" OtherKey="maPhieuNhap" Type="ChiTietPhieuNhap" />
       <Association Name="NhanVien_PhieuNhap" Member="NhanVien" ThisKey="maNhanVien" OtherKey="maNhanVien" Type="NhanVien" IsForeignKey="true" />
+      <Association Name="ChiNhanh_PhieuNhap" Member="ChiNhanh" ThisKey="MaChiNhanh" OtherKey="MaChiNhanh" Type="ChiNhanh" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.SanPham" Member="SanPhams">

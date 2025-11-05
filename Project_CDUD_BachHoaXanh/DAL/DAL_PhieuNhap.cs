@@ -23,7 +23,8 @@ namespace DAL
                                   MaPhieuNhap = pn.MaPhieuNhap,
                                   NgayNhap = pn.NgayNhap,
                                   ThanhTien = pn.ThanhTien,
-                                  MaNhanVien = pn.maNhanVien
+                                  MaNhanVien = pn.maNhanVien,
+                                  MaChiNhanh = pn.MaChiNhanh
                               };
             return temp;
         }
@@ -91,6 +92,7 @@ namespace DAL
                     NgayNhap = pn.NgayNhap,
                     maNhanVien = pn.MaNhanVien, // Dùng mã nhân viên
                     ThanhTien = 0,// Tạm thời gán 0
+                    MaChiNhanh = pn.MaChiNhanh
                 };
 
                 // ✅ 7. Lưu vào DB
@@ -170,6 +172,7 @@ namespace DAL
                 // 🔹 Cập nhật thông tin
                 pnn.NgayNhap = pn.NgayNhap;
                 pnn.maNhanVien = pn.MaNhanVien;
+                pnn.MaChiNhanh = pn.MaChiNhanh;
                 // Không cho sửa thành tiền trực tiếp
                 da.Db.SubmitChanges();
 

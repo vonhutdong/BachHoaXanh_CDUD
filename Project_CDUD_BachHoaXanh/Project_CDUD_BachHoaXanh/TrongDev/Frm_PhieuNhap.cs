@@ -26,6 +26,7 @@ namespace Project_CDUD_BachHoaXanh.TrongDev
         BUS_ChiTietPhieuNhap bus_ctpn = new BUS_ChiTietPhieuNhap();
         BUS_PhieuNhap bus_pn = new BUS_PhieuNhap();
         BUS_PhieuNhap bus_pnALL = new BUS_PhieuNhap();
+        BUS_ChiNhanh bus_Cn = new BUS_ChiNhanh();
         string currentMaPN = string.Empty;
         int currentIdCTPN = -1;
         string data_olds = string.Empty;
@@ -45,6 +46,7 @@ namespace Project_CDUD_BachHoaXanh.TrongDev
             dgvPhieuNhap.Columns["NgayNhap"].HeaderText = "Ngày nhập";
             dgvPhieuNhap.Columns["ThanhTien"].HeaderText = "Thành tiền";
             dgvPhieuNhap.Columns["MaNhanVien"].HeaderText = "Nhân viên";
+            dgvPhieuNhap.Columns["MaChiNhanh"].HeaderText = "Tên Chi nhánh";
 
             dgvPhieuNhap.Columns["NgayNhap"].DefaultCellStyle.Format = "dd/MM/yyyy";
 
@@ -83,7 +85,11 @@ namespace Project_CDUD_BachHoaXanh.TrongDev
             cboNhanVien.DataSource = bus_pnALL.LayDSNhanVien();
             cboNhanVien.DisplayMember = "TenNhanVien";
             cboNhanVien.ValueMember = "MaNhanVien";
-            //cb san pham
+            //cb chi nhánh
+            cboChiNhanh.DataSource = bus_Cn.LayDSChiNhanh();
+            cboChiNhanh.DisplayMember = "TenChiNhanh";
+            cboChiNhanh.ValueMember = "MaChiNhanh";
+          
 
         }
         private void LoadDataChiTietPN()
@@ -181,6 +187,7 @@ namespace Project_CDUD_BachHoaXanh.TrongDev
                 dtpNgayNhap.Value = Convert.ToDateTime(row.Cells["NgayNhap"].Value);
                 cboNhanVien.SelectedValue = row.Cells["MaNhanVien"].Value.ToString();
                 txtThanhTien.Text = row.Cells["ThanhTien"].Value.ToString();
+                cboChiNhanh.SelectedValue = row.Cells["MaChiNhanh"].Value.ToString();
                 btnThemPN.Enabled = false;
                 btnSuaPN.Enabled = true;
                 btnXoaPN.Enabled = true;
@@ -219,6 +226,7 @@ namespace Project_CDUD_BachHoaXanh.TrongDev
                         string ngayNhap = phieuNhapRow.Cells["NgayNhap"].Value?.ToString();
                         string thanhTien = phieuNhapRow.Cells["ThanhTien"].Value?.ToString();
                         string nhanVien = phieuNhapRow.Cells["MaNhanVien"].Value?.ToString();
+                        string maChiNhanh = phieuNhapRow.Cells["MaChiNhanh"].Value?.ToString();
 
                         // Đổ lên giao diện
                         cboNhanVien.SelectedValue = nhanVien;
@@ -226,6 +234,7 @@ namespace Project_CDUD_BachHoaXanh.TrongDev
 
                         if (DateTime.TryParse(ngayNhap, out DateTime ngay))
                             dtpNgayNhap.Value = ngay;
+                        cboChiNhanh.SelectedValue = maChiNhanh;
                     }
                     btnThemCTPN.Enabled = false;
                     btnSuaCTPN.Enabled = true;
@@ -255,6 +264,7 @@ namespace Project_CDUD_BachHoaXanh.TrongDev
                 pn.NgayNhap = dtpNgayNhap.Value;
                 pn.MaNhanVien = cboNhanVien.SelectedValue?.ToString(); // lấy mã nhân viên từ combobox
                 pn.ThanhTien = 0; // không cho nhập tay
+                pn.MaChiNhanh= cboChiNhanh.SelectedValue?.ToString();
 
                 // 2️⃣ Gọi BUS để thêm
                 bool result = bus_pn.ThemPhieuNhap(pn);
@@ -358,6 +368,7 @@ namespace Project_CDUD_BachHoaXanh.TrongDev
                 // Lấy giá trị từ giao diện
                 DateTime ngayNhap = dtpNgayNhap.Value;
                 string maNV = cboNhanVien.SelectedValue?.ToString();
+                string maCN = cboChiNhanh.SelectedValue?.ToString();
 
                 // Ràng buộc dữ liệu nhập
                 if (string.IsNullOrWhiteSpace(maNV))
@@ -378,7 +389,8 @@ namespace Project_CDUD_BachHoaXanh.TrongDev
                 {
                     MaPhieuNhap = maPN,
                     NgayNhap = ngayNhap,
-                    MaNhanVien = maNV
+                    MaNhanVien = maNV,
+                    MaChiNhanh = maCN
                 };
 
                 // Gọi BUS để sửa

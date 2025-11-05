@@ -66,8 +66,7 @@ namespace DAL
 
                 bool duplicate = da.Db.ChiTietPhieuNhaps.Any(x =>
                     x.maPhieuNhap == ct.MaPhieuNhap && x.maSanPham == ct.MaSanPham);
-                if (duplicate)
-                    throw new Exception("Sản phẩm này đã có trong phiếu nhập.");
+               
 
                 // ✅ Thêm chi tiết phiếu nhập
                 ChiTietPhieuNhap chiTiet = new ChiTietPhieuNhap
@@ -80,7 +79,20 @@ namespace DAL
 
                 da.Db.ChiTietPhieuNhaps.InsertOnSubmit(chiTiet);
                 da.Db.SubmitChanges(); // ⚡ Lưu thay đổi trước
+                                       // ✅ Cập nhật kho hàng
+                                       // ✅ Lấy mã chi nhánh từ phiếu nhập
+                                       // ✅ Lấy mã chi nhánh từ phiếu nhập
+                string maChiNhanh = da.Db.PhieuNhaps
+                    .Where(p => p.MaPhieuNhap == ct.MaPhieuNhap)
+                    .Select(p => p.MaChiNhanh)
+                    .FirstOrDefault();
 
+                if (string.IsNullOrEmpty(maChiNhanh))
+                    throw new Exception("Không tìm thấy chi nhánh của phiếu nhập!");
+
+                // ✅ Gọi DAL_KhoHang để thêm hoặc cập nhật kho
+                DAL_KhoHang dalKho = new DAL_KhoHang();
+                dalKho.ThemHoacCapNhatKho(ct.MaSanPham, maChiNhanh, ct.SoLuong);
                 // ✅ Làm mới context trước khi cập nhật tổng tiền
                 dalPhieuNhapAll = new DAL_PhieuNhap();
                 dalPhieuNhapAll.CapNhatThanhTien(ct.MaPhieuNhap);
@@ -102,6 +114,29 @@ namespace DAL
                     throw new Exception("Không tìm thấy chi tiết phiếu nhập để xóa.");
 
                 string maPhieuNhap = chiTiet.maPhieuNhap;
+                string maSanPham = chiTiet.maSanPham;
+                int soLuong = (int)chiTiet.SoLuong;
+
+                // ✅ Lấy mã chi nhánh từ phiếu nhập
+                string maChiNhanh = da.Db.PhieuNhaps
+                    .Where(p => p.MaPhieuNhap == maPhieuNhap)
+                    .Select(p => p.MaChiNhanh)
+                    .FirstOrDefault();
+
+                if (string.IsNullOrEmpty(maChiNhanh))
+                    throw new Exception("Không tìm thấy chi nhánh của phiếu nhập!");
+
+                // ✅ Trừ số lượng trong kho
+                DAL_KhoHang dalKho = new DAL_KhoHang();
+
+                // Giảm số lượng trong kho tương ứng
+                var kho = da.Db.KhoHangs.FirstOrDefault(k => k.maSanPham == maSanPham && k.maChiNhanh == maChiNhanh);
+                if (kho != null)
+                {
+                    kho.soLuong -= soLuong;
+                    if (kho.soLuong < 0) kho.soLuong = 0;
+                }
+
 
                 da.Db.ChiTietPhieuNhaps.DeleteOnSubmit(chiTiet);
                 da.Db.SubmitChanges();
@@ -163,6 +198,7 @@ namespace DAL
                 chiTiet.DonGia = ct.DonGia;
 
                 da.Db.SubmitChanges();
+
 
                 // ✅ Cập nhật lại tổng thành tiền của phiếu nhập
                 dalPhieuNhapAll.CapNhatThanhTien(ct.MaPhieuNhap);

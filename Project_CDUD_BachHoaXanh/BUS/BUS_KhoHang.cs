@@ -15,5 +15,17 @@ namespace BUS
         {
             return dal_kh.LoadKhoHang();
         }
+        public IQueryable LayDSSP()
+        {
+            return dal_kh.LayDSSP();
+        }
+        public IQueryable LayDSCN()
+        {
+            return dal_kh.layDSCN();
+        }
+        public bool SuaKhoHang(string maSanPhamCu, string maChiNhanhCu, string maSanPhamMoi, string maChiNhanhMoi, int soLuongMoi)
+        {
+            return dal_kh.SuaKhoHang(maSanPhamCu, maChiNhanhCu, maSanPhamMoi, maChiNhanhMoi, soLuongMoi);
+        }
     }
 }
