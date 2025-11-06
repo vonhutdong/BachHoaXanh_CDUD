@@ -29,7 +29,7 @@ VALUES
 go 
 
 INSERT INTO KhuyenMai (MaKhuyenMai, TenKhuyenMai, GiaTri) VALUES
-('KM001', N'Giảm giá 10%', 10),
+('KM000', N'Không giảm giá', 0),
 ('KM002', N'Giảm giá 15%', 15),
 ('KM003', N'Giảm giá 20%', 20),
 ('KM004', N'Giảm giá 25%', 25),
@@ -121,25 +121,6 @@ VALUES
 ('HD004', '2025-03-01', '08:00', 200000, 450000, 'KH004', 'NV002', N'Tiền mặt');
 
 go
-INSERT INTO KhoHang (soLuong, maSanPham, idChiTietPhieuNhap, maChiNhanh) VALUES
-(100,'SP001', 2,'CN001'),
-(150,'SP002', 3,'CN002'),
-(123,'SP003', 4,'CN003')
-
-go
-
-INSERT INTO ChiTietPhieuNhap (maPhieuNhap, maSanPham, SoLuong, DonGia) VALUES
-('PN001', 'SP001', 100, 50000),  -- CN001
-('PN002', 'SP002', 150, 48000),  -- CN002
-('PN003', 'SP003', 123, 28500)  -- CN003
-
-go
-INSERT INTO PhieuNhap (MaPhieuNhap, NgayNhap, ThanhTien, maNhanVien, MaChiNhanh) VALUES
-('PN001', '2025-10-01', 5000000, 'NV001', 'CN001'),
-('PN002', '2025-10-03', 7200000, 'NV002', 'CN002'),
-('PN003', '2025-10-05', 3500000, 'NV003', 'CN003')
-
-go
 
 
 INSERT INTO SanPham (maSanPham, tenSanPham, donViTinh, donGia, ngaySanXuat, hanSuDung, anhSanPham, maLoaiHang, maNhaCungCap)
@@ -156,16 +137,14 @@ INSERT INTO ChiTietHoaDon (soLuong, maHoaDon, maSanPham)
 VALUES
 (2,'HD001','SP001'),
 (2,'HD001' ,'SP002'),
-(2,'HD002','SP003'),
-(2,'HD002','SP002');
-
--- Chi tiết hóa đơn cho HD002
-INSERT INTO ChiTietHoaDon (MaCTHD, MaHD, MaSP, SoLuong, ThanhTien)
-VALUES
-('CTHD002', 'HD002', 'SP003', 1, 250000),
-('CTHD001', 'HD002', 'SP005', 2, 240000);
-
+(2,'HD002','SP004'),
+(2,'HD002' ,'SP003'),
+(2,'HD003' ,'SP002'),
+(2,'HD003','SP003'),
+(2,'HD004' ,'SP002'),
+(2,'HD004','SP004')
 
 go
 
+select * from HoaDon
 

@@ -70,9 +70,9 @@ namespace BUS
         {
             return dal_sp.SearchSpByDVT(donViTinh);
         }
-        public bool KiemTraTrung(string tenSP, string donViTinh, float donGia)
+        public bool KiemTraTrung(string tenSP, string donViTinh, float donGia, string maSPHienTai = null)
         {
-            return dal_sp.KiemTraTrung(tenSP, donViTinh, donGia);
+            return dal_sp.KiemTraTrung(tenSP, donViTinh, donGia, maSPHienTai);
         }
         public int LaySoLuongTonKho(string maSP)
         {

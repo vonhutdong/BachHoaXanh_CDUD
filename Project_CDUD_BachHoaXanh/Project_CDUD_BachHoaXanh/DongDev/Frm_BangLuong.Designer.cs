@@ -89,7 +89,7 @@
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel3, 0, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 58.33333F));
@@ -246,7 +246,7 @@
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 72.39584F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 70F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 75F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 89F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 90F));
             this.tableLayoutPanel4.Controls.Add(this.btnLamMoi, 3, 0);
             this.tableLayoutPanel4.Controls.Add(this.btnIn, 4, 0);
             this.tableLayoutPanel4.Controls.Add(this.cbLoc, 2, 0);
@@ -275,7 +275,7 @@
             this.btnLamMoi.ForeColor = System.Drawing.Color.White;
             this.btnLamMoi.Image = ((System.Drawing.Image)(resources.GetObject("btnLamMoi.Image")));
             this.btnLamMoi.ImageSize = new System.Drawing.Size(30, 30);
-            this.btnLamMoi.Location = new System.Drawing.Point(494, 3);
+            this.btnLamMoi.Location = new System.Drawing.Point(493, 3);
             this.btnLamMoi.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btnLamMoi.Name = "btnLamMoi";
             this.btnLamMoi.Size = new System.Drawing.Size(71, 35);
@@ -294,10 +294,10 @@
             this.btnIn.Font = new System.Drawing.Font("Segoe UI", 11.25F);
             this.btnIn.ForeColor = System.Drawing.Color.White;
             this.btnIn.Image = ((System.Drawing.Image)(resources.GetObject("btnIn.Image")));
-            this.btnIn.Location = new System.Drawing.Point(569, 3);
+            this.btnIn.Location = new System.Drawing.Point(568, 3);
             this.btnIn.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btnIn.Name = "btnIn";
-            this.btnIn.Size = new System.Drawing.Size(86, 35);
+            this.btnIn.Size = new System.Drawing.Size(87, 35);
             this.btnIn.TabIndex = 36;
             this.btnIn.Text = "In";
             this.btnIn.Click += new System.EventHandler(this.btnIn_Click);
@@ -314,7 +314,7 @@
             this.cbLoc.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.cbLoc.Font = new System.Drawing.Font("Segoe UI Light", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbLoc.ForeColor = System.Drawing.Color.Black;
-            this.cbLoc.Location = new System.Drawing.Point(424, 6);
+            this.cbLoc.Location = new System.Drawing.Point(423, 6);
             this.cbLoc.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.cbLoc.Name = "cbLoc";
             this.cbLoc.Size = new System.Drawing.Size(66, 32);
@@ -340,7 +340,7 @@
             this.cbLocBangLuong.Location = new System.Drawing.Point(118, 3);
             this.cbLocBangLuong.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.cbLocBangLuong.Name = "cbLocBangLuong";
-            this.cbLocBangLuong.Size = new System.Drawing.Size(302, 36);
+            this.cbLocBangLuong.Size = new System.Drawing.Size(301, 36);
             this.cbLocBangLuong.TabIndex = 28;
             this.cbLocBangLuong.SelectedIndexChanged += new System.EventHandler(this.cbLocBangLuong_SelectedIndexChanged);
             // 
@@ -366,7 +366,7 @@
             this.guna2GroupBox1.Font = new System.Drawing.Font("Times New Roman", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2GroupBox1.ForeColor = System.Drawing.Color.Black;
             this.guna2GroupBox1.Location = new System.Drawing.Point(2, 2);
-            this.guna2GroupBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.guna2GroupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.guna2GroupBox1.Name = "guna2GroupBox1";
             this.guna2GroupBox1.Size = new System.Drawing.Size(363, 323);
             this.guna2GroupBox1.TabIndex = 0;
@@ -394,7 +394,7 @@
             this.tableLayoutPanel2.Controls.Add(this.cbTenNhanVien, 1, 3);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 40);
-            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 7;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
@@ -670,7 +670,7 @@
             this.tableLayoutPanel3.Controls.Add(this.btnThem, 0, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(2, 329);
-            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -763,7 +763,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1028, 561);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Frm_BangLuong";
             this.Text = "Quản lý bảng lương ";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;

@@ -58,6 +58,7 @@ namespace Project_CDUD_BachHoaXanh.DongDev
 
             dgvHoaDon.Columns["MaNhanVien"].Visible = false;
             dgvHoaDon.Columns["MaKhachHang"].Visible = false;
+            dgvHoaDon.Columns["ThanhTien"].Visible = false;
 
             // Format ngày & giờ
             dgvHoaDon.Columns["NgayLapHD"].DefaultCellStyle.Format = "dd/MM/yyyy";
@@ -217,7 +218,6 @@ namespace Project_CDUD_BachHoaXanh.DongDev
                 string maNV = cboMaNV.SelectedValue.ToString();
                 //string tenNV = cboTenNV.SelectedValue.ToString();
                 string pTTT = cboPTTT.Text;
-                MessageBox.Show(pTTT);
                 // Tạo DTO_HoaDon
                 DTO_HoaDon hd = new DTO_HoaDon(id, maKH, maNV,pTTT);
 

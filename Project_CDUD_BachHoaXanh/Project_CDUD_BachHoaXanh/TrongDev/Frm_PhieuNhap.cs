@@ -141,19 +141,37 @@ namespace Project_CDUD_BachHoaXanh.TrongDev
             // --- Cố định: không cho người dùng thay đổi độ rộng cột ---
             dgvChiTietPhieuNhap.AllowUserToResizeColumns = false;
 
-            cboMaPhieuNhap.DataSource = bus_pn.LayDSPhieuNhap();
+            var dsPhieuNhap = bus_pn.LayDSPhieuNhap();
+
+            cboMaPhieuNhap.DataSource = dsPhieuNhap;
             cboMaPhieuNhap.DisplayMember = "MaPhieuNhap";
             cboMaPhieuNhap.ValueMember = "MaPhieuNhap";
-            cboMaPhieuNhap.SelectedIndex = 0;
+
+            // ✅ Kiểm tra có dữ liệu không rồi mới chọn
+            if (dsPhieuNhap != null && dsPhieuNhap.Cast<object>().Any())
+            {
+                cboMaPhieuNhap.SelectedIndex = 0;
+            }
+            else
+            {
+                cboMaPhieuNhap.SelectedIndex = -1; // không chọn gì cả
+            }
 
             //cbMaPhieuNhap.DataSource = bus_pn.LayDSPhieuNhap();
             //cbMaPhieuNhap.DisplayMember = "idSanPham";
             //cbMaPhieuNhap.ValueMember = "idSanPham";
-
-            cboTenSanPham.DataSource = bus_ctpn.LayDSSP();
+            var dsSanPham = bus_ctpn.LayDSSP();
+            cboTenSanPham.DataSource = dsSanPham;
             cboTenSanPham.DisplayMember = "TenSanPham";
             cboTenSanPham.ValueMember = "MaSanPham";
-            cboTenSanPham.SelectedIndex = 0;
+            if (dsSanPham != null && dsSanPham.Cast<object>().Any())
+            {
+                cboTenSanPham.SelectedIndex = 0;
+            }
+            else
+            {
+                cboTenSanPham.SelectedIndex = -1; // không chọn gì cả
+            }
         }
 
         private void Frm_PhieuNhap_Load(object sender, EventArgs e)

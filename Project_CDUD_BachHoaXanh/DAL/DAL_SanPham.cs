@@ -284,13 +284,20 @@ namespace DAL
 
             return query;
         }
-        public bool KiemTraTrung(string tenSP, string donViTinh, float donGia)
+        public bool KiemTraTrung(string tenSP, string donViTinh, float donGia, string maSPHienTai = null)
         {
-            var sp = da.Db.SanPhams
-                       .FirstOrDefault(s => s.tenSanPham == tenSP
-                                         && s.donViTinh == donViTinh
-                                         && s.donGia == donGia);
-            return sp != null; // true = đã tồn tại
+            var query = da.Db.SanPhams.Where(sp =>
+                        sp.tenSanPham == tenSP &&
+                        sp.donViTinh == donViTinh &&
+                        sp.donGia == donGia);
+
+            // Nếu đang sửa → loại trừ chính sản phẩm này
+            if (!string.IsNullOrEmpty(maSPHienTai))
+            {
+                query = query.Where(sp => sp.maSanPham != maSPHienTai);
+            }
+
+            return query.Any();
         }
         public int LaySoLuongTonKho(string maSP)
         {

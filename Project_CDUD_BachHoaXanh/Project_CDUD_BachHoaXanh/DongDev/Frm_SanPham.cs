@@ -34,8 +34,8 @@ namespace Project_CDUD_BachHoaXanh.DongDev
             InitializeComponent();
         }
 
-        
-       void LoadData()
+
+        void LoadData()
         {
             //load dữ liệu loại hàng lên combobox
             cbMaNhomHang.DataSource = bus_loaihang.LayDSLH();
@@ -56,7 +56,7 @@ namespace Project_CDUD_BachHoaXanh.DongDev
             dgvSP.Columns["MaNhaCungCap"].Visible = false;
             dgvSP.Columns["MaLoaiHang"].Visible = false;
             dgvSP.Columns["KhuyenMai"].Visible = false;
-            dgvSP.Columns["MaKhuyenMai"].Visible = false;
+            //dgvSP.Columns["MaKhuyenMai"].Visible = false;
             dgvSP.Columns["AnhSanPham"].Visible = false;
             dgvSP.Columns["NhaCungCap"].Visible = false;
             dgvSP.Columns["LoaiHang"].Visible = false;
@@ -69,6 +69,8 @@ namespace Project_CDUD_BachHoaXanh.DongDev
             dgvSP.Columns["HanSuDung"].HeaderText = "Hạn sử dụng";
             dgvSP.Columns["NhaCungCap"].HeaderText = "Nhà cung cấp";
             dgvSP.Columns["MaLoaiHang"].HeaderText = "Loại hàng";
+            dgvSP.Columns["MaKhuyenMai"].HeaderText = "Tên Khuyến mãi";
+
             //format date
             dgvSP.Columns["NgaySanXuat"].DefaultCellStyle.Format = "dd/MM/yyyy";
             dgvSP.Columns["HanSuDung"].DefaultCellStyle.Format = "dd/MM/yyyy";
@@ -76,12 +78,13 @@ namespace Project_CDUD_BachHoaXanh.DongDev
             dgvSP.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvSP.ColumnHeadersHeight = 30; // hoặc cao hơn
 
+            // --- Thiết lập kích thước & hiển thị ---
             dgvSP.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing; // Không cho resize
             dgvSP.ColumnHeadersHeight = 40; // Chiều cao tiêu đề
 
             dgvSP.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill; // Cột tự giãn đều
 
-            // -    -- Tăng chiều cao hàng ---
+            // --- Tăng chiều cao hàng ---
             dgvSP.RowTemplate.Height = 35; // Tăng chiều cao từng hàng
             dgvSP.AllowUserToResizeRows = false; // Không cho resize hàng
 
@@ -96,12 +99,15 @@ namespace Project_CDUD_BachHoaXanh.DongDev
             dgvSP.DefaultCellStyle.ForeColor = Color.Black;
             dgvSP.DefaultCellStyle.SelectionBackColor = Color.LightBlue;
             dgvSP.DefaultCellStyle.SelectionForeColor = Color.Black;
-
+            dgvSP.EditMode = DataGridViewEditMode.EditProgrammatically;
             dgvSP.EnableHeadersVisualStyles = false;
             dgvSP.ColumnHeadersDefaultCellStyle.BackColor = Color.LightGreen;
             dgvSP.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black;
             dgvSP.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 11, FontStyle.Bold);
-            dgvSP.DefaultCellStyle.Font = new Font("Segoe UI", 11, FontStyle.Bold);
+            dgvSP.DefaultCellStyle.Font = new Font("Segoe UI", 12, FontStyle.Bold);
+
+            // --- Cố định: không cho người dùng thay đổi độ rộng cột ---
+            dgvSP.AllowUserToResizeColumns = false;
         }
         private void Frm_SanPham_Load(object sender, EventArgs e)
         {
@@ -330,6 +336,8 @@ namespace Project_CDUD_BachHoaXanh.DongDev
 
         private void btnChonAnh_Click(object sender, EventArgs e)
         {
+            imageData = null;   // Reset trước
+            imgSanPham.Image = null;
             try
             {
                 using (OpenFileDialog ofd = new OpenFileDialog())
@@ -365,6 +373,7 @@ namespace Project_CDUD_BachHoaXanh.DongDev
 
         private void btnSua_Click(object sender, EventArgs e)
         {
+            string maSP = txtMaSanPham.Text.Trim();
             string tenSP = txtTenSanPham.Text.Trim();
             string donViTinh = txtDonViTinh.Text.Trim();
             float donGia = float.Parse(txtDonGia.Text);
@@ -392,7 +401,7 @@ namespace Project_CDUD_BachHoaXanh.DongDev
                     return;
                 }
                 //kiem tra trung
-                if (bus_sanpham.KiemTraTrung(tenSP, donViTinh, donGia))
+                if (bus_sanpham.KiemTraTrung(tenSP, donViTinh, donGia,maSP))
                 {
                     MessageBox.Show("Sản phẩm này đã tồn tại (trùng tên, đơn vị tính, đơn giá)!",
                                     "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -438,7 +447,7 @@ namespace Project_CDUD_BachHoaXanh.DongDev
                     maKhuyenMai, // có thể null
                     imageData
                 );
-                
+
                 bool kq = bus_sanpham.SuaSanPham(sp);
 
                 if (kq)
@@ -476,7 +485,7 @@ namespace Project_CDUD_BachHoaXanh.DongDev
                         return;
                     }
 
-                    
+
 
                     // Gọi hàm xóa
                     bool kq = bus_sanpham.XoaSanPham(currentID);
