@@ -265,7 +265,7 @@
             this.txtDonGia.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.txtDonGia.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtDonGia.Location = new System.Drawing.Point(212, 255);
-            this.txtDonGia.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
+            this.txtDonGia.Margin = new System.Windows.Forms.Padding(7);
             this.txtDonGia.Name = "txtDonGia";
             this.txtDonGia.PlaceholderText = "";
             this.txtDonGia.SelectedText = "";
@@ -289,7 +289,7 @@
             this.txtDonViTinh.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.txtDonViTinh.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtDonViTinh.Location = new System.Drawing.Point(212, 193);
-            this.txtDonViTinh.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
+            this.txtDonViTinh.Margin = new System.Windows.Forms.Padding(7);
             this.txtDonViTinh.Name = "txtDonViTinh";
             this.txtDonViTinh.PlaceholderText = "";
             this.txtDonViTinh.SelectedText = "";
@@ -331,7 +331,7 @@
             this.txtTenSanPham.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.txtTenSanPham.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtTenSanPham.Location = new System.Drawing.Point(212, 69);
-            this.txtTenSanPham.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
+            this.txtTenSanPham.Margin = new System.Windows.Forms.Padding(7);
             this.txtTenSanPham.Name = "txtTenSanPham";
             this.txtTenSanPham.PlaceholderText = "";
             this.txtTenSanPham.SelectedText = "";
@@ -356,7 +356,7 @@
             this.txtMaSanPham.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.txtMaSanPham.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtMaSanPham.Location = new System.Drawing.Point(212, 7);
-            this.txtMaSanPham.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
+            this.txtMaSanPham.Margin = new System.Windows.Forms.Padding(7);
             this.txtMaSanPham.Name = "txtMaSanPham";
             this.txtMaSanPham.PlaceholderText = "";
             this.txtMaSanPham.SelectedText = "";
@@ -562,6 +562,7 @@
             this.dgvSP.ThemeStyle.RowsStyle.Height = 24;
             this.dgvSP.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvSP.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            this.dgvSP.Click += new System.EventHandler(this.dgvSP_Click);
             // 
             // Frm_SanPham
             // 
