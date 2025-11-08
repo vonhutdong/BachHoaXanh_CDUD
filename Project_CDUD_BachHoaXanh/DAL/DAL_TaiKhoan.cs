@@ -24,7 +24,10 @@ namespace DAL
         public string GetMaTaiKhoan(string taiKhoan, string matKhau)
         {
             var tk = da.Db.TaiKhoans.FirstOrDefault(t => t.TenTaiKhoan == taiKhoan && t.MatKhau == matKhau);
-            return tk?.MaTaiKhoan ?? "";
+            if (tk == null)
+                throw new Exception("Không tìm thấy tài khoản hợp lệ!");
+
+            return tk.MaTaiKhoan;
         }
 
         // Lấy danh sách tất cả tài khoản

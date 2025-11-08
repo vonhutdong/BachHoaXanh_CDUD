@@ -146,5 +146,33 @@ VALUES
 
 go
 
+CREATE OR ALTER PROCEDURE GetPhieuNhapAndDetails
+    @MaPhieuNhap VARCHAR(30)
+AS
+BEGIN
+    SELECT 
+        pn.MaPhieuNhap,
+        pn.NgayNhap,
+        pn.ThanhTien AS TongTienPhieu,
+        pn.maNhanVien,
+        nv.TenNhanVien,
+        pn.MaChiNhanh,
+        cn.TenChiNhanh,
+        ctn.SoLuong,
+        ctn.DonGia,
+        ctn.maSanPham,
+        sp.TenSanPham,
+        (ctn.DonGia * ctn.SoLuong) AS ThanhTienDong
+    FROM 
+        PhieuNhap pn
+        INNER JOIN NhanVien nv ON nv.maNhanVien = pn.maNhanVien
+        INNER JOIN ChiTietPhieuNhap ctn ON pn.MaPhieuNhap = ctn.maPhieuNhap
+        INNER JOIN SanPham sp ON ctn.maSanPham = sp.maSanPham
+        INNER JOIN ChiNhanh cn ON pn.MaChiNhanh = cn.MaChiNhanh
+    WHERE 
+        pn.MaPhieuNhap = @MaPhieuNhap;
+END
+GO
+EXEC GetPhieuNhapAndDetails @MaPhieuNhap = 'PN002';
 select * from HoaDon
 
