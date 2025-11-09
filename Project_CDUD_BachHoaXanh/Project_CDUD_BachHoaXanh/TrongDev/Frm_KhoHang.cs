@@ -26,7 +26,9 @@ namespace Project_CDUD_BachHoaXanh.TrongDev
         private string maCNCu;
         private void LoadKhoHang()
         {
-            
+            txtSoLuong.Enabled = false;
+            cboChiNhanh.Enabled = false;
+            cbTenSP.Enabled = false;
             dgvKhoHang.DataSource = bus_kh.LoadKhoHang();
 
             // Đổi header
@@ -78,6 +80,11 @@ namespace Project_CDUD_BachHoaXanh.TrongDev
             cboChiNhanh.DisplayMember = "TenChiNhanh";
             cboChiNhanh.ValueMember = "MaChiNhanh";
             cboChiNhanh.SelectedIndex = -1;
+
+            cboTimSP.DataSource = bus_kh.LayDSSP();
+            cboTimSP.DisplayMember = "TenSanPham";
+            cboTimSP.ValueMember = "MaSanPham";
+            cboTimSP.SelectedIndex = -1;
         }
         private void btnIn_Click(object sender, EventArgs e)
         {
@@ -111,40 +118,6 @@ namespace Project_CDUD_BachHoaXanh.TrongDev
                 maCNCu = row.Cells["MaChiNhanh"].Value.ToString();
             }
         }
-
-        private void btnSua_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (currentID == 0)
-                {
-                    MessageBox.Show("Vui lòng chọn dòng cần sửa!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-
-                // Lấy dữ liệu mới từ các control
-                string maSPMoi = cbTenSP.SelectedValue.ToString();
-                string maCNMoi = cboChiNhanh.SelectedValue.ToString();
-                int soLuongMoi = int.Parse(txtSoLuong.Text.Trim());
-
-                BUS_KhoHang busKho = new BUS_KhoHang();
-                bool result = busKho.SuaKhoHang(maSPCu, maCNCu, maSPMoi, maCNMoi, soLuongMoi);
-
-                if (result)
-                {
-                    MessageBox.Show("Cập nhật kho hàng thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                    // Cập nhật lại danh sách
-                    dgvKhoHang.DataSource = busKho.LoadKhoHang();
-                    reset();
-
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Lỗi khi sửa kho hàng: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
         private void reset()
         {
             currentID = 0;
@@ -160,6 +133,35 @@ namespace Project_CDUD_BachHoaXanh.TrongDev
         private void btnLamMoi_Click(object sender, EventArgs e)
         {
             reset();
+        }
+
+        private void btnSua_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnTim_Click(object sender, EventArgs e)
+        {
+            //string tuKhoa = cboTimSP.Text.Trim();
+
+            //try
+            //{
+            //    var ketQua = bus_kh.TimKiemSanPham(tuKhoa);
+
+            //    if (ketQua != null && ketQua.Any())
+            //    {
+            //        dgvKhoHang.DataSource = ketQua.ToList();
+            //    }
+            //    else
+            //    {
+            //        MessageBox.Show("Không tìm thấy sản phẩm phù hợp!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //        dgvKhoHang.DataSource = null; // Xóa dữ liệu cũ
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show("Lỗi khi tìm kiếm: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
         }
     }
 }

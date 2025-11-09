@@ -14,6 +14,7 @@ namespace DTO
         private string maChiNhanh;
         private int idChiTietPhieuNhap;
 
+        public DTO_KhoHang() { }
         public DTO_KhoHang(int id, string maSanPham, int soLuong, string maChiNhanh)
         {
             this.Id = id;
