@@ -174,5 +174,42 @@ BEGIN
 END
 GO
 EXEC GetPhieuNhapAndDetails @MaPhieuNhap = 'PN002';
+DROP PROCEDURE GetTonKhoTheoChiNhanh;
+CREATE OR ALTER PROCEDURE GetTonKhoTheoChiNhanh
+    @TenChiNhanh NVARCHAR(100)
+AS
+BEGIN
+    SELECT 
+        kh.id AS IDKho,
+        cn.MaChiNhanh,
+        cn.TenChiNhanh,
+		cn.DiaChi,
+        cn.SoDienThoai,             
+        sp.maSanPham,
+        sp.tenSanPham,
+        sp.donViTinh,
+        kh.soLuong AS SoLuongTon,
+        ISNULL(ctpn.DonGia, 0) AS DonGiaNhap,
+        (kh.soLuong * ISNULL(ctpn.DonGia, 0)) AS GiaTriTonKho,
+        pn.NgayNhap,
+        nv.tenNhanVien AS NhanVienNhap
+    FROM 
+        KhoHang kh
+        INNER JOIN ChiNhanh cn ON kh.maChiNhanh = cn.MaChiNhanh
+        INNER JOIN SanPham sp ON kh.maSanPham = sp.maSanPham
+        LEFT JOIN ChiTietPhieuNhap ctpn ON kh.idChiTietPhieuNhap = ctpn.id
+        LEFT JOIN PhieuNhap pn ON ctpn.maPhieuNhap = pn.MaPhieuNhap
+        LEFT JOIN NhanVien nv ON pn.maNhanVien = nv.maNhanVien
+    WHERE 
+        cn.TenChiNhanh = @TenChiNhanh
+    ORDER BY 
+        sp.tenSanPham;
+END
+GO
+
+
+
+EXEC GetTonKhoTheoChiNhanh @TenChiNhanh = N'Chi nhánh Tây Ninh';
+
 select * from HoaDon
 
