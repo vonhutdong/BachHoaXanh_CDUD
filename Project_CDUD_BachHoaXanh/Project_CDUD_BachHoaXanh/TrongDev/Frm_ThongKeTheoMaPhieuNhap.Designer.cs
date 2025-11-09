@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.rpt_ThongKeTheoMaPhieuNhap = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
+            this.InThongKeTheoMaPhieuNhap2 = new Project_CDUD_BachHoaXanh.TrongDev.InThongKeTheoMaPhieuNhap();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.cboMaPhieuNhap = new System.Windows.Forms.ComboBox();
             this.btnTim = new System.Windows.Forms.Button();
-            this.rpt_ThongKeTheoMaPhieuNhap = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
-            this.InThongKeTheoMaPhieuNhap2 = new Project_CDUD_BachHoaXanh.TrongDev.InThongKeTheoMaPhieuNhap();
             this.InThongKeTheoMaPhieuNhap1 = new Project_CDUD_BachHoaXanh.TrongDev.InThongKeTheoMaPhieuNhap();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -52,6 +52,18 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(1326, 658);
             this.tableLayoutPanel2.TabIndex = 4;
+            // 
+            // rpt_ThongKeTheoMaPhieuNhap
+            // 
+            this.rpt_ThongKeTheoMaPhieuNhap.ActiveViewIndex = 0;
+            this.rpt_ThongKeTheoMaPhieuNhap.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.rpt_ThongKeTheoMaPhieuNhap.Cursor = System.Windows.Forms.Cursors.Default;
+            this.rpt_ThongKeTheoMaPhieuNhap.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rpt_ThongKeTheoMaPhieuNhap.Location = new System.Drawing.Point(3, 3);
+            this.rpt_ThongKeTheoMaPhieuNhap.Name = "rpt_ThongKeTheoMaPhieuNhap";
+            this.rpt_ThongKeTheoMaPhieuNhap.ReportSource = this.InThongKeTheoMaPhieuNhap2;
+            this.rpt_ThongKeTheoMaPhieuNhap.Size = new System.Drawing.Size(1320, 652);
+            this.rpt_ThongKeTheoMaPhieuNhap.TabIndex = 0;
             // 
             // tableLayoutPanel1
             // 
@@ -102,18 +114,6 @@
             this.btnTim.Text = "Tìm";
             this.btnTim.UseVisualStyleBackColor = true;
             this.btnTim.Click += new System.EventHandler(this.btnTim_Click);
-            // 
-            // rpt_ThongKeTheoMaPhieuNhap
-            // 
-            this.rpt_ThongKeTheoMaPhieuNhap.ActiveViewIndex = 0;
-            this.rpt_ThongKeTheoMaPhieuNhap.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.rpt_ThongKeTheoMaPhieuNhap.Cursor = System.Windows.Forms.Cursors.Default;
-            this.rpt_ThongKeTheoMaPhieuNhap.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.rpt_ThongKeTheoMaPhieuNhap.Location = new System.Drawing.Point(3, 3);
-            this.rpt_ThongKeTheoMaPhieuNhap.Name = "rpt_ThongKeTheoMaPhieuNhap";
-            this.rpt_ThongKeTheoMaPhieuNhap.ReportSource = this.InThongKeTheoMaPhieuNhap2;
-            this.rpt_ThongKeTheoMaPhieuNhap.Size = new System.Drawing.Size(1320, 652);
-            this.rpt_ThongKeTheoMaPhieuNhap.TabIndex = 0;
             // 
             // Frm_ThongKeTheoMaPhieuNhap
             // 
