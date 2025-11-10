@@ -123,9 +123,9 @@ namespace Project_CDUD_BachHoaXanh.TrongDev
             currentID = 0;
             txtSoLuong.Clear();
             cbTenSP.SelectedIndex = -1;
-            cbTenSP.Text = "";           // 🔥 Thêm dòng này
+            cbTenSP.Text = "";          
             cboChiNhanh.SelectedIndex = -1;
-            cboChiNhanh.Text = "";       // 🔥 Thêm dòng này
+            cboChiNhanh.Text = "";     
             maSPCu = null;
             maCNCu = null;
         }

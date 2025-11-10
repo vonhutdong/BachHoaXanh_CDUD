@@ -518,6 +518,7 @@
             this.btnThongKeSPTonKho.Size = new System.Drawing.Size(210, 99);
             this.btnThongKeSPTonKho.TabIndex = 9;
             this.btnThongKeSPTonKho.Text = "Thống kê Sản phẩm tồn kho";
+            this.btnThongKeSPTonKho.Click += new System.EventHandler(this.btnThongKeSPTonKho_Click);
             // 
             // btnBaoCaoBangLuong
             // 
