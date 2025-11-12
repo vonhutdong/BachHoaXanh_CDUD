@@ -30,7 +30,7 @@ namespace DTO
             this.maChiNhanh = maChiNhanh;
             this.idChiTietPhieuNhap = idChiTietPhieuNhap;
         }
-
+       
         public int Id { get => id; set => id = value; }
         public string IdSanPham { get => maSanPham; set => maSanPham = value; }
         public int SoLuong { get => soLuong; set => soLuong = value; }

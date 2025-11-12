@@ -27,9 +27,9 @@ namespace BUS
         {
             return dal_kh.SuaKhoHang(maSanPhamCu, maChiNhanhCu, maSanPhamMoi, maChiNhanhMoi, soLuongMoi);
         }
-        //public IQueryable TimKiemSanPham(string tuKhoa)
-        //{
-        //    return dal_kh.TimKiemSanPhamTrongKho(tuKhoa);
-        //}
+        public List<object> TimKiemSanPham(string tuKhoa)
+        {
+            return dal_kh.TimKiemSanPhamTrongKho(tuKhoa).ToList();
+        }
     }
 }

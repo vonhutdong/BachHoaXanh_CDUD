@@ -142,26 +142,16 @@ namespace Project_CDUD_BachHoaXanh.TrongDev
 
         private void btnTim_Click(object sender, EventArgs e)
         {
-            //string tuKhoa = cboTimSP.Text.Trim();
+            string keyword = cboTimSP.Text.Trim();
 
-            //try
-            //{
-            //    var ketQua = bus_kh.TimKiemSanPham(tuKhoa);
+            if (string.IsNullOrEmpty(keyword))
+            {
+                LoadKhoHang();
+                return;
+            }
 
-            //    if (ketQua != null && ketQua.Any())
-            //    {
-            //        dgvKhoHang.DataSource = ketQua.ToList();
-            //    }
-            //    else
-            //    {
-            //        MessageBox.Show("Không tìm thấy sản phẩm phù hợp!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //        dgvKhoHang.DataSource = null; // Xóa dữ liệu cũ
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show("Lỗi khi tìm kiếm: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //}
+            var result = bus_kh.TimKiemSanPham(keyword).ToList();
+            dgvKhoHang.DataSource = result;
         }
     }
 }

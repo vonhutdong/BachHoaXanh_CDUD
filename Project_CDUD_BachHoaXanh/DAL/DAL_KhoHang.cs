@@ -170,48 +170,44 @@ namespace DAL
 
             return sb.ToString().Normalize(NormalizationForm.FormC);
         }
-        //public IQueryable<DTO_KhoHang> TimKiemSanPhamTrongKho(string tuKhoa)
-        //{
-        //    string keyword = RemoveDiacritics(tuKhoa.ToLower());
+        public IQueryable<object> TimKiemSanPhamTrongKho(string tuKhoa)
+        {
+            string keyword = RemoveDiacritics(tuKhoa.ToLower());
 
-        //    var danhSach = da.Db.KhoHangs
-        //        .Join(da.Db.SanPhams,
-        //              kh => kh.maSanPham,
-        //              sp => sp.maSanPham,
-        //              (kh, sp) => new { kh, sp })
-        //        .Join(da.Db.ChiNhanhs,
-        //              temp => temp.kh.maChiNhanh,
-        //              cn => cn.MaChiNhanh,
-        //              (temp, cn) => new
-        //              {
-        //                  temp.kh.maSanPham,
-        //                  temp.sp.tenSanPham,
-        //                  temp.kh.soLuong,
-        //                  temp.kh.maChiNhanh,
-        //                  cn.TenChiNhanh
-        //              })
-        //        .AsEnumerable() // Xử lý tìm kiếm không dấu trong bộ nhớ
-        //        .Where(x =>
-        //            (!string.IsNullOrEmpty(x.tenSanPham) &&
-        //                RemoveDiacritics(x.tenSanPham.ToLower()).Contains(keyword))
-        //            || (!string.IsNullOrEmpty(x.maSanPham) &&
-        //                x.maSanPham.ToLower().Contains(keyword))
-        //            || (!string.IsNullOrEmpty(x.TenChiNhanh) &&
-        //                RemoveDiacritics(x.TenChiNhanh.ToLower()).Contains(keyword))
-        //        )
-        //        .GroupBy(x => new { x.maSanPham, x.tenSanPham, x.maChiNhanh, x.TenChiNhanh })
-        //        .Select(g => new
-        //        {
-        //            MaSanPham = g.Key.maSanPham,
-        //            TenSanPham = g.Key.tenSanPham,
-        //            SoLuong = g.Sum(x => x.soLuong),
-        //            MaChiNhanh = g.Key.maChiNhanh,
-        //            TenChiNhanh = g.Key.TenChiNhanh
-        //        })
-        //        .AsQueryable();
+            var danhSach = da.Db.KhoHangs
+                .Join(da.Db.SanPhams,
+                      kh => kh.maSanPham,
+                      sp => sp.maSanPham,
+                      (kh, sp) => new { kh, sp })
+                .Join(da.Db.ChiNhanhs,
+                      temp => temp.kh.maChiNhanh,
+                      cn => cn.MaChiNhanh,
+                      (temp, cn) => new
+                      {
+                          temp.sp.tenSanPham,
+                          temp.kh.soLuong,
+                          cn.TenChiNhanh
+                      })
+                .AsEnumerable() // Xử lý tìm kiếm không dấu
+                .Where(x =>
+                    (!string.IsNullOrEmpty(x.tenSanPham) &&
+                        RemoveDiacritics(x.tenSanPham.ToLower()).Contains(keyword))
+                    || (!string.IsNullOrEmpty(x.TenChiNhanh) &&
+                        RemoveDiacritics(x.TenChiNhanh.ToLower()).Contains(keyword))
+                )
+                .GroupBy(x => new { x.tenSanPham, x.TenChiNhanh })
+                .Select(g => new
+                {
+                    TenSanPham = g.Key.tenSanPham,
+                    SoLuong = g.Sum(x => x.soLuong),
+                    TenChiNhanh = g.Key.TenChiNhanh
+                })
+                .AsQueryable();
 
-        //    return danhSach;
-        //}
+            return danhSach;
+        }
+
+
 
 
 

@@ -30,6 +30,7 @@
         {
             this.crystalReportViewer1 = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
             this.InDanhSachPN1 = new Project_CDUD_BachHoaXanh.TrongDev.InDanhSachPN();
+            this.InDanhSachPN2 = new Project_CDUD_BachHoaXanh.TrongDev.InDanhSachPN();
             this.SuspendLayout();
             // 
             // crystalReportViewer1
@@ -40,7 +41,7 @@
             this.crystalReportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.crystalReportViewer1.Location = new System.Drawing.Point(0, 0);
             this.crystalReportViewer1.Name = "crystalReportViewer1";
-            this.crystalReportViewer1.ReportSource = this.InDanhSachPN1;
+            this.crystalReportViewer1.ReportSource = this.InDanhSachPN2;
             this.crystalReportViewer1.Size = new System.Drawing.Size(1130, 635);
             this.crystalReportViewer1.TabIndex = 0;
             // 
@@ -53,6 +54,7 @@
             this.Name = "Frm_DanhSachPhieuNhap";
             this.Text = "IN DANH SÁCH PHIẾU NHẬP";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.Frm_DanhSachPhieuNhap_Load);
             this.ResumeLayout(false);
 
         }
@@ -61,5 +63,6 @@
 
         private CrystalDecisions.Windows.Forms.CrystalReportViewer crystalReportViewer1;
         private InDanhSachPN InDanhSachPN1;
+        private InDanhSachPN InDanhSachPN2;
     }
 }

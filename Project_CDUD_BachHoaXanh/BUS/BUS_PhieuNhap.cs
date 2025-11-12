@@ -1,10 +1,11 @@
-﻿using System;
+﻿using DAL;
+using DTO;
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DTO;
-using DAL;
 
 namespace BUS
 {
@@ -31,6 +32,10 @@ namespace BUS
         public bool SuaPN(DTO_PhieuNhap pn)
         {
             return dal_pnAll.SuaPhieuNhap(pn);
+        }
+        public DataTable LayDSPhieuNhapVaChiTiet_BaoCao()
+        {
+            return dal_pnAll.LayDSPhieuNhapVaChiTiet_BaoCao();
         }
     }
 }
