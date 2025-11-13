@@ -23,6 +23,10 @@ namespace BUS
         {
             return dal_bangluong.LayBangLuongTheoThang(maNhanVien, thang, nam);
         }
+        public BangLuong LayBangLuongTheoThang1(string maNhanVien, int thang, int nam)
+        {
+            return dal_bangluong.LayBangLuongTheoThang1(maNhanVien, thang, nam);
+        }
         public IQueryable DSNhanVien()
         {
             return dal_bangluong.DSNhanVien();
@@ -30,6 +34,10 @@ namespace BUS
         public void ThemBangLuong(DTO_BangLuong bangluong)
         {
             dal_bangluong.ThemBangLuong(bangluong);
+        }
+        public BangLuong LayHoacTaoBangLuong(string maNV, int thang, int nam)
+        {
+            return dal_bangluong.LayHoacTaoBangLuong(maNV, thang, nam);
         }
     }
 }

@@ -13,8 +13,12 @@ namespace DTO
         private string maLoaiHang { get; set; }
         private double giaBan { get; set; }
         private int soLuong { get; set; }
+        private string maKhuyenMai { get; set; }
+        private double phanTramKM { get; set; }
         private System.Data.Linq.Binary anhSanPham { get; set; }
 
+        public double PhanTramKM { get => phanTramKM; set => phanTramKM = value; }
+        public string MaKhuyenMai { get => maKhuyenMai; set => maKhuyenMai = value; }
         public string TenSanPham { get => tenSanPham; set => tenSanPham = value; }
         public string MaSanPham { get => maSanPham; set => maSanPham = value; }
         public string MaLoaiHang { get => maLoaiHang; set => maLoaiHang = value; }

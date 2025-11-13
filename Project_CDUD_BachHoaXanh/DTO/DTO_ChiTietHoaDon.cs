@@ -13,6 +13,14 @@ namespace DTO
         private string maHoaDon;
         private string maSanPham;
 
+        public DTO_ChiTietHoaDon(int soLuong, string mahoadon, string maSanPham)
+        {
+            this.soLuong = soLuong;
+            maHoaDon = mahoadon;
+            this.maSanPham = maSanPham;
+        }
+
+
         public DTO_ChiTietHoaDon(int id, int soLuong, string maHoaDon, string maSanPham)
         {
             this.id = id;

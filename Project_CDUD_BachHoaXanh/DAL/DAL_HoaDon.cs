@@ -13,8 +13,11 @@ namespace DAL
         public IQueryable GetListHD()
         {
             return from hd in da.Db.HoaDons
-                   join kh in da.Db.KhachHangs on hd.maKhachHang equals kh.maKhachHang
-                   join nv in da.Db.NhanViens on hd.maNhanVien equals nv.maNhanVien
+                   join kh in da.Db.KhachHangs
+                        on hd.maKhachHang equals kh.maKhachHang
+                   join nv in da.Db.NhanViens
+                        on hd.maNhanVien equals nv.maNhanVien into leftJoinNV
+                   from nv in leftJoinNV.DefaultIfEmpty()   // LEFT JOIN NHÂN VIÊN
                    select new
                    {
                        MaHD = hd.maHD,
@@ -26,10 +29,11 @@ namespace DAL
                        hd.maKhachHang,
                        hd.maNhanVien,
                        TenKhachHang = kh.tenKhachHang,
-                       TenNhanVien = nv.tenNhanVien
+                       TenNhanVien = nv != null ? nv.tenNhanVien : ""
                    };
         }
-        
+
+
         public IQueryable GetHoaDonByMa(string maHD)
         {
             return (from hd in da.Db.HoaDons
@@ -220,6 +224,7 @@ namespace DAL
                         maHD = newMa.Trim(),
                         ngayLapHD = DateTime.Now,
                         gioLapHD = DateTime.Now,
+                        phuongThucThanhToan = hoaDon.PhuongThucThanhToan,
                         tongTien = 0,
                         thanhTien = 0,
                         maKhachHang = hoaDon.MaKhachHang,
@@ -236,5 +241,44 @@ namespace DAL
                 throw;
             }
         }
+        public void UpdateTotalCash2(string maHd)
+        {
+            // Lấy hóa đơn
+            var hd_update = da.Db.HoaDons.SingleOrDefault(hd => hd.maHD == maHd);
+            if (hd_update == null) return;
+
+            // Lấy chi tiết hóa đơn
+            var listCTHD = da.Db.ChiTietHoaDons.Where(ct => ct.maHoaDon == maHd).ToList();
+
+            double totalThanhTien = 0;
+
+            foreach (var item in listCTHD)
+            {
+                // Lấy sản phẩm
+                var sp = da.Db.SanPhams.SingleOrDefault(s => s.maSanPham == item.maSanPham);
+                if (sp == null) continue;
+
+                double gia = (double)sp.donGia;
+
+                // Áp dụng khuyến mãi nếu có
+                if (!string.IsNullOrEmpty(sp.maKhuyenMai))
+                {
+                    var km = da.Db.KhuyenMais.SingleOrDefault(k => k.MaKhuyenMai == sp.maKhuyenMai);
+                    if (km != null && km.GiaTri.HasValue)
+                    {
+                        gia *= (1 - km.GiaTri.Value / 100.0);
+                    }
+                }
+
+                totalThanhTien += (double)gia * (int)item.soLuong;
+            }
+
+            // Cập nhật hóa đơn
+            hd_update.tongTien = totalThanhTien;
+            hd_update.thanhTien = totalThanhTien;
+
+            da.Db.SubmitChanges();
+        }
+
     }
 }

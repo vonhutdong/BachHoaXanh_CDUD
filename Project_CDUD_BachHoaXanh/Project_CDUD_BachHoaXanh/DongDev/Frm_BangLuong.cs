@@ -339,6 +339,7 @@ namespace Project_CDUD_BachHoaXanh.DongDev
                     currentIDBangLuong = dgvBangLuong.Rows[dong].Cells["MaBangLuong"].Value.ToString();
                     //load danh sách chi tiet bang lương có điều kiện
                     LoadDSChiTietBangLuong(currentIDBangLuong);
+                    dtNgayNhap.Value = Convert.ToDateTime(dgvBangLuong.Rows[dong].Cells["ThangNam"].Value);
                     txtMaBangLuong.Text = dgvBangLuong.Rows[dong].Cells["MaBangLuong"].Value.ToString();
                     cboMaNhanVien.SelectedValue = dgvBangLuong.Rows[dong].Cells["MaNhanVien"].Value.ToString();
                     currentIDNhanVien = dgvBangLuong.Rows[dong].Cells["MaNhanVien"].Value.ToString();

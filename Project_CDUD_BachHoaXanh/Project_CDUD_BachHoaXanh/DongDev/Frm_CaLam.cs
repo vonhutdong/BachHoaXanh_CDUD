@@ -73,6 +73,25 @@ namespace Project_CDUD_BachHoaXanh.DongDev
 
         private void btnThem_Click(object sender, EventArgs e)
         {
+            // 🔹 Chuyển chuỗi sang TimeSpan để so sánh
+            if (!TimeSpan.TryParse(txtGioBatDau.Text, out TimeSpan gioBD))
+            {
+                MessageBox.Show("Giờ bắt đầu không hợp lệ!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (!TimeSpan.TryParse(txtGioKetThuc.Text, out TimeSpan gioKT))
+            {
+                MessageBox.Show("Giờ kết thúc không hợp lệ!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // 🔹 Kiểm tra giờ bắt đầu ≤ giờ kết thúc
+            if (gioBD > gioKT)
+            {
+                MessageBox.Show("Giờ bắt đầu không được lớn hơn giờ kết thúc!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             try
             {
                 if (txtTenCaLam.Text.Length > 0 && txtGioBatDau.Text.Length > 0 && txtGioKetThuc.Text.Length > 0)
@@ -94,7 +113,7 @@ namespace Project_CDUD_BachHoaXanh.DongDev
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Thêm ca làm có thất bại: " + ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Thêm ca làm thất bại: " , "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -143,6 +162,25 @@ namespace Project_CDUD_BachHoaXanh.DongDev
 
         private void btnSua_Click(object sender, EventArgs e)
         {
+            // 🔹 Chuyển chuỗi sang TimeSpan để so sánh
+            if (!TimeSpan.TryParse(txtGioBatDau.Text, out TimeSpan gioBD))
+            {
+                MessageBox.Show("Giờ bắt đầu không hợp lệ!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (!TimeSpan.TryParse(txtGioKetThuc.Text, out TimeSpan gioKT))
+            {
+                MessageBox.Show("Giờ kết thúc không hợp lệ!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // 🔹 Kiểm tra giờ bắt đầu ≤ giờ kết thúc
+            if (gioBD > gioKT)
+            {
+                MessageBox.Show("Giờ bắt đầu không được lớn hơn giờ kết thúc!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             try
             {
                 if (txtTenCaLam.Text.Length > 0 && txtGioBatDau.Text.Length > 0 && txtGioKetThuc.Text.Length > 0)

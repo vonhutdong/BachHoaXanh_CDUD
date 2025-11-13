@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DTO;
-
 namespace DAL
 {
     public class DAL_ChiTietBangLuong
     {
+        
         private DatabaseAccess da = new DatabaseAccess();
 
         public IQueryable LayDSBangLuong()
@@ -62,10 +62,12 @@ namespace DAL
                     bangluong.ThangNam.Value.Month == ctbl.NgayLam.Month &&
                     bangluong.ThangNam.Value.Year == ctbl.NgayLam.Year)
                 {
+
                     // Kiểm tra trùng ngày làm
                     bool trungNgayLam = da.Db.ChiTietBangLuongs.Any(ct =>
                         ct.maBangLuong == ctbl.MaBangLuong &&
-                        ct.NgayLam.Value.Date == ctbl.NgayLam.Date);
+                        ct.NgayLam.Value.Date == ctbl.NgayLam.Date &&
+                        ct.maLichLam == ctbl.MaLichLam);
 
                     if (trungNgayLam)
                     {
@@ -123,9 +125,93 @@ namespace DAL
             }
             catch (Exception ex)
             {
-                throw new Exception("có lỗi xảy ra: " + ex.Message);
+                return; 
             }
 
         }
+        private string TaoMaBangLuong()
+        {
+            var list = da.Db.BangLuongs.Select(x => x.MaBangLuong).ToList();
+            int next = 1;
+
+            while (true)
+            {
+                string ma = next < 10 ? $"BL00{next}" :
+                           next < 100 ? $"BL0{next}" : $"BL{next}";
+
+                if (!list.Contains(ma))
+                    return ma;
+
+                next++;
+            }
+        }
+
+        private string TaoMaChiTietBangLuong()
+        {
+            var list = da.Db.ChiTietBangLuongs.Select(x => x.MaChiTietBangLuong).ToList();
+            int next = 1;
+
+            while (true)
+            {
+                string ma = next < 10 ? $"CTBL00{next}" :
+                           next < 100 ? $"CTBL0{next}" : $"CTBL{next}";
+
+                if (!list.Contains(ma))
+                    return ma;
+
+                next++;
+            }
+        }
+        public int UpdateChiTietBangLuong_Only(string maLichLam, string maNV, DateTime ngayLam, double gioLam)
+        {
+            // 1️⃣ Lấy chi tiết bảng lương gắn với lịch làm
+            var ctbl = da.Db.ChiTietBangLuongs
+                .FirstOrDefault(ct => ct.maLichLam == maLichLam);
+
+            if (ctbl == null)
+            {
+                // Không có chi tiết → KHÔNG ADD → trả về null hoặc throw
+                return 0;
+                // hoặc: throw new Exception("Chi tiết bảng lương không tồn tại!");
+            }
+
+            // 2️⃣ Lấy bảng lương tương ứng của tháng/năm
+            var bangLuong = da.Db.BangLuongs
+                .FirstOrDefault(bl =>
+                    bl.MaBangLuong == ctbl.maBangLuong &&
+                    bl.maNhanVien == maNV &&
+                    bl.ThangNam.Value.Month == ngayLam.Month &&
+                    bl.ThangNam.Value.Year == ngayLam.Year
+                );
+
+            if (bangLuong == null)
+            {
+                // Không có bảng lương → KHÔNG ADD → trả về null hoặc throw
+                return 1;
+                // hoặc: throw new Exception("Bảng lương không tồn tại!");
+            }
+
+            // 3️⃣ Cập nhật chi tiết bảng lương
+            ctbl.SoGioCongThucTe = gioLam;
+            ctbl.NgayLam = ngayLam;
+
+            da.Db.SubmitChanges();
+
+            // 4️⃣ Tính lại tổng giờ công + lương
+            double tongGioCong = (double)da.Db.ChiTietBangLuongs
+                .Where(ct => ct.maBangLuong == bangLuong.MaBangLuong)
+                .Sum(ct => ct.SoGioCongThucTe);
+
+            bangLuong.TongGioCong = tongGioCong;
+            bangLuong.Luong = tongGioCong * 50000; // hoặc mức lương NV
+
+            da.Db.SubmitChanges();
+
+            return 2;
+        }
+
+
+
+
     }
 }

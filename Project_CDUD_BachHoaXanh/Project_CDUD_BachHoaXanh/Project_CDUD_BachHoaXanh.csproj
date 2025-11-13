@@ -166,6 +166,12 @@
     <Compile Include="Frm_TrangChu.Designer.cs">
       <DependentUpon>Frm_TrangChu.cs</DependentUpon>
     </Compile>
+    <Compile Include="ItemSP_new.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ItemSP_new.Designer.cs">
+      <DependentUpon>ItemSP_new.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TrongDev\Frm_ApDungMaKhuyenMai.cs">
@@ -313,6 +319,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Frm_TrangChu.resx">
       <DependentUpon>Frm_TrangChu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItemSP_new.resx">
+      <DependentUpon>ItemSP_new.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

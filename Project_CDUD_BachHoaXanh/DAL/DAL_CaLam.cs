@@ -24,7 +24,17 @@ namespace DAL
                               };
             return temp;                  
         }
-
+        public CaLam LayCa(string maCa)
+        {
+            try
+            {
+                return da.Db.CaLams.SingleOrDefault(c => c.maCaLam == maCa);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Lỗi khi lấy ca làm: " + ex.Message);
+            }
+        }
         public void ThemCaLam(DTO_CaLam caLam)
         {
             // --- Kiểm tra trùng mã ---

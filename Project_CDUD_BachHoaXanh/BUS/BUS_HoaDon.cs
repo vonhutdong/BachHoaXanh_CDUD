@@ -54,5 +54,9 @@ namespace BUS
         {
             dal_hd.AddHD2(hoaDon);
         }
+        public void UpdateTotalCash2(string maHD)
+        {
+            dal_hd.UpdateTotalCash2(maHD);
+        }
     }
 }

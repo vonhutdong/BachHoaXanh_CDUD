@@ -146,5 +146,10 @@ VALUES
 
 go
 
-select * from HoaDon
+select * from BangLuong
 
+
+delete from HoaDon where maNhanVien is null
+delete from ChiTietHoaDon where maHoaDon = 'HD005'
+select * from ChiTietHoaDon
+select * from HoaDon

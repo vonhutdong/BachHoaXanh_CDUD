@@ -20,7 +20,10 @@ namespace Project_CDUD_BachHoaXanh.DongDev
         }
         BUS_LichLam bus_ll = new BUS_LichLam();
         BUS_CaLam bus_cl = new BUS_CaLam();
-        int currentID = -1;
+        BUS_BangLuong BUS_BangLuong = new BUS_BangLuong();
+        BUS_ChiTietBangLuong BUS_ChiTietBangLuong = new BUS_ChiTietBangLuong();
+        
+        string madangchon = "";
         void loadDATA()
         {
             
@@ -105,65 +108,110 @@ namespace Project_CDUD_BachHoaXanh.DongDev
 
         private void btnThem_Click(object sender, EventArgs e)
         {
-            DTO_LichLam ll = new DTO_LichLam(dtpNgay.Value,
-            cbMaNhanVien.SelectedValue.ToString(), cbMaCaLam.SelectedValue.ToString());
+            //DTO_LichLam ll = new DTO_LichLam(dtpNgay.Value,
+            //cbMaNhanVien.SelectedValue.ToString(), cbMaCaLam.SelectedValue.ToString());
+
+            DTO_LichLam ll = new DTO_LichLam(
+                dtpNgay.Value,
+                cbMaNhanVien.SelectedValue.ToString(),
+                cbMaCaLam.SelectedValue.ToString()
+            );
             bool check = bus_ll.ThemLichLam(ll);
-            if (check)
+
+            if (!check)
             {
-                MessageBox.Show("Thêm lịch làm thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Nhân viên này đã có lịch làm trong ngày và ca đó!",
+                                "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 loadDATA();
+                return;
             }
-            else
+            int thang = ll.NgayLam.Month;
+            int nam = ll.NgayLam.Year;
+            string maNV = ll.MaNhanVien;
+
+            // 4 Lấy hoặc tạo BangLuong tháng của nhân viên
+            var bangLuong = BUS_BangLuong.LayHoacTaoBangLuong(maNV, thang, nam);
+
+            // 5️ Tính giờ làm thực tế từ ca
+            var calam = bus_cl.LayCa(ll.MaCaLam);
+            double gioLam = 0;
+            if (calam != null)
             {
-                MessageBox.Show("Nhân viên này đã có lịch làm trong ngày và ca đó!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                loadDATA();
+                string gioStr = bus_cl.TinhGioLam(calam);
+                double.TryParse(gioStr, out gioLam);
             }
+            // 6 Tạo DTO ChiTietBangLuong
+            DTO_ChiTietBangLuong ctbl = new DTO_ChiTietBangLuong
+            {
+                MaBangLuong = bangLuong.MaBangLuong,
+                MaLichLam = ll.MaLichLam,
+                SoGioCongThucTe = (float)gioLam,
+                NgayLam = ll.NgayLam
+            };
+            MessageBox.Show(ctbl.MaLichLam);
+
+
+            // 7️⃣ Thêm chi tiết bảng lương và cập nhật tổng lương
+            BUS_ChiTietBangLuong.ThemChiTietbangLuong(ctbl);
+
+            MessageBox.Show("Thêm lịch làm và cập nhật lương thành công!",
+                            "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            loadDATA();
+            
         }
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
             try
             {
-                // Initialize Variables
-                string currentId = dgvLichLam.CurrentRow.Cells[0].Value.ToString();
-
-                if (cbMaNhanVien.Text.Length > 0)
+                // 1️⃣ Kiểm tra có dòng được chọn
+                if (dgvLichLam.CurrentRow == null)
                 {
-                    DialogResult dr = MessageBox.Show($"Bạn có chắc muốn xóa lịch làm của nhân viên: [{cbMaNhanVien.Text}] không?",
-                        "Thông báo",
-                        MessageBoxButtons.YesNo,
-                        MessageBoxIcon.Warning);
+                    MessageBox.Show("Vui lòng chọn lịch làm để xóa!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
 
-                    if (dr == DialogResult.Yes)
-                    {
-                        bool check = bus_ll.DellLL(currentId);
-                        if (check)
-                        {
-                            MessageBox.Show("Xoá lịch làm thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            Reset();
-                        }
-                        else
-                        {
-                            MessageBox.Show("Xoá lịch làm thất bại!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        }
+                // 2️⃣ Lấy mã lịch làm và tên nhân viên
+                string maLichLam = dgvLichLam.CurrentRow.Cells["maLichLam"].Value.ToString();
+                string tenNV = cbMaNhanVien.Text;
 
-                    }
+                if (string.IsNullOrWhiteSpace(maLichLam))
+                {
+                    MessageBox.Show("Mã lịch làm không hợp lệ!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                // 3️⃣ Xác nhận xoá
+                DialogResult dr = MessageBox.Show(
+                    $"Bạn có chắc muốn xóa lịch làm của nhân viên: [{tenNV}] không?\n(Các chi tiết bảng lương liên quan cũng sẽ bị xóa)",
+                    "Xác nhận xóa",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Warning
+                );
+
+                if (dr != DialogResult.Yes) return;
+
+                // 4️⃣ Gọi BUS để xoá lịch làm và chi tiết bảng lương
+                bool check = bus_ll.DellLL(maLichLam);
+
+                if (check)
+                {
+                    MessageBox.Show("Xoá lịch làm và chi tiết bảng lương thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    Reset();      // Reset form
+                    loadDATA();   // Load lại dữ liệu
                 }
                 else
                 {
-                    MessageBox.Show("Vui lòng nhập dữ liệu hợp lệ!", "Thông báo",
-                       MessageBoxButtons.OK,
-                       MessageBoxIcon.Warning);
+                    MessageBox.Show("Xoá thất bại! Vui lòng thử lại.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Thông báo",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning);
+                MessageBox.Show($"Lỗi: {ex.Message}", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            loadDATA();
         }
+
+
 
         private void btnSua_Click(object sender, EventArgs e)
         {
@@ -171,76 +219,118 @@ namespace Project_CDUD_BachHoaXanh.DongDev
             DialogResult r = MessageBox.Show($"Bạn có chắc muốn sửa thông tin lịch làm của nhân viên: {cbMaNhanVien.Text} không?",
                                                "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
-            if (r == DialogResult.Yes)
+            if (r != DialogResult.Yes) return;
+
+            // 1️⃣ Tạo DTO_LichLam từ form
+            if (cbMaNhanVien.SelectedValue == null)
             {
-                // Tạo đối tượng DTO_LichLam từ các giá trị nhập vào
-                DTO_LichLam ll = new DTO_LichLam(
-                    dtpNgay.Value,
-                    cbMaNhanVien.SelectedValue.ToString(),
-                    cbMaCaLam.SelectedValue.ToString()
-                );
+                MessageBox.Show("Chưa chọn nhân viên!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
-                // Gọi phương thức sửa lịch làm
-                bool check = bus_ll.SuaLichLam(ll);
+            if (cbMaCaLam.SelectedValue == null)
+            {
+                MessageBox.Show("Chưa chọn ca làm!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
-                // Kiểm tra kết quả trả về
-                if (check)
-                {
-                    MessageBox.Show("Sửa lịch làm thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    loadDATA();  // Tải lại dữ liệu sau khi sửa thành công
-                }
-                else
-                {
-                    MessageBox.Show("Sửa lịch làm thất bại!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+            // Tạo DTO an toàn
+            DTO_LichLam ll = new DTO_LichLam(
+                maLichLam: madangchon,
+                ngayLam: dtpNgay.Value,
+                maNhanVien: cbMaNhanVien.SelectedValue.ToString(),
+                maCaLam: cbMaCaLam.SelectedValue.ToString()
+            );
 
-                // Reset lại giao diện
-                Reset();
+            // Kiểm tra trùng lịch (ngày + ca) với các lịch khác của nhân viên
+            if (bus_ll.KiemTraTrungLich(ll))
+            {
+                MessageBox.Show("Nhân viên này đã có lịch làm trùng ngày và ca làm!\nKhông thể sửa.",
+                                "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+
+            // 2️⃣ Sửa lịch làm
+            bool check = bus_ll.SuaLichLam(ll);
+            if (!check)
+            {
+                MessageBox.Show("Sửa lịch làm thất bại!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            // 3️⃣ Lấy giờ làm thực tế từ ca mới
+            var ca = bus_cl.LayCa(ll.MaCaLam);
+            double gioLam = 0;
+            if (ca != null)
+            {
+                string gioStr = bus_cl.TinhGioLam(ca);
+                double.TryParse(gioStr, out gioLam);
             }
             else
             {
-                // Nếu không xác nhận sửa, không làm gì
+                MessageBox.Show("Không tìm thấy ca làm!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+
+            // 5️⃣ Cập nhật hoặc thêm ChiTietBangLuong và tính lương
+            int checkCTBL = BUS_ChiTietBangLuong.UpdateChiTietBangLuong_Only(ll.MaLichLam, ll.MaNhanVien, ll.NgayLam, gioLam);
+            if (checkCTBL == 0)
+            {
+                // Không có chi tiết bảng lương gắn với lịch làm → không làm gì cả
+                MessageBox.Show("Sửa lịch làm thành công! (Không có chi tiết bảng lương để cập nhật)", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else if (checkCTBL == 1)
+            {
+                MessageBox.Show("Sửa lịch làm thành công! (Không có bảng lương để cập nhật)", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                // 6️⃣ Thông báo thành công
+                MessageBox.Show("Sửa lịch làm và cập nhật lương thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            loadDATA();  // Reload dữ liệu
+            Reset();
         }
 
-        private void dgvLichLam_Click(object sender, EventArgs e)
-        {
-            btnXoa.Enabled = true;
-            btnSua.Enabled = true;
-            if (dgvLichLam.CurrentRow == null || dgvLichLam.CurrentRow.Index < 0)
-                return;
 
-            int n = dgvLichLam.CurrentRow.Index;
+        //private void dgvLichLam_Click(object sender, EventArgs e)
+        //{
+        //    btnXoa.Enabled = true;
+        //    btnSua.Enabled = true;
+        //    if (dgvLichLam.CurrentRow == null || dgvLichLam.CurrentRow.Index < 0)
+        //        return;
 
-            try
-            {
-                // Ngày làm
-                var ngayLam = dgvLichLam.Rows[n].Cells["NgayLam"].Value?.ToString();
-                if (DateTime.TryParse(ngayLam, out DateTime ngay))
-                    dtpNgay.Value = ngay;
+        //    int n = dgvLichLam.CurrentRow.Index;
+        //    madangchon = dgvLichLam.Rows[n].Cells["MaLichLam"].Value.ToString();
+        //    try
+        //    {
+        //        // Ngày làm
+        //        var ngayLam = dgvLichLam.Rows[n].Cells["NgayLam"].Value?.ToString();
+        //        if (DateTime.TryParse(ngayLam, out DateTime ngay))
+        //            dtpNgay.Value = ngay;
 
-                // Nhân viên
-                var tenNhanVien = dgvLichLam.Rows[n].Cells["ManhanVien"].Value?.ToString();
-                if (!string.IsNullOrEmpty(tenNhanVien))
-                    cbMaNhanVien.Text = tenNhanVien;
-                else
-                    cbMaNhanVien.SelectedIndex = -1;
+        //        // Nhân viên
+        //        var tenNhanVien = dgvLichLam.Rows[n].Cells["ManhanVien"].Value?.ToString();
+        //        if (!string.IsNullOrEmpty(tenNhanVien))
+        //            cbMaNhanVien.Text = tenNhanVien;
+        //        else
+        //            cbMaNhanVien.SelectedIndex = -1;
 
-                // Ca làm
-                var tenCaLam = dgvLichLam.Rows[n].Cells["TenCaLam"].Value?.ToString();
-                if (!string.IsNullOrEmpty(tenCaLam))
-                    cbMaCaLam.Text = tenCaLam;
-                else
-                    cbMaCaLam.SelectedIndex = -1;
+        //        // Ca làm
+        //        var tenCaLam = dgvLichLam.Rows[n].Cells["TenCaLam"].Value?.ToString();
+        //        if (!string.IsNullOrEmpty(tenCaLam))
+        //            cbMaCaLam.Text = tenCaLam;
+        //        else
+        //            cbMaCaLam.SelectedIndex = -1;
 
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Lỗi khi chọn dữ liệu: " + ex.Message,
-                    "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show("Lỗi khi chọn dữ liệu: " + ex.Message,
+        //            "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //    }
+        //}
 
         private void cbTimKiem_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -324,5 +414,47 @@ namespace Project_CDUD_BachHoaXanh.DongDev
                 dgvLichLam.CurrentCell = dgvLichLam.Rows[e.RowIndex].Cells[0];
             }
         }
+
+        private void dgvLichLam_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            btnXoa.Enabled = true;
+            btnSua.Enabled = true;
+
+            if (dgvLichLam.CurrentRow == null || dgvLichLam.CurrentRow.Index < 0)
+                return;
+
+            try
+            {
+                int row = dgvLichLam.CurrentRow.Index;
+
+                // 1️⃣ Lấy MÃ LỊCH LÀM đang chọn
+                madangchon = dgvLichLam.Rows[row].Cells["MaLichLam"].Value.ToString().Trim();
+
+                // 2️⃣ Lấy ngày làm
+                var ngayLamStr = dgvLichLam.Rows[row].Cells["NgayLam"].Value?.ToString();
+                if (DateTime.TryParse(ngayLamStr, out DateTime ngayLam))
+                    dtpNgay.Value = ngayLam;
+
+                // 3️⃣ Lấy đúng MÃ NHÂN VIÊN (không lấy Text, phải lấy Value)
+                var maNV = dgvLichLam.Rows[row].Cells["MaNhanVien"].Value?.ToString();
+                if (!string.IsNullOrEmpty(maNV))
+                    cbMaNhanVien.SelectedValue = maNV.Trim();
+                else
+                    cbMaNhanVien.SelectedIndex = -1;
+
+                //Ca làm
+                var tenCaLam = dgvLichLam.Rows[row].Cells["TenCaLam"].Value?.ToString();
+                if (!string.IsNullOrEmpty(tenCaLam))
+                    cbMaCaLam.Text = tenCaLam;
+                else
+                    cbMaCaLam.SelectedIndex = -1;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi chọn dữ liệu: " + ex.Message,
+                    "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
     }
 }

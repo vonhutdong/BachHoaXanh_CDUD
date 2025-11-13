@@ -35,6 +35,13 @@ namespace DTO
             this.maNhanVien = maNhanVien;
             this.phuongThucThanhToan = phuongThucThanhToan;
         }
+        public DTO_HoaDon(string maKhachHang, string maNhanVien,string phuongThucThanhToan)
+        {
+            this.maKhachHang = maKhachHang;
+            this.maNhanVien = maNhanVien;
+            this.phuongThucThanhToan = phuongThucThanhToan;
+        }
+
         public string MaHoaDon { get => maHoaDon; set => maHoaDon = value; }
         public DateTime NgayLapHD { get => ngayLapHD; set => ngayLapHD = value; }
         public DateTime GioLapHD { get => gioLapHD; set => gioLapHD = value; }

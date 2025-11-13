@@ -2,11 +2,14 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Linq;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DAL;
+using DTO;
 using Project_CDUD_BachHoaXanh.DongDev;
 using Project_CDUD_BachHoaXanh.TrongDev;
 
@@ -14,8 +17,23 @@ namespace Project_CDUD_BachHoaXanh
 {
     public partial class Frm_TrangChu : Form
     {
+        public static DTO_NhanVien NhanVien = null;
+        private string tk = string.Empty;
+        private int q = 0;
+        private Form frmOld = null;
         public Frm_TrangChu()
         {
+            InitializeComponent();
+        }
+        public static DTO_NhanVien getNhanVien()
+        {
+            return NhanVien;
+        }
+        public Frm_TrangChu(string taiKhoan, int quyen, DTO_NhanVien nhanVien)
+        {
+            this.tk = taiKhoan;
+            Frm_TrangChu.NhanVien = nhanVien; // Gọi static property
+            this.q = quyen;
             InitializeComponent();
         }
 

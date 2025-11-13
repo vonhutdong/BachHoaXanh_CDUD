@@ -123,7 +123,20 @@ namespace DAL
                 throw new Exception("Lỗi khi sửa kho hàng: " + ex.Message);
             }
         }
+        public void CapNhatSoLuong(string maSP, int soluong)
+        {
+            try
+            {
+                var khohang = da.Db.KhoHangs.FirstOrDefault(kh => kh.maSanPham == maSP);
+                khohang.soLuong -= soluong;
+                da.Db.SubmitChanges();
+            }
+            catch (Exception ex)
+            {
 
+                throw ex;
+            }
+        }
 
 
     }

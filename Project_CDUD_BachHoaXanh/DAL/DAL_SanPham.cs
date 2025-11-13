@@ -59,20 +59,40 @@ namespace DAL
             {
                 using (var db = new QLBHXDataContext())
                 {
-                    var query = from sp in db.SanPhams
-                                join kho in db.KhoHangs on sp.maSanPham equals kho.maSanPham
-                                group new { sp, kho } by sp.maSanPham into grp
-                                let tongSoLuong = grp.Sum(x => x.kho.soLuong)
-                                let first = grp.FirstOrDefault()
-                                select new DTO_SanPhamKhoHang
-                                {
-                                    MaSanPham = first.sp.maSanPham,
-                                    TenSanPham = first.sp.tenSanPham,
-                                    MaLoaiHang = first.sp.maLoaiHang,
-                                    GiaBan = (double)first.sp.donGia,
-                                    SoLuong = (int)tongSoLuong,
-                                    AnhSanPham = first.sp.anhSanPham
-                                };
+                    var query =
+                        from sp in db.SanPhams
+
+                            // LEFT JOIN Khuyến Mãi
+                        join km in db.KhuyenMais
+                            on sp.maKhuyenMai equals km.MaKhuyenMai into kmLeft
+                        from km in kmLeft.DefaultIfEmpty()   // km có thể null
+
+                            // GROUP JOIN kho hàng
+                        join kho in db.KhoHangs
+                            on sp.maSanPham equals kho.maSanPham into khos
+
+                        select new DTO_SanPhamKhoHang
+                        {
+                            MaSanPham = sp.maSanPham,
+                            TenSanPham = sp.tenSanPham,
+                            MaLoaiHang = sp.maLoaiHang,
+
+                            // Giá gốc
+                            // Giá bán trực tiếp đã áp dụng khuyến mãi
+                            GiaBan = ((double?)sp.donGia ?? 0) *
+                             (1 - ((km != null && km.GiaTri.HasValue) ? km.GiaTri.Value / 100.0 : 0)),
+
+                            AnhSanPham = sp.anhSanPham,
+
+                            // Tổng số lượng an toàn (nếu không có kho, trả 0)
+                            SoLuong = khos.Sum(k => (int?)k.soLuong) ?? 0,
+
+                            // Dữ liệu khuyến mãi an toàn tuyệt đối
+                            MaKhuyenMai = sp.maKhuyenMai,
+                            PhanTramKM = km != null && km.GiaTri.HasValue
+                                          ? km.GiaTri.Value
+                                          : 0
+                        };
 
                     return query.ToList();
                 }
@@ -82,6 +102,10 @@ namespace DAL
                 throw new Exception("Lỗi khi tải sản phẩm bán hàng: " + ex.Message);
             }
         }
+
+
+
+
 
         public bool ThemSanPham(DTO_SanPham sanpham)
         {

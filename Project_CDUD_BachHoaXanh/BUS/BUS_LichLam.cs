@@ -37,6 +37,10 @@ namespace BUS
         {
             return dal_ll.SuaLichLam(lichLam);
         }
+        public bool KiemTraTrungLich(DTO_LichLam lichLam)
+        {
+            return dal_ll.KiemTraTrungLich(lichLam);
+        }
 
         public IQueryable LayDSNV()
         {

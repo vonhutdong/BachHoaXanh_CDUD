@@ -84,6 +84,70 @@ namespace DAL
                 throw new Exception(ex.Message);
             }
         }
+        public BangLuong LayBangLuongTheoThang1(string maNhanVien, int thang, int nam)
+        {
+            try
+            {
+                return da.Db.BangLuongs
+                         .FirstOrDefault(b => b.maNhanVien == maNhanVien
+                                           && b.ThangNam.HasValue
+                                           && b.ThangNam.Value.Month == thang
+                                           && b.ThangNam.Value.Year == nam);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public BangLuong LayHoacTaoBangLuong(string maNV, int thang, int nam)
+        {
+            try
+            {
+                // 1️⃣ Thử lấy bảng lương tháng hiện tại
+                var bangLuong = da.Db.BangLuongs
+                    .FirstOrDefault(b => b.maNhanVien == maNV
+                                      && b.ThangNam.HasValue
+                                      && b.ThangNam.Value.Month == thang
+                                      && b.ThangNam.Value.Year == nam);
+
+                // 2️⃣ Nếu chưa có, tạo mới
+                if (bangLuong == null)
+                {
+                    // Sinh mã bảng lương mới
+                    var existingMaBL = da.Db.BangLuongs.Select(b => b.MaBangLuong).ToList();
+                    int nextNumber = 1;
+                    string newMaBL;
+                    while (true)
+                    {
+                        newMaBL = nextNumber < 10 ? $"BL00{nextNumber}" :
+                                   nextNumber < 100 ? $"BL0{nextNumber}" : $"BL{nextNumber}";
+                        if (!existingMaBL.Contains(newMaBL))
+                            break;
+                        nextNumber++;
+                    }
+
+                    bangLuong = new BangLuong
+                    {
+                        MaBangLuong = newMaBL,
+                        maNhanVien = maNV,
+                        ThangNam = new DateTime(nam, thang, 1),
+                        TongGioCong = 0,
+                        Luong = 0
+                    };
+
+                    da.Db.BangLuongs.InsertOnSubmit(bangLuong);
+                    da.Db.SubmitChanges();
+                }
+
+                return bangLuong;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Lỗi lấy hoặc tạo bảng lương: " + ex.Message);
+            }
+        }
+
         public void ThemBangLuong(DTO_BangLuong bangluong)
         {
             try

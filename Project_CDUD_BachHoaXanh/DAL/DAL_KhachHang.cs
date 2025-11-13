@@ -29,15 +29,19 @@ namespace DAL
         {
             try
             {
+                // 1. Validate dữ liệu đầu vào
                 if (string.IsNullOrWhiteSpace(soDienThoai))
-                    throw new Exception("Số điện thoại không được để trống.");
+                    return null;   // Không ném lỗi để tránh crash chương trình
 
+                // 2. Truy vấn
                 var kh = da.Db.KhachHangs
                     .FirstOrDefault(k => k.soDienThoai == soDienThoai);
 
+                // 3. Không tìm thấy thì trả null
                 if (kh == null)
-                    return null; // Không tìm thấy KH thì trả null (hoặc bạn có thể throw Exception tùy mục đích)
+                    return null;
 
+                // 4. Map sang DTO
                 return new DTO_KhachHang
                 {
                     MaKH = kh.maKhachHang,
@@ -48,11 +52,13 @@ namespace DAL
                     CapBac = kh.capBac
                 };
             }
-            catch (Exception ex)
+            catch
             {
-                throw new Exception("Lỗi khi lấy thông tin khách hàng: " + ex.Message);
+                // ✅ Không ném lỗi ra UI → tránh drop chương trình
+                return null;
             }
         }
+
         public bool ThemKH(DTO_KhachHang khachHang)
         {
             try

@@ -78,6 +78,7 @@ namespace DAL
                 da.Db.LichLams.InsertOnSubmit(newCL);
 
                 da.Db.SubmitChanges();
+                lichLam.MaLichLam = newCL.maLichLam;
                 return true;
             }
             return false;
@@ -103,21 +104,27 @@ namespace DAL
                 throw new Exception("Thao tác thất bại: " + ex.Message, ex);
             }
         }
-
+        public bool KiemTraTrungLich(DTO_LichLam ll)
+        {
+            // 🔹 Kiểm tra trùng lịch mới (ngày + ca) với các lịch khác của nhân viên
+            bool isDuplicate = da.Db.LichLams.Any(llDb =>
+                llDb.maNhanVien == ll.MaNhanVien &&
+                llDb.maCaLam == ll.MaCaLam &&
+                llDb.ngayLam.Value.Date == ll.NgayLam.Date &&
+                llDb.maLichLam != ll.MaLichLam);  // loại bỏ lịch hiện tại đang sửa
+            return isDuplicate;
+        }
         public bool SuaLichLam(DTO_LichLam lichLam)
         {
             try
             {
-                if (lichLam == null || lichLam.MaLichLam.Length <= 0)
+                if (lichLam == null)
                     return false;
 
                 var ll = da.Db.LichLams.FirstOrDefault(dt => dt.maLichLam == lichLam.MaLichLam);
                 if (ll != null)
                 {
-                    // Tránh gán null cho cột không cho phép null
-                    if (!string.IsNullOrWhiteSpace(lichLam.MaLichLam))
-                        ll.maLichLam = lichLam.MaLichLam;
-
+                    // Cập nhật các cột
                     ll.ngayLam = lichLam.NgayLam;
                     ll.maNhanVien = lichLam.MaNhanVien;
                     ll.maCaLam = lichLam.MaCaLam;
@@ -125,16 +132,15 @@ namespace DAL
                     da.Db.SubmitChanges();
                     return true;
                 }
-                else
-                {
-                    return false;
-                }
+
+                return false; // Không tìm thấy lịch
             }
             catch (Exception ex)
             {
                 throw new Exception("Lỗi khi cập nhật lịch làm: " + ex.Message, ex);
             }
         }
+
 
         public IQueryable LayDSNV()
         {
@@ -187,22 +193,55 @@ namespace DAL
         {
             try
             {
-                var lichLam = da.Db.LichLams.SingleOrDefault(lnv => lnv.maLichLam == MaLL);
+                // 1️⃣ Lấy ChiTietBangLuong liên quan
+                var ctbls = da.Db.ChiTietBangLuongs.Where(ct => ct.maLichLam == MaLL).ToList();
 
+                // 2️⃣ Lấy maBangLuong của các chi tiết này (nếu có)
+                string maBangLuong = ctbls.FirstOrDefault()?.maBangLuong;
+
+                // 3️⃣ Xoá chi tiết
+                if (ctbls.Count > 0)
+                {
+                    da.Db.ChiTietBangLuongs.DeleteAllOnSubmit(ctbls);
+                }
+
+                // 4️⃣ Xoá LichLam
+                var lichLam = da.Db.LichLams.SingleOrDefault(lnv => lnv.maLichLam == MaLL);
                 if (lichLam != null)
                 {
-                    da.Db.LichLams.DeleteOnSubmit(lichLam); // Xóa lịch làm
-                    da.Db.SubmitChanges(); // Lưu thay đổi
-                    return true;
+                    da.Db.LichLams.DeleteOnSubmit(lichLam);
                 }
+
+                // 5️⃣ Lưu thay đổi
+                da.Db.SubmitChanges();
+
+                // 6️⃣ Cập nhật lại tổng giờ công và lương nếu có bảng lương
+                if (!string.IsNullOrEmpty(maBangLuong))
+                {
+                    var bangLuong = da.Db.BangLuongs.SingleOrDefault(bl => bl.MaBangLuong == maBangLuong);
+                    if (bangLuong != null)
+                    {
+                        // Tổng giờ công mới = tổng SoGioCongThucTe còn lại
+                        double tongGioCong = da.Db.ChiTietBangLuongs
+                            .Where(ct => ct.maBangLuong == maBangLuong)
+                            .Sum(ct => (double?)ct.SoGioCongThucTe) ?? 0;
+
+                        bangLuong.TongGioCong = tongGioCong;
+                        bangLuong.Luong = tongGioCong * 50000; // hoặc theo lương NV
+                        da.Db.SubmitChanges();
+                    }
+                }
+
+                return true;
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"Lỗi khi xóa lịch làm: {ex.Message}");
                 return false;
             }
-            return false;
         }
+
+
         public LichLam GetLichLamByMa(string maLichLam)
         {
             return da.Db.LichLams

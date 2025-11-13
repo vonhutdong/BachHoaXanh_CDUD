@@ -27,5 +27,9 @@ namespace BUS
         {
             return dal_kh.SuaKhoHang(maSanPhamCu, maChiNhanhCu, maSanPhamMoi, maChiNhanhMoi, soLuongMoi);
         }
+        public void CapNhatSoLuong(string maSP, int soluong)
+        {
+            dal_kh.CapNhatSoLuong(maSP, soluong);
+        }
     }
 }

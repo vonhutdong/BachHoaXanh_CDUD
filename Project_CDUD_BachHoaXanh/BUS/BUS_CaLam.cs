@@ -36,5 +36,9 @@ namespace BUS
         {
             return dal_cl.GetCaLamByMaCaLam(maCaLam);
         }
+        public CaLam LayCa(string maCaLam)
+        {
+            return dal_cl.LayCa(maCaLam);
+        }
     }
 }

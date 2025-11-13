@@ -27,5 +27,9 @@ namespace BUS
         {
             return dal_ctbangluong.LayDSLichLam();
         }
+        public int UpdateChiTietBangLuong_Only(string maLichLam, string maNV, DateTime ngayLam, double gioLam)
+        {
+            return dal_ctbangluong.UpdateChiTietBangLuong_Only(maLichLam, maNV, ngayLam, gioLam);
+        }
     }
 }

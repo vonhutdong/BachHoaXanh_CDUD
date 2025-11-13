@@ -66,6 +66,7 @@
     <Compile Include="DTO_PhieuNhap.cs" />
     <Compile Include="DTO_SanPham.cs" />
     <Compile Include="DTO_SanPhamKhoHang.cs" />
+    <Compile Include="DTO_Session.cs" />
     <Compile Include="DTO_TaiKhoan.cs" />
     <Compile Include="DTO_ThanhTien.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
