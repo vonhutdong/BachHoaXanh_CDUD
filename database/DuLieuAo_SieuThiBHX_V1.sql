@@ -146,10 +146,94 @@ VALUES
 
 go
 
-select * from BangLuong
+CREATE OR ALTER PROCEDURE GetPhieuNhapAndDetails
+    @MaPhieuNhap VARCHAR(30)
+AS
+BEGIN
+    SELECT 
+        pn.MaPhieuNhap,
+        pn.NgayNhap,
+        pn.ThanhTien AS TongTienPhieu,
+        pn.maNhanVien,
+        nv.TenNhanVien,
+        pn.MaChiNhanh,
+        cn.TenChiNhanh,
+        ctn.SoLuong,
+        ctn.DonGia,
+        ctn.maSanPham,
+        sp.TenSanPham,
+        (ctn.DonGia * ctn.SoLuong) AS ThanhTienDong
+    FROM 
+        PhieuNhap pn
+        INNER JOIN NhanVien nv ON nv.maNhanVien = pn.maNhanVien
+        INNER JOIN ChiTietPhieuNhap ctn ON pn.MaPhieuNhap = ctn.maPhieuNhap
+        INNER JOIN SanPham sp ON ctn.maSanPham = sp.maSanPham
+        INNER JOIN ChiNhanh cn ON pn.MaChiNhanh = cn.MaChiNhanh
+    WHERE 
+        pn.MaPhieuNhap = @MaPhieuNhap;
+END
+GO
+EXEC GetPhieuNhapAndDetails @MaPhieuNhap = 'PN002';
 
+CREATE OR ALTER PROCEDURE GetTonKhoTheoChiNhanh
+    @TenChiNhanh NVARCHAR(100)
+AS
+BEGIN
+    SELECT 
+        kh.id AS IDKho,
+        cn.MaChiNhanh,
+        cn.TenChiNhanh,
+		cn.DiaChi,
+        cn.SoDienThoai,             
+        sp.maSanPham,
+        sp.tenSanPham,
+        sp.donViTinh,
+        kh.soLuong AS SoLuongTon,
+        ISNULL(ctpn.DonGia, 0) AS DonGiaNhap,
+        (kh.soLuong * ISNULL(ctpn.DonGia, 0)) AS GiaTriTonKho,
+        pn.NgayNhap,
+        nv.tenNhanVien AS NhanVienNhap
+    FROM 
+        KhoHang kh
+        INNER JOIN ChiNhanh cn ON kh.maChiNhanh = cn.MaChiNhanh
+        INNER JOIN SanPham sp ON kh.maSanPham = sp.maSanPham
+        LEFT JOIN ChiTietPhieuNhap ctpn ON kh.idChiTietPhieuNhap = ctpn.id
+        LEFT JOIN PhieuNhap pn ON ctpn.maPhieuNhap = pn.MaPhieuNhap
+        LEFT JOIN NhanVien nv ON pn.maNhanVien = nv.maNhanVien
+    WHERE 
+        cn.TenChiNhanh = @TenChiNhanh
+    ORDER BY 
+        sp.tenSanPham;
+END
+GO
 
-delete from HoaDon where maNhanVien is null
-delete from ChiTietHoaDon where maHoaDon = 'HD005'
-select * from ChiTietHoaDon
+EXEC GetTonKhoTheoChiNhanh @TenChiNhanh = N'Chi nhánh Tây Ninh';
+DROP PROCEDURE sp_GetDanhSachPhieuNhapVaChiTiet;
+CREATE OR ALTER PROCEDURE sp_GetDanhSachPhieuNhapVaChiTiet
+AS
+BEGIN
+    SELECT 
+        pn.MaPhieuNhap,
+        pn.NgayNhap,
+        pn.ThanhTien,
+        nv.TenNhanVien,
+        ct.SoLuong,
+        ct.DonGia,
+        sp.TenSanPham,
+        (ct.SoLuong * ct.DonGia) AS ThanhTienChiTiet
+    FROM 
+        PhieuNhap pn
+    INNER JOIN 
+        ChiTietPhieuNhap ct ON pn.MaPhieuNhap = ct.MaPhieuNhap
+    INNER JOIN 
+        SanPham sp ON sp.MaSanPham = ct.MaSanPham
+    INNER JOIN 
+        NhanVien nv ON nv.MaNhanVien = pn.MaNhanVien
+    ORDER BY 
+        pn.NgayNhap, pn.MaPhieuNhap;
+END
+GO
+EXEC sp_GetDanhSachPhieuNhapVaChiTiet;
+
 select * from HoaDon
+

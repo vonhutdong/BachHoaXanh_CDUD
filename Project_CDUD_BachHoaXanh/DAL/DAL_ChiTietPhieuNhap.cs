@@ -162,17 +162,17 @@ namespace DAL
                 if (ct == null)
                     throw new Exception("Chi tiết phiếu nhập không hợp lệ.");
 
-                // ✅ Kiểm tra mã phiếu nhập có tồn tại không
+                // ✅ Kiểm tra mã phiếu nhập
                 bool existsPN = da.Db.PhieuNhaps.Any(p => p.MaPhieuNhap == ct.MaPhieuNhap);
                 if (!existsPN)
                     throw new Exception($"Mã phiếu nhập '{ct.MaPhieuNhap}' không tồn tại.");
 
-                // ✅ Kiểm tra mã sản phẩm có tồn tại không
+                // ✅ Kiểm tra mã sản phẩm
                 bool existsSP = da.Db.SanPhams.Any(s => s.maSanPham == ct.MaSanPham);
                 if (!existsSP)
                     throw new Exception($"Mã sản phẩm '{ct.MaSanPham}' không tồn tại.");
 
-                // ✅ Kiểm tra số lượng và đơn giá hợp lệ
+                // ✅ Kiểm tra số lượng và đơn giá
                 if (ct.SoLuong <= 0)
                     throw new Exception("Số lượng phải lớn hơn 0.");
                 if (ct.DonGia <= 0)
@@ -183,33 +183,62 @@ namespace DAL
                 if (chiTiet == null)
                     throw new Exception("Không tìm thấy chi tiết phiếu nhập để sửa.");
 
-                // ✅ Kiểm tra trùng phiếu + sản phẩm (ngoại trừ chính dòng đang sửa)
-                bool duplicate = da.Db.ChiTietPhieuNhaps.Any(x =>
-                    x.maPhieuNhap == ct.MaPhieuNhap &&
-                    x.maSanPham == ct.MaSanPham &&
-                    x.id != ct.Id);
-                if (duplicate)
-                    throw new Exception("Sản phẩm này đã có trong phiếu nhập.");
+                // ✅ Lưu thông tin cũ để cập nhật kho
+                string maSPCu = chiTiet.maSanPham;
+                string maPhieuNhap = chiTiet.maPhieuNhap;
+                int soLuongCu = chiTiet.SoLuong ?? 0;
 
-                // ✅ Cập nhật thông tin
+                // ✅ Lấy mã chi nhánh từ phiếu nhập
+                string maChiNhanhCu = da.Db.PhieuNhaps
+                    .Where(p => p.MaPhieuNhap == maPhieuNhap)
+                    .Select(p => p.MaChiNhanh)
+                    .FirstOrDefault();
+
+                // ✅ Cập nhật thông tin mới
                 chiTiet.maPhieuNhap = ct.MaPhieuNhap;
                 chiTiet.maSanPham = ct.MaSanPham;
                 chiTiet.SoLuong = ct.SoLuong;
                 chiTiet.DonGia = ct.DonGia;
-
                 da.Db.SubmitChanges();
 
-
-                // ✅ Cập nhật lại tổng thành tiền của phiếu nhập
+                // ✅ Cập nhật lại thành tiền phiếu nhập
                 dalPhieuNhapAll.CapNhatThanhTien(ct.MaPhieuNhap);
+
+                // ✅ Cập nhật lại kho hàng
+                string maChiNhanhMoi = da.Db.PhieuNhaps
+                    .Where(p => p.MaPhieuNhap == ct.MaPhieuNhap)
+                    .Select(p => p.MaChiNhanh)
+                    .FirstOrDefault();
+
+                DAL_KhoHang dalKho = new DAL_KhoHang();
+
+                // Nếu đổi sản phẩm hoặc chi nhánh => xử lý tách biệt
+                if (maSPCu != ct.MaSanPham || maChiNhanhCu != maChiNhanhMoi)
+                {
+                    // Trừ số lượng cũ ở kho cũ
+                    dalKho.TruSoLuong(maSPCu, maChiNhanhCu, soLuongCu);
+
+                    // Cộng số lượng mới ở kho mới
+                    dalKho.CongSoLuong(ct.MaSanPham, maChiNhanhMoi, ct.SoLuong);
+                }
+                else
+                {
+                    // Chỉ thay đổi số lượng => cập nhật chênh lệch
+                    int chenhLech = ct.SoLuong - soLuongCu;
+                    if (chenhLech > 0)
+                        dalKho.CongSoLuong(ct.MaSanPham, maChiNhanhMoi, chenhLech);
+                    else if (chenhLech < 0)
+                        dalKho.TruSoLuong(ct.MaSanPham, maChiNhanhMoi, Math.Abs(chenhLech));
+                }
 
                 return true;
             }
             catch (Exception ex)
             {
-                throw new Exception("Lỗi: " + ex.Message);
+                throw new Exception("Lỗi khi sửa chi tiết phiếu nhập: " + ex.Message);
             }
         }
+
 
 
     }

@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace DTO
 {
-    public class DTO_Session
+    public static class DTO_Session
     {
-        public static string NhanVienMa { get; set; }
+        public static string MaNhanVien { get; set; }
         public static string TenNhanVien { get; set; }
     }
 }

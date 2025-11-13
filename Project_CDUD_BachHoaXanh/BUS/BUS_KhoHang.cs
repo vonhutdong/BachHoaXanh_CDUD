@@ -30,6 +30,9 @@ namespace BUS
         public void CapNhatSoLuong(string maSP, int soluong)
         {
             dal_kh.CapNhatSoLuong(maSP, soluong);
+        public List<object> TimKiemSanPham(string tuKhoa)
+        {
+            return dal_kh.TimKiemSanPhamTrongKho(tuKhoa).ToList();
         }
     }
 }

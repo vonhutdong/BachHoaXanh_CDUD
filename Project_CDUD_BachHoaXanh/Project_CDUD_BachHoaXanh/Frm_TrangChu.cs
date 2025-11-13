@@ -2,41 +2,90 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Data.Linq;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using DAL;
-using DTO;
 using Project_CDUD_BachHoaXanh.DongDev;
 using Project_CDUD_BachHoaXanh.TrongDev;
+using DAL;
+using DTO;
 
 namespace Project_CDUD_BachHoaXanh
 {
     public partial class Frm_TrangChu : Form
     {
-        public static DTO_NhanVien NhanVien = null;
-        private string tk = string.Empty;
-        private int q = 0;
-        private Form frmOld = null;
+        private List<TabPage> allTabs = new List<TabPage>();
+        
+        public static DTO_NhanVien nhanVien = null;
         public Frm_TrangChu()
         {
             InitializeComponent();
         }
+        private string tk = string.Empty;
+        private int q = 0;
+        private Form frmOld = null;
+        public static DTO_NhanVien NhanVien = null;
+        public Frm_TrangChu(string taiKhoan, int quyen, DTO_NhanVien nhanVien)
+        {
+            InitializeComponent();
+            this.tk = taiKhoan;
+            Frm_TrangChu.NhanVien = nhanVien; // Gọi static property
+            this.q = quyen;
+          
+        }
+
         public static DTO_NhanVien getNhanVien()
         {
             return NhanVien;
         }
-        public Frm_TrangChu(string taiKhoan, int quyen, DTO_NhanVien nhanVien)
+        private void Frm_TrangChu_Load(object sender, EventArgs e)
         {
-            this.tk = taiKhoan;
-            Frm_TrangChu.NhanVien = nhanVien; // Gọi static property
-            this.q = quyen;
-            InitializeComponent();
-        }
+            // Lưu danh sách tất cả tab (chỉ làm 1 lần)
+            if (allTabs.Count == 0)
+            {
+                allTabs.Add(tabHeThong);
+                allTabs.Add(tabBanHang);
+                allTabs.Add(tabQuanLy);
+                allTabs.Add(tabThongKe);
+            }
 
+            if (NhanVien != null)
+                this.Text = $"Màn hình chính - Xin chào {NhanVien.TenNV}";
+
+            // Phân quyền
+            tabControlQuanLy.TabPages.Clear();
+
+            if (q == 1) // Nhân viên
+            {
+                // Hiện Hệ thống, Bán hàng, Thống kê
+                tabControlQuanLy.TabPages.Add(tabHeThong);
+                tabControlQuanLy.TabPages.Add(tabBanHang);
+                tabControlQuanLy.TabPages.Add(tabThongKe);
+                btnHoaDon.Visible = false;
+            }
+            else if (q == 0) // Admin
+            {
+                // Hiện tất cả tab
+                foreach (var t in allTabs)
+                    tabControlQuanLy.TabPages.Add(t);
+            }
+
+            // Gọi lại form Bán hàng nếu cần
+            LoadBanHangForm();
+
+        }
+        private void LoadBanHangForm()
+        {
+            tabBanHang.Controls.Clear();
+            Frm_BanHang f = new Frm_BanHang();
+            f.TopLevel = false;
+            f.FormBorderStyle = FormBorderStyle.None;
+            f.Dock = DockStyle.Fill;
+            tabBanHang.Controls.Add(f);
+            f.Show();
+        }
 
         //private void guna2TabControl1_SelectedIndexChanged(object sender, EventArgs e)
         //{
@@ -198,18 +247,7 @@ namespace Project_CDUD_BachHoaXanh
             f.Show();
         }
 
-        private void Frm_TrangChu_Load(object sender, EventArgs e)
-        {
-            //Frm_DangNhap f = new Frm_DangNhap();
-            //f.TopLevel = false;
-            //f.FormBorderStyle = FormBorderStyle.None;
-            //f.Dock = DockStyle.Top;
-            //tabHeThong.Controls.Clear();
-            //tabHeThong.Controls.Add(f);
-            //f.Show();
-            //tabHeThong.Focus();
-
-        }
+       
 
         private void btnVip_Click(object sender, EventArgs e)
         {
@@ -220,5 +258,7 @@ namespace Project_CDUD_BachHoaXanh
         {
 
         }
+
+        
     }
 }

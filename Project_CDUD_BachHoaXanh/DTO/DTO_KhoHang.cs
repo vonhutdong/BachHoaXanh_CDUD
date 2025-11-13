@@ -14,6 +14,7 @@ namespace DTO
         private string maChiNhanh;
         private int idChiTietPhieuNhap;
 
+        public DTO_KhoHang() { }
         public DTO_KhoHang(int id, string maSanPham, int soLuong, string maChiNhanh)
         {
             this.Id = id;
@@ -29,7 +30,7 @@ namespace DTO
             this.maChiNhanh = maChiNhanh;
             this.idChiTietPhieuNhap = idChiTietPhieuNhap;
         }
-
+       
         public int Id { get => id; set => id = value; }
         public string IdSanPham { get => maSanPham; set => maSanPham = value; }
         public int SoLuong { get => soLuong; set => soLuong = value; }
