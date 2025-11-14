@@ -203,7 +203,7 @@
   <data name="btnLamMoi.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAE
-        tAAABLQBGNGgtAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAJ3SURBVFhHvZe5
+        sgAABLIBmNLkLwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAJ3SURBVFhHvZe5
         a1VREMZ/iQRTKFq4EBHcBRfENFGs/C+sFAstBZNCQTQogli4BMQlroVdiAri0rmTwtIygr3gkggScecL
         94Tx47zrfXk3+WDgvTPfzJx77pyZudAa5gMbgYWumA1sBT4Bfwr5AjwH+oDVTq6KvcDhBrLTuAMhuMtv
         4C6wwWz+i4MZZ0kGjbsnw3H5AZwHOsy2FDpCdyS56kRgV7H+GHiXsUnyFFjkxo2w3N5tkutOzEBHfgIY
@@ -217,7 +217,7 @@
         MSGrbMfe8QHY7OTZwIKiduhjZtr4C56XNbHub/DJAAAAAElFTkSuQmCC
 </value>
   </data>
-  <data name="guna2Button2.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="btnXoaSanPhamDangChon.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAB
         1wAAAdcBjJIIaAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAP+SURBVHhe7ZtJ

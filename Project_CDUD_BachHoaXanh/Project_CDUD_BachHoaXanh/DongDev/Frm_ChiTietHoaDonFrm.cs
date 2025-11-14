@@ -9,6 +9,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using BUS;
+using DAL;
+using DTO;
 
 
 
@@ -22,17 +24,27 @@ namespace Project_CDUD_BachHoaXanh.DongDev
         //BUS_KhoHang bus_kh = new BUS_KhoHang();
         //BUS_KhachHang bus_khachhang = new BUS_KhachHang();
         BUS_NhanVien bus_nv = new BUS_NhanVien();
+        DTO_HoaDon hd = new DTO_HoaDon();
+        BUS_KhuyenMai bus_km = new BUS_KhuyenMai();
+        BUS_KhachHang bus_kh = new BUS_KhachHang();
+        BUS_KhoHang bus_kho = new BUS_KhoHang();
         int soLuongInput = 0;
         double tongTien = 0;
         double donGia = 0;
         private string maHD;
+        private int quyen = -1;
+        private string currentMaKH = "";
+        private string maSP1 = "";
 
         // ✅ Thêm constructor mới nhận mã hóa đơn
-        public Frm_ChiTietHoaDonFrm(string maHD)
+        public Frm_ChiTietHoaDonFrm(string maHD,int quyen)
         {
             InitializeComponent(); // luôn gọi đầu tiên
             this.maHD = maHD;
+            this.quyen = quyen;
         }
+
+
 
         public Frm_ChiTietHoaDonFrm()
         {
@@ -115,7 +127,7 @@ namespace Project_CDUD_BachHoaXanh.DongDev
 
             cboMaSP.DataSource = bus_cthd.GetListCTHDTheoMaHD(maHD);
             cboMaSP.DisplayMember = "MaSanPham";
-            cboMaSP.ValueMember = "MaHD";
+            cboMaSP.ValueMember = "MaSanPham";
 
             cboMaKH.DataSource = bus_hd.GetHoaDonByMa(maHD);
             cboMaKH.DisplayMember = "TenKhachHang";
@@ -132,7 +144,10 @@ namespace Project_CDUD_BachHoaXanh.DongDev
             loadChiTietHoaDonTheoMa();
             // MessageBox.Show(maHD);
             settingDGV();
-            btnLuuCTHD.Enabled = false;
+            //btnLuuCTHD.Enabled = false;
+            //MessageBox.Show(quyen.ToString());
+            currentMaKH = bus_hd.LayMaKHTheoMaHD(maHD);
+            lblCapBac.Text = "Bậc "+bus_kh.LayCapBac(currentMaKH);
 
         }
 
@@ -243,6 +258,7 @@ namespace Project_CDUD_BachHoaXanh.DongDev
                 if (soLuong != null)
                 {
                     txtSoLuong.Text = soLuong.ToString(); // nếu có dữ liệu
+                    CapNhatThanhTien();
                 }
                 else
                 {
@@ -258,6 +274,7 @@ namespace Project_CDUD_BachHoaXanh.DongDev
 
             // Giả sử bạn có hàm lấy đơn giá theo mã SP
             donGia = bus_cthd.LayDonGiaTheoMaSP(maSP);
+            CapNhatThanhTien();
         }
 
         private void txtTimKiemSp_TextChanged(object sender, EventArgs e)
@@ -318,125 +335,350 @@ namespace Project_CDUD_BachHoaXanh.DongDev
         double thanhTien = 0;
         private void txtSoLuong_TextChanged(object sender, EventArgs e)
         {
+            // Nếu textbox trống → không cần xử lý
+            if (string.IsNullOrWhiteSpace(txtSoLuong.Text))
+            {
+                btnLuuCTHD.Enabled = false; // Khoá nút luôn
+                return;
+            }
 
+            // Kiểm tra số lượng hợp lệ
+            if (!int.TryParse(txtSoLuong.Text, out int soLuong) || soLuong <= 0)
+            {
+                btnLuuCTHD.Enabled = false;
+                return;
+            }
 
+            // Lấy mã sản phẩm đang chọn
+            string maSP = cboMaSP.Text.Trim();
+            //MessageBox.Show(maSP);
+            if (string.IsNullOrEmpty(maSP))
+            {
+                btnLuuCTHD.Enabled = false;
+                return;
+            }
 
+            // 🔹 Lấy tồn kho từ kho hàng
+            int tonKho = bus_kho.GetKhoTheoMaSanPham(maSP);
+
+            if (soLuong > tonKho)
+            {
+                btnLuuCTHD.Enabled = false;
+                lblThongBao.Text = $"Số lượng vượt quá tồn kho ({tonKho})";
+                lblThongBao.ForeColor = Color.Red;
+            }
+            else
+            {
+                btnLuuCTHD.Enabled = true;
+                lblThongBao.Text = "";
+                CapNhatThanhTien();
+            }
         }
 
 
-        private void btnCapNhat_Click(object sender, EventArgs e)
+
+        //private void btnCapNhat_Click(object sender, EventArgs e)
+        //{
+        //    if (quyen == 1)
+        //    {
+        //        MessageBox.Show("Bạn không có quyền cập nhật chi tiết hoá đơn!, Vui lòng liên hệ ADMIN để được hỗ trợ!!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        //        return;
+        //    }
+        //    else
+        //    {
+        //        try
+        //        {
+        //            if (cboMaSP.SelectedValue == null)
+        //            {
+        //                MessageBox.Show("Vui lòng chọn sản phẩm!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        //                return;
+        //            }
+
+        //            if (!int.TryParse(txtSoLuong.Text.Trim(), out int soLuong) || soLuong < 0)
+        //            {
+        //                MessageBox.Show("Số lượng phải là số nguyên dương!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //                return;
+        //            }
+
+        //            string maSP = cboMaSP.Text.Trim();
+
+        //            // ✅ Lấy số lượng tồn kho thực tế
+        //            int soLuongTon = bus_sp.LaySoLuongTonKho(maSP);
+        //            if (soLuong > soLuongTon)
+        //            {
+        //                MessageBox.Show($"Số lượng yêu cầu ({soLuong}) vượt quá số lượng tồn kho ({soLuongTon})!",
+        //                                "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        //                return;
+        //            }
+
+        //            // Lấy đơn giá
+        //            double donGia = bus_cthd.LayDonGiaTheoMaSP(maSP);
+        //            double thanhTien = soLuong * donGia;
+        //            txtThanhTien.Text = thanhTien.ToString("N0");
+        //            //MessageBox.Show($"Đơn giá: {donGia}, Thành tiền: {thanhTien} , số lượng: {soLuong}, mã hd: {maHD}");
+        //            // Cập nhật chi tiết hoá đơn
+        //            bool isValid_CTHD = bus_cthd.UpdateCTHD(maHD, maSP, soLuong);
+        //            bool isValid_HD = bus_hd.updateThanhTienHD(maHD, thanhTien);
+
+        //            if (isValid_CTHD && isValid_CTHD)
+        //            {
+        //                MessageBox.Show("Cập nhật chi tiết hoá đơn thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        //                btnLuuCTHD.Enabled = true;
+        //            }
+        //            else
+        //            {
+        //                MessageBox.Show("Cập nhật chi tiết hoá đơn thất bại!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //            }
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            MessageBox.Show("Lỗi khi cập nhật: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //        }
+        //    }
+        //}
+
+
+
+        //private void btnLuuCTHD_Click(object sender, EventArgs e)
+        //{
+        //    try
+        //    {
+        //        string maHD = txtMaHD.Text.Trim();
+        //        string maSP = cboMaSP.Text.Trim();
+
+        //        if (string.IsNullOrEmpty(maHD) || string.IsNullOrEmpty(maSP))
+        //        {
+        //            MessageBox.Show("Vui lòng chọn hóa đơn và sản phẩm hợp lệ!", "Thông báo",
+        //                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        //            return;
+        //        }
+
+        //        if (!int.TryParse(txtSoLuong.Text, out int soLuong) || soLuong <= 0)
+        //        {
+        //            MessageBox.Show("Số lượng không hợp lệ!", "Lỗi",
+        //                MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //            return;
+        //        }
+
+        //        // 🔹 Lấy đơn giá từ BUS
+        //        double donGia = bus_cthd.LayDonGiaTheoMaSP(maSP);
+        //        double thanhTien = donGia * soLuong;
+
+        //        // 🔹 Cập nhật chi tiết hóa đơn
+        //        bool ketQuaCTHD = bus_cthd.UpdateCTHD(maHD, maSP, soLuong);
+        //        bool ketQuaHD = bus_hd.updateThanhTienHD(maHD, thanhTien);
+        //        if (!ketQuaHD && !ketQuaCTHD)
+        //        {
+        //            MessageBox.Show("Cập nhật chi tiết hoá đơn thất bại!", "Thông báo",
+        //                MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //            return;
+        //        }
+
+        //        // 🔹 Gọi DAL để TÍNH TỔNG TIỀN (dựa trên SoLuong * DonGia)
+        //        decimal tongTien = bus_cthd.TinhTongTienTheoMaHD_TuSoLuongVaDonGia(maHD);
+
+        //        // 🔹 Cập nhật tổng tiền xuống bảng HóaĐơn
+        //        bus_hd.CapNhatTongTien(maHD, (double)tongTien);
+
+        //        // 🔹 Hiển thị tổng tiền lên giao diện
+        //        txtTongTien.Text = tongTien.ToString("N0", CultureInfo.CurrentCulture);
+
+        //        // 🔹 Reload lại chi tiết hóa đơn sau khi cập nhật
+        //        dgvCTHD.DataSource = bus_cthd.GetListCTHDTheoMaHD1(maHD).ToList();
+
+        //        MessageBox.Show("Cập nhật chi tiết hoá đơn thành công!", "Thông báo",
+        //            MessageBoxButtons.OK, MessageBoxIcon.Information);
+        //        btnLuuCTHD.Enabled = false;
+        //        btnCapNhat.Enabled = true;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show("Lỗi khi lưu chi tiết hóa đơn: " + ex.Message,
+        //            "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //    }
+        //}
+        private void CapNhatThanhTien()
         {
             try
             {
-                if (cboMaSP.SelectedValue == null)
-                {
-                    MessageBox.Show("Vui lòng chọn sản phẩm!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-
-                if (!int.TryParse(txtSoLuong.Text.Trim(), out int soLuong) || soLuong < 0)
-                {
-                    MessageBox.Show("Số lượng phải là số nguyên dương!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-
                 string maSP = cboMaSP.Text.Trim();
+                if (string.IsNullOrEmpty(maSP)) return;
 
-                // ✅ Lấy số lượng tồn kho thực tế
-                int soLuongTon = bus_sp.LaySoLuongTonKho(maSP);
-                if (soLuong > soLuongTon)
+                // ✅ Lấy thông tin sản phẩm qua BUS
+                var sp = bus_sp.GetSanPhamTheoMa(maSP);
+                if (sp == null) return;
+
+                float donGia = sp.DonGia;
+
+                // ✅ Áp dụng khuyến mãi nếu có
+                if (!string.IsNullOrEmpty(sp.MaKhuyenMai))
                 {
-                    MessageBox.Show($"Số lượng yêu cầu ({soLuong}) vượt quá số lượng tồn kho ({soLuongTon})!",
-                                    "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
+                    var km = bus_km.GetKhuyenMaiTheoMa(sp.MaKhuyenMai);
+                    if (km != null)
+                    {
+                        donGia = (float)(donGia * (1 - km.GiaTri / 100f));
+                    }
                 }
 
-                // Lấy đơn giá
-                double donGia = bus_cthd.LayDonGiaTheoMaSP(maSP);
-                double thanhTien = soLuong * donGia;
-                txtThanhTien.Text = thanhTien.ToString("N0");
-                //MessageBox.Show($"Đơn giá: {donGia}, Thành tiền: {thanhTien} , số lượng: {soLuong}, mã hd: {maHD}");
-                // Cập nhật chi tiết hoá đơn
-                bool isValid_CTHD = bus_cthd.UpdateCTHD(maHD, maSP, soLuong);
-                bool isValid_HD = bus_hd.updateThanhTienHD(maHD, thanhTien);
+                int soLuong = 1;
+                int.TryParse(txtSoLuong.Text.Trim(), out soLuong);
+                if (soLuong <= 0) soLuong = 1;
 
-                if (isValid_CTHD && isValid_CTHD)
-                {
-                    MessageBox.Show("Cập nhật chi tiết hoá đơn thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    btnLuuCTHD.Enabled = true;
-                }
-                else
-                {
-                    MessageBox.Show("Cập nhật chi tiết hoá đơn thất bại!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                txtThanhTien.Text = (donGia * soLuong).ToString("N0", CultureInfo.CurrentCulture);
             }
-            catch (Exception ex)
+            catch
             {
-                MessageBox.Show("Lỗi khi cập nhật: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtThanhTien.Text = "0";
             }
         }
-
 
 
         private void btnLuuCTHD_Click(object sender, EventArgs e)
         {
+            
+            DTO_HoaDon hdMoi = new DTO_HoaDon();
             try
             {
                 string maHD = txtMaHD.Text.Trim();
                 string maSP = cboMaSP.Text.Trim();
-
                 if (string.IsNullOrEmpty(maHD) || string.IsNullOrEmpty(maSP))
                 {
-                    MessageBox.Show("Vui lòng chọn hóa đơn và sản phẩm hợp lệ!", "Thông báo",
-                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Vui lòng chọn hóa đơn và sản phẩm hợp lệ!",
+                                    "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
                 if (!int.TryParse(txtSoLuong.Text, out int soLuong) || soLuong <= 0)
                 {
                     MessageBox.Show("Số lượng không hợp lệ!", "Lỗi",
-                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
+                // 🔹 Lấy mã khách hàng từ hóa đơn
+                //maKH = bus_hd.LayMaKHTheoMaHD(maHD);
 
-                // 🔹 Lấy đơn giá từ BUS
-                double donGia = bus_cthd.LayDonGiaTheoMaSP(maSP);
-                double thanhTien = donGia * soLuong;
+                // 🔹 Cập nhật chi tiết hóa đơn luôn
+                int soLuongCu = bus_cthd.UpdateCTHD(maHD, maSP, soLuong);
 
-                // 🔹 Cập nhật chi tiết hóa đơn
-                bool ketQuaCTHD = bus_cthd.UpdateCTHD(maHD, maSP, soLuong);
-                bool ketQuaHD = bus_hd.updateThanhTienHD(maHD, thanhTien);
-                if (!ketQuaHD && !ketQuaCTHD)
+                if (soLuongCu < 0)
                 {
-                    MessageBox.Show("Cập nhật chi tiết hoá đơn thất bại!", "Thông báo",
-                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Không tìm thấy chi tiết hóa đơn!", "Lỗi",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
+                // 🔹 Chênh lệch
+                int delta = soLuong - soLuongCu;
 
-                // 🔹 Gọi DAL để TÍNH TỔNG TIỀN (dựa trên SoLuong * DonGia)
-                decimal tongTien = bus_cthd.TinhTongTienTheoMaHD_TuSoLuongVaDonGia(maHD);
+                // 🔹 Cập nhật kho
+                bus_kho.CapNhatKho(maSP, delta);
 
-                // 🔹 Cập nhật tổng tiền xuống bảng HóaĐơn
-                bus_hd.CapNhatTongTien(maHD, (double)tongTien);
+                // 🔹 Cập nhật tổng tiền hóa đơn luôn
+                bool check_HD = bus_hd.UpdateTotalCash2(maHD, currentMaKH);
 
-                // 🔹 Hiển thị tổng tiền lên giao diện
-                txtTongTien.Text = tongTien.ToString("N0", CultureInfo.CurrentCulture);
 
-                // 🔹 Reload lại chi tiết hóa đơn sau khi cập nhật
-                dgvCTHD.DataSource = bus_cthd.GetListCTHDTheoMaHD1(maHD).ToList();
+                if (!check_HD)
+                {
+                    MessageBox.Show("Cập nhật tổng tiền hóa đơn thất bại!", "Lỗi",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                else
+                {
+                    // 🔹 Lấy lại hóa đơn mới
+                    hdMoi = bus_hd.LayHoaDonTheoMaHD(maHD);
 
-                MessageBox.Show("Cập nhật chi tiết hoá đơn thành công!", "Thông báo",
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
-                btnLuuCTHD.Enabled = false;
-                btnCapNhat.Enabled = true;
+                    MessageBox.Show($"MÃ HD: {hdMoi.MaHoaDon.ToString()}\n KhachHang: {hdMoi.MaKhachHang.ToString()}");
+
+                    if (hdMoi == null)
+                    {
+                        MessageBox.Show("Không tìm thấy hóa đơn sau khi cập nhật!", "Lỗi",
+                                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+
+                    // 🔹 Tính số tiền giảm
+                    float soTienGiam = hdMoi.ThanhTien - hdMoi.TongTien;
+
+                    // 🔹 Lấy thông tin khách hàng
+                    string capBacKh = "";
+                    if (!string.IsNullOrEmpty(currentMaKH))
+                    {
+                        var kh = bus_kh.GetKhachHangTheoMa(currentMaKH);
+                        if (kh != null && !string.IsNullOrEmpty(kh.CapBac))
+                        {
+                            capBacKh = kh.CapBac.Trim();
+                        }
+                    }
+
+                    // 🔹 Reload chi tiết hóa đơn lên DataGridView
+                    dgvCTHD.DataSource = bus_cthd.GetListCTHDTheoMaHD1(maHD).ToList();
+
+                    // 🔹 Hiển thị tổng tiền lên txt
+                    txtTongTien.Text = ((float)hdMoi.TongTien).ToString("N0");
+
+                    // 🔹 Thông báo giảm giá nếu có
+                    if (soTienGiam > 0)
+                    {
+                        MessageBox.Show(
+                            $"Khách hàng {(string.IsNullOrEmpty(capBacKh) ? "(không có cấp bậc)" : capBacKh)} " +
+                            $"được giảm {soTienGiam:N0}đ (bao gồm giảm theo sản phẩm + cấp bậc)\n" +
+                            $"Tổng tiền sau giảm: {hdMoi.TongTien:N0}đ",
+                            "Giảm giá", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+
+                    MessageBox.Show("Cập nhật chi tiết hoá đơn thành công!",
+                                    "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+
             }
+                    
             catch (Exception ex)
             {
                 MessageBox.Show("Lỗi khi lưu chi tiết hóa đơn: " + ex.Message,
-                    "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
+        private void dgvCTHD_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0) return; // tránh header
 
+            // Lấy dòng hiện tại
+            var row = dgvCTHD.Rows[e.RowIndex];
+
+            // Giả sử cột mã sản phẩm là "MaSanPham"
+            string maSP = row.Cells["MaSanPham"].Value.ToString();
+
+            // Gán vào ComboBox hoặc biến hiện tại
+            cboMaSP.SelectedValue = maSP;  // nếu ComboBox bind ValueMember = maSanPham
+            //currentMaSP = maSP;             // hoặc lưu vào biến toàn cục nếu cần
+
+            // Lấy số lượng chi tiết
+            if (int.TryParse(row.Cells["SoLuong"].Value.ToString(), out int soLuong))
+            {
+                txtSoLuong.Text = soLuong.ToString();
+            }
+        }
+
+        private void dgvSP_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0) return; // tránh header
+
+            // Lấy dòng hiện tại
+            var row = dgvSP.Rows[e.RowIndex];
+
+            // Giả sử cột mã sản phẩm là "MaSanPham"
+            string maSP = row.Cells["MaSanPham"].Value.ToString();
+
+            // Gán vào ComboBox hoặc biến hiện tại
+            cboMaSP.SelectedValue = maSP;  // nếu ComboBox bind ValueMember = maSanPham
+            //currentMaSP = maSP;             // hoặc lưu vào biến toàn cục nếu cần
+
+            // Lấy số lượng chi tiết
+            //if (int.TryParse(row.Cells["SoLuong"].Value.ToString(), out int soLuong))
+            //{
+            //    txtSoLuong.Text = soLuong.ToString();
+            //}
+        }
     }
 }

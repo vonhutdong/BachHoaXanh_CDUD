@@ -195,90 +195,172 @@ namespace DAL
 
             return maHoaDon;
         }
-        public void AddHD2(DTO_HoaDon hoaDon)
+        public string AddHD2(DTO_HoaDon hoaDon)
         {
             try
             {
-                // Kiểm tra hóa đơn đã tồn tại chưa
-                var query = (from hd in da.Db.HoaDons
-                             where hd.maHD == hoaDon.MaHoaDon
-                             select hd).FirstOrDefault();
+                if (hoaDon == null)
+                    throw new Exception("Dữ liệu hóa đơn không hợp lệ!");
 
-                if (query == null)
+                // Kiểm tra trùng mã (nếu có)
+                var query = (from h in da.Db.HoaDons where h.maHD == hoaDon.MaHoaDon select h).FirstOrDefault();
+
+                if (query != null)
                 {
-                    // Lấy hóa đơn có id lớn nhất
-                    var existingMaHD = da.Db.HoaDons.Select(cl => cl.maHD).ToList();
-                    int nextNumber = 1;
-                    string newMa;
-
-                    while (true)
-                    {
-                        newMa = nextNumber < 10 ? $"HD00{nextNumber}" :
-                                    nextNumber < 100 ? $"HD0{nextNumber}" : $"HD{nextNumber}";
-                        if (!existingMaHD.Contains(newMa))
-                            break;
-                        nextNumber++;
-                    }
-                    HoaDon hd = new HoaDon
-                    {
-                        maHD = newMa.Trim(),
-                        ngayLapHD = DateTime.Now,
-                        gioLapHD = DateTime.Now,
-                        phuongThucThanhToan = hoaDon.PhuongThucThanhToan,
-                        tongTien = 0,
-                        thanhTien = 0,
-                        maKhachHang = hoaDon.MaKhachHang,
-                        maNhanVien = hoaDon.MaNhanVien
-                    };
-                    // Thêm hóa đơn mới
-                    da.Db.HoaDons.InsertOnSubmit(hd);
-                    da.Db.SubmitChanges();
+                    throw new Exception("Hóa đơn đã tồn tại!");
                 }
+
+                // 🔹 Sinh mã hóa đơn mới
+                var existingMaHD = da.Db.HoaDons.Select(h => h.maHD).ToList();
+                int nextNumber = 1;
+                string newMaHD;
+
+                while (true)
+                {
+                    newMaHD = nextNumber < 10 ? $"HD00{nextNumber}" :
+                              nextNumber < 100 ? $"HD0{nextNumber}" : $"HD{nextNumber}";
+                    if (!existingMaHD.Contains(newMaHD))
+                        break;
+                    nextNumber++;
+                }
+
+                // 🔹 Tạo hóa đơn mới
+                HoaDon hd = new HoaDon
+                {
+                    maHD = newMaHD.Trim(),
+                    ngayLapHD = DateTime.Now,
+                    gioLapHD = DateTime.Now,
+                    phuongThucThanhToan = hoaDon.PhuongThucThanhToan,
+                    tongTien = 0,      
+                    thanhTien = 0,     // ⚡ bạn có thể chỉnh nếu khác nhau
+                    maKhachHang = hoaDon.MaKhachHang,
+                    maNhanVien = hoaDon.MaNhanVien
+                };
+
+                // 🔹 Thêm vào DB
+                da.Db.HoaDons.InsertOnSubmit(hd);
+                da.Db.SubmitChanges(); // ⚠️ Bắt buộc để dữ liệu được lưu
+
+                return newMaHD; // ✅ Trả mã hóa đơn mới để liên kết chi tiết
             }
-            catch
+            catch (Exception ex)
             {
-                // Tùy bạn xử lý logging nội bộ nếu cần
-                throw;
+                throw new Exception("Lỗi khi thêm hóa đơn: " + ex.Message);
             }
         }
-        public void UpdateTotalCash2(string maHd)
+
+        public bool UpdateTotalCash2(string maHd, string maKhachHang)
         {
-            // Lấy hóa đơn
-            var hd_update = da.Db.HoaDons.SingleOrDefault(hd => hd.maHD == maHd);
-            if (hd_update == null) return;
-
-            // Lấy chi tiết hóa đơn
-            var listCTHD = da.Db.ChiTietHoaDons.Where(ct => ct.maHoaDon == maHd).ToList();
-
-            double totalThanhTien = 0;
-
-            foreach (var item in listCTHD)
+            using (var db = new QLBHXDataContext()) // Tạo DataContext mới
             {
-                // Lấy sản phẩm
-                var sp = da.Db.SanPhams.SingleOrDefault(s => s.maSanPham == item.maSanPham);
-                if (sp == null) continue;
+                var hd_update = db.HoaDons.SingleOrDefault(hd => hd.maHD == maHd);
+                if (hd_update == null) return false;
 
-                double gia = (double)sp.donGia;
+                float tongTruocGiam = 0;
+                float tongSauGiamSP = 0;
 
-                // Áp dụng khuyến mãi nếu có
-                if (!string.IsNullOrEmpty(sp.maKhuyenMai))
+                var listCTHD = db.ChiTietHoaDons.Where(ct => ct.maHoaDon == maHd).ToList();
+
+                foreach (var item in listCTHD)
                 {
-                    var km = da.Db.KhuyenMais.SingleOrDefault(k => k.MaKhuyenMai == sp.maKhuyenMai);
-                    if (km != null && km.GiaTri.HasValue)
+                    var sp = db.SanPhams.SingleOrDefault(s => s.maSanPham == item.maSanPham);
+                    if (sp == null) continue;
+
+                    float giaGoc = (float)sp.donGia;
+                    float giaSauKM = giaGoc;
+
+                    if (!string.IsNullOrEmpty(sp.maKhuyenMai))
                     {
-                        gia *= (1 - km.GiaTri.Value / 100.0);
+                        var km = db.KhuyenMais.SingleOrDefault(k => k.MaKhuyenMai == sp.maKhuyenMai);
+                        if (km != null && km.GiaTri.HasValue)
+                        {
+                            giaSauKM = giaGoc * (1 - (float)km.GiaTri.Value / 100f);
+                        }
+                    }
+
+                    tongTruocGiam += (float)(giaGoc * item.soLuong);
+                    tongSauGiamSP += (float)(giaSauKM * item.soLuong);
+                }
+
+                float giamPhanTram = 0f;
+
+                if (!string.IsNullOrEmpty(maKhachHang))
+                {
+                    var kh = db.KhachHangs.SingleOrDefault(k => k.maKhachHang == maKhachHang);
+                    if (kh != null && !string.IsNullOrEmpty(kh.capBac))
+                    {
+                        switch (kh.capBac.Trim())
+                        {
+                            case "Bạc": giamPhanTram = 0.02f; break;
+                            case "Vàng": giamPhanTram = 0.05f; break;
+                            case "Kim cương": giamPhanTram = 0.10f; break;
+                        }
                     }
                 }
 
-                totalThanhTien += (double)gia * (int)item.soLuong;
+                float giamTheoCapBac = tongSauGiamSP * giamPhanTram;
+                float tongSauGiam = tongSauGiamSP - giamTheoCapBac;
+
+                hd_update.thanhTien = tongTruocGiam;
+                hd_update.tongTien = tongSauGiam;
+
+                db.SubmitChanges();
+                return true;
             }
-
-            // Cập nhật hóa đơn
-            hd_update.tongTien = totalThanhTien;
-            hd_update.thanhTien = totalThanhTien;
-
-            da.Db.SubmitChanges();
         }
+
+
+
+        public HoaDon LayHoaDonTheoMaHD(string maHD)
+        {
+            return da.Db.HoaDons.FirstOrDefault(x => x.maHD == maHD);
+        }
+        public DTO_HoaDon GetHDByMaHD(string ma)
+        {
+            using (var db  = new QLBHXDataContext())
+            {
+                if (string.IsNullOrEmpty(ma))
+                    return null;
+
+                try
+                {
+                    // Lấy hóa đơn từ DB
+                    var hd = db.HoaDons.ToList()
+               .SingleOrDefault(h => h.maHD.Trim().ToUpper() == ma.Trim().ToUpper());
+
+
+
+                    if (hd == null) return null;
+
+                    // Trả về DTO_HoaDon hoặc đối tượng tương tự
+                    return new DTO_HoaDon
+                    {
+                        MaHoaDon = hd.maHD,
+                        MaKhachHang = hd.maKhachHang,
+                        MaNhanVien = hd.maNhanVien,
+                        PhuongThucThanhToan = hd.phuongThucThanhToan,
+                        ThanhTien = (float)hd.thanhTien,
+                        TongTien = (float)hd.tongTien,
+                        NgayLapHD = (DateTime)hd.ngayLapHD,
+                        GioLapHD = (DateTime)hd.gioLapHD
+                    };
+                }
+                catch (Exception ex)
+                {
+                    //MessageBox.Show("Lỗi khi lấy hóa đơn: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return null;
+                }
+            }
+        }
+        public string LayMaKHTheoMaHD(string maHD)
+        {
+            return da.Db.HoaDons
+                .Where(hd => hd.maHD == maHD)
+                .Select(hd => hd.maKhachHang)
+                .FirstOrDefault();
+        }
+
+
 
     }
 }

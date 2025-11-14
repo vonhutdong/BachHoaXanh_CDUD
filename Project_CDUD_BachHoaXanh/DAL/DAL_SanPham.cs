@@ -332,5 +332,18 @@ namespace DAL
 
             return tongSoLuong;
         }
+        public DTO_SanPham GetSanPhamTheoMa(string maSP)
+        {
+            var sp = da.Db.SanPhams.SingleOrDefault(s => s.maSanPham == maSP);
+            if (sp == null) return null;
+
+            return new DTO_SanPham
+            {
+                MaSanPham = sp.maSanPham,
+                TenSanPham = sp.tenSanPham,
+                DonGia = (float)sp.donGia,
+                MaKhuyenMai = sp.maKhuyenMai
+            };
+        }
     }
 }

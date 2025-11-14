@@ -134,6 +134,9 @@ namespace DAL
             }
             catch (Exception ex)
             {
+                return;
+            } 
+        }
         public void CongSoLuong(string maSanPham, string maChiNhanh, int soLuong)
         {
             var kho = da.Db.KhoHangs.FirstOrDefault(k => k.maSanPham == maSanPham && k.maChiNhanh == maChiNhanh);
@@ -183,8 +186,9 @@ namespace DAL
         public IQueryable<object> TimKiemSanPhamTrongKho(string tuKhoa)
         {
             string keyword = RemoveDiacritics(tuKhoa.ToLower());
-
-            var danhSach = da.Db.KhoHangs
+            try
+            {
+                var danhSach = da.Db.KhoHangs
                 .Join(da.Db.SanPhams,
                       kh => kh.maSanPham,
                       sp => sp.maSanPham,
@@ -216,12 +220,34 @@ namespace DAL
 
             return danhSach;
         }
-
-
-
-                throw ex;
+            catch (Exception ex)
+            {
+                return null;
             }
+            
         }
+        public void CapNhatKho(string maSP, int delta)
+        {
+            var sp = da.Db.KhoHangs.SingleOrDefault(s => s.maSanPham == maSP);
+            if (sp == null) return;
+
+            sp.soLuong -= delta;
+
+            if (sp.soLuong < 0)
+                sp.soLuong = 0; // tránh âm kho
+
+            da.Db.SubmitChanges();
+        }
+        public int GetKhoTheoMaSanPham(string maSP)
+        {
+            if (string.IsNullOrWhiteSpace(maSP))
+                return 0;
+
+            return (int)(da.Db.KhoHangs
+                     .Where(k => k.maSanPham == maSP)
+                     .Sum(k => k.soLuong));
+        }
+
 
 
     }

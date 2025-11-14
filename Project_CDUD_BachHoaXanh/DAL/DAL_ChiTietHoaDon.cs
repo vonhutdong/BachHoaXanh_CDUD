@@ -281,29 +281,24 @@ namespace DAL
             return query ?? 0;
         }
 
-        public bool UpdateCTHD(string maHD, string maSP, int soLuong)
+        public int UpdateCTHD(string maHD, string maSP, int soLuongMoi)
         {
-            try
-            {
-                var cthd = da.Db.ChiTietHoaDons.SingleOrDefault(x => x.maHoaDon == maHD && x.maSanPham == maSP);
-                //var hd = da.Db.HoaDons.SingleOrDefault(x => x.maHD == maHD);
-                if (cthd != null)
-                {
-                    cthd.soLuong = soLuong;
-                }
-                //if (hd != null)
-                //{
-                //    hd.thanhTien = thanhTien;
-                //}
-                da.Db.SubmitChanges();
-                return true;
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
+            var cthd = da.Db.ChiTietHoaDons
+                           .SingleOrDefault(c => c.maHoaDon == maHD && c.maSanPham == maSP);
 
-            }
+            if (cthd == null) return -1;
+
+            int soLuongCu = (int)cthd.soLuong;
+
+            // cập nhật số lượng mới
+            cthd.soLuong = soLuongMoi;
+
+            da.Db.SubmitChanges();
+
+            return soLuongCu;
         }
+        
+
         public decimal TinhTongTienTheoMaHD_TuSoLuongVaDonGia(string maHD)
         {
             try

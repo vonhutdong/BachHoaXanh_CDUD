@@ -50,13 +50,21 @@ namespace BUS
         {
             return dal_hd.TimMaHoaDon(id);
         }
-        public void AddHD2(DTO_HoaDon hoaDon)
+        public string AddHD2(DTO_HoaDon hoaDon)
         {
-            dal_hd.AddHD2(hoaDon);
+            return dal_hd.AddHD2(hoaDon);
         }
-        public void UpdateTotalCash2(string maHD)
+        public bool UpdateTotalCash2(string maHD, string maKH)
         {
-            dal_hd.UpdateTotalCash2(maHD);
+           return dal_hd.UpdateTotalCash2(maHD,maKH);
+        }
+        public DTO_HoaDon LayHoaDonTheoMaHD(string maHD)
+        {
+            return dal_hd.GetHDByMaHD(maHD);
+        }
+        public string LayMaKHTheoMaHD(string maHD)
+        {
+            return dal_hd.LayMaKHTheoMaHD(maHD);
         }
     }
 }

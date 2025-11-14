@@ -18,7 +18,6 @@ namespace Project_CDUD_BachHoaXanh
     {
         private List<TabPage> allTabs = new List<TabPage>();
         
-        public static DTO_NhanVien nhanVien = null;
         public Frm_TrangChu()
         {
             InitializeComponent();
@@ -49,6 +48,7 @@ namespace Project_CDUD_BachHoaXanh
                 allTabs.Add(tabBanHang);
                 allTabs.Add(tabQuanLy);
                 allTabs.Add(tabThongKe);
+                allTabs.Add(tabDangXuat);
             }
 
             if (NhanVien != null)
@@ -63,7 +63,12 @@ namespace Project_CDUD_BachHoaXanh
                 tabControlQuanLy.TabPages.Add(tabHeThong);
                 tabControlQuanLy.TabPages.Add(tabBanHang);
                 tabControlQuanLy.TabPages.Add(tabThongKe);
-                btnHoaDon.Visible = false;
+                tabControlQuanLy.TabPages.Add(tabDangXuat);
+                //btnHoaDon.Visible = true;
+                btnBaoCaoBangLuong.Visible = false;
+                btnThongKeDSPhieuNhap.Visible = false;
+                btnThongKePhieuNhapTheoMa.Visible = false;
+                btnThongKeSPTonKho.Visible = false;
             }
             else if (q == 0) // Admin
             {
@@ -74,6 +79,8 @@ namespace Project_CDUD_BachHoaXanh
 
             // Gọi lại form Bán hàng nếu cần
             LoadBanHangForm();
+            tabControlQuanLy.SelectedTab = tabBanHang;
+
 
         }
         private void LoadBanHangForm()
@@ -200,7 +207,7 @@ namespace Project_CDUD_BachHoaXanh
 
         private void btnHoaDon_Click(object sender, EventArgs e)
         {
-            LoadForm1(new Frm_HoaDon());
+            LoadForm1(new Frm_HoaDon(tk,q,NhanVien));
 
         }
 
@@ -245,6 +252,28 @@ namespace Project_CDUD_BachHoaXanh
             tabBanHang.Controls.Clear();
             tabBanHang.Controls.Add(f);
             f.Show();
+            // Kiểm tra nếu tab hiện tại là tab Đăng xuất
+            if (tabControlQuanLy.SelectedTab == tabDangXuat)
+            {
+                DialogResult result = MessageBox.Show(
+                    "Bạn có chắc chắn muốn đăng xuất không?",
+                    "Xác nhận",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question
+                );
+
+                if (result == DialogResult.Yes)
+                {
+                    this.Hide();
+                    Frm_DangNhap formDangNhap = new Frm_DangNhap();
+                    formDangNhap.Show();
+                }
+                else
+                {
+                    // Quay lại tab đầu tiên (ví dụ tab hệ thống)
+                    tabControlQuanLy.SelectedTab = tabHeThong;
+                }
+            }
         }
 
        

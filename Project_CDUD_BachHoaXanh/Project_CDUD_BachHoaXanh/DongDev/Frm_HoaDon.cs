@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using BUS;
+using DAL;
 using DTO;
 
 namespace Project_CDUD_BachHoaXanh.DongDev
@@ -20,10 +21,16 @@ namespace Project_CDUD_BachHoaXanh.DongDev
         BUS_HoaDon bus_hd = new BUS_HoaDon();
         BUS_KhachHang bus_kh = new BUS_KhachHang();
         BUS_NhanVien bus_nv = new BUS_NhanVien();
-        public Frm_HoaDon()
-        {
-            InitializeComponent();
-        }
+        DTO_NhanVien nhanVien = null;
+        DAL_TaiKhoan daltk = new DAL_TaiKhoan();
+        private string tk = string.Empty;
+        private int quyen = -1;
+        private Form frmOld = null;
+        public static DTO_NhanVien NhanVien = null;
+        //public Frm_HoaDon()
+        //{
+        //    InitializeComponent();
+        //}
         void LoadData()
         {
             dgvHoaDon.DataSource = BUS_HoaDon.GetListHD();
@@ -58,7 +65,7 @@ namespace Project_CDUD_BachHoaXanh.DongDev
 
             dgvHoaDon.Columns["MaNhanVien"].Visible = false;
             dgvHoaDon.Columns["MaKhachHang"].Visible = false;
-            dgvHoaDon.Columns["ThanhTien"].Visible = false;
+            dgvHoaDon.Columns["ThanhTien"].Visible = true;
 
             // Format ngày & giờ
             dgvHoaDon.Columns["NgayLapHD"].DefaultCellStyle.Format = "dd/MM/yyyy";
@@ -100,6 +107,17 @@ namespace Project_CDUD_BachHoaXanh.DongDev
             LoadData();
             isLoading = false;
             dgvHoaDon.ContextMenuStrip = contextMenuStrip1;
+            nhanVien = Frm_TrangChu.getNhanVien();
+            //MessageBox.Show(quyen.ToString());
+            
+        }
+        public Frm_HoaDon(string taiKhoan, int quyen, DTO_NhanVien nhanVien)
+        {
+            InitializeComponent();
+            this.tk = taiKhoan;
+            Frm_TrangChu.NhanVien = nhanVien; // Gọi static property
+            this.quyen = quyen;
+
         }
 
         private void cboMaNV_SelectedIndexChanged(object sender, EventArgs e)
@@ -176,65 +194,81 @@ namespace Project_CDUD_BachHoaXanh.DongDev
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
-            if (dgvHoaDon.CurrentRow != null)
+            
+            if (quyen == 0)
             {
-                string maHD = dgvHoaDon.CurrentRow.Cells["MaHD"].Value.ToString();
-
-                DialogResult result = MessageBox.Show(
-                    "Bạn có chắc chắn muốn xóa hóa đơn này?",
-                    "Xác nhận xóa",
-                    MessageBoxButtons.YesNo,
-                    MessageBoxIcon.Warning
-                );
-
-                if (result == DialogResult.Yes)
+                if (dgvHoaDon.CurrentRow != null)
                 {
-                    if (bus_hd.DelHD(maHD))
+                    string maHD = dgvHoaDon.CurrentRow.Cells["MaHD"].Value.ToString();
+
+                    DialogResult result = MessageBox.Show(
+                        "Bạn có chắc chắn muốn xóa hóa đơn này?",
+                        "Xác nhận xóa",
+                        MessageBoxButtons.YesNo,
+                        MessageBoxIcon.Warning
+                    );
+
+                    if (result == DialogResult.Yes)
                     {
-                        MessageBox.Show("Xóa hóa đơn thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        LoadData(); // Reload danh sách hóa đơn
+                        if (bus_hd.DelHD(maHD))
+                        {
+                            MessageBox.Show("Xóa hóa đơn thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            LoadData(); // Reload danh sách hóa đơn
+                        }
+                        else
+                        {
+                            MessageBox.Show("Xóa hóa đơn thất bại!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                     }
-                    else
-                    {
-                        MessageBox.Show("Xóa hóa đơn thất bại!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
+                }
+                else
+                {
+                    MessageBox.Show("Vui lòng chọn một hóa đơn để xóa!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
             else
             {
-                MessageBox.Show("Vui lòng chọn một hóa đơn để xóa!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Bạn không có quyền xóa hóa đơn!, Vui lòng gọi ADMIN để được hổ trợ!!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
         private void btnSua_Click(object sender, EventArgs e)
         {
-            if (dgvHoaDon.CurrentRow != null)
+            if (quyen == 1)
             {
-                string id = dgvHoaDon.CurrentRow.Cells["MaHD"].Value.ToString();
-
-                // Lấy id từ các combobox
-                string maKH = cboMaKH.SelectedValue.ToString();
-                //string tenKH = cboTenKH.SelectedValue.ToString();
-                string maNV = cboMaNV.SelectedValue.ToString();
-                //string tenNV = cboTenNV.SelectedValue.ToString();
-                string pTTT = cboPTTT.Text;
-                // Tạo DTO_HoaDon
-                DTO_HoaDon hd = new DTO_HoaDon(id, maKH, maNV,pTTT);
-
-                // Gọi BUS cập nhật
-                if (bus_hd.updateHD(hd))
-                {
-                    MessageBox.Show("Cập nhật hóa đơn thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    LoadData();
-                }
-                else
-                {
-                    MessageBox.Show("Cập nhật hóa đơn thất bại!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                MessageBox.Show("Bạn không có quyền sửa hóa đơn!, Vui lòng gọi ADMIN để được hổ trợ!!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
             }
             else
             {
-                MessageBox.Show("Vui lòng chọn 1 dòng để cập nhật!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                if (dgvHoaDon.CurrentRow != null)
+                {
+                    string id = dgvHoaDon.CurrentRow.Cells["MaHD"].Value.ToString();
+
+                    // Lấy id từ các combobox
+                    string maKH = cboMaKH.SelectedValue.ToString();
+                    //string tenKH = cboTenKH.SelectedValue.ToString();
+                    string maNV = cboMaNV.SelectedValue.ToString();
+                    //string tenNV = cboTenNV.SelectedValue.ToString();
+                    string pTTT = cboPTTT.Text;
+                    // Tạo DTO_HoaDon
+                    DTO_HoaDon hd = new DTO_HoaDon(id, maKH, maNV, pTTT);
+
+                    // Gọi BUS cập nhật
+                    if (bus_hd.updateHD(hd))
+                    {
+                        MessageBox.Show("Cập nhật hóa đơn thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        LoadData();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Cập nhật hóa đơn thất bại!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Vui lòng chọn 1 dòng để cập nhật!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
             }
         }
 
@@ -276,7 +310,7 @@ namespace Project_CDUD_BachHoaXanh.DongDev
 
         private void OpenChiTietHDForm(string maHD)
         {
-            Frm_ChiTietHoaDonFrm frm = new Frm_ChiTietHoaDonFrm(maHD);
+            Frm_ChiTietHoaDonFrm frm = new Frm_ChiTietHoaDonFrm(maHD,quyen);
             frm.TopLevel = false;
             frm.FormBorderStyle = FormBorderStyle.None;
             frm.Dock = DockStyle.Fill;

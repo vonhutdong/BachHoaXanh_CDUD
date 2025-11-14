@@ -25,6 +25,20 @@ namespace DAL
                        CapBac = kh.capBac
                    };
         }
+        public DTO_KhachHang LayKhachHangMatDinh(string maKH)
+        {
+            return (from kh in da.Db.KhachHangs
+                    where kh.maKhachHang == maKH
+                    select new DTO_KhachHang
+                    {
+                        MaKH = kh.maKhachHang,
+                        TenKH = kh.tenKhachHang,
+                        SoDienThoai = kh.soDienThoai,
+                        DiaChi = kh.diaChi,
+                        Diem = (float)(kh.diem ?? 0),
+                        CapBac = kh.capBac
+                    }).FirstOrDefault();
+        }
         public DTO_KhachHang LayKhachHang_SDT(string soDienThoai)
         {
             try
@@ -127,11 +141,11 @@ namespace DAL
                 // --- Tính cấp bậc dựa trên điểm ---
                 float diem = khachHang.Diem;
                 string capBac = "";
-                if (diem > 200)
+                if (diem >= 500)
                     capBac = "Kim cương";
-                else if (diem > 100)
+                else if (diem >= 200)
                     capBac = "Vàng";
-                else if (diem > 50)
+                else if (diem >= 100)
                     capBac = "Bạc";
                 else
                     capBac = "Đồng";
@@ -218,11 +232,11 @@ namespace DAL
                 // --- Tính cấp bậc dựa trên điểm ---
                 float diem = khachHang.Diem;
                 string capBac = "";
-                if (diem > 200)
+                if (diem >= 500)
                     capBac = "Kim cương";
-                else if (diem > 100)
+                else if (diem >= 200)
                     capBac = "Vàng";
-                else if (diem > 50)
+                else if (diem >= 100)
                     capBac = "Bạc";
                 else
                     capBac = "Đồng";
@@ -321,8 +335,94 @@ namespace DAL
             return danhSach;
         }
 
+        public bool DiemCong(string maKhachHang, float diemCongThem)
+        {
+            try
+            {
+                // Nếu là khách hàng mặc định (KH000) thì không cộng điểm
+                if (maKhachHang == "KH000")
+                    return true;
+                if (string.IsNullOrWhiteSpace(maKhachHang))
+                    throw new Exception("Mã khách hàng không được để trống!");
 
+                if (diemCongThem <= 0)
+                    throw new Exception("Điểm cộng phải lớn hơn 0!");
 
+                // Tìm khách hàng theo mã
+                var kh = da.Db.KhachHangs.SingleOrDefault(k => k.maKhachHang == maKhachHang);
+                if (kh == null)
+                    throw new Exception("Không tìm thấy khách hàng có mã " + maKhachHang);
+
+                // Cộng điểm
+                float diemMoi = (float)kh.diem + diemCongThem;
+
+                // Giới hạn tối đa điểm
+                if (diemMoi > 1000)
+                    diemMoi = 1000;
+
+                kh.diem = diemMoi;
+
+                // --- Cập nhật cấp bậc ---
+                if (diemMoi >= 500)
+                    kh.capBac = "Kim cương";
+                else if (diemMoi >= 200)
+                    kh.capBac = "Vàng";
+                else if (diemMoi >= 100)
+                    kh.capBac = "Bạc";
+                else
+                    kh.capBac = "Đồng";
+
+                da.Db.SubmitChanges();
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Cộng điểm thất bại: " + ex.Message);
+            }
+        }
+        public DTO_KhachHang GetKhachHangTheoMa(string maKH)
+        {
+            if (string.IsNullOrEmpty(maKH))
+                return null;
+
+            maKH = maKH.Trim(); // Trim trước khi so sánh
+
+            try
+            {
+                var kh = da.Db.KhachHangs
+                    .SingleOrDefault(k => k.maKhachHang == maKH); // Không dùng .Trim() ở đây
+
+                if (kh == null) return null;
+
+                return new DTO_KhachHang
+                {
+                    MaKH = kh.maKhachHang,
+                    TenKH = kh.tenKhachHang,
+                    CapBac = kh.capBac
+                };
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public string LayCapBac(string maKH)
+        {
+            try
+            {
+                var kh = da.Db.KhachHangs
+                    .SingleOrDefault(k => k.maKhachHang == maKH);
+                if (kh == null)
+                    throw new Exception("Không tìm thấy khách hàng với mã: " + maKH);
+                return kh.capBac;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Lỗi khi lấy cấp bậc khách hàng: " + ex.Message);
+            }
+        }
 
 
     }

@@ -35,7 +35,7 @@ namespace Project_CDUD_BachHoaXanh
                 {
                     int quyen = bus_tk.GetRole(taiKhoan, matKhau);
                     string maTK = bus_tk.GetMaTaiKhoan(taiKhoan, matKhau);
-
+                    //MessageBox.Show(quyen.ToString(),maTK);
                     if (string.IsNullOrEmpty(maTK))
                     {
                         MessageBox.Show("Sai tài khoản hoặc mật khẩu!", "Đăng nhập thất bại",
@@ -44,7 +44,7 @@ namespace Project_CDUD_BachHoaXanh
                     }
 
                     DTO_NhanVien nvLogin = bus_NhanVien.getNhanVien(maTK);
-
+                    //MessageBox.Show(nvLogin.MaTaiKhoan.ToString());
                     if (nvLogin == null)
                     {
                         MessageBox.Show("Không tìm thấy nhân viên tương ứng với tài khoản này!",

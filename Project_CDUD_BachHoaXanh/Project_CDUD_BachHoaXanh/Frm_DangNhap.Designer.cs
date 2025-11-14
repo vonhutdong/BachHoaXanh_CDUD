@@ -44,10 +44,10 @@
             // 
             this.checkHienMK.AutoSize = true;
             this.checkHienMK.BackgroundImage = global::Project_CDUD_BachHoaXanh.Properties.Resources.z7022826337913_da3ef0c62bf5c8c6f738e6b06eccf27c;
-            this.checkHienMK.Location = new System.Drawing.Point(162, 310);
-            this.checkHienMK.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.checkHienMK.Location = new System.Drawing.Point(216, 382);
+            this.checkHienMK.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.checkHienMK.Name = "checkHienMK";
-            this.checkHienMK.Size = new System.Drawing.Size(109, 17);
+            this.checkHienMK.Size = new System.Drawing.Size(130, 20);
             this.checkHienMK.TabIndex = 3;
             this.checkHienMK.Text = "Hiển thị mật khẩu";
             this.checkHienMK.UseVisualStyleBackColor = true;
@@ -70,13 +70,13 @@
             this.txtTaiKhoan.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtTaiKhoan.ForeColor = System.Drawing.Color.Black;
             this.txtTaiKhoan.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtTaiKhoan.Location = new System.Drawing.Point(162, 188);
-            this.txtTaiKhoan.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.txtTaiKhoan.Location = new System.Drawing.Point(216, 231);
+            this.txtTaiKhoan.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtTaiKhoan.Name = "txtTaiKhoan";
             this.txtTaiKhoan.PlaceholderForeColor = System.Drawing.Color.DimGray;
             this.txtTaiKhoan.PlaceholderText = "Nhập tên tài khoản...";
             this.txtTaiKhoan.SelectedText = "";
-            this.txtTaiKhoan.Size = new System.Drawing.Size(154, 39);
+            this.txtTaiKhoan.Size = new System.Drawing.Size(205, 48);
             this.txtTaiKhoan.TabIndex = 1;
             // 
             // txtMatKhau
@@ -96,13 +96,13 @@
             this.txtMatKhau.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtMatKhau.ForeColor = System.Drawing.Color.Black;
             this.txtMatKhau.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtMatKhau.Location = new System.Drawing.Point(162, 251);
-            this.txtMatKhau.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.txtMatKhau.Location = new System.Drawing.Point(216, 309);
+            this.txtMatKhau.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtMatKhau.Name = "txtMatKhau";
             this.txtMatKhau.PlaceholderForeColor = System.Drawing.Color.DimGray;
             this.txtMatKhau.PlaceholderText = "Nhập mật khẩu...";
             this.txtMatKhau.SelectedText = "";
-            this.txtMatKhau.Size = new System.Drawing.Size(154, 39);
+            this.txtMatKhau.Size = new System.Drawing.Size(205, 48);
             this.txtMatKhau.TabIndex = 2;
             // 
             // btnDangNhap
@@ -117,10 +117,10 @@
             this.btnDangNhap.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.btnDangNhap.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnDangNhap.ForeColor = System.Drawing.Color.White;
-            this.btnDangNhap.Location = new System.Drawing.Point(189, 344);
-            this.btnDangNhap.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnDangNhap.Location = new System.Drawing.Point(252, 423);
+            this.btnDangNhap.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnDangNhap.Name = "btnDangNhap";
-            this.btnDangNhap.Size = new System.Drawing.Size(100, 36);
+            this.btnDangNhap.Size = new System.Drawing.Size(133, 44);
             this.btnDangNhap.TabIndex = 4;
             this.btnDangNhap.Text = "Đăng nhập";
             this.btnDangNhap.Click += new System.EventHandler(this.btnDangNhap_Click);
@@ -133,25 +133,26 @@
             this.guna2PictureBox1.Image = global::Project_CDUD_BachHoaXanh.Properties.Resources.z7022822675090_39a357202d04bece2f13b115782590c9;
             this.guna2PictureBox1.ImageRotate = 0F;
             this.guna2PictureBox1.Location = new System.Drawing.Point(0, 0);
-            this.guna2PictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.guna2PictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.guna2PictureBox1.Name = "guna2PictureBox1";
-            this.guna2PictureBox1.Size = new System.Drawing.Size(452, 506);
+            this.guna2PictureBox1.Size = new System.Drawing.Size(603, 623);
             this.guna2PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.guna2PictureBox1.TabIndex = 12;
             this.guna2PictureBox1.TabStop = false;
             // 
             // Frm_DangNhap
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AcceptButton = this.btnDangNhap;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(452, 506);
+            this.ClientSize = new System.Drawing.Size(603, 623);
             this.Controls.Add(this.checkHienMK);
             this.Controls.Add(this.txtTaiKhoan);
             this.Controls.Add(this.txtMatKhau);
             this.Controls.Add(this.btnDangNhap);
             this.Controls.Add(this.guna2PictureBox1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Frm_DangNhap";

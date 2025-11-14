@@ -19,6 +19,7 @@ namespace DTO
         private string maKhuyenMai;
         private byte[] anhSanPham;
 
+        public DTO_SanPham() { }
         public DTO_SanPham(string maSanPham, string tenSanPham, string donViTinh, float donGia, DateTime ngaySanXuat, DateTime hanSuDung, string maLoaiHang, string maNhaCungCap, string maKhuyenMai, byte[] anhSanPham)
         {
             this.maSanPham = maSanPham;

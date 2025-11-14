@@ -78,5 +78,9 @@ namespace BUS
         {
             return dal_sp.LaySoLuongTonKho(maSP);
         }
+        public DTO_SanPham GetSanPhamTheoMa(string maSP)
+        {
+            return dal_sp.GetSanPhamTheoMa(maSP);
+        }
     }
 }

@@ -17,6 +17,7 @@ namespace DTO
         private string maKhachHang;
         private string maNhanVien;
 
+        public DTO_HoaDon() { }
         public DTO_HoaDon(string maHoaDon, DateTime ngayLapHD, DateTime gioLapHD, float tongTien, float thanhTien, string phuongThucThanhToan, string maKhachHang, string maNhanVien)
         {
             this.maHoaDon = maHoaDon;
@@ -35,11 +36,20 @@ namespace DTO
             this.maNhanVien = maNhanVien;
             this.phuongThucThanhToan = phuongThucThanhToan;
         }
+        
         public DTO_HoaDon(string maKhachHang, string maNhanVien,string phuongThucThanhToan)
         {
             this.maKhachHang = maKhachHang;
             this.maNhanVien = maNhanVien;
             this.phuongThucThanhToan = phuongThucThanhToan;
+        }
+        public DTO_HoaDon(string maKhachHang, string maNhanVien, string phuongThucThanhToan,float thanhTien ,float tongTien)
+        {
+            this.maKhachHang = maKhachHang;
+            this.maNhanVien = maNhanVien;
+            this.phuongThucThanhToan = phuongThucThanhToan;
+            this.thanhTien = thanhTien;
+            this.tongTien = tongTien;
         }
 
         public string MaHoaDon { get => maHoaDon; set => maHoaDon = value; }

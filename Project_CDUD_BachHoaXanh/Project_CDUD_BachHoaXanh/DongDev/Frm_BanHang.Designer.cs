@@ -56,7 +56,7 @@
             this.label8 = new System.Windows.Forms.Label();
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
-            this.guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
+            this.btnXoaSanPhamDangChon = new Guna.UI2.WinForms.Guna2Button();
             this.btnThem = new Guna.UI2.WinForms.Guna2Button();
             this.guna2GroupBox3 = new Guna.UI2.WinForms.Guna2GroupBox();
             this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
@@ -303,7 +303,7 @@
             this.txtTenKH.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.txtTenKH.BorderColor = System.Drawing.Color.DeepSkyBlue;
             this.txtTenKH.BorderRadius = 2;
-            this.txtTenKH.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtTenKH.Cursor = System.Windows.Forms.Cursors.No;
             this.txtTenKH.DefaultText = "";
             this.txtTenKH.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
             this.txtTenKH.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
@@ -317,6 +317,7 @@
             this.txtTenKH.Margin = new System.Windows.Forms.Padding(5, 7, 5, 7);
             this.txtTenKH.Name = "txtTenKH";
             this.txtTenKH.PlaceholderText = "";
+            this.txtTenKH.ReadOnly = true;
             this.txtTenKH.SelectedText = "";
             this.txtTenKH.Size = new System.Drawing.Size(193, 40);
             this.txtTenKH.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
@@ -505,7 +506,7 @@
             this.tableLayoutPanel8.ColumnCount = 1;
             this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel8.Controls.Add(this.guna2Button2, 0, 1);
+            this.tableLayoutPanel8.Controls.Add(this.btnXoaSanPhamDangChon, 0, 1);
             this.tableLayoutPanel8.Controls.Add(this.btnThem, 0, 0);
             this.tableLayoutPanel8.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel8.Location = new System.Drawing.Point(0, 0);
@@ -516,22 +517,23 @@
             this.tableLayoutPanel8.Size = new System.Drawing.Size(35, 49);
             this.tableLayoutPanel8.TabIndex = 0;
             // 
-            // guna2Button2
+            // btnXoaSanPhamDangChon
             // 
-            this.guna2Button2.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button2.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button2.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.guna2Button2.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2Button2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.guna2Button2.FillColor = System.Drawing.Color.Turquoise;
-            this.guna2Button2.Font = new System.Drawing.Font("Segoe UI", 16.2F);
-            this.guna2Button2.ForeColor = System.Drawing.Color.White;
-            this.guna2Button2.Image = ((System.Drawing.Image)(resources.GetObject("guna2Button2.Image")));
-            this.guna2Button2.Location = new System.Drawing.Point(0, 26);
-            this.guna2Button2.Margin = new System.Windows.Forms.Padding(0, 2, 0, 0);
-            this.guna2Button2.Name = "guna2Button2";
-            this.guna2Button2.Size = new System.Drawing.Size(35, 23);
-            this.guna2Button2.TabIndex = 15;
+            this.btnXoaSanPhamDangChon.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnXoaSanPhamDangChon.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnXoaSanPhamDangChon.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnXoaSanPhamDangChon.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnXoaSanPhamDangChon.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnXoaSanPhamDangChon.FillColor = System.Drawing.Color.Turquoise;
+            this.btnXoaSanPhamDangChon.Font = new System.Drawing.Font("Segoe UI", 16.2F);
+            this.btnXoaSanPhamDangChon.ForeColor = System.Drawing.Color.White;
+            this.btnXoaSanPhamDangChon.Image = ((System.Drawing.Image)(resources.GetObject("btnXoaSanPhamDangChon.Image")));
+            this.btnXoaSanPhamDangChon.Location = new System.Drawing.Point(0, 26);
+            this.btnXoaSanPhamDangChon.Margin = new System.Windows.Forms.Padding(0, 2, 0, 0);
+            this.btnXoaSanPhamDangChon.Name = "btnXoaSanPhamDangChon";
+            this.btnXoaSanPhamDangChon.Size = new System.Drawing.Size(35, 23);
+            this.btnXoaSanPhamDangChon.TabIndex = 15;
+            this.btnXoaSanPhamDangChon.Click += new System.EventHandler(this.btnXoaSanPhamDangChon_Click);
             // 
             // btnThem
             // 
@@ -1116,7 +1118,7 @@
         private Guna.UI2.WinForms.Guna2ComboBox cboLoaiSanPham;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel8;
-        private Guna.UI2.WinForms.Guna2Button guna2Button2;
+        private Guna.UI2.WinForms.Guna2Button btnXoaSanPhamDangChon;
         private Guna.UI2.WinForms.Guna2Button btnThem;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel10;
         private Guna.UI2.WinForms.Guna2GroupBox guna2GroupBox4;

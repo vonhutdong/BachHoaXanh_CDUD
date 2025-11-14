@@ -36,5 +36,21 @@ namespace BUS
         {
             return dal_kh.TimKiemTheoTenHoacSDT(tukhoa);
         }
+        public bool DiemCong(string soDienThoai, int diemCong)
+        {
+            return dal_kh.DiemCong(soDienThoai, diemCong);
+        }
+        public DTO_KhachHang LayKHMacDinh(string maKH)
+        {
+            return dal_kh.LayKhachHangMatDinh(maKH);
+        }
+        public DTO_KhachHang GetKhachHangTheoMa (string maKH)
+        {
+            return dal_kh.GetKhachHangTheoMa(maKH);
+        }
+        public string LayCapBac(string maKH)
+        {
+            return dal_kh.LayCapBac(maKH);
+        }
     }
 }

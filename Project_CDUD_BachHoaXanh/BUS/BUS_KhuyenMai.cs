@@ -38,5 +38,9 @@ namespace BUS
             // Giả sử có lớp DAL_KhuyenMai với Db.KhuyenMais
             return dal_km.KiemTraTenTonTai(tenKhuyenMai, maKhuyenMai);
         }
+        public DTO_KhuyenMai GetKhuyenMaiTheoMa(string maKH)
+        {
+            return dal_km.GetKhuyenMaiTheoMa(maKH);
+        }
     }
 }

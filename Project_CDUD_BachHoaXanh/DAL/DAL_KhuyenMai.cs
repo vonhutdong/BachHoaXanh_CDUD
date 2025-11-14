@@ -97,6 +97,18 @@ namespace DAL
             // Giả sử có lớp DAL_KhuyenMai với Db.KhuyenMais
             return da.Db.KhuyenMais.Any(km => km.TenKhuyenMai == tenKhuyenMai && km.MaKhuyenMai != maKhuyenMai);
         }
+
+        public DTO_KhuyenMai GetKhuyenMaiTheoMa(string maKM)
+        {
+            var km = da.Db.KhuyenMais.SingleOrDefault(k => k.MaKhuyenMai == maKM);
+            if (km == null) return null;
+
+            return new DTO_KhuyenMai
+            {
+                MaKhuyenMai = km.MaKhuyenMai,
+                GiaTri = km.GiaTri.HasValue ? (float)km.GiaTri.Value : 0
+            };
+        }
     }
 }
     

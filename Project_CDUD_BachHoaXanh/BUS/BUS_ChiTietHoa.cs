@@ -66,7 +66,7 @@ namespace BUS
         {
             return dal_CTHD.LayDonGiaTheoMaSP(maSP);
         }
-        public bool UpdateCTHD(string maHD, string maSP, int soLuong)
+        public int UpdateCTHD(string maHD, string maSP, int soLuong)
         {
             return dal_CTHD.UpdateCTHD(maHD,maSP,soLuong);
         }
