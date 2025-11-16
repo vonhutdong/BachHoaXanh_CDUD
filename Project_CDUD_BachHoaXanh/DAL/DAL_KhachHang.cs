@@ -391,7 +391,7 @@ namespace DAL
             try
             {
                 var kh = da.Db.KhachHangs
-                    .SingleOrDefault(k => k.maKhachHang == maKH); // Không dùng .Trim() ở đây
+                    .FirstOrDefault(k => k.maKhachHang == maKH); // Không dùng .Trim() ở đây
 
                 if (kh == null) return null;
 

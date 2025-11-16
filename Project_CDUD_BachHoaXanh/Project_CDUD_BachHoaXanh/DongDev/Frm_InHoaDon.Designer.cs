@@ -28,8 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.crystalReportViewer1 = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
             this.InHDTheoMa1 = new Project_CDUD_BachHoaXanh.DongDev.InHDTheoMa();
+            this.crystalReportViewer1 = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
+            this.InHDTheoMa2 = new Project_CDUD_BachHoaXanh.DongDev.InHDTheoMa();
             this.SuspendLayout();
             // 
             // crystalReportViewer1
@@ -39,12 +40,10 @@
             this.crystalReportViewer1.Cursor = System.Windows.Forms.Cursors.Default;
             this.crystalReportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.crystalReportViewer1.Location = new System.Drawing.Point(0, 0);
-            this.crystalReportViewer1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.crystalReportViewer1.Name = "crystalReportViewer1";
-            this.crystalReportViewer1.ReportSource = this.InHDTheoMa1;
+            this.crystalReportViewer1.ReportSource = this.InHDTheoMa2;
             this.crystalReportViewer1.Size = new System.Drawing.Size(834, 486);
             this.crystalReportViewer1.TabIndex = 0;
-            this.crystalReportViewer1.ToolPanelWidth = 150;
             // 
             // Frm_InHoaDon
             // 
@@ -52,17 +51,18 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(834, 486);
             this.Controls.Add(this.crystalReportViewer1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Frm_InHoaDon";
             this.Text = "Frm_InHoaDon";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.Frm_InHoaDon_Load);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private CrystalDecisions.Windows.Forms.CrystalReportViewer crystalReportViewer1;
         private InHDTheoMa InHDTheoMa1;
+        private CrystalDecisions.Windows.Forms.CrystalReportViewer crystalReportViewer1;
+        private InHDTheoMa InHDTheoMa2;
     }
 }

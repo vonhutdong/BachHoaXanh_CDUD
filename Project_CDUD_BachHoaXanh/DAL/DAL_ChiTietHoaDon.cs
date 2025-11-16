@@ -284,7 +284,7 @@ namespace DAL
         public int UpdateCTHD(string maHD, string maSP, int soLuongMoi)
         {
             var cthd = da.Db.ChiTietHoaDons
-                           .SingleOrDefault(c => c.maHoaDon == maHD && c.maSanPham == maSP);
+                           .FirstOrDefault(c => c.maHoaDon == maHD && c.maSanPham == maSP);
 
             if (cthd == null) return -1;
 

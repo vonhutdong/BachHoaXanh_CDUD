@@ -228,7 +228,7 @@ namespace DAL
         }
         public void CapNhatKho(string maSP, int delta)
         {
-            var sp = da.Db.KhoHangs.SingleOrDefault(s => s.maSanPham == maSP);
+            var sp = da.Db.KhoHangs.FirstOrDefault(s => s.maSanPham == maSP);
             if (sp == null) return;
 
             sp.soLuong -= delta;

@@ -25,6 +25,7 @@ namespace Project_CDUD_BachHoaXanh.TrongDev
         private void Frm_KhachHang_Load(object sender, EventArgs e)
         {
             LoadData();
+            
         }
         private void LoadData()
         {

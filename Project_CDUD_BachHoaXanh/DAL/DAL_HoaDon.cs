@@ -253,7 +253,7 @@ namespace DAL
         {
             using (var db = new QLBHXDataContext()) // Tạo DataContext mới
             {
-                var hd_update = db.HoaDons.SingleOrDefault(hd => hd.maHD == maHd);
+                var hd_update = db.HoaDons.FirstOrDefault(hd => hd.maHD == maHd);
                 if (hd_update == null) return false;
 
                 float tongTruocGiam = 0;
@@ -263,7 +263,7 @@ namespace DAL
 
                 foreach (var item in listCTHD)
                 {
-                    var sp = db.SanPhams.SingleOrDefault(s => s.maSanPham == item.maSanPham);
+                    var sp = db.SanPhams.FirstOrDefault(s => s.maSanPham == item.maSanPham);
                     if (sp == null) continue;
 
                     float giaGoc = (float)sp.donGia;
@@ -271,7 +271,7 @@ namespace DAL
 
                     if (!string.IsNullOrEmpty(sp.maKhuyenMai))
                     {
-                        var km = db.KhuyenMais.SingleOrDefault(k => k.MaKhuyenMai == sp.maKhuyenMai);
+                        var km = db.KhuyenMais.FirstOrDefault(k => k.MaKhuyenMai == sp.maKhuyenMai);
                         if (km != null && km.GiaTri.HasValue)
                         {
                             giaSauKM = giaGoc * (1 - (float)km.GiaTri.Value / 100f);
@@ -286,7 +286,7 @@ namespace DAL
 
                 if (!string.IsNullOrEmpty(maKhachHang))
                 {
-                    var kh = db.KhachHangs.SingleOrDefault(k => k.maKhachHang == maKhachHang);
+                    var kh = db.KhachHangs.FirstOrDefault(k => k.maKhachHang == maKhachHang);
                     if (kh != null && !string.IsNullOrEmpty(kh.capBac))
                     {
                         switch (kh.capBac.Trim())
@@ -326,7 +326,7 @@ namespace DAL
                 {
                     // Lấy hóa đơn từ DB
                     var hd = db.HoaDons.ToList()
-               .SingleOrDefault(h => h.maHD.Trim().ToUpper() == ma.Trim().ToUpper());
+               .FirstOrDefault(h => h.maHD.Trim().ToUpper() == ma.Trim().ToUpper());
 
 
 

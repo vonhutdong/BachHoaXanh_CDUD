@@ -30,7 +30,7 @@ namespace DAL.Properties {
             "e;Encrypt=False")]
         public string SieuThiBHX_V1ConnectionString {
             get {
-                return ((string)(this["SieuThiBHX_V1ConnectionString"]));
+                return ((string)(this["SieuThiBHX_V1ConnectionString1"]));
             }
         }
         

@@ -25,16 +25,22 @@ namespace Project_CDUD_BachHoaXanh.DongDev
         //BUS_KhachHang bus_khachhang = new BUS_KhachHang();
         BUS_NhanVien bus_nv = new BUS_NhanVien();
         DTO_HoaDon hd = new DTO_HoaDon();
+        DTO_NhanVien nhanVien = null;
         BUS_KhuyenMai bus_km = new BUS_KhuyenMai();
         BUS_KhachHang bus_kh = new BUS_KhachHang();
         BUS_KhoHang bus_kho = new BUS_KhoHang();
+        DAL_TaiKhoan daltk = new DAL_TaiKhoan();
+        private string tk = string.Empty;
+        private int quyen = -1;
+        private Form frmOld = null;
+        public static DTO_NhanVien NhanVien = null;
         int soLuongInput = 0;
         double tongTien = 0;
         double donGia = 0;
         private string maHD;
-        private int quyen = -1;
         private string currentMaKH = "";
         private string maSP1 = "";
+
 
         // ✅ Thêm constructor mới nhận mã hóa đơn
         public Frm_ChiTietHoaDonFrm(string maHD,int quyen)
@@ -44,7 +50,14 @@ namespace Project_CDUD_BachHoaXanh.DongDev
             this.quyen = quyen;
         }
 
+        public Frm_ChiTietHoaDonFrm(string taiKhoan, int quyen, DTO_NhanVien nhanVien)
+        {
+            InitializeComponent();
+            this.tk = taiKhoan;
+            Frm_TrangChu.NhanVien = nhanVien; // Gọi static property
+            this.quyen = quyen;
 
+        }
 
         public Frm_ChiTietHoaDonFrm()
         {
@@ -144,13 +157,14 @@ namespace Project_CDUD_BachHoaXanh.DongDev
             loadChiTietHoaDonTheoMa();
             // MessageBox.Show(maHD);
             settingDGV();
+            nhanVien = Frm_TrangChu.getNhanVien();
             //btnLuuCTHD.Enabled = false;
             //MessageBox.Show(quyen.ToString());
             currentMaKH = bus_hd.LayMaKHTheoMaHD(maHD);
             lblCapBac.Text = "Bậc "+bus_kh.LayCapBac(currentMaKH);
 
         }
-
+       
         void settingDGV()
         {
             dgvCTHD.Columns["id"].Visible = false;
@@ -535,7 +549,11 @@ namespace Project_CDUD_BachHoaXanh.DongDev
 
         private void btnLuuCTHD_Click(object sender, EventArgs e)
         {
-            
+            if(quyen>0)
+            {
+                MessageBox.Show("Bạn không có quyền cập nhật chi tiết hoá đơn!, Vui lòng liên hệ ADMIN để được hỗ trợ!!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             DTO_HoaDon hdMoi = new DTO_HoaDon();
             try
             {
@@ -679,6 +697,20 @@ namespace Project_CDUD_BachHoaXanh.DongDev
             //{
             //    txtSoLuong.Text = soLuong.ToString();
             //}
+        }
+
+        private void btnInHD_Click(object sender, EventArgs e)
+        {
+            string maHD = txtMaHD.Text.Trim();
+
+            if (string.IsNullOrEmpty(maHD))
+            {
+                MessageBox.Show("Không tìm thấy mã hóa đơn!", "Lỗi");
+                return;
+            }
+
+            Frm_InHoaDon frm = new Frm_InHoaDon(maHD);
+            frm.ShowDialog();
         }
     }
 }

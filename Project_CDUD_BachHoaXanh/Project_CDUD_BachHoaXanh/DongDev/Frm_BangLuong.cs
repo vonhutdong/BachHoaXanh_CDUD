@@ -30,8 +30,16 @@ namespace Project_CDUD_BachHoaXanh.DongDev
         }
 
         private void btnIn_Click(object sender, EventArgs e)
-        {
-            
+        {   
+            if (currentIDBangLuong != "")
+            {
+                Frm_BaoCaoBangLuong frm = new Frm_BaoCaoBangLuong(currentIDBangLuong);
+                frm.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Vui chọn bảng lương!!", "Thoát", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
         void loadDGVBangLuong()
         {

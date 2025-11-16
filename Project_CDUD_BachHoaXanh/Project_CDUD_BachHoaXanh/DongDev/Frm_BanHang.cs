@@ -617,7 +617,7 @@ namespace Project_CDUD_BachHoaXanh.DongDev
                 LoadLayoutSanPham(sanPhams);
             }
         }
-        private void ThanhToanCoKhachHang(string maKhachHang, double tongTruocGiam, double tongSauGiam, double soTienGiam)
+        private string ThanhToanCoKhachHang(string maKhachHang, double tongTruocGiam, double tongSauGiam, double soTienGiam)
         {
             // 🧾 1. Tạo hóa đơn với đủ thông tin
             DTO_HoaDon hoaDon = new DTO_HoaDon(
@@ -641,6 +641,7 @@ namespace Project_CDUD_BachHoaXanh.DongDev
             LamMoi();
             dgvThongTinHoaDon.Rows.Clear();
             lbThanhTien.Text = "0 VNĐ";
+            return maHD;
         }
 
 
@@ -673,6 +674,7 @@ namespace Project_CDUD_BachHoaXanh.DongDev
 
         private void btnThanhToan_Click(object sender, EventArgs e)
         {
+            string maHoaDonMoiTao = "";
             phuongTTT = cboPhuongThucTT.SelectedItem?.ToString();
 
             try
@@ -705,12 +707,14 @@ namespace Project_CDUD_BachHoaXanh.DongDev
                 // 👉 LƯU VÀO HÓA ĐƠN
                 if (khachhang != null)
                 {
-                    ThanhToanCoKhachHang(
+                    maHoaDonMoiTao = ThanhToanCoKhachHang(
                         khachhang.MaKH,
                         tongTruocGiam,
                         tongSauGiam,
                         soTienGiam
                     );
+                    Frm_InHoaDon f = new Frm_InHoaDon(maHoaDonMoiTao);
+                    f.ShowDialog();
                 }
                 else
                 {
