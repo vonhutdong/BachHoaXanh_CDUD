@@ -104,6 +104,7 @@ VALUES
 go
 
 INSERT INTO  KhachHang (maKhachHang, tenKhachHang, soDienThoai, diem, diaChi,capBac) VALUES
+
 ('KH001', N'Nguyễn Thị Hương', '0971111111', 0, N'1 Lê Lợi, Q.1',N'Đồng'),
 ('KH002', N'Lê Văn Hùng', '0982222222', 0, N'2 Trần Hưng Đạo, Q.5',N'Đồng'),
 ('KH003', N'Phạm Thị Minh', '0993333333',0, N'3 Nguyễn Trãi, Q.3',N'Đồng'),
@@ -232,8 +233,164 @@ BEGIN
     ORDER BY 
         pn.NgayNhap, pn.MaPhieuNhap;
 END
+
+
 GO
 EXEC sp_GetDanhSachPhieuNhapVaChiTiet;
+go
+CREATE PROCEDURE [dbo].[sp_BaoCaoBangLuong]
+    @maBangLuong NVARCHAR(50)
+AS
+BEGIN
+    SET NOCOUNT ON;
 
+    SELECT 
+        nv.tenNhanVien,
+        ctl.NgayLam,
+        ctl.SoGioCongThucTe AS GioCong,
+        bl.TongGioCong,
+        bl.Luong,
+        MONTH(ctl.NgayLam) AS Thang,
+        DAY(ctl.NgayLam) AS Ngay,
+        nv.MaNhanVien,
+        nv.SoDienThoai,
+        nv.DiaChi,
+        cv.tenChucVu,
+        cl.tenCaLam,
+        ll.ngayLam,
+        cl.gioBatDau,
+        cl.gioKetThuc
+    FROM BangLuong bl
+    INNER JOIN ChiTietBangLuong ctl ON bl.MaBangLuong = ctl.MaBangLuong
+    INNER JOIN NhanVien nv ON bl.MaNhanVien = nv.MaNhanVien
+    INNER JOIN LichLam ll ON nv.MaNhanVien = ll.MaNhanVien 
+                         AND ctl.NgayLam = ll.NgayLam   -- ⭐ GIẢM NHÂN BẢN
+    INNER JOIN CaLam cl ON ll.maCaLam = cl.maCaLam
+    INNER JOIN ChucVu cv ON nv.maChucVu = cv.maChucVu
+    WHERE bl.MaBangLuong = @maBangLuong;
+END;
+GO
+
+
+exec [sp_BaoCaoBangLuong] 'BL004'
+
+
+go 
+
+CREATE PROCEDURE [dbo].[sp_GetHdByMaHd]
+    @maHoaDon VARCHAR(30) = 'HD004'
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    ;WITH InvoiceDetails AS (
+        SELECT
+            ROW_NUMBER() OVER (ORDER BY hd.maHD, cthd.id) AS STT,
+
+            hd.maHD AS MaHoaDon,
+            sp.tenSanPham AS TenSanPham,
+            cthd.soLuong AS SoLuong,
+            sp.donGia AS DonGia,
+
+            -- Thành tiền gốc (chưa KM)
+            (cthd.soLuong * sp.donGia) AS ThanhTienGoc,
+
+            -- Thành tiền sau KM sản phẩm (nếu có)
+            (cthd.soLuong * sp.donGia * (1 - ISNULL(km.giaTri, 0) / 100.0)) AS ThanhTienSauKMSP,
+
+            -- Tiền KM do SP (gốc - sau KM SP)
+            ((cthd.soLuong * sp.donGia)
+             - (cthd.soLuong * sp.donGia * (1 - ISNULL(km.giaTri, 0) / 100.0))
+            ) AS TienKhuyenMaiSP,
+
+            hd.tongTien AS TongTienHoaDon,
+            hd.ngayLapHD AS NgayLapHD,
+            hd.phuongThucThanhToan,
+
+            kh.tenKhachHang AS TenKhachHang,
+            kh.soDienThoai AS SDTKhach,
+            kh.diaChi AS DiaChiKhach,
+            kh.capBac AS CapBacKhach,
+
+            km.tenKhuyenMai AS TenKhuyenMai,
+
+            nv.tenNhanVien AS TenNhanVien
+        FROM HoaDon hd
+            JOIN ChiTietHoaDon cthd ON hd.maHD = cthd.maHoaDon
+            JOIN SanPham sp ON cthd.maSanPham = sp.maSanPham
+            JOIN KhachHang kh ON hd.maKhachHang = kh.maKhachHang
+            JOIN NhanVien nv ON hd.maNhanVien = nv.maNhanVien
+            LEFT JOIN KhuyenMai km ON sp.maKhuyenMai = km.maKhuyenMai
+        WHERE hd.maHD = @maHoaDon
+    )
+
+    SELECT
+        -- Các cột chi tiết per-row
+        STT,
+        MaHoaDon,
+        TenSanPham,
+        SoLuong,
+        DonGia,
+        ThanhTienGoc,
+        ThanhTienSauKMSP,
+        TienKhuyenMaiSP,
+
+        -- Thông tin hóa đơn / khách hàng
+        TongTienHoaDon,
+        NgayLapHD,
+        phuongThucThanhToan,
+        TenKhachHang,
+        SDTKhach,
+        DiaChiKhach,
+        CapBacKhach,
+        TenKhuyenMai,
+        TenNhanVien,
+
+        -- Tổng các giá trị trên toàn hóa đơn (window functions)
+        SUM(ThanhTienGoc) OVER () AS TongTruocGiam,                -- giống tongTruocGiam trong C#
+        SUM(ThanhTienSauKMSP) OVER () AS TongSauGiamSP,           -- giống tongSauGiamSP trong C#
+        SUM(TienKhuyenMaiSP) OVER () AS TongTienKhuyenMaiSP,      -- tổng KM do SP
+
+        -- Phần trăm giảm theo cấp bậc (theo capBac)
+        CASE
+            WHEN LOWER(LTRIM(RTRIM(ISNULL(CapBacKhach, '')))) = N'bạc' THEN 0.02
+            WHEN LOWER(LTRIM(RTRIM(ISNULL(CapBacKhach, '')))) = N'vàng' THEN 0.05
+            WHEN LOWER(LTRIM(RTRIM(ISNULL(CapBacKhach, '')))) = N'kim cương' THEN 0.10
+            ELSE 0.0
+        END AS GiamPhanTram,
+
+        -- Tiền giảm theo cấp bậc = ROUND(TongSauGiamSP * GiamPhanTram, 0)
+        ROUND((SUM(ThanhTienSauKMSP) OVER ()) *
+              CASE
+                WHEN LOWER(LTRIM(RTRIM(ISNULL(CapBacKhach, '')))) = N'bạc' THEN 0.02
+                WHEN LOWER(LTRIM(RTRIM(ISNULL(CapBacKhach, '')))) = N'vàng' THEN 0.05
+                WHEN LOWER(LTRIM(RTRIM(ISNULL(CapBacKhach, '')))) = N'kim cương' THEN 0.10
+                ELSE 0.0
+              END
+        , 0) AS GiamTheoCapBac,
+
+        -- Tiền phải trả = Tổng sau giảm SP - GiamTheoCapBac
+        ROUND((SUM(ThanhTienSauKMSP) OVER ())
+              - ROUND((SUM(ThanhTienSauKMSP) OVER ()) *
+                      CASE
+                        WHEN LOWER(LTRIM(RTRIM(ISNULL(CapBacKhach, '')))) = N'bạc' THEN 0.02
+                        WHEN LOWER(LTRIM(RTRIM(ISNULL(CapBacKhach, '')))) = N'vàng' THEN 0.05
+                        WHEN LOWER(LTRIM(RTRIM(ISNULL(CapBacKhach, '')))) = N'kim cương' THEN 0.10
+                        ELSE 0.0
+                      END
+              , 0)
+        , 0) AS TienPhaiTra,
+
+        -- Số dòng/sp trong hóa đơn
+        MAX(STT) OVER() AS MaxSTT
+
+    FROM InvoiceDetails
+    ORDER BY STT;
+END;
+GO
+
+
+
+exec [sp_GetHdByMaHd]  'HD005'
 select * from HoaDon
 

@@ -646,6 +646,9 @@ END;
 GO
 select * from BangLuong
 select * from ChiTietBangLuong
+select * from ChucVu
+select * from NhanVien
+
 exec sp_BaoCaoBangLuong1 1
 
 CREATE PROCEDURE [dbo].[sp_BaoCaoTongLuongTheoThang]
