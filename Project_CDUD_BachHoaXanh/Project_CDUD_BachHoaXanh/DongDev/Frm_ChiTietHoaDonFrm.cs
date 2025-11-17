@@ -48,6 +48,8 @@ namespace Project_CDUD_BachHoaXanh.DongDev
             InitializeComponent(); // luôn gọi đầu tiên
             this.maHD = maHD;
             this.quyen = quyen;
+            cboMaKH.Enabled = false;
+            cboMaNV.Enabled = false;
         }
 
         public Frm_ChiTietHoaDonFrm(string taiKhoan, int quyen, DTO_NhanVien nhanVien)
@@ -85,7 +87,7 @@ namespace Project_CDUD_BachHoaXanh.DongDev
         }
         public void LoadData()
         {
-
+            
             // cboMaHD
             //cboMaHD.DataSource = bus_hd.GetListHD();
             //cboMaHD.DisplayMember = "MaHoaDon";

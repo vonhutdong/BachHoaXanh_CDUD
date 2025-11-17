@@ -153,5 +153,11 @@ namespace Project_CDUD_BachHoaXanh.TrongDev
             var result = bus_kh.TimKiemSanPham(keyword).ToList();
             dgvKhoHang.DataSource = result;
         }
+
+        private void btnInSPHetHang_Click(object sender, EventArgs e)
+        {
+            Frm_ThongKeSpSapHet frm_ThongKeSpSapHet = new Frm_ThongKeSpSapHet();
+            frm_ThongKeSpSapHet.Show();
+        }
     }
 }

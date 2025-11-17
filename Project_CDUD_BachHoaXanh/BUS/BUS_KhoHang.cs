@@ -1,9 +1,10 @@
-﻿using System;
+﻿using DAL;
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DAL;
 
 namespace BUS
 {
@@ -42,6 +43,10 @@ namespace BUS
         public int GetKhoTheoMaSanPham(string maSP)
         {
             return dal_kh.GetKhoTheoMaSanPham(maSP);
+        }
+        public DataTable LayDSSPSapHet()
+        {
+            return dal_kh.LayDSSPSapHet();
         }
     }
 }

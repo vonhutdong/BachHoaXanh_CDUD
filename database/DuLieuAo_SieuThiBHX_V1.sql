@@ -388,9 +388,69 @@ BEGIN
     ORDER BY STT;
 END;
 GO
+drop PROCEDURE sp_ThongKeSanPhamSapHet
+CREATE PROCEDURE sp_ThongKeSanPhamSapHet
+AS
+BEGIN
+    SELECT 
+        sp.maSanPham,
+        sp.tenSanPham,
+        sp.donViTinh,
+        sp.donGia,
+        SUM(kh.soLuong) AS TongSoLuongTon,
+		cn.TenChiNhanh,
+		cn.diaChi,
+		cn.soDienThoai
+    FROM KhoHang kh
+        INNER JOIN SanPham sp ON kh.maSanPham = sp.maSanPham
+        INNER JOIN ChiTietPhieuNhap ct ON sp.maSanPham = ct.maSanPham
+        INNER JOIN PhieuNhap pn ON ct.maPhieuNhap = pn.maPhieuNhap
+		INNER JOIN ChiNhanh cn ON pn.maChiNhanh = cn.maChiNhanh
+    GROUP BY 
+        sp.maSanPham,
+        sp.tenSanPham,
+        sp.donViTinh,
+        sp.donGia
+    HAVING SUM(kh.soLuong) < 30
+    ORDER BY TongSoLuongTon ASC;
+END;
+GO
 
+CREATE PROCEDURE sp_ThongKeSanPhamSapHet
+AS
+BEGIN
+    SELECT 
+        sp.maSanPham,
+        sp.tenSanPham,
+        sp.donViTinh,
+        sp.donGia,
+        SUM(kh.soLuong) AS TongSoLuongTon,
+        cn.TenChiNhanh,
+        cn.DiaChi,
+        cn.SoDienThoai
+    FROM KhoHang kh
+        INNER JOIN SanPham sp ON kh.maSanPham = sp.maSanPham
+        INNER JOIN ChiNhanh cn ON kh.maChiNhanh = cn.maChiNhanh
+    GROUP BY 
+        sp.maSanPham,
+        sp.tenSanPham,
+        sp.donViTinh,
+        sp.donGia,
+        cn.TenChiNhanh,
+        cn.DiaChi,
+        cn.SoDienThoai
+    HAVING SUM(kh.soLuong) < 30
+    ORDER BY TongSoLuongTon ASC;
+END;
+GO
+
+
+EXEC sp_ThongKeSanPhamSapHet;
 
 
 exec [sp_GetHdByMaHd]  'HD005'
-select * from HoaDon
+select * from ChiNhanh
+select * from PhieuNhap
+select * from ChiTietPhieuNhap
+select * from KhoHang
 

@@ -79,7 +79,7 @@ namespace Project_CDUD_BachHoaXanh
 
             // Gọi lại form Bán hàng nếu cần
             LoadBanHangForm();
-            tabControlQuanLy.SelectedTab = tabBanHang;
+            tabControlQuanLy.SelectedTab = tabHeThong;
 
 
         }

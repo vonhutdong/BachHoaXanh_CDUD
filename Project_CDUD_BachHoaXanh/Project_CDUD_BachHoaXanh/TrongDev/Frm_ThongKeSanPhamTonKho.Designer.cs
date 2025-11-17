@@ -31,12 +31,12 @@
             this.crystalReportViewer1 = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.rpt_ThongKeTonKho = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
+            this.InThongKeSanPhamTonKho2 = new Project_CDUD_BachHoaXanh.TrongDev.InThongKeSanPhamTonKho();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.cboTenChiNhanh = new System.Windows.Forms.ComboBox();
             this.btnTim = new System.Windows.Forms.Button();
             this.InThongKeSanPhamTonKho1 = new Project_CDUD_BachHoaXanh.TrongDev.InThongKeSanPhamTonKho();
-            this.InThongKeSanPhamTonKho2 = new Project_CDUD_BachHoaXanh.TrongDev.InThongKeSanPhamTonKho();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();

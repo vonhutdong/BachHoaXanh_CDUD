@@ -240,11 +240,23 @@
     <Compile Include="TrongDev\Frm_ThongKeSanPhamTonKho.Designer.cs">
       <DependentUpon>Frm_ThongKeSanPhamTonKho.cs</DependentUpon>
     </Compile>
+    <Compile Include="TrongDev\Frm_ThongKeSpSapHet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TrongDev\Frm_ThongKeSpSapHet.Designer.cs">
+      <DependentUpon>Frm_ThongKeSpSapHet.cs</DependentUpon>
+    </Compile>
     <Compile Include="TrongDev\Frm_ThongKeTheoMaPhieuNhap.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="TrongDev\Frm_ThongKeTheoMaPhieuNhap.Designer.cs">
       <DependentUpon>Frm_ThongKeTheoMaPhieuNhap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TrongDev\ThongKeSPSapHet.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ThongKeSPSapHet.rpt</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <EmbeddedResource Include="DongDev\Frm_BangLuong.resx">
       <DependentUpon>Frm_BangLuong.cs</DependentUpon>
@@ -366,6 +378,9 @@
     <EmbeddedResource Include="TrongDev\Frm_ThongKeSanPhamTonKho.resx">
       <DependentUpon>Frm_ThongKeSanPhamTonKho.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="TrongDev\Frm_ThongKeSpSapHet.resx">
+      <DependentUpon>Frm_ThongKeSpSapHet.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="TrongDev\Frm_ThongKeTheoMaPhieuNhap.resx">
       <DependentUpon>Frm_ThongKeTheoMaPhieuNhap.cs</DependentUpon>
     </EmbeddedResource>
@@ -380,6 +395,10 @@
     <EmbeddedResource Include="TrongDev\InThongKeTheoMaPhieuNhap.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>InThongKeTheoMaPhieuNhap.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TrongDev\ThongKeSPSapHet.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ThongKeSPSapHet.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

@@ -1,6 +1,8 @@
 ﻿using DTO;
 using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -247,7 +249,24 @@ namespace DAL
                      .Where(k => k.maSanPham == maSP)
                      .Sum(k => k.soLuong));
         }
+        public DataTable LayDSSPSapHet()
+        {
+            string connectionString = da.Db.Connection.ConnectionString;
 
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand("sp_ThongKeSanPhamSapHet", conn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
+                    {
+                        DataTable dt = new DataTable();
+                        adapter.Fill(dt);
+                        return dt;
+                    }
+                }
+            }
+        }
 
 
     }
